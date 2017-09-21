@@ -1,0 +1,896 @@
+﻿<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Appedo</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/appedo-16.ico">
+    <link rel="stylesheet" href="css/morris.css">
+    <script src="js/raphael-min.js">
+    </script>
+    <script src="js/jquery-1.8.2.min.js">
+    </script>
+    <script src="js/morris-0.4.1.min.js">
+    </script>
+    <script>
+          function drawCharts()
+          {
+            drawSummaryGraph();
+            drawErrorGraph();
+            drawPageResponseGraph();
+            drawVUserGraph();
+            
+              drawTransactionGraph_548831277();
+            
+          }        
+        </script>
+    <style>
+          body {
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          font-size: 14px;
+          line-height: 1.42857143;
+          color: #333;
+          background-color: #fff;
+          }
+
+          .graphheadingrow
+          {
+          text-align: center;
+          border-bottom: 1px solid #1b639e;
+          }
+
+          .graph
+          {
+          width: 400px; 
+          height: 250px;
+          padding: 25px;
+          }
+        </style>
+  </head>
+  <body onload="drawCharts();">
+    <h1 style="width:600px; padding-bottom: 6px; background-color:#31c0be; color:#FFFFFF; text-align: center;">Appedo</h1>
+    <span>
+      <b>Report Name:  </b>google27-05-2017-212730</span>
+    <h4> Summary Report</h4>
+    <table border="1" cellspacing="0">
+      <tr>
+        <td style="bgcolor=#9acd32">
+          <b>Start Time</b>
+        </td>
+        <td style="text-align:right">27-05-2017 21:27:33</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>End Time</b>
+        </td>
+        <td style="text-align:right">27-05-2017 21:27:43</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Duration(sec)</b>
+        </td>
+        <td style="text-align:right">9</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>User Count</b>
+        </td>
+        <td style="text-align:right">1</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Total Hits</b>
+        </td>
+        <td style="text-align:right">48</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Request Response(sec)</b>
+        </td>
+        <td style="text-align:right">.299</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Page Response(sec)</b>
+        </td>
+        <td style="text-align:right">3.585</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Hits/Sec</b>
+        </td>
+        <td style="text-align:right">5.333</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b> Total Throughput(MB)</b>
+        </td>
+        <td style="text-align:right">1.581</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Throughput(Mbps)</b>
+        </td>
+        <td style="text-align:right">1.406</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Total Errors</b>
+        </td>
+        <td style="text-align:right">0</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Total pages</b>
+        </td>
+        <td style="text-align:right">4</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 200 Count</b>
+        </td>
+        <td style="text-align:right">46</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 300 Count</b>
+        </td>
+        <td style="text-align:right">2</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 400 Count</b>
+        </td>
+        <td style="text-align:right">0</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 500 Count</b>
+        </td>
+        <td style="text-align:right">0</td>
+      </tr>
+    </table>
+    <h4> Graphs </h4>
+    <table style="width: 875px;" cellpadding="10" cellspacing="0">
+      <tr>
+        <td class="graphheadingrow">
+          <b>Virtual User Running Graph</b>
+        </td>
+        <td>
+        </td>
+        <td class="graphheadingrow">
+          <b>Hits per Sec Graph</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="vuser_" class="graph">
+          </div>
+        </td>
+        <td style="width: 15px;">
+        </td>
+        <td>
+          <div id="hps_" class="graph">
+          </div>
+        </td>
+      </tr>
+      <br>
+      <br>
+      <tr>
+        <td class="graphheadingrow">
+          <b>Throughput per Sec Graph (KBps)</b>
+        </td>
+        <td>
+        </td>
+        <td class="graphheadingrow">
+          <b>Page Response Time Graph (secs)</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="kbps_" style="width: 400px; height: 250px;">
+          </div>
+        </td>
+        <td>
+        </td>
+        <td>
+          <div id="pageres_" style="width: 400px; height: 250px;">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <script>
+      function drawSummaryGraph() {      
+      new Morris.Line({
+      element: 'hps_',
+      data: [
+      
+            { time: '2017-05-27 21:27:34', hitspersec: 0.2 },
+          
+            { time: '2017-05-27 21:27:39', hitspersec: 6.6 },
+          
+            { time: '2017-05-27 21:27:43', hitspersec: 2.8 }
+          
+      ],
+      xkey: 'time',
+      ykeys: ['hitspersec'],
+      labels: ['Hits per Sec'],
+      lineColors: ['#D26B16'],
+      lineWidth: 1,
+      pointSize: 2,
+      hideHover: 'auto'
+      });
+
+      new Morris.Line({
+      element: 'kbps_',
+      data: [
+      
+            { time: '2017-05-27 21:27:34', kbps: 0.05 },
+          
+            { time: '2017-05-27 21:27:39', kbps: 258 },
+          
+            { time: '2017-05-27 21:27:43', kbps: 65.81 }
+          
+      ],
+      xkey: 'time',
+      ykeys: ['kbps'],
+      labels: ['KBps'],
+      lineColors: ['#800000'],
+      lineWidth: 1,
+      pointSize: 2,
+      hideHover: 'auto'
+      });
+
+      new Morris.Line({
+      element: 'art_',
+      data: [
+      
+            { time: '2017-05-27 21:27:34', avgresponsetime: 163.37 },
+          
+            { time: '2017-05-27 21:27:39', avgresponsetime: 299.47 },
+          
+            { time: '2017-05-27 21:27:43', avgresponsetime: 306.78 }
+          
+      ],
+      xkey: 'time',
+      ykeys: ['avgresponsetime'],
+      labels: ['Avg. Response Time'],
+      lineColors: ['#800000'],
+      lineWidth: 1,
+      pointSize: 2,
+      hideHover: 'auto'
+      });
+      }
+    </script>
+    <script>
+      function drawPageResponseGraph() {
+        new Morris.Line({
+        element: 'pageres_',
+        data: [
+        
+              { time: '2017-05-27 21:27:39', resptime: 4 },
+            
+              { time: '2017-05-27 21:27:41', resptime: 2 }
+            
+        ],
+        xkey: 'time',
+        ykeys: ['resptime'],
+        labels: ['Avg. Response Time'],
+        lineColors: ['#2616D2'],
+        lineWidth: 1,
+        pointSize: 2,
+        hideHover: 'auto'
+        });
+      }
+    </script>
+    <br>
+    <br>
+    <table style="width: 875px;" cellpadding="10" cellspacing="0">
+      <tr>
+        <td class="graphheadingrow">
+          <b>Request Response Graph (ms)</b>
+        </td>
+        <td>
+        </td>
+        <td class="graphheadingrow">
+          <b>Error Graph</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="art_" class="graph">
+          </div>
+        </td>
+        <td style="width: 15px;">
+        </td>
+        <td>
+          <div id="error_" class="graph">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <script>
+      
+      
+      function drawErrorGraph() {
+        new Morris.Line({
+            element: 'error_',
+            data: [
+            
+            ],
+            xkey: 'time',
+            ykeys: ['errorcount'],
+            labels: ['Error Count'],
+            lineColors: ['#D21629'],
+            lineWidth: 1,
+            pointSize: 2,
+            hideHover: 'auto'
+        });
+      }
+    </script>
+    <script>
+      function drawVUserGraph() {
+        new Morris.Line({
+        element: 'vuser_',
+        data: [
+        
+              { time: '2017-05-27 21:27:33', vuserrunning: 1 },
+            
+              { time: '2017-05-27 21:27:34', vuserrunning: 1 },
+            
+              { time: '2017-05-27 21:27:35', vuserrunning: 1 },
+            
+              { time: '2017-05-27 21:27:36', vuserrunning: 1 },
+            
+              { time: '2017-05-27 21:27:37', vuserrunning: 1 },
+            
+              { time: '2017-05-27 21:27:38', vuserrunning: 1 },
+            
+              { time: '2017-05-27 21:27:39', vuserrunning: 1 },
+            
+              { time: '2017-05-27 21:27:40', vuserrunning: 1 },
+            
+              { time: '2017-05-27 21:27:41', vuserrunning: 1 },
+            
+              { time: '2017-05-27 21:27:42', vuserrunning: 1 },
+            
+              { time: '2017-05-27 21:27:43', vuserrunning: 0 },
+            
+              { time: '2017-05-27 21:27:44', vuserrunning: 0 },
+            
+              { time: '2017-05-27 21:27:45', vuserrunning: 0 },
+            
+              { time: '2017-05-27 21:27:46', vuserrunning: 0 },
+            
+              { time: '2017-05-27 21:27:47', vuserrunning: 0 },
+            
+              { time: '2017-05-27 21:27:48', vuserrunning: 0 },
+            
+              { time: '2017-05-27 21:27:49', vuserrunning: 0 },
+            
+              { time: '2017-05-27 21:27:50', vuserrunning: 0 },
+            
+              { time: '2017-05-27 21:27:51', vuserrunning: 0 },
+            
+              { time: '2017-05-27 21:27:52', vuserrunning: 0 },
+            
+              { time: '2017-05-27 21:27:53', vuserrunning: 0 },
+            
+              { time: '2017-05-27 21:27:54', vuserrunning: 0 },
+            
+              { time: '2017-05-27 21:27:55', vuserrunning: 0 },
+            
+              { time: '2017-05-27 21:27:56', vuserrunning: 0 },
+            
+              { time: '2017-05-27 21:27:57', vuserrunning: 0 }
+            
+        ],
+        xkey: 'time',
+        ykeys: ['vuserrunning'],
+        labels: ['VUsers Running'],
+        lineColors: ['#B22222'],
+        lineWidth: 1,
+        pointSize: 2,
+        hideHover: 'auto'
+        });
+      }
+    </script>
+    <br>
+    <span>
+            Script Name: <b>google.com</b></span>
+    <br>
+    <h4> Settings</h4>
+    <table border="1" cellspacing="0" cellpadding="3">
+      <tr>
+        <td style="width: 160px;">
+          <b>Browser Cache</b>
+        </td>
+        <td style="width: 100px;">false</td>
+        <td style="width: 160px;">
+          <b>Replay Think Time</b>
+        </td>
+        <td style="width: 100px;">true</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Bandwidth</b>
+        </td>
+        <td>Full Speed</td>
+        <td>
+          <b>Parallel Connections</b>
+        </td>
+        <td style="text-align:right">6</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Start User Count</b>
+        </td>
+        <td style="text-align:right">1</td>
+        <td>
+          <b>Max Users</b>
+        </td>
+        <td style="text-align:right">1</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Mode</b>
+        </td>
+        <td>Iteration</td>
+        <td>
+          <b>Iterations</b>
+        </td>
+        <td style="text-align:right">2</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Increment User</b>
+        </td>
+        <td style="text-align:right">1</td>
+        <td>
+          <b>Increment Time</b>
+        </td>
+        <td style="text-align:right">0:0:1</td>
+      </tr>
+    </table>
+    <h4> Request response</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Containername</th>
+        <th>Address</th>
+        <th>Hit Count</th>
+        <th>Throughput(Byte)</th>
+        <th>Min(ms)</th>
+        <th>Max(ms)</th>
+        <th>Avg(ms)</th>
+        <th>Min TTFB(ms)</th>
+        <th>Max TTFB(ms)</th>
+        <th>Avg TTFB(ms)</th>
+      </tr>
+      <tr>
+        <td>init</td>
+        <td>/</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">261</td>
+        <td style="text-align:right">163.375</td>
+        <td style="text-align:right">163.375</td>
+        <td style="text-align:right">163.375</td>
+        <td style="text-align:right">155.802</td>
+        <td style="text-align:right">155.802</td>
+        <td style="text-align:right">155.802</td>
+      </tr>
+      <tr>
+        <td>init</td>
+        <td>/</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">277</td>
+        <td style="text-align:right">279.060</td>
+        <td style="text-align:right">279.060</td>
+        <td style="text-align:right">279.060</td>
+        <td style="text-align:right">276.254</td>
+        <td style="text-align:right">276.254</td>
+        <td style="text-align:right">276.254</td>
+      </tr>
+      <tr>
+        <td>init</td>
+        <td>/</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">205420</td>
+        <td style="text-align:right">1028.123</td>
+        <td style="text-align:right">1028.123</td>
+        <td style="text-align:right">1028.123</td>
+        <td style="text-align:right">520.050</td>
+        <td style="text-align:right">520.050</td>
+        <td style="text-align:right">520.050</td>
+      </tr>
+      <tr>
+        <td>init</td>
+        <td>/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">5087</td>
+        <td style="text-align:right">151.768</td>
+        <td style="text-align:right">151.768</td>
+        <td style="text-align:right">151.768</td>
+        <td style="text-align:right">150.757</td>
+        <td style="text-align:right">150.757</td>
+        <td style="text-align:right">150.757</td>
+      </tr>
+      <tr>
+        <td>init</td>
+        <td>/images/branding/product/ico/googleg_lodp.ico</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">7687</td>
+        <td style="text-align:right">141.210</td>
+        <td style="text-align:right">141.210</td>
+        <td style="text-align:right">141.210</td>
+        <td style="text-align:right">140.837</td>
+        <td style="text-align:right">140.837</td>
+        <td style="text-align:right">140.837</td>
+      </tr>
+      <tr>
+        <td>init</td>
+        <td>/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">5969</td>
+        <td style="text-align:right">118.140</td>
+        <td style="text-align:right">118.140</td>
+        <td style="text-align:right">118.140</td>
+        <td style="text-align:right">117.658</td>
+        <td style="text-align:right">117.658</td>
+        <td style="text-align:right">117.658</td>
+      </tr>
+      <tr>
+        <td>init</td>
+        <td>/images/hpp/ic_wahlberg_product_core_48.png8.png</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">2091</td>
+        <td style="text-align:right">140.122</td>
+        <td style="text-align:right">140.122</td>
+        <td style="text-align:right">140.122</td>
+        <td style="text-align:right">139.794</td>
+        <td style="text-align:right">139.794</td>
+        <td style="text-align:right">139.794</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/xjs/_/js/k=xjs.s.en.FLyc3sNzBUc.O/m=sx,c,sb,cdos,cr,elog,hsm,jsa,r,qsm,j,p,d,csi/am=AEcoyuMFByD_RwgFw00IC9IKzDCA/rt=j/d=1/t=zcms/rs=ACT90oFKKOUQfv3jvC_3ML8fclGhvl362g</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">887246</td>
+        <td style="text-align:right">382.140</td>
+        <td style="text-align:right">1185.811</td>
+        <td style="text-align:right">783.975</td>
+        <td style="text-align:right">86.766</td>
+        <td style="text-align:right">297.010</td>
+        <td style="text-align:right">191.888</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/xjs/_/js/k=xjs.s.en.FLyc3sNzBUc.O/m=aa,abd,async,dvl,foot,fpe,ipv6,lu,m,sf,d3l/am=AEcoyuMFByD_RwgFw00IC9IKzDCA/exm=sx,c,sb,cdos,cr,elog,hsm,jsa,r,qsm,j,p,d,csi/rt=j/d=1/ed=1/t=zcms/rs=ACT90oFKKOUQfv3jvC_3ML8fclGhvl362g</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">130702</td>
+        <td style="text-align:right">674.946</td>
+        <td style="text-align:right">1004.811</td>
+        <td style="text-align:right">839.878</td>
+        <td style="text-align:right">271.799</td>
+        <td style="text-align:right">311.429</td>
+        <td style="text-align:right">291.614</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/images/nav_logo242.png</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">33572</td>
+        <td style="text-align:right">462.162</td>
+        <td style="text-align:right">675.274</td>
+        <td style="text-align:right">568.718</td>
+        <td style="text-align:right">348.030</td>
+        <td style="text-align:right">363.471</td>
+        <td style="text-align:right">355.751</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/gen_204</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">0</td>
+        <td style="text-align:right">329.032</td>
+        <td style="text-align:right">344.126</td>
+        <td style="text-align:right">336.579</td>
+        <td style="text-align:right">328.897</td>
+        <td style="text-align:right">344.000</td>
+        <td style="text-align:right">336.448</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">2868</td>
+        <td style="text-align:right">203.009</td>
+        <td style="text-align:right">450.547</td>
+        <td style="text-align:right">326.778</td>
+        <td style="text-align:right">202.682</td>
+        <td style="text-align:right">449.453</td>
+        <td style="text-align:right">326.068</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/gen_204</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">0</td>
+        <td style="text-align:right">293.553</td>
+        <td style="text-align:right">330.659</td>
+        <td style="text-align:right">312.106</td>
+        <td style="text-align:right">293.423</td>
+        <td style="text-align:right">330.537</td>
+        <td style="text-align:right">311.980</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">2952</td>
+        <td style="text-align:right">208.386</td>
+        <td style="text-align:right">220.172</td>
+        <td style="text-align:right">214.279</td>
+        <td style="text-align:right">207.987</td>
+        <td style="text-align:right">219.948</td>
+        <td style="text-align:right">213.967</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/gen_204</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">0</td>
+        <td style="text-align:right">129.721</td>
+        <td style="text-align:right">157.072</td>
+        <td style="text-align:right">143.397</td>
+        <td style="text-align:right">129.572</td>
+        <td style="text-align:right">156.950</td>
+        <td style="text-align:right">143.261</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">2948</td>
+        <td style="text-align:right">152.562</td>
+        <td style="text-align:right">189.391</td>
+        <td style="text-align:right">170.976</td>
+        <td style="text-align:right">152.304</td>
+        <td style="text-align:right">189.249</td>
+        <td style="text-align:right">170.777</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">2964</td>
+        <td style="text-align:right">153.848</td>
+        <td style="text-align:right">219.461</td>
+        <td style="text-align:right">186.655</td>
+        <td style="text-align:right">153.482</td>
+        <td style="text-align:right">217.246</td>
+        <td style="text-align:right">185.364</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">2938</td>
+        <td style="text-align:right">155.672</td>
+        <td style="text-align:right">217.490</td>
+        <td style="text-align:right">186.581</td>
+        <td style="text-align:right">155.437</td>
+        <td style="text-align:right">217.180</td>
+        <td style="text-align:right">186.308</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">2792</td>
+        <td style="text-align:right">161.963</td>
+        <td style="text-align:right">191.763</td>
+        <td style="text-align:right">176.863</td>
+        <td style="text-align:right">161.640</td>
+        <td style="text-align:right">191.634</td>
+        <td style="text-align:right">176.637</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/gen_204</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">0</td>
+        <td style="text-align:right">167.452</td>
+        <td style="text-align:right">169.470</td>
+        <td style="text-align:right">168.461</td>
+        <td style="text-align:right">167.292</td>
+        <td style="text-align:right">169.365</td>
+        <td style="text-align:right">168.329</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">4876</td>
+        <td style="text-align:right">159.670</td>
+        <td style="text-align:right">167.114</td>
+        <td style="text-align:right">163.392</td>
+        <td style="text-align:right">159.422</td>
+        <td style="text-align:right">166.862</td>
+        <td style="text-align:right">163.142</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">2880</td>
+        <td style="text-align:right">147.334</td>
+        <td style="text-align:right">149.181</td>
+        <td style="text-align:right">148.257</td>
+        <td style="text-align:right">146.995</td>
+        <td style="text-align:right">148.986</td>
+        <td style="text-align:right">147.991</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">2868</td>
+        <td style="text-align:right">154.707</td>
+        <td style="text-align:right">179.053</td>
+        <td style="text-align:right">166.880</td>
+        <td style="text-align:right">154.554</td>
+        <td style="text-align:right">178.710</td>
+        <td style="text-align:right">166.632</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">2948</td>
+        <td style="text-align:right">159.867</td>
+        <td style="text-align:right">202.453</td>
+        <td style="text-align:right">181.160</td>
+        <td style="text-align:right">159.626</td>
+        <td style="text-align:right">201.788</td>
+        <td style="text-align:right">180.707</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">2948</td>
+        <td style="text-align:right">139.468</td>
+        <td style="text-align:right">241.673</td>
+        <td style="text-align:right">190.570</td>
+        <td style="text-align:right">139.339</td>
+        <td style="text-align:right">241.241</td>
+        <td style="text-align:right">190.290</td>
+      </tr>
+      <tr>
+        <td>ContainerLoop</td>
+        <td>/gen_204</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">0</td>
+        <td style="text-align:right">123.078</td>
+        <td style="text-align:right">143.704</td>
+        <td style="text-align:right">133.391</td>
+        <td style="text-align:right">122.994</td>
+        <td style="text-align:right">143.459</td>
+        <td style="text-align:right">133.227</td>
+      </tr>
+      <tr>
+        <td>ContainerLoop</td>
+        <td>/xjs/_/js/k=xjs.s.en.FLyc3sNzBUc.O/m=aspn,tl,vs,tnv,mrn,me,atn/am=AEcoyuMFByD_RwgFw00IC9IKzDCA/exm=sx,c,sb,cdos,cr,elog,hsm,jsa,r,qsm,j,p,d,csi,aa,abd,async,dvl,foot,fpe,ipv6,lu,m,sf,d3l/rt=j/d=1/ed=1/t=zcms/rs=ACT90oFKKOUQfv3jvC_3ML8fclGhvl362g</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">179666</td>
+        <td style="text-align:right">151.020</td>
+        <td style="text-align:right">398.471</td>
+        <td style="text-align:right">274.745</td>
+        <td style="text-align:right">79.065</td>
+        <td style="text-align:right">126.057</td>
+        <td style="text-align:right">102.561</td>
+      </tr>
+      <tr>
+        <td>End</td>
+        <td>/search</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">166203</td>
+        <td style="text-align:right">971.917</td>
+        <td style="text-align:right">971.917</td>
+        <td style="text-align:right">971.917</td>
+        <td style="text-align:right">306.755</td>
+        <td style="text-align:right">306.755</td>
+        <td style="text-align:right">306.755</td>
+      </tr>
+    </table>
+    <h4> Container response</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Containername</th>
+        <th>Min(ms)</th>
+        <th>Max(ms)</th>
+        <th>Avg(ms)</th>
+      </tr>
+      <tr>
+        <td>init</td>
+        <td style="text-align:right">2021.798</td>
+        <td style="text-align:right">2021.798</td>
+        <td style="text-align:right">2021.798</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td style="text-align:right">5061.979</td>
+        <td style="text-align:right">5469.030</td>
+        <td style="text-align:right">5265.505</td>
+      </tr>
+      <tr>
+        <td>ContainerLoop</td>
+        <td style="text-align:right">274.097</td>
+        <td style="text-align:right">542.174</td>
+        <td style="text-align:right">408.136</td>
+      </tr>
+      <tr>
+        <td>End</td>
+        <td style="text-align:right">971.917</td>
+        <td style="text-align:right">971.917</td>
+        <td style="text-align:right">971.917</td>
+      </tr>
+    </table>
+    <h4> Transactions response</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Transaction Name</th>
+        <th>Min(ms)</th>
+        <th>Max(ms)</th>
+        <th>Avg(ms)</th>
+      </tr>
+    </table>
+    <br>
+    <table style="width: 475px;" cellpadding="10" cellspacing="0">
+      <tr>
+        <td class="graphheadingrow">
+          <b>Transaction Graph</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="transactions_548831277" class="graph">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <script>
+      function drawTransactionGraph_548831277() {
+        new Morris.Bar({
+		    barSizeRatio:0.40,
+        element: 'transactions_548831277',
+        data: [
+        
+        ],
+        xkey: 'transaction',
+        ykeys: ['min', 'max', 'avg'],
+        labels: ['Min', 'Max', 'Avg.'],
+        barColors: ['#373BF0', '#68D216', '#D26B16'],
+        hideHover: 'auto'
+        });
+      }
+    </script>
+    <h4>Error count</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Containername</th>
+        <th>Address</th>
+        <th>Count</th>
+      </tr>
+    </table>
+    <h4>Error Description</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Errorcode</th>
+        <th>Message</th>
+        <th>Count</th>
+      </tr>
+    </table>
+    <br>
+  </body>
+</html>

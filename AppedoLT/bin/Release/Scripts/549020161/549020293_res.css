@@ -1,0 +1,535 @@
+.icon-button-enterpriseManager16
+{
+	background-image:url(../images/enterprise-manager_16x16.png)!important;
+}
+.icon-button-addDefectButton
+{
+	background-image:url(../images/spcg/add.gif)!important;
+}
+.icon-button-save16
+{
+	background-image:url(../images/spcg/floppy_disk_16.gif)!important;
+}
+.icon-button-reject16
+{
+	background-image:url(../images/spcg/undo.png)!important;
+}
+.icon-button-quickadd16
+{
+	background-image:url(../images/spcg/inlineadd.gif)!important;
+}
+.icon-button-detailedadd16
+{
+	background-image:url(../images/spcg/detailedadd.gif)!important;
+}
+.icon-button-project1
+{
+	background-image:url(../images/project_16x16.png)!important;
+}
+.icon-button-projectmanager1
+{
+	background-image:url(../images/projectmanager_16x16.png)!important;
+}
+
+.icon-button-assign
+{
+	background-image:url(../images/btnAssign.jpg)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+}
+.icon-button-cancel
+{
+	background-image:url(../images/btnCancel.jpg)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+}
+.icon-button-clear
+{
+	background-image:url(../images/btnClear.jpg)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+}
+.icon-button-add
+{
+	background-image:url(../images/btnAdd.jpg)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+}
+.icon-button-add2
+{ 
+	background-image:url(../images/spcg/add.gif)!important;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box;
+}
+.icon-button-grid
+{ 
+	background-image:url(../images/spcg/gridview.gif)!important;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box;
+}
+.icon-button-frameview
+{ 
+	background-image:url(../images/spcg/frameview.gif)!important;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box;
+}
+
+.icon-button-history
+{ 
+	background-image:url(../images/spcg/hourglass_uparrow_16x16.gif)!important;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box;
+}
+.icon-button-editFv
+{ 
+	background-image:url(../images/spcg/edit.gif)!important;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box;
+}
+.icon-button-deleteIcon
+{
+	background-image:url(../images/Delete.png)!important;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box;
+}
+.icon-button-import
+{
+	background-image:url(../images/spcg/import.gif)!important;
+ 	background-repeat: no-repeat;
+	background-size: 95% 95%;
+	background-origin: content-box;
+}
+.icon-button-assignTester
+{
+	background-image:url(../images/spcg/responsability_assign_16.png)!important;
+ 	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box;
+}
+.icon-button-modifyAccessRights
+{
+	background-image:url(../images/spcg/access_control_16.gif)!important;
+ 	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box;
+}
+/*
+.icon-button-round
+{ 
+	background-image:url(../images/briefcase_16x16.png)!important;
+ 	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box;
+}
+.icon-button-map
+{ 
+	background-image:url(../images/cube_molecule_16x16.png)!important;
+ 	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box;
+}*/
+.icon-button-export
+{
+	background-image:url(../images/spcg/export.gif)!important; 
+	/*	background-repeat: repeat;*/
+	background-size: 100% 100%;
+	/* background-origin: content-box*/ 
+}
+.icon-button-edit
+{
+	background-image:url(../images/btnEdit.jpg)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+}
+.icon-button-close
+{
+	background-image:url(../images/btnClose.jpg)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+}
+
+.icon-button-clone
+{
+	background-image:url(../images/btnClone.jpg)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+}
+.icon-button-delete
+{
+	background-image:url(../images/btnDelete.jpg)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+}
+
+.icon-button-finished
+{
+	background-image:url(../images/btnFinished.jpg)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+}
+.icon-button-addDefect
+{
+	background-image:url(../images/btnAddDefect.jpg)!important;
+	width: 80px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+}
+.icon-button-attach
+{
+	background-image:url(../images/btnAttach.png)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+/* background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box*/
+}
+.icon-button-download
+{
+	background-image:url(../images/btnDownload.jpg)!important;
+	width: 70px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+/* background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box*/
+}
+.icon-button-remove
+{
+	background-image:url(../images/btnRemove.png)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+	/*background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box*/
+}
+.icon-button-save
+{
+	background-image:url(../images/btnSave.jpg)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+/* background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box*/
+}
+.icon-button-closex
+{
+	background-image:url(../images/close.png)!important;
+	width: 16px !important;
+	height: 16px !important;
+	color:#484848;
+}
+.icon-button-submit
+{
+	background-image:url(../images/btnSubmit.jpg)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+/* background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box*/
+}
+.icon-button-CreateField
+{
+	background-image:url(../images/btnCreateField.jpg)!important;
+	width: 80px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+}
+.icon-button-Modify
+{
+	background-image:url(../images/btnModify.jpg)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+}
+.icon-button-update
+{
+	background-image:url(../images/btnUpdate.jpg)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+}
+.icon-button-upload
+{
+	background-image:url(../images/btnUpload.jpg)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+}
+.icon-button-back
+{
+	background-image:url(../images/btnBack.jpg)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+}
+.icon-button-ok
+{
+	background-image:url(../images/btnOk.jpg)!important;
+	width: 40px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+}
+.icon-button-clear
+{
+	background-image:url(../images/btnClear.png)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+/* background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box*/
+}
+.icon-button-attach
+{
+	background-image:url(../images/btnAttach.png)!important;
+	width: 60px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+/* background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box*/
+}
+.icon-button-removesteps
+{
+	background-image:url(../images/btnRemoveSteps.jpg)!important;
+ 	width: 95px !important;
+	height: 20px !important;
+	color:#484848;
+	font-size:12px;
+	font-family:Arial,Helvetica,sans-serif;
+/* background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box*/
+}
+.upload-icon {
+	background: url(../images/image_add.png) no-repeat 0 0 !important;
+}
+
+ .folderAdd
+{
+	background:url(../images/ma_folder_add.png)!important;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box;
+}
+.folderDelete
+{
+	background:url(../images/delete2.png)!important;
+/*	background-repeat: repeat;*/
+	background-size: 100% 100%;
+	/* background-origin: content-box*/ 
+}
+.chart {
+	background-image: url(../images/chart_24x24.png) !important;						
+}
+.edit-image
+{
+	background-image:url(../images/spcg/edit.gif)!important;
+	width:100px;
+}
+.deleteCross
+{
+	background:url(../images/delete2.png) no-repeat !important;
+	background-size: 100% 100%;
+}
+
+
+body
+.icon-menu-expandAll
+{
+	background-image:url(../images/spcg/expandall.gif)!important;
+}
+.icon-menu-collapseAll
+{
+	background-image:url(../images/spcg/collapseall.gif)!important;
+}
+.icon-menu-update
+{
+	background-image:url(../images/spcg/floppy_disk_16.gif)!important;
+}
+.icon-menu-indent
+{
+	background-image:url(../images/spcg/indent.gif)!important;
+	background-repeat: no-repeat;
+}
+.icon-menu-outdent
+{
+	background-image:url(../images/spcg/outdent.gif)!important;
+	background-repeat: no-repeat;
+}
+.icon-menu-moveUp
+{
+	background-image:url(../images/spcg/moveup.gif)!important;
+	background-repeat: no-repeat;
+}
+.icon-menu-moveDown
+{
+	background-image:url(../images/spcg/movedown.gif)!important;
+	background-repeat: no-repeat;
+}
+.icon-button-addActionItem
+{
+	background-image:url(../images/spcg/add.gif)!important;
+}
+/*
+.icon-menu-addTask
+{
+	background-image:url(../images/box_add.png)!important;
+	background-repeat: no-repeat;
+}*/
+.icon-menu-addSubTask
+{
+	background-image:url(../images/spcg/addsubtasks.gif)!important;
+	background-repeat: no-repeat;
+}
+.icon-menu-addSiblingTask
+{
+	background-image:url(../images/spcg/addsiblingtask.gif)!important;
+	background-repeat: no-repeat;
+}
+.icon-menu-addTaskAtEnd
+{
+	background-image:url(../images/spcg/addtaskatend.gif)!important;
+	background-repeat: no-repeat;
+}
+.icon-menu-traceability
+{
+	background-image:url(../images/spcg/framework_16.gif)!important;
+	background-repeat: no-repeat;
+}
+.icon-menu-gridsettings
+{
+	background-image:url(../images/spcg/grid_gear_16x16.png)!important;
+	background-repeat: no-repeat;
+}
+.icon-menu-filterdetails
+{
+	background-image:url(../images/spcg/filter_plain_16x16.png)!important;
+	background-repeat: no-repeat;
+}
+.icon-menu-gridsave
+{
+	background-image:url(../images/spcg/grid_save_16x16.png)!important;
+	background-repeat: no-repeat;
+}
+.icon-menu-gridlightning
+{
+	background-image:url(../images/spcg/table_lightning_16x16.png)!important;
+	background-repeat: no-repeat;
+}
+.icon-menu-cut
+{
+	background-image:url(../images/spcg/cut.gif)!important;
+	background-repeat: no-repeat;
+}
+.icon-menu-copy
+{
+	background-image:url(../images/spcg/copy_2d.gif)!important;
+	background-repeat: no-repeat;
+}
+.icon-menu-paste
+{
+	background-image:url(../images/spcg/paste.gif)!important;
+	background-repeat: no-repeat;
+}
+.icon-menu-pasteInPlace
+{
+	background-image:url(../images/paste.gif)!important;
+	background-repeat: no-repeat;
+}
+
+ .folderAdd
+{
+	background-image:url(images/ma_folder_add.png)!important;
+	background-repeat: no-repeat;
+}
+.folderDelete
+{
+	background-image:url(images/delete2.png)!important;
+}
+
+.icon-button-moduleAdd
+{
+	background-image:url(../images/spcg/modules_16.gif)!important;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box;
+}
+.icon-button-moduleDelete
+{
+	background-image:url(../images/spcg/moduledel.gif)!important;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-origin: content-box;
+}
+
+.small_button{
+	height: 16px;
+	width: 16px;
+	cursor: pointer;
+}

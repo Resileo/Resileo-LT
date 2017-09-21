@@ -1,2 +1,2 @@
 # Resileo-LT
-Appedo LT tool
+Resileo LT tool code base

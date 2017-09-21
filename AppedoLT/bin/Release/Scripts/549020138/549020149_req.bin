@@ -1,0 +1,10 @@
+GET /gen_204?atyp=i&ct=3&cad=i&ogsr=1&id=19002332&ic=0&ogd=google.co.in&ogprm=up&ved=0ahUKEwjBl6aW34rUAhWNq5QKHRyTBwsQnIcBCAc&ei=f6UmWYHcEY3X0gScpp5Y&zx=1495704949917 HTTP/1.1
+Host: www.google.co.in
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: https://www.google.co.in
+Cookie: NID=104=GoJpG7oM6X0Z07YAsOL0hedcYH7F62IyN64CO4_Wj4Ed_Rq6foNnbuq5DtEUzlj4EfDUOWoV9vfbFQg6Pno9ZzuY0HXZ9mBqMmVtzJbo1u51PE8AwS-FXDo8OfkUQhS9
+Connection: keep-alive
+

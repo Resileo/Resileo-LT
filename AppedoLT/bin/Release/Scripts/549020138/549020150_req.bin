@@ -1,0 +1,10 @@
+GET /gen_204?s=webhp&atyp=csi&ei=f6UmWYHcEY3X0gScpp5Y&imc=2&imn=2&imp=2&adh=&xjs=init.61.17.sb.47.p.7.jsa.2.foot.2.async.1&ima=0&rt=xjsls.127,prt.831,iml.869,dcl.852,xjses.1842,jraids.1902,jraide.1918,xjsee.2000,xjs.2000,ol.2902,aft.831,wsrt.2730,cst.0,dnst.0,rqst.1089,rspt.1351,rqstt.1827,unt.1501,cstt.1501,dit.3579 HTTP/1.1
+Host: www.google.co.in
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: https://www.google.co.in
+Cookie: NID=104=GoJpG7oM6X0Z07YAsOL0hedcYH7F62IyN64CO4_Wj4Ed_Rq6foNnbuq5DtEUzlj4EfDUOWoV9vfbFQg6Pno9ZzuY0HXZ9mBqMmVtzJbo1u51PE8AwS-FXDo8OfkUQhS9
+Connection: keep-alive
+

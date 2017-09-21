@@ -1,0 +1,11 @@
+GET /rcomm/Flight/BBFlightBooking.aspx?ItID=6&SID=636329732107358011 HTTP/1.1
+Host: agents.travellerspass.com
+Proxy-Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://agents.travellerspass.com/rcomm/Flight/BBFlightSearchResultsDom.aspx?sid=636329732107358011
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.8
+Cookie: ASP.NET_SessionId=plof4h0mw42sm2umtxu1cnve
+

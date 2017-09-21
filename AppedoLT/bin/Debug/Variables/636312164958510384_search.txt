@@ -1,0 +1,13 @@
+search,search1
+books,book
+c#code,learngo
+gst,gst
+code,code
+niagra,coal
+bookcenter,bc
+learngo,code
+learnc++,code
+mysql,code
+mssql,code
+java,code
+newtron,code

@@ -1,0 +1,4 @@
+loadgenname,scenariotime,usercount,hitcount,avgrequestresponse,avgthroughput,errorcount,avgpageresponse
+'',00:00:05,0,25,211.415,1.174,0,2642.682
+'',00:00:10,0,30,187.957,1.130,0,2819.351
+'',00:00:15,0,29,184.182,1.119,0,2670.640

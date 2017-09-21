@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<comparereport script="google.com">
+  <summaryreport>
+    <attribute name="name" displayName="">
+      <report val="google30-05-2017-073703" align="center" />
+      <report val="google30-05-2017-071957" align="center" />
+    </attribute>
+    <attribute name="starttime" displayName="Start Time">
+      <report val="2017-05-30 07:37:05" align="right" />
+      <report val="2017-05-30 07:20:00" align="right" />
+    </attribute>
+    <attribute name="endtime" displayName="End Time">
+      <report val="2017-05-30 07:37:12" align="right" />
+      <report val="2017-05-30 07:20:07" align="right" />
+    </attribute>
+    <attribute name="durationsec" displayName="Duration(sec)">
+      <report val="6" align="right" />
+      <report val="6" align="right" />
+    </attribute>
+    <attribute name="usercount" displayName="User Count">
+      <report val="1" align="right" />
+      <report val="1" align="right" />
+    </attribute>
+    <attribute name="totalhits" displayName="Total Hits">
+      <report val="28" align="right" />
+      <report val="28" align="right" />
+    </attribute>
+    <attribute name="avgresponse" displayName="Average Request Response(sec)">
+      <report val=".291" align="right" />
+      <report val=".400" align="right" />
+    </attribute>
+    <attribute name="avghits" displayName="Average Hits/Sec">
+      <report val="4.667" align="right" />
+      <report val="4.667" align="right" />
+    </attribute>
+    <attribute name="totalthroughput" displayName="Total Throughput(MB)">
+      <report val="1.000" align="right" />
+      <report val="1.015" align="right" />
+    </attribute>
+    <attribute name="avgthroughput" displayName="Average Throughput(Mbps)">
+      <report val="1.333" align="right" />
+      <report val="1.354" align="right" />
+    </attribute>
+    <attribute name="totalerrors" displayName="Total Errors">
+      <report val="0" align="right" />
+      <report val="0" align="right" />
+    </attribute>
+    <attribute name="totalpage" displayName="Total pages">
+      <report val="2" align="right" />
+      <report val="2" align="right" />
+    </attribute>
+    <attribute name="avgpageresponse" displayName="Average Page Response(sec)">
+      <report val="4.068" align="right" />
+      <report val="5.604" align="right" />
+    </attribute>
+    <attribute name="reponse200" displayName="Response Code 200 Count">
+      <report val="26.000" align="right" />
+      <report val="26.000" align="right" />
+    </attribute>
+    <attribute name="reponse300" displayName="Response Code 300 Count">
+      <report val="2" align="right" />
+      <report val="2" align="right" />
+    </attribute>
+    <attribute name="reponse400" displayName="Response Code 400 Count">
+      <report val="0" align="right" />
+      <report val="0" align="right" />
+    </attribute>
+    <attribute name="reponse500" displayName="Response Code 500 Count">
+      <report val="0" align="right" />
+      <report val="0" align="right" />
+    </attribute>
+  </summaryreport>
+  <requestresponse>
+    <request id="548831292" address="/images/nav_logo242.png" containername="init">
+      <report name="google30-05-2017-073703" min="542.9465" max="542.9465" avg="542.9465" throughput="16786" hitcount="1" minttfb="503.1465" maxttfb="503.1465" avgttfb="503.1465" />
+      <report name="google30-05-2017-071957" min="527.3191" max="527.3191" avg="527.3191" throughput="16786" hitcount="1" minttfb="487.5443" maxttfb="487.5443" avgttfb="487.5443" />
+    </request>
+    <request id="548831281" address="/" containername="Container1">
+      <report name="google30-05-2017-073703" min="135.5136" max="135.5136" avg="135.5136" throughput="261" hitcount="1" minttfb="135.363" maxttfb="135.363" avgttfb="135.363" />
+      <report name="google30-05-2017-071957" min="130.2216" max="130.2216" avg="130.2216" throughput="259" hitcount="1" minttfb="129.9484" maxttfb="129.9484" avgttfb="129.9484" />
+    </request>
+    <request id="548831284" address="/" containername="Container1">
+      <report name="google30-05-2017-073703" min="231.8323" max="231.8323" avg="231.8323" throughput="277" hitcount="1" minttfb="231.5381" maxttfb="231.5381" avgttfb="231.5381" />
+      <report name="google30-05-2017-071957" min="241.1854" max="241.1854" avg="241.1854" throughput="277" hitcount="1" minttfb="241.0631" maxttfb="241.0631" avgttfb="241.0631" />
+    </request>
+    <request id="548831285" address="/" containername="Container1">
+      <report name="google30-05-2017-073703" min="670.067" max="670.067" avg="670.067" throughput="204368" hitcount="1" minttfb="393.4348" maxttfb="393.4348" avgttfb="393.4348" />
+      <report name="google30-05-2017-071957" min="1389.0546" max="1389.0546" avg="1389.0546" throughput="204056" hitcount="1" minttfb="407.0074" maxttfb="407.0074" avgttfb="407.0074" />
+    </request>
+    <request id="548831286" address="/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png" containername="Container1">
+      <report name="google30-05-2017-073703" min="180.5435" max="180.5435" avg="180.5435" throughput="5087" hitcount="1" minttfb="178.1539" maxttfb="178.1539" avgttfb="178.1539" />
+      <report name="google30-05-2017-071957" min="799.4527" max="799.4527" avg="799.4527" throughput="5087" hitcount="1" minttfb="782.6883" maxttfb="782.6883" avgttfb="782.6883" />
+    </request>
+    <request id="548831287" address="/images/branding/product/ico/googleg_lodp.ico" containername="Container1">
+      <report name="google30-05-2017-073703" min="159.5473" max="159.5473" avg="159.5473" throughput="7727" hitcount="1" minttfb="149.2799" maxttfb="149.2799" avgttfb="149.2799" />
+      <report name="google30-05-2017-071957" min="162.1964" max="162.1964" avg="162.1964" throughput="7727" hitcount="1" minttfb="152.7779" maxttfb="152.7779" avgttfb="152.7779" />
+    </request>
+    <request id="548831288" address="/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" containername="Container1">
+      <report name="google30-05-2017-073703" min="176.9861" max="176.9861" avg="176.9861" throughput="5969" hitcount="1" minttfb="171.5539" maxttfb="171.5539" avgttfb="171.5539" />
+      <report name="google30-05-2017-071957" min="270.9695" max="270.9695" avg="270.9695" throughput="5969" hitcount="1" minttfb="259.2652" maxttfb="259.2652" avgttfb="259.2652" />
+    </request>
+    <request id="548831289" address="/images/hpp/ic_wahlberg_product_core_48.png8.png" containername="Container1">
+      <report name="google30-05-2017-073703" min="155.6832" max="155.6832" avg="155.6832" throughput="2091" hitcount="1" minttfb="155.4078" maxttfb="155.4078" avgttfb="155.4078" />
+      <report name="google30-05-2017-071957" min="252.6917" max="252.6917" avg="252.6917" throughput="2091" hitcount="1" minttfb="250.7498" maxttfb="250.7498" avgttfb="250.7498" />
+    </request>
+    <request id="548831290" address="/xjs/_/js/k=xjs.s.en.FLyc3sNzBUc.O/m=sx,c,sb,cdos,cr,elog,hsm,jsa,r,qsm,j,p,d,csi/am=AEcoyuMFByD_RwgFw00IC9IKzDCA/rt=j/d=1/t=zcms/rs=ACT90oFKKOUQfv3jvC_3ML8fclGhvl362g" containername="Container1">
+      <report name="google30-05-2017-073703" min="620.5816" max="620.5816" avg="620.5816" throughput="443662" hitcount="1" minttfb="273.8179" maxttfb="273.8179" avgttfb="273.8179" />
+      <report name="google30-05-2017-071957" min="1529.7284" max="1529.7284" avg="1529.7284" throughput="443674" hitcount="1" minttfb="468.3583" maxttfb="468.3583" avgttfb="468.3583" />
+    </request>
+    <request id="548831291" address="/xjs/_/js/k=xjs.s.en.FLyc3sNzBUc.O/m=aa,abd,async,dvl,foot,fpe,ipv6,lu,m,sf,d3l/am=AEcoyuMFByD_RwgFw00IC9IKzDCA/exm=sx,c,sb,cdos,cr,elog,hsm,jsa,r,qsm,j,p,d,csi/rt=j/d=1/ed=1/t=zcms/rs=ACT90oFKKOUQfv3jvC_3ML8fclGhvl362g" containername="Container1">
+      <report name="google30-05-2017-073703" min="410.9343" max="410.9343" avg="410.9343" throughput="65390" hitcount="1" minttfb="225.2019" maxttfb="225.2019" avgttfb="225.2019" />
+      <report name="google30-05-2017-071957" min="950.1194" max="950.1194" avg="950.1194" throughput="65402" hitcount="1" minttfb="398.3872" maxttfb="398.3872" avgttfb="398.3872" />
+    </request>
+    <request id="548831293" address="/gen_204" containername="Container1">
+      <report name="google30-05-2017-073703" min="365.1303" max="365.1303" avg="365.1303" throughput="0" hitcount="1" minttfb="365.0132" maxttfb="365.0132" avgttfb="365.0132" />
+      <report name="google30-05-2017-071957" min="295.5758" max="295.5758" avg="295.5758" throughput="0" hitcount="1" minttfb="292.5131" maxttfb="292.5131" avgttfb="292.5131" />
+    </request>
+    <request id="548831294" address="/complete/search" containername="Container1">
+      <report name="google30-05-2017-073703" min="332.4555" max="332.4555" avg="332.4555" throughput="1416" hitcount="1" minttfb="332.3259" maxttfb="332.3259" avgttfb="332.3259" />
+      <report name="google30-05-2017-071957" min="324.9604" max="324.9604" avg="324.9604" throughput="1412" hitcount="1" minttfb="323.3906" maxttfb="323.3906" avgttfb="323.3906" />
+    </request>
+    <request id="548831295" address="/gen_204" containername="Container1">
+      <report name="google30-05-2017-073703" min="380.1021" max="380.1021" avg="380.1021" throughput="0" hitcount="1" minttfb="379.9268" maxttfb="379.9268" avgttfb="379.9268" />
+      <report name="google30-05-2017-071957" min="313.1728" max="313.1728" avg="313.1728" throughput="0" hitcount="1" minttfb="312.8922" maxttfb="312.8922" avgttfb="312.8922" />
+    </request>
+    <request id="548831296" address="/complete/search" containername="Container1">
+      <report name="google30-05-2017-073703" min="200.41" max="200.41" avg="200.41" throughput="1482" hitcount="1" minttfb="200.206" maxttfb="200.206" avgttfb="200.206" />
+      <report name="google30-05-2017-071957" min="196.2718" max="196.2718" avg="196.2718" throughput="1482" hitcount="1" minttfb="194.7242" maxttfb="194.7242" avgttfb="194.7242" />
+    </request>
+    <request id="548831297" address="/gen_204" containername="Container1">
+      <report name="google30-05-2017-073703" min="359.1978" max="359.1978" avg="359.1978" throughput="0" hitcount="1" minttfb="357.7956" maxttfb="357.7956" avgttfb="357.7956" />
+      <report name="google30-05-2017-071957" min="310.5719" max="310.5719" avg="310.5719" throughput="0" hitcount="1" minttfb="310.418" maxttfb="310.418" avgttfb="310.418" />
+    </request>
+    <request id="548831298" address="/complete/search" containername="Container1">
+      <report name="google30-05-2017-073703" min="183.0807" max="183.0807" avg="183.0807" throughput="1430" hitcount="1" minttfb="182.7569" maxttfb="182.7569" avgttfb="182.7569" />
+      <report name="google30-05-2017-071957" min="179.7537" max="179.7537" avg="179.7537" throughput="1430" hitcount="1" minttfb="177.7537" maxttfb="177.7537" avgttfb="177.7537" />
+    </request>
+    <request id="548831299" address="/complete/search" containername="Container1">
+      <report name="google30-05-2017-073703" min="180.582" max="180.582" avg="180.582" throughput="1458" hitcount="1" minttfb="179.1379" maxttfb="179.1379" avgttfb="179.1379" />
+      <report name="google30-05-2017-071957" min="176.1098" max="176.1098" avg="176.1098" throughput="1458" hitcount="1" minttfb="174.629" maxttfb="174.629" avgttfb="174.629" />
+    </request>
+    <request id="548831300" address="/complete/search" containername="Container1">
+      <report name="google30-05-2017-073703" min="176.1321" max="176.1321" avg="176.1321" throughput="1432" hitcount="1" minttfb="175.9888" maxttfb="175.9888" avgttfb="175.9888" />
+      <report name="google30-05-2017-071957" min="191.0893" max="191.0893" avg="191.0893" throughput="1432" hitcount="1" minttfb="190.9602" maxttfb="190.9602" avgttfb="190.9602" />
+    </request>
+    <request id="548831301" address="/complete/search" containername="Container1">
+      <report name="google30-05-2017-073703" min="198.2239" max="198.2239" avg="198.2239" throughput="1422" hitcount="1" minttfb="197.8951" maxttfb="197.8951" avgttfb="197.8951" />
+      <report name="google30-05-2017-071957" min="191.7829" max="191.7829" avg="191.7829" throughput="1422" hitcount="1" minttfb="191.4682" maxttfb="191.4682" avgttfb="191.4682" />
+    </request>
+    <request id="548831302" address="/gen_204" containername="Container1">
+      <report name="google30-05-2017-073703" min="181.8619" max="181.8619" avg="181.8619" throughput="0" hitcount="1" minttfb="181.7665" maxttfb="181.7665" avgttfb="181.7665" />
+      <report name="google30-05-2017-071957" min="222.743" max="222.743" avg="222.743" throughput="0" hitcount="1" minttfb="222.654" maxttfb="222.654" avgttfb="222.654" />
+    </request>
+    <request id="548831303" address="/complete/search" containername="Container1">
+      <report name="google30-05-2017-073703" min="185.4904" max="185.4904" avg="185.4904" throughput="2438" hitcount="1" minttfb="185.2539" maxttfb="185.2539" avgttfb="185.2539" />
+      <report name="google30-05-2017-071957" min="198.3535" max="198.3535" avg="198.3535" throughput="2438" hitcount="1" minttfb="197.1416" maxttfb="197.1416" avgttfb="197.1416" />
+    </request>
+    <request id="548831304" address="/complete/search" containername="Container1">
+      <report name="google30-05-2017-073703" min="188.6386" max="188.6386" avg="188.6386" throughput="1440" hitcount="1" minttfb="187.3766" maxttfb="187.3766" avgttfb="187.3766" />
+      <report name="google30-05-2017-071957" min="185.9783" max="185.9783" avg="185.9783" throughput="1440" hitcount="1" minttfb="184.4174" maxttfb="184.4174" avgttfb="184.4174" />
+    </request>
+    <request id="548831305" address="/complete/search" containername="Container1">
+      <report name="google30-05-2017-073703" min="193.5328" max="193.5328" avg="193.5328" throughput="1446" hitcount="1" minttfb="193.3143" maxttfb="193.3143" avgttfb="193.3143" />
+      <report name="google30-05-2017-071957" min="180.3413" max="180.3413" avg="180.3413" throughput="1446" hitcount="1" minttfb="180.1296" maxttfb="180.1296" avgttfb="180.1296" />
+    </request>
+    <request id="548831306" address="/complete/search" containername="Container1">
+      <report name="google30-05-2017-073703" min="176.3365" max="176.3365" avg="176.3365" throughput="1474" hitcount="1" minttfb="176.2193" maxttfb="176.2193" avgttfb="176.2193" />
+      <report name="google30-05-2017-071957" min="173.9969" max="173.9969" avg="173.9969" throughput="1474" hitcount="1" minttfb="172.3959" maxttfb="172.3959" avgttfb="172.3959" />
+    </request>
+    <request id="548831307" address="/complete/search" containername="Container1">
+      <report name="google30-05-2017-073703" min="172.3942" max="172.3942" avg="172.3942" throughput="1474" hitcount="1" minttfb="172.2783" maxttfb="172.2783" avgttfb="172.2783" />
+      <report name="google30-05-2017-071957" min="228.5921" max="228.5921" avg="228.5921" throughput="1474" hitcount="1" minttfb="228.2658" maxttfb="228.2658" avgttfb="228.2658" />
+    </request>
+    <request id="548831309" address="/gen_204" containername="ContainerLoop">
+      <report name="google30-05-2017-073703" min="164.982" max="164.982" avg="164.982" throughput="0" hitcount="1" minttfb="164.8636" maxttfb="164.8636" avgttfb="164.8636" />
+      <report name="google30-05-2017-071957" min="170.2804" max="170.2804" avg="170.2804" throughput="0" hitcount="1" minttfb="170.0614" maxttfb="170.0614" avgttfb="170.0614" />
+    </request>
+    <request id="548831310" address="/xjs/_/js/k=xjs.s.en.FLyc3sNzBUc.O/m=aspn,tl,vs,tnv,mrn,me,atn/am=AEcoyuMFByD_RwgFw00IC9IKzDCA/exm=sx,c,sb,cdos,cr,elog,hsm,jsa,r,qsm,j,p,d,csi,aa,abd,async,dvl,foot,fpe,ipv6,lu,m,sf,d3l/rt=j/d=1/ed=1/t=zcms/rs=ACT90oFKKOUQfv3jvC_3ML8fclGhvl362g" containername="ContainerLoop">
+      <report name="google30-05-2017-073703" min="351.9559" max="351.9559" avg="351.9559" throughput="89874" hitcount="1" minttfb="115.373" maxttfb="115.373" avgttfb="115.373" />
+      <report name="google30-05-2017-071957" min="448.8737" max="448.8737" avg="448.8737" throughput="89886" hitcount="1" minttfb="207.4047" maxttfb="207.4047" avgttfb="207.4047" />
+    </request>
+    <request id="548831308" address="/search" containername="End">
+      <report name="google30-05-2017-073703" min="860.8245" max="860.8245" avg="860.8245" throughput="189750" hitcount="1" minttfb="242.3956" maxttfb="242.3956" avgttfb="242.3956" />
+      <report name="google30-05-2017-071957" min="965.6715" max="965.6715" avg="965.6715" throughput="206596" hitcount="1" minttfb="226.0413" maxttfb="226.0413" avgttfb="226.0413" />
+    </request>
+  </requestresponse>
+  <errorcount />
+  <containers>
+    <container id="548831279" name="init">
+      <report name="google30-05-2017-073703" min="542.947" max="542.947" avg="542.947" />
+      <report name="google30-05-2017-071957" min="527.319" max="527.319" avg="527.319" />
+    </container>
+    <container id="548831282" name="Container1">
+      <report name="google30-05-2017-073703" min="6215.258" max="6215.258" avg="6215.258" />
+      <report name="google30-05-2017-071957" min="9094.913" max="9094.913" avg="9094.913" />
+    </container>
+    <container id="548935874" name="ContainerLoop">
+      <report name="google30-05-2017-073703" min="516.938" max="516.938" avg="516.938" />
+      <report name="google30-05-2017-071957" min="619.154" max="619.154" avg="619.154" />
+    </container>
+    <container id="548944510" name="End">
+      <report name="google30-05-2017-073703" min="860.825" max="860.825" avg="860.825" />
+      <report name="google30-05-2017-071957" min="965.672" max="965.672" avg="965.672" />
+    </container>
+  </containers>
+  <transactions />
+</comparereport>

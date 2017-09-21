@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<report reportname="google21-09-2017-141739">
+  <summaryreport>
+    <val starttime="21-09-2017 14:17:41" endtime="21-09-2017 14:18:06" durationsec="23" usercount="2" totalhits="32" avgresponse="0.323073925" avghits="1.39130434782609" totalthroughput="1.028" avgthroughput="0.357511105744735" totalerrors="2" totalpage="4" avgpageresponse="2.5845914" reponse200="28" reponse300="4" reponse400="0" reponse500="0" />
+  </summaryreport>
+  <log>
+    <val loadgen="192.168.1.239" reportname="" scenarioname="google" scriptid="548831277" scriptname="google.com" logid="550990341" logname="jsvariable" userid="1" iterationid="1" message="1" time="21-09-2017 08:47:41" />
+    <val loadgen="192.168.1.238" reportname="" scenarioname="google" scriptid="548831277" scriptname="google.com" logid="550990341" logname="jsvariable" userid="2" iterationid="1" message="1" time="21-09-2017 08:48:00" />
+  </log>
+  <error>
+    <val loadgen="192.168.1.239" reportname="" scenarioname="google" scriptname="google.com" containerid="548831282" containername="Container1" requestid="0" request="" userid="1" iterationid="1" errorcode="700" message="ActiveX control '8856f961-340a-11d0-a96b-00c04fd705a2' cannot be instantiated because the current thread is not in a single-threaded apartment." time="21-09-2017 08:47:41" />
+    <val loadgen="192.168.1.238" reportname="" scenarioname="google" scriptname="google.com" containerid="548831282" containername="Container1" requestid="0" request="" userid="2" iterationid="1" errorcode="700" message="ActiveX control '8856f961-340a-11d0-a96b-00c04fd705a2' cannot be instantiated because the current thread is not in a single-threaded apartment." time="21-09-2017 08:48:00" />
+  </error>
+  <graphs>
+    <val gmttime="1505983664" localtime="2017-09-21 14:17:44" gmt="2017-09-21 08:47:44" hitpersec="3" totalkb="225.64" kbps="45.13" avgresponsetime="209.71" />
+    <val gmttime="1505983666" localtime="2017-09-21 14:17:46" gmt="2017-09-21 08:47:46" hitpersec="0.2" totalkb="284.26" kbps="56.85" avgresponsetime="1961.45" />
+    <val gmttime="1505983684" localtime="2017-09-21 14:18:04" gmt="2017-09-21 08:48:04" hitpersec="3" totalkb="225.29" kbps="45.06" avgresponsetime="223.49" />
+    <val gmttime="1505983686" localtime="2017-09-21 14:18:06" gmt="2017-09-21 08:48:06" hitpersec="0.2" totalkb="317.33" kbps="63.47" avgresponsetime="1878.99" />
+  </graphs>
+  <errorgraph>
+    <val gmttime="1505963861" localtime="2017-09-21 08:47:41" errorcount="1" />
+    <val gmttime="1505963880" localtime="2017-09-21 08:48:00" errorcount="1" />
+  </errorgraph>
+  <pageresponsegraph>
+    <val endtime="1505983664" localtime="2017-09-21 14:17:44" resptime="3" />
+    <val endtime="1505983666" localtime="2017-09-21 14:17:46" resptime="2" />
+    <val endtime="1505983684" localtime="2017-09-21 14:18:04" resptime="4" />
+    <val endtime="1505983686" localtime="2017-09-21 14:18:06" resptime="2" />
+  </pageresponsegraph>
+  <vuserrungraph>
+    <val gmt="1505983661" localtime="2017-09-21 14:17:41" vusercnt="1" vuserrunning="1" />
+    <val gmt="1505983662" localtime="2017-09-21 14:17:42" vusercnt="" vuserrunning="1" />
+    <val gmt="1505983663" localtime="2017-09-21 14:17:43" vusercnt="" vuserrunning="1" />
+    <val gmt="1505983664" localtime="2017-09-21 14:17:44" vusercnt="" vuserrunning="1" />
+    <val gmt="1505983665" localtime="2017-09-21 14:17:45" vusercnt="" vuserrunning="1" />
+    <val gmt="1505983666" localtime="2017-09-21 14:17:46" vusercnt="-1" vuserrunning="0" />
+    <val gmt="1505983667" localtime="2017-09-21 14:17:47" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983668" localtime="2017-09-21 14:17:48" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983669" localtime="2017-09-21 14:17:49" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983670" localtime="2017-09-21 14:17:50" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983671" localtime="2017-09-21 14:17:51" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983672" localtime="2017-09-21 14:17:52" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983673" localtime="2017-09-21 14:17:53" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983674" localtime="2017-09-21 14:17:54" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983675" localtime="2017-09-21 14:17:55" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983676" localtime="2017-09-21 14:17:56" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983677" localtime="2017-09-21 14:17:57" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983678" localtime="2017-09-21 14:17:58" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983679" localtime="2017-09-21 14:17:59" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983680" localtime="2017-09-21 14:18:00" vusercnt="1" vuserrunning="1" />
+    <val gmt="1505983681" localtime="2017-09-21 14:18:01" vusercnt="" vuserrunning="1" />
+    <val gmt="1505983682" localtime="2017-09-21 14:18:02" vusercnt="" vuserrunning="1" />
+    <val gmt="1505983683" localtime="2017-09-21 14:18:03" vusercnt="" vuserrunning="1" />
+    <val gmt="1505983684" localtime="2017-09-21 14:18:04" vusercnt="" vuserrunning="1" />
+    <val gmt="1505983685" localtime="2017-09-21 14:18:05" vusercnt="" vuserrunning="1" />
+    <val gmt="1505983686" localtime="2017-09-21 14:18:06" vusercnt="-1" vuserrunning="0" />
+    <val gmt="1505983687" localtime="2017-09-21 14:18:07" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983688" localtime="2017-09-21 14:18:08" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983689" localtime="2017-09-21 14:18:09" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983690" localtime="2017-09-21 14:18:10" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983691" localtime="2017-09-21 14:18:11" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983692" localtime="2017-09-21 14:18:12" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983693" localtime="2017-09-21 14:18:13" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983694" localtime="2017-09-21 14:18:14" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983695" localtime="2017-09-21 14:18:15" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983696" localtime="2017-09-21 14:18:16" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983697" localtime="2017-09-21 14:18:17" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983698" localtime="2017-09-21 14:18:18" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983699" localtime="2017-09-21 14:18:19" vusercnt="" vuserrunning="0" />
+    <val gmt="1505983700" localtime="2017-09-21 14:18:20" vusercnt="" vuserrunning="0" />
+  </vuserrungraph>
+  <script name="google.com" id="548831277">
+    <requests>
+      <val containerid="548831282" containername="Container1" requestid="548831281" address="/" />
+      <val containerid="548831282" containername="Container1" requestid="548831284" address="/" />
+      <val containerid="548831282" containername="Container1" requestid="548831285" address="/" />
+      <val containerid="548831282" containername="Container1" requestid="548831287" address="/images/branding/product/ico/googleg_lodp.ico" />
+      <val containerid="548831282" containername="Container1" requestid="548831294" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831296" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831298" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831299" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831300" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831301" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831303" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831304" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831305" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831306" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831307" address="/complete/search" />
+      <val containerid="548944510" containername="End" requestid="548831308" address="/search" />
+    </requests>
+    <requestresponse>
+      <val containerid="548831282" containername="Container1" requestid="548831281" address="/" min="101.3748" max="124.5051" avg="112.93995" throughput="542" hitcount="2" minttfb="101.0917" maxttfb="124.2002" avgttfb="112.64595" />
+      <val containerid="548831282" containername="Container1" requestid="548831284" address="/" min="171.4956" max="289.8819" avg="230.68875" throughput="554" hitcount="2" minttfb="171.0361" maxttfb="289.6796" avgttfb="230.35785" />
+      <val containerid="548831282" containername="Container1" requestid="548831285" address="/" min="1172.8761" max="1551.043" avg="1361.95955" throughput="412972" hitcount="2" minttfb="471.7665" maxttfb="572.8716" avgttfb="522.31905" />
+      <val containerid="548831282" containername="Container1" requestid="548831287" address="/images/branding/product/ico/googleg_lodp.ico" min="54.9957" max="75.8073" avg="65.4015" throughput="15598" hitcount="2" minttfb="46.6808" maxttfb="67.3725" avgttfb="57.02665" />
+      <val containerid="548831282" containername="Container1" requestid="548831294" address="/complete/search" min="186.566" max="269.7711" avg="228.16855" throughput="2904" hitcount="2" minttfb="186.4054" maxttfb="269.5111" avgttfb="227.95825" />
+      <val containerid="548831282" containername="Container1" requestid="548831296" address="/complete/search" min="130.9059" max="136.5431" avg="133.7245" throughput="2940" hitcount="2" minttfb="130.6312" maxttfb="136.1852" avgttfb="133.4082" />
+      <val containerid="548831282" containername="Container1" requestid="548831298" address="/complete/search" min="113.5226" max="135.6553" avg="124.58895" throughput="3000" hitcount="2" minttfb="112.8524" maxttfb="135.4761" avgttfb="124.16425" />
+      <val containerid="548831282" containername="Container1" requestid="548831299" address="/complete/search" min="109.7589" max="118.027" avg="113.89295" throughput="2984" hitcount="2" minttfb="109.4709" maxttfb="117.8393" avgttfb="113.6551" />
+      <val containerid="548831282" containername="Container1" requestid="548831300" address="/complete/search" min="109.1182" max="131.5259" avg="120.32205" throughput="2940" hitcount="2" minttfb="108.7777" maxttfb="131.0369" avgttfb="119.9073" />
+      <val containerid="548831282" containername="Container1" requestid="548831301" address="/complete/search" min="124.8824" max="141.2516" avg="133.067" throughput="2776" hitcount="2" minttfb="124.4689" maxttfb="141.0707" avgttfb="132.7698" />
+      <val containerid="548831282" containername="Container1" requestid="548831303" address="/complete/search" min="113.7317" max="144.0909" avg="128.9113" throughput="2908" hitcount="2" minttfb="113.4028" maxttfb="143.629" avgttfb="128.5159" />
+      <val containerid="548831282" containername="Container1" requestid="548831304" address="/complete/search" min="108.575" max="113.2394" avg="110.9072" throughput="2844" hitcount="2" minttfb="108.3732" maxttfb="112.4673" avgttfb="110.42025" />
+      <val containerid="548831282" containername="Container1" requestid="548831305" address="/complete/search" min="126.0472" max="149.021" avg="137.5341" throughput="2876" hitcount="2" minttfb="125.7072" maxttfb="148.6714" avgttfb="137.1893" />
+      <val containerid="548831282" containername="Container1" requestid="548831306" address="/complete/search" min="124.0732" max="133.3685" avg="128.72085" throughput="2924" hitcount="2" minttfb="123.8966" maxttfb="133.159" avgttfb="128.5278" />
+      <val containerid="548831282" containername="Container1" requestid="548831307" address="/complete/search" min="115.7504" max="120.5245" avg="118.13745" throughput="2984" hitcount="2" minttfb="115.3978" maxttfb="120.1794" avgttfb="117.7886" />
+      <val containerid="548944510" containername="End" requestid="548831308" address="/search" min="1878.988" max="1961.4483" avg="1920.21815" throughput="616027" hitcount="2" minttfb="152.3403" maxttfb="166.8645" avgttfb="159.6024" />
+    </requestresponse>
+    <containerresponse>
+      <val containerid="548831282" containername="Container1" min="3145.5767" max="3352.3526" avg="3248.96465" />
+      <val containerid="548944510" containername="End" min="1878.988" max="1961.4483" avg="1920.21815" />
+    </containerresponse>
+    <errorcount>
+      <val containerid="548831282" containername="Container1" requestid="0" address="" count="2" />
+    </errorcount>
+    <errorcode>
+      <val errorcode="700" message="ActiveX control '8856f961-340a-11d0-a96b-00c04fd705a2' cannot be instantiated because the current thread is not in a single-threaded apartment." count="2" />
+    </errorcode>
+    <transactions />
+  </script>
+</report>

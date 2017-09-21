@@ -1,0 +1,1 @@
+({metaData:{"root":"records","id":"id","fields":[{"name":"actionid","type":"int"},{"name":"actionname","type":"string"},{"name":"status","type":"string"}]},"success":"true","totals":0,"records":[],columns:[{"header":"ACTIONID","dataIndex":"actionid"},{"header":"ACTIONNAME","dataIndex":"actionname"},{"header":"STATUS","dataIndex":"status"}]})

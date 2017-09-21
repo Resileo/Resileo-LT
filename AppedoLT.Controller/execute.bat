@@ -1,0 +1,1 @@
+sqlite3 "E:\AppedoLT\AppedoLT.Controller\bin\Debug\Data\1047\database.db" < "E:\AppedoLT\AppedoLT.Controller\bin\Debug\commands.txt"

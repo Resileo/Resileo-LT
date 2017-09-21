@@ -1,0 +1,10 @@
+GET /complete/search?sclient=psy-ab&site=&source=hp&q=my&oq=&gs_l=&pbx=1&bav=on.2,or.&fp=1&biw=1366&bih=625&dpr=1&pf=p&gs_rn=64&gs_ri=psy-ab&cp=2&gs_id=fw&xhr=t&tch=1&ech=7&psi=zsMjWd2vCIjuvASi95aQBQ.1495516103544.1 HTTP/1.1
+Host: www.google.co.in
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: https://www.google.co.in
+Cookie: NID=104=mOd4ZkV2UbQyQvnPemrFT40h4LPnMQJrgkFw5Y9QTUt4Ko7JQe8v9_LDmcBOAzByEgFlHL7I88LKV47qKwpyWg_t1HQd6n9cyVugj5dHksCNh_65DmTz_hLXIY1QvbCM
+Connection: keep-alive
+

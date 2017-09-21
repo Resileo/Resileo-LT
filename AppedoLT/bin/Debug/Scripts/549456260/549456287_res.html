@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+	<base href="https://demo-apps.appedo.com:443/qamdemo/" />
+	<title>Issues</title>
+	<link href="css/Styles_50271.css" rel="stylesheet" />
+		<script type="text/javascript" src="js/util/init_50159.js"></script>
+
+	<script>
+		var divPageLoadMask = document.createElement('div')
+		divPageLoadMask.setAttribute("id","divPageLoadMask")
+		divPageLoadMask.setAttribute("class", "mask")
+		
+		var divPageLoad = document.createElement('div')
+		divPageLoad.setAttribute("id","divPageLoad")
+		divPageLoad.setAttribute("class", "mask-msg mask-loading")
+		divPageLoad.setAttribute("style", "left: 448px; top: 286px;")
+		
+		var divLoading = document.createElement('div')
+		divLoading.innerHTML = 'Loading Essential Libraries'
+		
+		divPageLoad.appendChild(divLoading)
+/*		document.appendChild(divPageLoadMask)
+		document.appendChild(divPageLoad)*/
+		
+		function getProjectCode(){
+			return "APPEDO";
+		}
+		var libFilesAdded = "";
+		var isFromTestRun = false;
+		var fromTestRun = {};
+		var DEFECT_DRAFT_INITIAL = "-";
+		
+		var SAMPLE_FILE_LOCATION = "caO2Kn1jL0kFAQIOf37js@@PLS@@iBaW5UXuFfA@@PLS@@sg924QC0fnQLXurzzWI3K4uLjVkRKm0Cm9Y3ftHtO4@@NWLN@@cImgOzlbOmrVJyM3eT6P";
+		var SAMPLE_FILENAME = "QAMonitor - Issues import template.xls";
+	</script>
+	
+		<link rel="stylesheet" type="text/css" href="css/header.css" />
+	<link rel="stylesheet" type="text/css" href="css/buttonStyle_50281.css" />
+	<link rel="stylesheet" type="text/css" href="css/ext-all_50226.css" />
+	<!-- link rel="stylesheet" type="text/css" href="css/SPCG_Common.css" />
+	<link rel="stylesheet" type="text/css" href="css/style_50196.css" / -->
+	<link rel="stylesheet" type="text/css" href="js_lib/resources/style_50238.css" />
+	<link rel="stylesheet" type="text/css" href="css/gridsummary_50192.css" />
+	<link rel="stylesheet" type="text/css" href="css/theme.css" />
+	<!-- link rel="stylesheet" type="text/css" href="css/MultiSelect.css" / -->
+	<!-- link rel="stylesheet" type="text/css" href="css/FileUpload_S/webpage.css" / -->
+	<link rel="stylesheet" type="text/css" href="css/FileUpload_S/filetree.css" />
+	<link rel="stylesheet" type="text/css" href="css/FileUpload_S/icons.css" />
+	<link rel="stylesheet" type="text/css" href="css/FileUpload_S/filetype.css" />
+	<!-- link rel="stylesheet" type="text/css" href="css/FileUpload_S/famflag.css" / -->
+	<link rel="stylesheet" type="text/css" href="css/FileUpload_S/Ext.ux.IconCombo.css" />
+	<link rel="stylesheet" type="text/css" href="css/GroupSummary.css" />
+	
+	<script type="text/javascript" src="js_lib/ext-base.js"></script>
+	<script type="text/javascript" src="js_lib/ext-all_50210.js"></script>
+	<script type="text/javascript" src="js_lib/ux/menu/EditableItem.js"></script>
+	<script type="text/javascript" src="js_lib/ux/menu/RangeMenu.js"></script>
+	<script type="text/javascript" src="js_lib/ux/grid/GridFilters.js"></script>
+	<script type="text/javascript" src="js_lib/ux/grid/filter/Filter.js"></script>
+	<script type="text/javascript" src="js_lib/ux/grid/filter/StringFilter.js"></script>
+	<script type="text/javascript" src="js_lib/ux/grid/filter/DateFilter.js"></script>
+	<script type="text/javascript" src="js_lib/ux/grid/filter/ListFilter.js"></script>
+	<script type="text/javascript" src="js_lib/ux/grid/filter/NumericFilter.js"></script>
+	<script type="text/javascript" src="js_lib/ux/grid/filter/BooleanFilter.js"></script>
+	<script type="text/javascript" src="js_lib/searchfield.js"></script>
+	<script type="text/javascript" src="js_lib/GroupSummary_50273.js"></script>
+	
+	<script type="text/javascript" src="js_lib/plugin/js/Ext.ux.Window.js"></script>
+	<!-- script type="text/javascript" src="js_lib/MultiSelect_50250.js"></script -->
+	<script type="text/javascript" src="js_lib/Ext.ux.window.MessageWindow.js"></script>
+	
+	<script type="text/javascript" src="js_lib/FileUpload_S/Ext.ux.form.BrowseButton.js"></script>
+	<script type="text/javascript" src="js_lib/FileUpload_S/Ext.ux.FileUploader_50159.js"></script>
+	<script type="text/javascript" src="js_lib/FileUpload_S/Ext.ux.UploadPanel_50264.js"></script>
+
+	<script type="text/javascript" src="js_lib/MultiSelect_50250.js"></script>
+	<script type="text/javascript" src="js_lib/ItemSelector_50159.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/superboxselect.css" />
+	<script type="text/javascript" src="js_lib/SuperBoxSelect_50269.js"></script>
+
+	<script type="text/javascript" src="js/util/utils_50281.js"></script>
+	<script type="text/javascript" src="js/util/gridSettings_50284.js"></script>
+	<script type="text/javascript" src="js/defectPreDeclaration_50282.js"></script>
+	<script type="text/javascript" src="js/import_50278.js"></script>
+	<script type="text/javascript" src="js/export_50259.js"></script>
+	<script type="text/javascript" src="js/traceability_50285.js"></script>
+	<script type="text/javascript" src="js/defectsGrid_50285.js"></script>
+	<script type="text/javascript" src="js/menu_50278.js"></script>
+
+	
+	
+
+<link href="css/Styles_50271.css" rel="stylesheet" type="text/css" />
+<script>
+	var basePath = "https://demo-apps.appedo.com:443/qamdemo/";
+	var gApplicationName = "qamdemo";
+	var basePath = "https://demo-apps.appedo.com:443/qamdemo/";
+	var gIsSecuredProtocal = true;
+	var gLoginUserId = "eadmin";
+
+	
+	var _appedo_LoginUserId = "eadmin";
+	var _appedo_LoginUser_FirstName = "Enterprise";
+	var _appedo_LoginUser_LastName = "Administrator";
+	var _appedo_LoginUser_EmailId = "eadmin@appedo.com";
+</script>
+
+</head>
+<body>
+	<iframe name="iFrameDownload" style="width: 1px;height: 1px;" frameborder="0"></iframe>
+	<div id="divPageLoadMask" class="mask" ></div>
+	<div id="divPageLoad" class="mask-msg mask-loading" style="left: 448px; top: 286px;">
+		<div>Loading Essential Libraries</div>
+	</div>
+	
+	
+	<div id="north">
+		
+
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" id="Table2">
+<tr> 
+	<td class="blueStrip" colspan=2 >
+		<table width="100%" cellspacing="0" cellpadding="0" border="0" >
+			<tbody><tr>
+				<td width="270px" valign="top" nowrap>
+					<div class="logo"><a href="http://softsmith.com/Products.html" target="_new"><img  alt="SPCG" width="179px" height="69px" src="images/QAM_logo_plain_oval.png"></a></div>
+					<div class="versionInfo">5.0.288 Beta</div>
+				</td>
+				<td width="5px">&nbsp;</td>
+				<td valign="top" align="center" class="topbannerlable">
+					<table align="center" >
+					   <tbody><!-- tr>
+							<td align="right" class="topbannerlable"><input type="image" style="border-width: 0px;" src="images\PunchIn.JPG" title="Punch IN" id="TopBaner1_imgPunch" name="TopBaner1$imgPunch"></td>
+							<td align="left" class="topbannerlable"><span style="color: White; font-size: 10pt; font-weight: bold;" id="TopBaner1_lblStatus">Punch IN</span></td>
+						</tr -->
+						<tr>
+							<td align="right" class="topbannerlable">Welcome</td>
+							<td align="left" class="topbannertext"><span id="TopBaner1_lblUserID">Enterprise  Administrator(eadmin)</span></td>
+						</tr>
+						<tr>
+							<td align="right" class="topbannerlable">Enterprise:</td>
+							<td align="left" class="topbannertext"><span id="TopBaner1_lblEnterpriseName">Demo</span></td>
+						</tr>
+						<tr>
+							<td align="right" class="topbannerlable"></td> 
+							<td align="left" class="topbannerlable"><span id="TopBaner1_lblproject"></span></td>
+						</tr>																		   
+					</tbody></table>
+				</td>
+				<td width="5px">&nbsp;</td>				
+				<td width="230px" align="right" valign="middle" >
+					<table>
+						<tbody><tr>							
+							<td width="50px" valign="middle" align="center"><input type="image" style="border-width: 0px;" alt="Settings" src="images/spcg/our_process_32.gif" id="TopBaner1_btnSettings" name="TopBaner1$btnSettings" onclick="javascript: showSettingsPage();" >&nbsp;</td>
+							<td width="45px" valign="middle" align="center"><input type="image" style="border-width: 0px;" alt="Charts" src="images/spcg/sales_32.gif" id="TopBaner1_btnCharts" name="TopBaner1$btnCharts" onclick="javascript: showChartPage();" >&nbsp;</td>
+							<td width="50px" valign="middle" align="center"><input type="image" style="border-width: 0px;" alt="Reports" src="images/spcg/reports_bluebg.gif" id="TopBaner1_btnReports" name="TopBaner1$btnReports" onclick="javascript:showReportsPage();" >&nbsp;</td>
+							<td width="50px" valign="middle" align="center"><input type="image" style="border-width: 0px;" alt="Dashboard" src="images/spcg/dashboard_bg_skyblue.gif" id="TopBaner1_btnDashboard" name="TopBaner1$btnDashboard" onClick="javascript:showDashBoardScreen();" >&nbsp;</td>
+						</tr>
+						<tr>
+							<td><a href="javascript:showSettingsPage();" class="topbannerlable" id="TopBaner1_lnkSettings">Settings</a></td>
+							<td><a href="javascript:showChartPage();" class="topbannerlable" id="TopBaner1_lnkCharts">Charts</a></td>
+							<td><a href="javascript:showReportsPage();" class="topbannerlable" id="TopBaner1_lnkReports">Reports</a></td>
+							<td><a href="javascript:showDashBoardScreen();" class="topbannerlable" id="TopBaner1_lnkDashboard">Dashboard</a></td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+		</tbody></table>
+		</td>
+</tr>
+<tr>
+	<td class="orangeStrip" colspan=2 ><img width="1" height="6" src="images/orange-strip.jpg"></td>
+</tr>
+<tr>
+	<td id="tdHeaderMenu" class="infoStrip" width="650px" ></td>
+	<!-- td width="0px" class="menuBreakStrip" ></td>	<!--  a break to differentiate the menu with bar -->
+	<td class="infoStrip" align="right" valign="middle" >
+		<div class="appInfo">
+			<a href="javascript:showHomePage();" class="blueLink" >Home</a>
+			&nbsp;&nbsp;<span class="spliterColor">|</span>&nbsp;&nbsp;
+			<a href="javascript:__doPostBack('TopBaner1$btnHelp','');" class="blueLink" id="TopBaner1_btnHelp" onclick="javascript:window.open('http://www.softsmith.com/qamhelp.ppt');" target="_new">Help</a>
+			&nbsp;&nbsp;<span class="spliterColor">|</span>&nbsp;&nbsp;
+			<a href="javascript:doSignout();" class="blueLink" id="TopBaner1_btnSignout">Sign Out</a>&nbsp;&nbsp;
+		</div>
+	</td> 
+</tr>	   
+</table>
+	</div>
+	
+	<div id="panel" style="position:relative; left:0px;" ></div>
+	<div id="div_defectsParent">
+		<div id="div_defectspanelChild"></div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,10 @@
+GET /ScriptResource.axd?d=Y6Wz86SI7OyIreV-nrlfvu4J115jFKbPaM54iLsNBc3wkrc4vI5xqOPUICxznnkbDuGG0GDcg6-8KB5kmo9pDaFF8QKu-q39jiiKJnEMDCTW88kHZgWyciN019anb40GLU_0WPj-3_R1Dm46L4qbZCbjO5j3O-rWvhyY0iIT8B01&t=2a48f442 HTTP/1.1
+Host: agents.travellerspass.com
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36
+Accept: */*
+Referer: https://agents.travellerspass.com/bbl.aspx
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.8
+Cookie: ASP.NET_SessionId=plof4h0mw42sm2umtxu1cnve
+

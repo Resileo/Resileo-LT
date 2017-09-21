@@ -1,0 +1,2152 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>APPEDO_LT</name>
+    </assembly>
+    <members>
+        <member name="T:AppedoLT.RequestProcessor">
+             <summary>
+            It is act as a proxy between the browser and server.
+            Read the http request from the browser then send that http request to server then receive response finally send response to browser.
+            
+             Author: Rasith
+             </summary>
+        </member>
+        <member name="M:AppedoLT.RequestProcessor.Process">
+            <summary>
+            Process request from browser.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.RequestProcessor.ServerProcess">
+            <summary>
+            Send request to server and get response from server.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.RequestProcessor.ReceiveRequestHeader">
+            <summary>
+            Receive request header from browser stream.
+            </summary>
+            <returns>Http request header from browser</returns>
+        </member>
+        <member name="M:AppedoLT.RequestProcessor.ReceiveRequestBody(System.Net.Sockets.TcpClient,System.Int32,System.IO.Stream)">
+            <summary>
+            Read request body from browser stream.
+            </summary>
+            <param name="_browserTcpClient">Tcp client from browser</param>
+            <param name="contentLength">Content length</param>
+            <param name="requestBody">To store content</param>
+        </member>
+        <member name="M:AppedoLT.RequestProcessor.SendRequest(System.IO.Stream)">
+            <summary>
+            Send request to the server.
+            </summary>
+            <param name="_server">Server stream</param>
+        </member>
+        <member name="M:AppedoLT.RequestProcessor.ReceiveResponseHeader(System.IO.Stream)">
+            <summary>
+            Receive response header from server stream.
+            </summary>
+            <param name="_server">Server stream</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppedoLT.RequestProcessor.ReceiveResponseBody(System.Net.Sockets.TcpClient,System.IO.Stream,System.Int32,System.IO.Stream)">
+            <summary>
+            Receive response body
+            </summary>
+            <param name="_ServerTcpClient">Server tcp client</param>
+            <param name="_server">Server stream</param>
+            <param name="contentLength">content length</param>
+            <param name="responseBody">To store content</param>
+        </member>
+        <member name="M:AppedoLT.RequestProcessor.WriteToBrowser(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Write response to browser stream.
+            </summary>
+            <param name="buffer">Data</param>
+            <param name="offset">Starting point</param>
+            <param name="count">Length</param>
+        </member>
+        <member name="M:AppedoLT.RequestProcessor.SetUrl">
+            <summary>
+            Set URL variable value from response header.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.RequestProcessor.ReceiveHeader(System.IO.Stream)">
+            <summary>
+            Read http header from given stream.
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AppedoLT.RequestProcessor.ReceiveGZipHeader(System.IO.Stream)">
+            <summary>
+             Read http header from given GZip stream.
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AppedoLT.RequestProcessor.GetContentLength(System.String)">
+            <summary>
+            Parse content length from http header.
+            </summary>
+            <param name="header">http header</param>
+            <returns>Content length</returns>
+        </member>
+        <member name="M:AppedoLT.RequestProcessor.GetResponseCode(System.String)">
+            <summary>
+            Parse response code from http header.
+            </summary>
+            <param name="header">http header</param>
+            <returns>Content length</returns>
+        </member>
+        <member name="M:AppedoLT.RequestProcessor.WaitUntilByteReceive(System.Net.Sockets.TcpClient,System.Int32)">
+            <summary>
+            Waiting method until byte receive in given tcp client.
+            </summary>
+            <param name="client">Tcp client</param>
+            <param name="milisecond">waiting mili second</param>
+        </member>
+        <member name="F:AppedoLT.About_FloodGates.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.About_FloodGates.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.About_FloodGates.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.AboutBox1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.AboutBox1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.AboutBox1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.Counters.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.Counters.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.Counters.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmTcpAssertion.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmTcpAssertion.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmTcpAssertion.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmTCPIPValidation.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmTCPIPValidation.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmTCPIPValidation.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmTCPIPParam.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmTCPIPParam.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmTCPIPParam.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.RepositoryXml">
+            <summary>
+            Single instance class for VUScripts.xml file. It is used to store and retrive data from VUScripts.xml file.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.RepositoryXml.Save">
+            <summary>
+            Save content into VUScripts.xml after any change.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.RepositoryXml.GetAttribute(System.String,System.String)">
+            <summary>
+            Create attribute in VUScripts.xml for give name and value.
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AppedoLT.RepositoryXml.CreateScenario">
+            <summary>
+            To create scenario xml node.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AppedoLT.RepositoryXml.CreateLoadgen(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            To create load gen info node.
+            </summary>
+            <param name="ipAddress"></param>
+            <param name="hostname"></param>
+            <param name="isDefaultZone"></param>
+            <param name="isChecked"></param>
+        </member>
+        <member name="T:AppedoLT.UCTCPIPRequest">
+            <summary>
+            User control used to show TCP requset information.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCTCPIPRequest.SetRequest(Telerik.WinControls.UI.RadTreeNode)">
+            <summary>
+            Populate data into corresponding field from xml node to show and edit.
+            </summary>
+            <param name="node">Xml node contain tcp request information</param>
+        </member>
+        <member name="M:AppedoLT.UCTCPIPRequest.LoadParams">
+            <summary>
+            To load parameters into data grid.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCTCPIPRequest.LoadAssertion">
+            <summary>
+            Load assertion detail into data grid
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCTCPIPRequest.LoadExtParameters">
+            <summary>
+            Load extracted parameters list into data grid
+            </summary>
+        </member>
+        <member name="F:AppedoLT.UCTCPIPRequest.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCTCPIPRequest.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.UCTCPIPRequest.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmNewHost.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmNewHost.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmNewHost.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmAutoCorrelation.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmAutoCorrelation.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmAutoCorrelation.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.Forms.dropdownrnd.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.Forms.dropdownrnd.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.Forms.dropdownrnd.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.Form1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.Form1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.Form1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmAssertion.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmAssertion.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmAssertion.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmDownloadProgress.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmDownloadProgress.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmDownloadProgress.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmMessageBox.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmMessageBox.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmMessageBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.Forms.frmProxyConfiguration.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.Forms.frmProxyConfiguration.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.Forms.frmProxyConfiguration.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmReplaceServer.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmReplaceServer.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmReplaceServer.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmScriptNameList.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmScriptNameList.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmScriptNameList.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmScriptUpgrade.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmScriptUpgrade.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmScriptUpgrade.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmUserCount.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmUserCount.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmUserCount.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmVUScriptNameHttp.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmVUScriptNameHttp.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmVUScriptNameHttp.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.frmFindAndReplace">
+            <summary>
+            Form  used to do parameterization. It will show list of available variables includes extracted variables.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmFindAndReplace.#ctor(System.String,AppedoLT.VuscriptXml,AppedoLT.ucDesign)">
+            <summary>
+            If you want parameterize value only.
+            </summary>
+            <param name="value">Variable value</param>
+            <param name="parent">Contain variable info</param>
+        </member>
+        <member name="M:AppedoLT.frmFindAndReplace.LoadVariables">
+            <summary>
+            Load all available variable into list.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmFindAndReplace.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmFindAndReplace.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmFindAndReplace.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmShowData.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmShowData.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmShowData.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.UCQueryStringData.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCQueryStringData.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.UCQueryStringData.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmLogin.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmLogin.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmLogin.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.RadForm1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.RadForm1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.RadForm1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.IntTextBox.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.IntTextBox.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.IntTextBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.Report.frmReportName.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.Report.frmReportName.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.Report.frmReportName.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.userControlCompareReports.radGridView1_SelectionChanged(System.Object,System.EventArgs)">
+            <summary>
+            This event function will trigger when the user select the report 
+            and the it will generate report on right hand side panel
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:AppedoLT.userControlCompareReports.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.userControlCompareReports.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.userControlCompareReports.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.userControlCharts.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.userControlCharts.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.userControlCharts.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmRun.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmRun.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmRun.InitializeComponent(System.String)">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.Design.GetMSMQ(System.String)">
+            <summary>
+            Create MSMQ for profiler. It could take 30sec. It will only once when profiler start.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:AppedoLT.Design.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.Design.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.Design.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.frmExtractor">
+            <summary>
+            Form used to give UI for extractor. Extract value from response.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:AppedoLT.frmExtractor.#ctor(System.String,System.Xml.XmlNode,System.Xml.XmlNode)" -->
+        <member name="M:AppedoLT.frmExtractor.setExtractorVar(System.Xml.XmlNode)">
+            <summary>
+            Populate data into corresponding field from xml node.
+            </summary>
+            <param name="extractVar">Extract xml node</param>
+        </member>
+        <member name="M:AppedoLT.frmExtractor.GetExtratorVar(System.Xml.XmlNode)">
+            <summary>
+            Get extractor xml node to store
+            </summary>
+            <param name="ExtractVar">Contain extractor variable info</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppedoLT.frmExtractor.SetReg">
+            <summary>
+            Form regular exp from startwith and endwith.
+            
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmExtractor.ShowResult">
+            <summary>
+            Show result from given input(response text and reqular exp)
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmExtractor.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmExtractor.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmExtractor.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.FindDig">
+            <summary>
+            Form used to find text in the given text box.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.FindDig.SetTextBox(System.Windows.Forms.RichTextBox)">
+            <summary>
+            Set text box where we need to find text.
+            </summary>
+            <param name="txtText">text box where we need to find text.</param>
+        </member>
+        <member name="F:AppedoLT.FindDig.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.FindDig.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.FindDig.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.FlagRequest">
+            <summary>
+            Form used to implement flag request. Search text in request.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.FlagRequest.#ctor(System.Xml.XmlNode)">
+            <summary>
+            Flag request for a script
+            </summary>
+            <param name="flagRequset">Script xml node</param>
+        </member>
+        <member name="F:AppedoLT.FlagRequest.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.FlagRequest.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.FlagRequest.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmCompareResponse.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmCompareResponse.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmCompareResponse.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmDynamicRequestParameter.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmDynamicRequestParameter.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmDynamicRequestParameter.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmError.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmError.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmError.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.frmRecord">
+            <summary>
+            Form used to give UI during recoding. Used to give container name.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmRecord.#ctor(AppedoLT.Design,System.String,System.Xml.XmlNode,System.Int32)">
+            <summary>
+            Create frmRecord object with parent form, script name, script node.
+            </summary>
+            <param name="_frm">Parent form</param>
+            <param name="vuName">Script name</param>
+            <param name="_vuScript">xml node to store recoded transactions</param>
+        </member>
+        <member name="M:AppedoLT.frmRecord.#ctor(AppedoLT.Design,System.Xml.XmlNode)">
+            <summary>
+            Create frmRecord object with parent form, script node.
+            </summary>
+            <param name="_frm">Parent form</param>
+            <param name="vuscript">xml node to store recoded transactions</param>
+        </member>
+        <member name="M:AppedoLT.frmRecord.btnStop_Click(System.Object,System.EventArgs)">
+            <summary>
+            To stop recoding.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:AppedoLT.frmRecord.frmRecord_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+            <summary>
+            During form closing, We have to enable parent form view
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:AppedoLT.frmRecord.CreateFirstLevelContainers">
+            <summary>
+            Used to create First Level Containers when record starts.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmRecord.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmRecord.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmRecord.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.frmShowText">
+            <summary>
+            Used to show response content for extraction.
+            
+             Author: Rasith
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmShowText.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmShowText.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmShowText.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.frmVariableManager">
+            <summary>
+            Form used to Add, Edit, Update user defined variables.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmVariableManager.LoadTree">
+            <summary>
+            Load all available variables.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmVariableManager.GetVariableInfo(System.Xml.XmlNode)">
+            <summary>
+            Get variable node from user input
+            </summary>
+            <param name="var">Node that contains variable information</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppedoLT.frmVariableManager.CopyFileToVariableFolder(System.String,System.String)">
+            <summary>
+            Copy mapped variable file into variable folder
+            </summary>
+            <param name="source"></param>
+            <param name="modified"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AppedoLT.frmVariableManager.MakeReadOnly">
+            <summary>
+            Make all control as read only for view variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmVariableManager.ReleaseReadOnly">
+            <summary>
+            Release all control from read only for edit variable
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmVariableManager.ClearAll">
+            <summary>
+            Clear all user inputs.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmVariableManager.Populate(System.Xml.XmlNode)">
+            <summary>
+            Populate variable info into corresponding field.
+            </summary>
+            <param name="var"></param>
+        </member>
+        <member name="F:AppedoLT.frmVariableManager.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmVariableManager.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmVariableManager.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.frmScenario">
+            <summary>
+            Form used to create and update scenario.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmScenario.#ctor(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Create new scenario.
+            </summary>
+            <param name="VUScripts">List of available scripts</param>
+        </member>
+        <member name="M:AppedoLT.frmScenario.#ctor(System.Collections.Generic.Dictionary{System.String,System.String},System.Xml.XmlNode)">
+            <summary>
+            Edit scenario
+            </summary>
+            <param name="VUScripts">Available scripts</param>
+            <param name="scenario">Scenario need to be edit</param>
+        </member>
+        <member name="M:AppedoLT.frmScenario.Validate">
+            <summary>
+            Validate user input.
+            </summary>
+            <returns>True if user input is valid</returns>
+        </member>
+        <member name="F:AppedoLT.frmScenario.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmScenario.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmScenario.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmSingleChart.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmSingleChart.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmSingleChart.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmTCPIPParamHelper.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmTCPIPParamHelper.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmTCPIPParamHelper.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.frmTCPIPRecord">
+            <summary>
+            Used to record tcp transactions.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmTCPIPRecord.#ctor(AppedoLT.Design,System.Xml.XmlNode)">
+            <summary>
+            To create frmTCPIPRecord object with parent form and script node
+            </summary>
+            <param name="frm">Parent form</param>
+            <param name="scriptNode">To store tcp transactions</param>
+        </member>
+        <member name="M:AppedoLT.frmTCPIPRecord.btnConnect_Click(System.Object,System.EventArgs)">
+            <summary>
+            If user click connect button.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:AppedoLT.frmTCPIPRecord.btnSend_Click(System.Object,System.EventArgs)">
+            <summary>
+            If user click send button
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:AppedoLT.frmTCPIPRecord.CreateNewContainer(System.String)">
+            <summary>
+            Used to create new container node
+            
+            </summary>
+            <param name="containername">Container name</param>
+            <returns>Container node</returns>
+        </member>
+        <member name="M:AppedoLT.frmTCPIPRecord.CreateNewRequst(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            To create new request xml node
+            </summary>
+            <param name="name"></param>
+            <param name="serverip"></param>
+            <param name="port"></param>
+            <param name="requestcontent"></param>
+            <param name="responsecontent"></param>
+            <param name="requestsize"></param>
+            <param name="responsesize"></param>
+            <param name="responsetime"></param>
+            <param name="requestsizeconstant"></param>
+            <param name="responsesizeconstant"></param>
+            <returns></returns>
+        </member>
+        <member name="F:AppedoLT.frmTCPIPRecord.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmTCPIPRecord.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmTCPIPRecord.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.frmValidation">
+            <summary>
+            Used to validate http script.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmValidation.#ctor(System.Xml.XmlNode,Telerik.WinControls.UI.RadTreeNode,System.Int32)">
+            <summary>
+            To create validation form
+            </summary>
+            <param name="vuScript">Script to be validated</param>
+            <param name="script">Tree for UI</param>
+            <param name="_intCountRequest">Total no of request count</param>
+        </member>
+        <member name="M:AppedoLT.frmValidation.GetUser">
+            <summary>
+            Used to create vuser for validation. this vuser act as single user.
+            </summary>
+            <returns>Vuser(single user)</returns>
+        </member>
+        <member name="M:AppedoLT.frmValidation._vUSer_OnLockLog(AppedoLT.Core.Log)">
+            <summary>
+            During the validation, it will be called by vuser if log exist. 
+            </summary>
+            <param name="data">Log data</param>
+        </member>
+        <member name="M:AppedoLT.frmValidation._vUSer_OnLockError(AppedoLT.Core.RequestException)">
+            <summary>
+            During the validation, it will be called by vuser if error exist. 
+            </summary>
+            <param name="data">Error data</param>
+        </member>
+        <member name="M:AppedoLT.frmValidation._vUSer_OnLockRequestResponse(AppedoLT.Core.RequestResponse)">
+            <summary>
+            During the validation, it will be called by vuser for each request. 
+            </summary>
+            <param name="data">Request and corresponding response</param>
+        </member>
+        <member name="M:AppedoLT.frmValidation.btnValidate_Click(System.Object,System.EventArgs)">
+            <summary>
+            If user click validation button.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:AppedoLT.frmValidation.Clear">
+            <summary>
+            To clear all data in validation grid.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmValidation.timer_tick(System.Object,System.EventArgs)">
+            <summary>
+            To notify validation completion
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:AppedoLT.frmValidation.Avg">
+            <summary>
+            To calculate avg response time after validation complete.
+            </summary>
+            <returns>Avg response time</returns>
+        </member>
+        <member name="M:AppedoLT.frmValidation.SetTreeNodeError(Telerik.WinControls.UI.RadTreeNode)">
+            <summary>
+            Set tree node color as Red if there is any error.
+            </summary>
+            <param name="node">Nodes contain all request</param>
+        </member>
+        <member name="F:AppedoLT.frmValidation.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmValidation.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmValidation.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.frmVUScriptName.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.frmVUScriptName.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.frmVUScriptName.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.ListBoxMove.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ListBoxMove.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.ListBoxMove.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.VuscriptXml">
+            <summary>
+            Used to create vuscript.xml for each script.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.VuscriptXml.GetAttribute(System.String,System.String)">
+            <summary>
+            Create attribute in vuscript.xml for give name and value.
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:AppedoLT.VuscriptXml.#ctor(System.String)">
+            <summary>
+            Create or open script file(vuscript.xml)
+            </summary>
+            <param name="id">Script id</param>
+        </member>
+        <member name="M:AppedoLT.VuscriptXml.#ctor(System.String,System.String)">
+            <summary>
+            Create or open script file(vuscript.xml)
+            </summary>
+            <param name="id">Script id</param>
+            <param name="content"> script content</param>
+        </member>
+        <member name="M:AppedoLT.VuscriptXml.Save(System.Boolean)">
+            <summary>
+            Save script file
+            </summary>
+            <param name="deleteUnwantedResource">If it true, it will delete unwanted resource</param>
+        </member>
+        <member name="M:AppedoLT.VuscriptXml.GetScriptName">
+            <summary>
+            Get list  of available scripts
+            </summary>
+            <returns>Available script list</returns>
+        </member>
+        <member name="M:AppedoLT.VuscriptXml.GetScriptidAndName">
+            <summary>
+            Get list  of available script id with name
+            </summary>
+            <returns>Available script list</returns>
+        </member>
+        <member name="M:AppedoLT.VuscriptXml.GetScriptNameAndId">
+            <summary>
+            Get list  of available script name with id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AppedoLT.UCTime">
+            <summary>
+            User control used to show time information.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="F:AppedoLT.UCTime.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCTime.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.UCTime.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.Session">
+            <summary>
+            To maintain login session.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.Session.Login">
+            <summary>
+            Promote login screen to user and validate user detail
+            </summary>
+            <returns>True: Login success, False: Login failed</returns>
+        </member>
+        <member name="M:AppedoLT.Session.LogOut">
+            <summary>
+            To clear login session
+            </summary>
+        </member>
+        <member name="M:AppedoLT.Session.RegisterMachine">
+            <summary>
+            To register machine.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AppedoLT.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:AppedoLT.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:AppedoLT.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:AppedoLT.Properties.Resources.floppy_disk_16">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.RequestParameter">
+            <summary>
+            Form  used to do parameterization. It will show list of available variables includes extracted variables.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.RequestParameter.#ctor(System.String,System.String,System.Xml.XmlNode)">
+            <summary>
+            If you want parameterize both name and value.
+            </summary>
+            <param name="name">Variable name</param>
+            <param name="value">Variable value</param>
+            <param name="parent">Contain variable info</param>
+        </member>
+        <member name="M:AppedoLT.RequestParameter.#ctor(System.String,System.Xml.XmlNode)">
+            <summary>
+            If you want parameterize value only.
+            </summary>
+            <param name="value">Variable value</param>
+            <param name="parent">Contain variable info</param>
+        </member>
+        <member name="M:AppedoLT.RequestParameter.#ctor(System.Xml.XmlAttribute)">
+            <summary>
+            If you want parameterize xml attribute.
+            </summary>
+            <param name="att">xml attribute</param>
+        </member>
+        <member name="M:AppedoLT.RequestParameter.LoadVariables">
+            <summary>
+            Load all available variable into list.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.RequestParameter.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.RequestParameter.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.RequestParameter.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.Record">
+            <summary>
+            Record Http transaction from browser and stored in xml.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.Record.#ctor(System.Windows.Forms.Label,Telerik.WinControls.UI.RadTextBox,Telerik.WinControls.UI.RadComboBox,System.Xml.XmlNode)">
+            <summary>
+            To create Record object that used to record browser transactions.
+            </summary>
+            <param name="lblResult">To display url</param>
+            <param name="txtContainer">To user container name</param>
+            <param name="ddlParentContainer">To select parent container(Init, Action, End)</param>
+            <param name="vuScriptXml"></param>
+        </member>
+        <member name="M:AppedoLT.Record.Start">
+            <summary>
+            To start thread for storing result.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.Record.Stop">
+            <summary>
+            To stop recording.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.Record.DoWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            Listener thread to listen tcp connection from browser.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:AppedoLT.Record.ProceessClient(System.Object)">
+            <summary>
+            To process tcp client from browser.
+            </summary>
+            <param name="clientObj"></param>
+        </member>
+        <member name="M:AppedoLT.Record.StoreResult">
+            <summary>
+            To store processed request info into xml.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.Record.CreateFirstLevelContainers">
+            <summary>
+            Used to create First Level Containers when record starts.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.Record.ReceiveGZipHeader(System.IO.Stream)">
+            <summary>
+            To read GZipHeader from stream.
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="F:AppedoLT.UCFileTypeVariable.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCFileTypeVariable.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.UCFileTypeVariable.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.UCRequest.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCRequest.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.UCRequest.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.ucLoadGen.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucLoadGen.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.ucLoadGen.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:AppedoLT.UCScriptSetting.txtParallelCon_Leave(System.Object,System.EventArgs)" -->
+        <member name="F:AppedoLT.UCScriptSetting.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCScriptSetting.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.UCScriptSetting.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCHttpRequest.ddlPostContentType_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            This event function will trigger when the content type selection changed
+            Based on selection of content type need to convert into the seleced formate
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:AppedoLT.UCHttpRequest.convertFormToText">
+            <summary>
+            This function to convert form parameters to "Text" type
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCHttpRequest.replaceParamElement(System.Xml.XmlDocument)">
+            <summary>
+            To replace the parameter element with text/form
+            </summary>
+            <param name="doc"></param>
+        </member>
+        <member name="M:AppedoLT.UCHttpRequest.convertTextToForm">
+            <summary>
+            This function to convert form parameters to "Form" type
+            </summary>
+        </member>
+        <member name="F:AppedoLT.UCHttpRequest.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCHttpRequest.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.UCHttpRequest.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.userControlReports.radGridView1_SelectionChanged(System.Object,System.EventArgs)">
+            <summary>
+            This event function will trigger when the user select the report 
+            and the it will generate report on right hand side panel
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:AppedoLT.userControlReports.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.userControlReports.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.userControlReports.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.ucScript">
+            <summary>
+            User control used to set Scripts detail.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucScript.GetControl(System.Xml.XmlNode,Telerik.WinControls.UI.RadTreeNode)">
+            <summary>
+            Used to created ucScript object.
+            </summary>
+            <param name="xmlNode">Script xml node</param>
+            <param name="treeNode">Tree node from UI</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppedoLT.ucScript.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucScript.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.ucScript.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.ucJavaScript">
+            <summary>
+            User control used to set JavaScript.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucJavaScript.GetControl(System.Xml.XmlNode,Telerik.WinControls.UI.RadTreeNode)">
+            <summary>
+            Used to created ucJavaScript object.
+            </summary>
+            <param name="xmlNode">JavaScript xml node</param>
+            <param name="treeNode">Tree node from UI</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppedoLT.ucJavaScript.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucJavaScript.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.ucJavaScript.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.ucContainer">
+            <summary>
+            User control used to get container name and update in script xml.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucContainer.GetControl(System.Xml.XmlNode,Telerik.WinControls.UI.RadTreeNode)">
+            <summary>
+            Used to created ucContainer object.
+            </summary>
+            <param name="xmlNode">Container xml node</param>
+            <param name="treeNode">Tree node from UI</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppedoLT.ucContainer.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucContainer.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.ucContainer.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.ucIfThenElse">
+            <summary>
+            User control used to set IfThenElse condition.
+            
+             Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucIfThenElse.GetControl(System.Xml.XmlNode,Telerik.WinControls.UI.RadTreeNode)">
+            <summary>
+            Used to created ucIfThenElse object.
+            </summary>
+            <param name="xmlNode">IfThenElse xml node</param>
+            <param name="treeNode">Tree node from UI</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppedoLT.ucIfThenElse.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucIfThenElse.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.ucIfThenElse.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.ucDelay">
+            <summary>
+            User control used to set delay value and update in script xml.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucDelay.GetControl(System.Xml.XmlNode,Telerik.WinControls.UI.RadTreeNode)">
+            <summary>
+            Used to created ucDelay object.
+            </summary>
+            <param name="xmlNode">delay xml node</param>
+            <param name="treeNode">Tree node from UI</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppedoLT.ucDelay.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucDelay.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.ucDelay.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.ucLoop">
+            <summary>
+             User control used to set Loop count.
+             
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucLoop.GetControl(System.Xml.XmlNode,Telerik.WinControls.UI.RadTreeNode)">
+            <summary>
+            Used to created ucLoop object.
+            </summary>
+            <param name="xmlNode">ucLoop xml node</param>
+            <param name="treeNode">Tree node from UI</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppedoLT.ucLoop.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucLoop.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.ucLoop.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.ucPage">
+            <summary>
+            User control used to set Page name and delay.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucPage.GetControl(System.Xml.XmlNode,Telerik.WinControls.UI.RadTreeNode)">
+            <summary>
+            Used to created ucPage object.
+            </summary>
+            <param name="xmlNode">page xml node</param>
+            <param name="treeNode">Tree node from UI</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppedoLT.ucPage.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucPage.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.ucPage.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.ucWhileLoop">
+            <summary>
+            User control used to set WhileLoop condition.
+            
+             Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucWhileLoop.GetControl(System.Xml.XmlNode,Telerik.WinControls.UI.RadTreeNode)">
+            <summary>
+            Used to created ucWhileLoop object.
+            </summary>
+            <param name="xmlNode">WhileLoop xml node</param>
+            <param name="treeNode">Tree node from UI</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppedoLT.ucWhileLoop.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucWhileLoop.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.ucWhileLoop.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.ucTransaction">
+            <summary>
+            User control used to get transaction name.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucTransaction.GetControl(System.Xml.XmlNode,Telerik.WinControls.UI.RadTreeNode)">
+            <summary>
+            used to created ucTransaction object.
+            </summary>
+            <param name="transaction">Transaction xml node</param>
+            <param name="treeNode">Tree node from UI</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppedoLT.ucTransaction.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucTransaction.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.ucTransaction.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.ucLog">
+            <summary>
+            User control used to set Log.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucLog.GetControl(System.Xml.XmlNode,Telerik.WinControls.UI.RadTreeNode)">
+            <summary>
+            Used to created ucLog object.
+            </summary>
+            <param name="xmlNode">Log xml node</param>
+            <param name="treeNode">Tree node from UI</param>
+            <returns></returns>
+        </member>
+        <member name="F:AppedoLT.ucLog.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucLog.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.ucLog.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AppedoLT.ucDesign">
+            <summary>
+            Used to give design UI.
+            
+            Author: Rasith
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucDesign.GetInstance">
+            <summary>
+            To implement single instance class
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AppedoLT.ucDesign.LoadTreeItem">
+            <summary>
+            Load all script into tree view
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucDesign.GetTreeNode(System.Xml.XmlNode,Telerik.WinControls.UI.RadTreeNode)">
+            <summary>
+            To create tree for each element in vuscript xml.
+            </summary>
+            <param name="ContainerNode"></param>
+            <param name="parentNode"></param>
+        </member>
+        <member name="M:AppedoLT.ucDesign.GetAvailableScript">
+            <summary>
+            To get available scripts
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AppedoLT.ucDesign.updateContainerId(System.String)">
+            <summary>
+            To update the container id after swiching one position to another position 
+            </summary>
+            <param name="scriptId"></param>
+        </member>
+        <member name="M:AppedoLT.ucDesign.getScriptIds">
+            <summary>
+            This is to get all scriptid's from scripts folder
+            </summary>
+        </member>
+        <member name="F:AppedoLT.ucDesign.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.ucDesign.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.ucDesign.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.UCFormPost.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCFormPost.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.UCFormPost.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.UCMonitor.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCMonitor.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.UCMonitor.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.UCRequestData.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCRequestData.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.UCRequestData.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.UCMultipartPost.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCMultipartPost.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.UCMultipartPost.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.UCTextPost.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCTextPost.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.UCTextPost.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:AppedoLT.UCServer.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AppedoLT.UCServer.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AppedoLT.UCServer.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

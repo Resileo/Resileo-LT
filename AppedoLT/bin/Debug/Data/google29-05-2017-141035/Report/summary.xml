@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<report reportname="google29-05-2017-141035">
+  <summaryreport>
+    <val starttime="29-05-2017 14:10:37" endtime="29-05-2017 14:10:49" durationsec="11" usercount="1" totalhits="21" avgresponse="0.263512047619048" avghits="1.90909090909091" totalthroughput="0.495" avgthroughput="0.360035289417614" totalerrors="0" totalpage="2" avgpageresponse="2.7668765" reponse200="19" reponse300="2" reponse400="0" reponse500="0" />
+  </summaryreport>
+  <log />
+  <error />
+  <graphs>
+    <val gmttime="1496047239" localtime="2017-05-29 14:10:39" gmt="2017-05-29 08:40:39" hitpersec="1" totalkb="210.92" kbps="42.18" avgresponsetime="317.16" />
+    <val gmttime="1496047240" localtime="2017-05-29 14:10:40" gmt="2017-05-29 08:40:40" hitpersec="0.4" totalkb="7.87" kbps="1.57" avgresponsetime="138.37" />
+    <val gmttime="1496047249" localtime="2017-05-29 14:10:49" gmt="2017-05-29 08:40:49" hitpersec="2.8" totalkb="288.13" kbps="57.63" avgresponsetime="262.23" />
+  </graphs>
+  <errorgraph />
+  <pageresponsegraph>
+    <val endtime="1496047248" localtime="2017-05-29 14:10:48" resptime="7" />
+  </pageresponsegraph>
+  <vuserrungraph>
+    <val gmt="1496047237" localtime="2017-05-29 14:10:37" vusercnt="1" vuserrunning="1" />
+    <val gmt="1496047238" localtime="2017-05-29 14:10:38" vusercnt="" vuserrunning="1" />
+    <val gmt="1496047239" localtime="2017-05-29 14:10:39" vusercnt="" vuserrunning="1" />
+    <val gmt="1496047240" localtime="2017-05-29 14:10:40" vusercnt="" vuserrunning="1" />
+    <val gmt="1496047241" localtime="2017-05-29 14:10:41" vusercnt="" vuserrunning="1" />
+    <val gmt="1496047242" localtime="2017-05-29 14:10:42" vusercnt="" vuserrunning="1" />
+    <val gmt="1496047243" localtime="2017-05-29 14:10:43" vusercnt="" vuserrunning="1" />
+    <val gmt="1496047244" localtime="2017-05-29 14:10:44" vusercnt="" vuserrunning="1" />
+    <val gmt="1496047245" localtime="2017-05-29 14:10:45" vusercnt="" vuserrunning="1" />
+    <val gmt="1496047246" localtime="2017-05-29 14:10:46" vusercnt="" vuserrunning="1" />
+    <val gmt="1496047247" localtime="2017-05-29 14:10:47" vusercnt="" vuserrunning="1" />
+    <val gmt="1496047248" localtime="2017-05-29 14:10:48" vusercnt="" vuserrunning="1" />
+    <val gmt="1496047249" localtime="2017-05-29 14:10:49" vusercnt="-1" vuserrunning="0" />
+    <val gmt="1496047250" localtime="2017-05-29 14:10:50" vusercnt="" vuserrunning="0" />
+    <val gmt="1496047251" localtime="2017-05-29 14:10:51" vusercnt="" vuserrunning="0" />
+    <val gmt="1496047252" localtime="2017-05-29 14:10:52" vusercnt="" vuserrunning="0" />
+    <val gmt="1496047253" localtime="2017-05-29 14:10:53" vusercnt="" vuserrunning="0" />
+    <val gmt="1496047254" localtime="2017-05-29 14:10:54" vusercnt="" vuserrunning="0" />
+    <val gmt="1496047255" localtime="2017-05-29 14:10:55" vusercnt="" vuserrunning="0" />
+    <val gmt="1496047256" localtime="2017-05-29 14:10:56" vusercnt="" vuserrunning="0" />
+    <val gmt="1496047257" localtime="2017-05-29 14:10:57" vusercnt="" vuserrunning="0" />
+    <val gmt="1496047258" localtime="2017-05-29 14:10:58" vusercnt="" vuserrunning="0" />
+    <val gmt="1496047259" localtime="2017-05-29 14:10:59" vusercnt="" vuserrunning="0" />
+    <val gmt="1496047260" localtime="2017-05-29 14:11:00" vusercnt="" vuserrunning="0" />
+    <val gmt="1496047261" localtime="2017-05-29 14:11:01" vusercnt="" vuserrunning="0" />
+    <val gmt="1496047262" localtime="2017-05-29 14:11:02" vusercnt="" vuserrunning="0" />
+    <val gmt="1496047263" localtime="2017-05-29 14:11:03" vusercnt="" vuserrunning="0" />
+  </vuserrungraph>
+  <script name="google.com" id="548831277">
+    <settings>
+      <val type="Iteration" durationTime="0:1:0" iterations="1" incrementUser="1" incrementTime="0:0:1" maxUser="1" browserCache="true" startUserId="1" replayThinkTime="true" bandwidth="Full Speed" enableparallelcon="false" parallelconnections="6" />
+    </settings>
+    <requests>
+      <val containerid="548831279" containername="init" requestid="548831281" address="/" />
+      <val containerid="548831279" containername="init" requestid="548831284" address="/" />
+      <val containerid="548831279" containername="init" requestid="548831285" address="/" />
+      <val containerid="548831279" containername="init" requestid="548831286" address="/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png" />
+      <val containerid="548831279" containername="init" requestid="548831287" address="/images/branding/product/ico/googleg_lodp.ico" />
+      <val containerid="548831279" containername="init" requestid="548831288" address="/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" />
+      <val containerid="548831279" containername="init" requestid="548831289" address="/images/hpp/ic_wahlberg_product_core_48.png8.png" />
+      <val containerid="548831282" containername="Container1" requestid="548831294" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831296" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831298" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831299" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831300" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831301" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831303" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831304" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831305" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831306" address="/complete/search" />
+      <val containerid="548831282" containername="Container1" requestid="548831307" address="/complete/search" />
+      <val containerid="548935874" containername="ContainerLoop" requestid="548831309" address="/gen_204" />
+      <val containerid="548935874" containername="ContainerLoop" requestid="548831310" address="/xjs/_/js/k=xjs.s.en.FLyc3sNzBUc.O/m=aspn,tl,vs,tnv,mrn,me,atn/am=AEcoyuMFByD_RwgFw00IC9IKzDCA/exm=sx,c,sb,cdos,cr,elog,hsm,jsa,r,qsm,j,p,d,csi,aa,abd,async,dvl,foot,fpe,ipv6,lu,m,sf,d3l/rt=j/d=1/ed=1/t=zcms/rs=ACT90oFKKOUQfv3jvC_3ML8fclGhvl362g" />
+      <val containerid="548944510" containername="End" requestid="548831308" address="/search" />
+    </requests>
+    <requestresponse>
+      <val containerid="548831279" containername="init" requestid="548831281" address="/" min="285.2502" max="285.2502" avg="285.2502" throughput="261" hitcount="1" minttfb="278.0495" maxttfb="278.0495" avgttfb="278.0495" />
+      <val containerid="548831279" containername="init" requestid="548831284" address="/" min="303.7577" max="303.7577" avg="303.7577" throughput="277" hitcount="1" minttfb="301.1727" maxttfb="301.1727" avgttfb="301.1727" />
+      <val containerid="548831279" containername="init" requestid="548831285" address="/" min="725.8431" max="725.8431" avg="725.8431" throughput="202675" hitcount="1" minttfb="471.1776" maxttfb="471.1776" avgttfb="471.1776" />
+      <val containerid="548831279" containername="init" requestid="548831286" address="/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png" min="133.3474" max="133.3474" avg="133.3474" throughput="5087" hitcount="1" minttfb="132.4806" maxttfb="132.4806" avgttfb="132.4806" />
+      <val containerid="548831279" containername="init" requestid="548831287" address="/images/branding/product/ico/googleg_lodp.ico" min="137.5962" max="137.5962" avg="137.5962" throughput="7687" hitcount="1" minttfb="135.9867" maxttfb="135.9867" avgttfb="135.9867" />
+      <val containerid="548831279" containername="init" requestid="548831288" address="/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" min="134.4874" max="134.4874" avg="134.4874" throughput="5969" hitcount="1" minttfb="134.1295" maxttfb="134.1295" avgttfb="134.1295" />
+      <val containerid="548831279" containername="init" requestid="548831289" address="/images/hpp/ic_wahlberg_product_core_48.png8.png" min="142.2441" max="142.2441" avg="142.2441" throughput="2091" hitcount="1" minttfb="142.1226" maxttfb="142.1226" avgttfb="142.1226" />
+      <val containerid="548831282" containername="Container1" requestid="548831294" address="/complete/search" min="461.6429" max="461.6429" avg="461.6429" throughput="1404" hitcount="1" minttfb="461.2983" maxttfb="461.2983" avgttfb="461.2983" />
+      <val containerid="548831282" containername="Container1" requestid="548831296" address="/complete/search" min="205.94" max="205.94" avg="205.94" throughput="1470" hitcount="1" minttfb="205.8066" maxttfb="205.8066" avgttfb="205.8066" />
+      <val containerid="548831282" containername="Container1" requestid="548831298" address="/complete/search" min="195.3299" max="195.3299" avg="195.3299" throughput="1418" hitcount="1" minttfb="195.1366" maxttfb="195.1366" avgttfb="195.1366" />
+      <val containerid="548831282" containername="Container1" requestid="548831299" address="/complete/search" min="199.2204" max="199.2204" avg="199.2204" throughput="1458" hitcount="1" minttfb="199.0297" maxttfb="199.0297" avgttfb="199.0297" />
+      <val containerid="548831282" containername="Container1" requestid="548831300" address="/complete/search" min="174.8763" max="174.8763" avg="174.8763" throughput="1458" hitcount="1" minttfb="174.7399" maxttfb="174.7399" avgttfb="174.7399" />
+      <val containerid="548831282" containername="Container1" requestid="548831301" address="/complete/search" min="182.0223" max="182.0223" avg="182.0223" throughput="1410" hitcount="1" minttfb="181.4031" maxttfb="181.4031" avgttfb="181.4031" />
+      <val containerid="548831282" containername="Container1" requestid="548831303" address="/complete/search" min="170.7344" max="170.7344" avg="170.7344" throughput="2438" hitcount="1" minttfb="169.1573" maxttfb="169.1573" avgttfb="169.1573" />
+      <val containerid="548831282" containername="Container1" requestid="548831304" address="/complete/search" min="184.2062" max="184.2062" avg="184.2062" throughput="1440" hitcount="1" minttfb="184.0809" maxttfb="184.0809" avgttfb="184.0809" />
+      <val containerid="548831282" containername="Container1" requestid="548831305" address="/complete/search" min="193.598" max="193.598" avg="193.598" throughput="1434" hitcount="1" minttfb="193.4556" maxttfb="193.4556" avgttfb="193.4556" />
+      <val containerid="548831282" containername="Container1" requestid="548831306" address="/complete/search" min="175.6336" max="175.6336" avg="175.6336" throughput="1474" hitcount="1" minttfb="175.2975" maxttfb="175.2975" avgttfb="175.2975" />
+      <val containerid="548831282" containername="Container1" requestid="548831307" address="/complete/search" min="168.8263" max="168.8263" avg="168.8263" throughput="1468" hitcount="1" minttfb="168.373" maxttfb="168.373" avgttfb="168.373" />
+      <val containerid="548935874" containername="ContainerLoop" requestid="548831309" address="/gen_204" min="168.8032" max="168.8032" avg="168.8032" throughput="0" hitcount="1" minttfb="168.6839" maxttfb="168.6839" avgttfb="168.6839" />
+      <val containerid="548935874" containername="ContainerLoop" requestid="548831310" address="/xjs/_/js/k=xjs.s.en.FLyc3sNzBUc.O/m=aspn,tl,vs,tnv,mrn,me,atn/am=AEcoyuMFByD_RwgFw00IC9IKzDCA/exm=sx,c,sb,cdos,cr,elog,hsm,jsa,r,qsm,j,p,d,csi,aa,abd,async,dvl,foot,fpe,ipv6,lu,m,sf,d3l/rt=j/d=1/ed=1/t=zcms/rs=ACT90oFKKOUQfv3jvC_3ML8fclGhvl362g" min="259.0541" max="259.0541" avg="259.0541" throughput="89835" hitcount="1" minttfb="86.1465" maxttfb="86.1465" avgttfb="86.1465" />
+      <val containerid="548944510" containername="End" requestid="548831308" address="/search" min="931.3393" max="931.3393" avg="931.3393" throughput="188342" hitcount="1" minttfb="248.0565" maxttfb="248.0565" avgttfb="248.0565" />
+    </requestresponse>
+    <containerresponse>
+      <val containerid="548831279" containername="init" min="1862.5261" max="1862.5261" avg="1862.5261" />
+      <val containerid="548831282" containername="Container1" min="2312.0303" max="2312.0303" avg="2312.0303" />
+      <val containerid="548935874" containername="ContainerLoop" min="427.8573" max="427.8573" avg="427.8573" />
+      <val containerid="548944510" containername="End" min="931.3393" max="931.3393" avg="931.3393" />
+    </containerresponse>
+    <errorcount />
+    <errorcode />
+    <transactions />
+  </script>
+</report>

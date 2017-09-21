@@ -1,0 +1,1414 @@
+﻿<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Appedo</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/appedo-16.ico">
+    <link rel="stylesheet" href="css/morris.css">
+    <script src="js/raphael-min.js">
+    </script>
+    <script src="js/jquery-1.8.2.min.js">
+    </script>
+    <script src="js/morris-0.4.1.min.js">
+    </script>
+    <script>
+          function drawCharts()
+          {
+            drawSummaryGraph();
+            drawErrorGraph();
+            drawPageResponseGraph();
+            drawVUserGraph();
+            
+              drawTransactionGraph_548831277();
+            
+          }        
+        </script>
+    <style>
+          body {
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          font-size: 14px;
+          line-height: 1.42857143;
+          color: #333;
+          background-color: #fff;
+          }
+
+          .graphheadingrow
+          {
+          text-align: center;
+          border-bottom: 1px solid #1b639e;
+          }
+
+          .graph
+          {
+          width: 400px; 
+          height: 250px;
+          padding: 25px;
+          }
+        </style>
+  </head>
+  <body onload="drawCharts();">
+    <h1 style="width:600px; padding-bottom: 6px; background-color:#31c0be; color:#FFFFFF; text-align: center;">Appedo</h1>
+    <span>
+      <b>Report Name:  </b>google23-05-2017-142851</span>
+    <h4> Summary Report</h4>
+    <table border="1" cellspacing="0">
+      <tr>
+        <td style="bgcolor=#9acd32">
+          <b>Start Time</b>
+        </td>
+        <td style="text-align:right">23-05-2017 14:29:20</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>End Time</b>
+        </td>
+        <td style="text-align:right">23-05-2017 14:33:52</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Duration(sec)</b>
+        </td>
+        <td style="text-align:right">272</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>User Count</b>
+        </td>
+        <td style="text-align:right">1</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Total Hits</b>
+        </td>
+        <td style="text-align:right">133</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Request Response(sec)</b>
+        </td>
+        <td style="text-align:right">.683</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Page Response(sec)</b>
+        </td>
+        <td style="text-align:right">11.355</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Hits/Sec</b>
+        </td>
+        <td style="text-align:right">.489</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b> Total Throughput(MB)</b>
+        </td>
+        <td style="text-align:right">2.879</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Throughput(Mbps)</b>
+        </td>
+        <td style="text-align:right">.085</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Total Errors</b>
+        </td>
+        <td style="text-align:right">0</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Total pages</b>
+        </td>
+        <td style="text-align:right">8</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 200 Count</b>
+        </td>
+        <td style="text-align:right">115</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 300 Count</b>
+        </td>
+        <td style="text-align:right">18</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 400 Count</b>
+        </td>
+        <td style="text-align:right">0</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 500 Count</b>
+        </td>
+        <td style="text-align:right">0</td>
+      </tr>
+    </table>
+    <h4> Graphs </h4>
+    <table style="width: 875px;" cellpadding="10" cellspacing="0">
+      <tr>
+        <td class="graphheadingrow">
+          <b>Virtual User Running Graph</b>
+        </td>
+        <td>
+        </td>
+        <td class="graphheadingrow">
+          <b>Hits per Sec Graph</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="vuser_" class="graph">
+          </div>
+        </td>
+        <td style="width: 15px;">
+        </td>
+        <td>
+          <div id="hps_" class="graph">
+          </div>
+        </td>
+      </tr>
+      <br>
+      <br>
+      <tr>
+        <td class="graphheadingrow">
+          <b>Throughput per Sec Graph (KBps)</b>
+        </td>
+        <td>
+        </td>
+        <td class="graphheadingrow">
+          <b>Page Response Time Graph (secs)</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="kbps_" style="width: 400px; height: 250px;">
+          </div>
+        </td>
+        <td>
+        </td>
+        <td>
+          <div id="pageres_" style="width: 400px; height: 250px;">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <script>
+      function drawSummaryGraph() {      
+      new Morris.Line({
+      element: 'hps_',
+      data: [
+      
+            { time: '2017-05-23 14:29:22', hitspersec: 1.2 },
+          
+            { time: '2017-05-23 14:29:49', hitspersec: 2.2 },
+          
+            { time: '2017-05-23 14:31:04', hitspersec: 0.2 },
+          
+            { time: '2017-05-23 14:31:08', hitspersec: 2.2 },
+          
+            { time: '2017-05-23 14:31:14', hitspersec: 0.2 },
+          
+            { time: '2017-05-23 14:31:18', hitspersec: 2 },
+          
+            { time: '2017-05-23 14:31:24', hitspersec: 0.2 },
+          
+            { time: '2017-05-23 14:31:28', hitspersec: 1.4 },
+          
+            { time: '2017-05-23 14:31:34', hitspersec: 0.2 },
+          
+            { time: '2017-05-23 14:31:38', hitspersec: 1.4 },
+          
+            { time: '2017-05-23 14:31:44', hitspersec: 0.2 },
+          
+            { time: '2017-05-23 14:31:48', hitspersec: 1 },
+          
+            { time: '2017-05-23 14:31:54', hitspersec: 0.2 },
+          
+            { time: '2017-05-23 14:31:58', hitspersec: 1 },
+          
+            { time: '2017-05-23 14:32:23', hitspersec: 2.4 },
+          
+            { time: '2017-05-23 14:32:44', hitspersec: 0.2 },
+          
+            { time: '2017-05-23 14:32:48', hitspersec: 2.4 },
+          
+            { time: '2017-05-23 14:32:58', hitspersec: 0.6 },
+          
+            { time: '2017-05-23 14:33:03', hitspersec: 0.2 },
+          
+            { time: '2017-05-23 14:33:06', hitspersec: 0.2 },
+          
+            { time: '2017-05-23 14:33:13', hitspersec: 0.2 },
+          
+            { time: '2017-05-23 14:33:18', hitspersec: 0.8 },
+          
+            { time: '2017-05-23 14:33:24', hitspersec: 0.2 },
+          
+            { time: '2017-05-23 14:33:26', hitspersec: 0.2 },
+          
+            { time: '2017-05-23 14:33:37', hitspersec: 0.4 },
+          
+            { time: '2017-05-23 14:33:43', hitspersec: 2.6 },
+          
+            { time: '2017-05-23 14:33:52', hitspersec: 2.6 }
+          
+      ],
+      xkey: 'time',
+      ykeys: ['hitspersec'],
+      labels: ['Hits per Sec'],
+      lineColors: ['#D26B16'],
+      lineWidth: 1,
+      pointSize: 2,
+      hideHover: 'auto'
+      });
+
+      new Morris.Line({
+      element: 'kbps_',
+      data: [
+      
+            { time: '2017-05-23 14:29:22', kbps: 33.9 },
+          
+            { time: '2017-05-23 14:29:49', kbps: 35.41 },
+          
+            { time: '2017-05-23 14:31:04', kbps: 0.05 },
+          
+            { time: '2017-05-23 14:31:08', kbps: 44.17 },
+          
+            { time: '2017-05-23 14:31:14', kbps: 0.05 },
+          
+            { time: '2017-05-23 14:31:18', kbps: 43.89 },
+          
+            { time: '2017-05-23 14:31:24', kbps: 0.05 },
+          
+            { time: '2017-05-23 14:31:28', kbps: 42.86 },
+          
+            { time: '2017-05-23 14:31:34', kbps: 0.05 },
+          
+            { time: '2017-05-23 14:31:38', kbps: 42.86 },
+          
+            { time: '2017-05-23 14:31:44', kbps: 0.05 },
+          
+            { time: '2017-05-23 14:31:48', kbps: 42.29 },
+          
+            { time: '2017-05-23 14:31:54', kbps: 0.05 },
+          
+            { time: '2017-05-23 14:31:58', kbps: 42.29 },
+          
+            { time: '2017-05-23 14:32:23', kbps: 43.99 },
+          
+            { time: '2017-05-23 14:32:44', kbps: 0.05 },
+          
+            { time: '2017-05-23 14:32:48', kbps: 44.46 },
+          
+            { time: '2017-05-23 14:32:58', kbps: 41.5 },
+          
+            { time: '2017-05-23 14:33:03', kbps: 0.05 },
+          
+            { time: '2017-05-23 14:33:06', kbps: 0.05 },
+          
+            { time: '2017-05-23 14:33:13', kbps: 0.05 },
+          
+            { time: '2017-05-23 14:33:18', kbps: 41.78 },
+          
+            { time: '2017-05-23 14:33:24', kbps: 0.05 },
+          
+            { time: '2017-05-23 14:33:26', kbps: 0.05 },
+          
+            { time: '2017-05-23 14:33:37', kbps: 0.1 },
+          
+            { time: '2017-05-23 14:33:43', kbps: 44.72 },
+          
+            { time: '2017-05-23 14:33:52', kbps: 44.72 }
+          
+      ],
+      xkey: 'time',
+      ykeys: ['kbps'],
+      labels: ['KBps'],
+      lineColors: ['#800000'],
+      lineWidth: 1,
+      pointSize: 2,
+      hideHover: 'auto'
+      });
+
+      new Morris.Line({
+      element: 'art_',
+      data: [
+      
+            { time: '2017-05-23 14:29:22', avgresponsetime: 276.76 },
+          
+            { time: '2017-05-23 14:29:49', avgresponsetime: 248.31 },
+          
+            { time: '2017-05-23 14:31:04', avgresponsetime: 1576.27 },
+          
+            { time: '2017-05-23 14:31:08', avgresponsetime: 355.27 },
+          
+            { time: '2017-05-23 14:31:14', avgresponsetime: 2372.67 },
+          
+            { time: '2017-05-23 14:31:18', avgresponsetime: 363.92 },
+          
+            { time: '2017-05-23 14:31:24', avgresponsetime: 2601.93 },
+          
+            { time: '2017-05-23 14:31:28', avgresponsetime: 526.3 },
+          
+            { time: '2017-05-23 14:31:34', avgresponsetime: 1601.44 },
+          
+            { time: '2017-05-23 14:31:38', avgresponsetime: 511.76 },
+          
+            { time: '2017-05-23 14:31:44', avgresponsetime: 2143.64 },
+          
+            { time: '2017-05-23 14:31:48', avgresponsetime: 859.94 },
+          
+            { time: '2017-05-23 14:31:54', avgresponsetime: 2607.22 },
+          
+            { time: '2017-05-23 14:31:58', avgresponsetime: 693.83 },
+          
+            { time: '2017-05-23 14:32:23', avgresponsetime: 478.21 },
+          
+            { time: '2017-05-23 14:32:44', avgresponsetime: 1790.97 },
+          
+            { time: '2017-05-23 14:32:48', avgresponsetime: 364.62 },
+          
+            { time: '2017-05-23 14:32:58', avgresponsetime: 2110.23 },
+          
+            { time: '2017-05-23 14:33:03', avgresponsetime: 2244.01 },
+          
+            { time: '2017-05-23 14:33:06', avgresponsetime: 2788.01 },
+          
+            { time: '2017-05-23 14:33:13', avgresponsetime: 1856.62 },
+          
+            { time: '2017-05-23 14:33:18', avgresponsetime: 1158.88 },
+          
+            { time: '2017-05-23 14:33:24', avgresponsetime: 2922.07 },
+          
+            { time: '2017-05-23 14:33:26', avgresponsetime: 1674.43 },
+          
+            { time: '2017-05-23 14:33:37', avgresponsetime: 2772.86 },
+          
+            { time: '2017-05-23 14:33:43', avgresponsetime: 389.51 },
+          
+            { time: '2017-05-23 14:33:52', avgresponsetime: 461.4 }
+          
+      ],
+      xkey: 'time',
+      ykeys: ['avgresponsetime'],
+      labels: ['Avg. Response Time'],
+      lineColors: ['#800000'],
+      lineWidth: 1,
+      pointSize: 2,
+      hideHover: 'auto'
+      });
+      }
+    </script>
+    <script>
+      function drawPageResponseGraph() {
+        new Morris.Line({
+        element: 'pageres_',
+        data: [
+        
+              { time: '2017-05-23 14:29:22', resptime: 2 },
+            
+              { time: '2017-05-23 14:29:49', resptime: 3 },
+            
+              { time: '2017-05-23 14:31:28', resptime: 26 },
+            
+              { time: '2017-05-23 14:31:58', resptime: 25 },
+            
+              { time: '2017-05-23 14:32:23', resptime: 6 },
+            
+              { time: '2017-05-23 14:33:06', resptime: 24 },
+            
+              { time: '2017-05-23 14:33:43', resptime: 32 },
+            
+              { time: '2017-05-23 14:33:52', resptime: 6 }
+            
+        ],
+        xkey: 'time',
+        ykeys: ['resptime'],
+        labels: ['Avg. Response Time'],
+        lineColors: ['#2616D2'],
+        lineWidth: 1,
+        pointSize: 2,
+        hideHover: 'auto'
+        });
+      }
+    </script>
+    <br>
+    <br>
+    <table style="width: 875px;" cellpadding="10" cellspacing="0">
+      <tr>
+        <td class="graphheadingrow">
+          <b>Request Response Graph (ms)</b>
+        </td>
+        <td>
+        </td>
+        <td class="graphheadingrow">
+          <b>Error Graph</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="art_" class="graph">
+          </div>
+        </td>
+        <td style="width: 15px;">
+        </td>
+        <td>
+          <div id="error_" class="graph">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <script>
+      
+      
+      function drawErrorGraph() {
+        new Morris.Line({
+            element: 'error_',
+            data: [
+            
+            ],
+            xkey: 'time',
+            ykeys: ['errorcount'],
+            labels: ['Error Count'],
+            lineColors: ['#D21629'],
+            lineWidth: 1,
+            pointSize: 2,
+            hideHover: 'auto'
+        });
+      }
+    </script>
+    <script>
+      function drawVUserGraph() {
+        new Morris.Line({
+        element: 'vuser_',
+        data: [
+        
+              { time: '2017-05-23 14:29:20', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:21', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:22', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:23', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:24', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:25', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:26', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:27', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:28', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:29', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:30', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:31', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:32', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:33', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:34', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:35', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:36', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:37', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:38', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:39', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:40', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:41', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:42', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:43', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:44', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:45', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:46', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:47', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:48', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:49', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:50', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:51', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:52', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:53', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:54', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:55', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:56', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:57', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:58', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:29:59', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:00', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:01', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:02', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:03', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:04', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:05', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:06', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:07', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:08', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:09', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:10', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:11', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:12', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:13', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:14', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:15', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:16', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:17', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:18', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:19', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:20', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:21', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:22', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:23', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:24', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:25', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:26', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:27', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:28', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:29', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:30', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:31', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:32', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:33', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:34', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:35', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:36', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:37', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:38', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:39', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:40', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:41', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:42', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:43', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:44', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:45', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:46', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:47', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:48', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:49', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:50', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:51', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:52', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:53', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:54', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:55', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:56', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:57', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:58', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:30:59', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:00', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:01', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:02', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:03', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:04', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:05', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:06', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:07', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:08', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:09', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:10', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:11', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:12', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:13', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:14', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:15', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:16', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:17', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:18', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:19', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:20', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:21', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:22', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:23', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:24', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:25', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:26', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:27', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:28', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:29', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:30', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:31', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:32', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:33', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:34', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:35', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:36', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:37', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:38', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:39', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:40', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:41', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:42', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:43', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:44', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:45', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:46', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:47', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:48', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:49', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:50', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:51', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:52', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:53', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:54', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:55', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:56', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:57', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:58', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:31:59', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:00', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:01', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:02', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:03', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:04', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:05', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:06', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:07', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:08', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:09', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:10', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:11', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:12', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:13', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:14', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:15', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:16', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:17', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:18', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:19', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:20', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:21', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:22', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:23', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:24', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:25', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:26', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:27', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:28', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:29', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:30', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:31', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:32', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:33', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:34', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:35', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:36', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:37', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:38', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:39', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:40', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:41', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:42', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:43', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:44', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:45', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:46', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:47', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:48', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:49', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:50', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:51', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:52', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:53', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:54', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:55', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:56', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:57', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:58', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:32:59', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:00', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:01', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:02', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:03', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:04', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:05', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:06', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:07', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:08', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:09', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:10', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:11', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:12', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:13', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:14', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:15', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:16', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:17', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:18', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:19', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:20', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:21', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:22', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:23', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:24', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:25', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:26', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:27', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:28', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:29', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:30', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:31', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:32', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:33', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:34', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:35', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:36', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:37', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:38', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:39', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:40', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:41', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:42', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:43', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:44', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:45', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:46', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:47', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:48', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:49', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:50', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:51', vuserrunning: 1 },
+            
+              { time: '2017-05-23 14:33:52', vuserrunning: 0 },
+            
+              { time: '2017-05-23 14:33:53', vuserrunning: 0 },
+            
+              { time: '2017-05-23 14:33:54', vuserrunning: 0 },
+            
+              { time: '2017-05-23 14:33:55', vuserrunning: 0 },
+            
+              { time: '2017-05-23 14:33:56', vuserrunning: 0 },
+            
+              { time: '2017-05-23 14:33:57', vuserrunning: 0 },
+            
+              { time: '2017-05-23 14:33:58', vuserrunning: 0 },
+            
+              { time: '2017-05-23 14:33:59', vuserrunning: 0 },
+            
+              { time: '2017-05-23 14:34:00', vuserrunning: 0 },
+            
+              { time: '2017-05-23 14:34:01', vuserrunning: 0 },
+            
+              { time: '2017-05-23 14:34:02', vuserrunning: 0 },
+            
+              { time: '2017-05-23 14:34:03', vuserrunning: 0 },
+            
+              { time: '2017-05-23 14:34:04', vuserrunning: 0 },
+            
+              { time: '2017-05-23 14:34:05', vuserrunning: 0 },
+            
+              { time: '2017-05-23 14:34:06', vuserrunning: 0 }
+            
+        ],
+        xkey: 'time',
+        ykeys: ['vuserrunning'],
+        labels: ['VUsers Running'],
+        lineColors: ['#B22222'],
+        lineWidth: 1,
+        pointSize: 2,
+        hideHover: 'auto'
+        });
+      }
+    </script>
+    <br>
+    <span>
+            Script Name: <b>google.com</b></span>
+    <br>
+    <h4> Settings</h4>
+    <table border="1" cellspacing="0" cellpadding="3">
+      <tr>
+        <td style="width: 160px;">
+          <b>Browser Cache</b>
+        </td>
+        <td style="width: 100px;">false</td>
+        <td style="width: 160px;">
+          <b>Replay Think Time</b>
+        </td>
+        <td style="width: 100px;">true</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Bandwidth</b>
+        </td>
+        <td>Full Speed</td>
+        <td>
+          <b>Parallel Connections</b>
+        </td>
+        <td style="text-align:right">6</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Start User Count</b>
+        </td>
+        <td style="text-align:right">1</td>
+        <td>
+          <b>Max Users</b>
+        </td>
+        <td style="text-align:right">1</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Mode</b>
+        </td>
+        <td>Duration</td>
+        <td>
+          <b>Duration</b>
+        </td>
+        <td style="text-align:right;">0:5:0</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Increment User</b>
+        </td>
+        <td style="text-align:right">1</td>
+        <td>
+          <b>Increment Time</b>
+        </td>
+        <td style="text-align:right">0:0:0</td>
+      </tr>
+    </table>
+    <h4> Request response</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Containername</th>
+        <th>Address</th>
+        <th>Hit Count</th>
+        <th>Throughput(Byte)</th>
+        <th>Min(ms)</th>
+        <th>Max(ms)</th>
+        <th>Avg(ms)</th>
+        <th>Min TTFB(ms)</th>
+        <th>Max TTFB(ms)</th>
+        <th>Avg TTFB(ms)</th>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/</td>
+        <td style="text-align:right">5</td>
+        <td style="text-align:right">1301</td>
+        <td style="text-align:right">1856.623</td>
+        <td style="text-align:right">3097.703</td>
+        <td style="text-align:right">2603.917</td>
+        <td style="text-align:right">1856.337</td>
+        <td style="text-align:right">3097.411</td>
+        <td style="text-align:right">2603.659</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/</td>
+        <td style="text-align:right">13</td>
+        <td style="text-align:right">3601</td>
+        <td style="text-align:right">247.163</td>
+        <td style="text-align:right">3238.122</td>
+        <td style="text-align:right">2105.115</td>
+        <td style="text-align:right">246.901</td>
+        <td style="text-align:right">3237.869</td>
+        <td style="text-align:right">2104.889</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/</td>
+        <td style="text-align:right">12</td>
+        <td style="text-align:right">2454064</td>
+        <td style="text-align:right">756.941</td>
+        <td style="text-align:right">3456.734</td>
+        <td style="text-align:right">2459.454</td>
+        <td style="text-align:right">381.639</td>
+        <td style="text-align:right">3117.075</td>
+        <td style="text-align:right">2103.416</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/images/branding/product/ico/googleg_lodp.ico</td>
+        <td style="text-align:right">12</td>
+        <td style="text-align:right">92280</td>
+        <td style="text-align:right">126.411</td>
+        <td style="text-align:right">164.019</td>
+        <td style="text-align:right">147.224</td>
+        <td style="text-align:right">125.847</td>
+        <td style="text-align:right">163.556</td>
+        <td style="text-align:right">146.662</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">11</td>
+        <td style="text-align:right">15660</td>
+        <td style="text-align:right">175.735</td>
+        <td style="text-align:right">286.291</td>
+        <td style="text-align:right">213.119</td>
+        <td style="text-align:right">170.934</td>
+        <td style="text-align:right">282.772</td>
+        <td style="text-align:right">211.776</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">11</td>
+        <td style="text-align:right">15928</td>
+        <td style="text-align:right">164.162</td>
+        <td style="text-align:right">459.900</td>
+        <td style="text-align:right">229.801</td>
+        <td style="text-align:right">163.965</td>
+        <td style="text-align:right">459.717</td>
+        <td style="text-align:right">228.942</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">11</td>
+        <td style="text-align:right">15598</td>
+        <td style="text-align:right">164.038</td>
+        <td style="text-align:right">307.456</td>
+        <td style="text-align:right">206.862</td>
+        <td style="text-align:right">163.913</td>
+        <td style="text-align:right">307.132</td>
+        <td style="text-align:right">205.501</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">9</td>
+        <td style="text-align:right">13122</td>
+        <td style="text-align:right">146.756</td>
+        <td style="text-align:right">219.485</td>
+        <td style="text-align:right">179.158</td>
+        <td style="text-align:right">146.578</td>
+        <td style="text-align:right">219.250</td>
+        <td style="text-align:right">178.683</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">9</td>
+        <td style="text-align:right">13118</td>
+        <td style="text-align:right">164.513</td>
+        <td style="text-align:right">268.052</td>
+        <td style="text-align:right">191.694</td>
+        <td style="text-align:right">164.386</td>
+        <td style="text-align:right">267.705</td>
+        <td style="text-align:right">191.396</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">7</td>
+        <td style="text-align:right">9864</td>
+        <td style="text-align:right">157.919</td>
+        <td style="text-align:right">214.938</td>
+        <td style="text-align:right">179.298</td>
+        <td style="text-align:right">157.735</td>
+        <td style="text-align:right">211.229</td>
+        <td style="text-align:right">178.593</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">8</td>
+        <td style="text-align:right">19504</td>
+        <td style="text-align:right">156.345</td>
+        <td style="text-align:right">357.060</td>
+        <td style="text-align:right">219.175</td>
+        <td style="text-align:right">156.152</td>
+        <td style="text-align:right">356.879</td>
+        <td style="text-align:right">217.541</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">8</td>
+        <td style="text-align:right">11520</td>
+        <td style="text-align:right">151.127</td>
+        <td style="text-align:right">205.438</td>
+        <td style="text-align:right">179.016</td>
+        <td style="text-align:right">150.811</td>
+        <td style="text-align:right">204.799</td>
+        <td style="text-align:right">178.738</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">6</td>
+        <td style="text-align:right">8672</td>
+        <td style="text-align:right">152.368</td>
+        <td style="text-align:right">226.405</td>
+        <td style="text-align:right">190.979</td>
+        <td style="text-align:right">152.153</td>
+        <td style="text-align:right">225.943</td>
+        <td style="text-align:right">190.323</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">5</td>
+        <td style="text-align:right">7370</td>
+        <td style="text-align:right">159.771</td>
+        <td style="text-align:right">210.085</td>
+        <td style="text-align:right">186.889</td>
+        <td style="text-align:right">159.453</td>
+        <td style="text-align:right">209.969</td>
+        <td style="text-align:right">184.046</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">4</td>
+        <td style="text-align:right">5896</td>
+        <td style="text-align:right">170.712</td>
+        <td style="text-align:right">213.106</td>
+        <td style="text-align:right">192.738</td>
+        <td style="text-align:right">170.484</td>
+        <td style="text-align:right">212.923</td>
+        <td style="text-align:right">192.450</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/search</td>
+        <td style="text-align:right">2</td>
+        <td style="text-align:right">331142</td>
+        <td style="text-align:right">651.054</td>
+        <td style="text-align:right">747.111</td>
+        <td style="text-align:right">699.083</td>
+        <td style="text-align:right">233.403</td>
+        <td style="text-align:right">237.728</td>
+        <td style="text-align:right">235.565</td>
+      </tr>
+    </table>
+    <h4> Container response</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Containername</th>
+        <th>Min(ms)</th>
+        <th>Max(ms)</th>
+        <th>Avg(ms)</th>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td style="text-align:right">1660.548</td>
+        <td style="text-align:right">10632.244</td>
+        <td style="text-align:right">5951.813</td>
+      </tr>
+    </table>
+    <h4> Transactions response</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Transaction Name</th>
+        <th>Min(ms)</th>
+        <th>Max(ms)</th>
+        <th>Avg(ms)</th>
+      </tr>
+    </table>
+    <br>
+    <table style="width: 475px;" cellpadding="10" cellspacing="0">
+      <tr>
+        <td class="graphheadingrow">
+          <b>Transaction Graph</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="transactions_548831277" class="graph">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <script>
+      function drawTransactionGraph_548831277() {
+        new Morris.Bar({
+		    barSizeRatio:0.40,
+        element: 'transactions_548831277',
+        data: [
+        
+        ],
+        xkey: 'transaction',
+        ykeys: ['min', 'max', 'avg'],
+        labels: ['Min', 'Max', 'Avg.'],
+        barColors: ['#373BF0', '#68D216', '#D26B16'],
+        hideHover: 'auto'
+        });
+      }
+    </script>
+    <h4>Error count</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Containername</th>
+        <th>Address</th>
+        <th>Count</th>
+      </tr>
+    </table>
+    <h4>Error Description</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Errorcode</th>
+        <th>Message</th>
+        <th>Count</th>
+      </tr>
+    </table>
+    <br>
+  </body>
+</html>

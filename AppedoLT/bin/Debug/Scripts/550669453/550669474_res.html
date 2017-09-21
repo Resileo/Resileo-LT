@@ -1,0 +1,533 @@
+<html><head><title>Object moved</title></head><body>
+<h2>Object moved to <a href="/rcomm/Flight/SearchFlight.aspx">here</a>.</h2>
+</body></html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	
+        Trip Midas
+</title><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Optimizer_Themes/css/Default/v-636283003788495472/InterserveStyle.css" type="text/css" />
+    <link rel="shortcut icon" href="Optimizer_Themes/images/v-636283003810251474/favicon.ico" type="image/x-icon" />
+    <link href="Optimizer_Themes/css/Default/v-636283003788875763/coin-slider-styles.css" rel="stylesheet"
+        type="text/css" />
+    <link href="Optimizer_Themes/css/Default/v-636283003788365387/CBTColors.css" rel="Stylesheet" />
+    <script type="text/javascript">
+        function WaterMark(txt, txtName, event) {
+            var defaultText = txt;
+            txtName.style.color = "Gray";
+
+            if (txtName.value.length == 0 & event.type == "blur") {
+                txtName.value = defaultText;
+            }
+            if (txtName.value == defaultText & event.type == "focus") {
+                txtName.value = "";
+            }
+
+        }
+
+        function CreateSliderImg(list) {
+            var imgs = "";
+
+            $.each(list, function (i, img) {
+                imgs = imgs + "<img src='../../UserResources/Advt_login/" + img + "' alt=' ' width='800px'  height='400px' />";
+            });
+            // $("#adslides").append(imgs);
+            $("#carousel").append(imgs);
+        }
+    </script>
+
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            min-height: 500px;
+            background-color: #fff;
+
+        }
+
+            body * {
+                font-family: sans-serif, Geneva, SunSans-Regular, sans-serif;
+                color: #333;
+                line-height: 16px;
+                    margin-top: -3px;
+                        /*border-radius: 6px*/;
+            }
+
+        #wrapper {
+            width: 1300px;
+            height: 400px;
+            /*margin: -200px 0 0 -650px;
+				position: absolute;
+				top: 50%;
+				left: 50%;*/
+        }
+
+        #carousel img {
+            display: block;
+            float: left;
+            border: none;
+            position: relative;
+            /*box-shadow: 0 0 10px rgba( 0, 0, 0, 0.3 );*/
+        }
+
+        #prev,
+        #next {
+            /*background: #ccc;*/
+            color: #fff;
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            text-shadow: 0 1px 2px rgba( 0, 0, 0, 0.6 );
+            line-height: 26px;
+            display: block;
+            width: 30px;
+            height: 30px;
+            margin-top: -15px;
+            position: absolute;
+            top: 50%;
+            z-index: 0;
+        }
+
+        #prev {
+            left: 0;
+        }
+
+        #next {
+            right: 0;
+        }
+
+            #prev:hover,
+            #next:hover {
+                background: #bbb;
+            }
+            .styleCust{
+             margin: 0 0 0 175px;
+              color:#000;
+              text-decoration:none;
+              font-size: 12px;
+            }
+            .Cust
+            {
+                margin-top:2px;
+            }
+    </style>
+</head>
+
+<body class="adpanel">
+
+    <form name="form1" method="post" action="./bbl.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="form1">
+<div>
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="ToolkitScriptManager1_HiddenField" id="ToolkitScriptManager1_HiddenField" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTIwMjMwMTY3ODAPZBYEAgMPZBYIAgEPZBYEAgEPZBYGAgEPD2QWAh4MYXV0b2NvbXBsZXRlBQNvZmZkAgMPD2QWAh8ABQNvZmZkAgkPDxYCHgRUZXh0ZWRkAgMPZBYGAgEPD2QWAh8ABQNvZmZkAgMPDxYEHwFlHgdWaXNpYmxlaGRkAgcPD2QWAh4Hb25jbGljawWvAWlmICh0eXBlb2YoUGFnZV9DbGllbnRWYWxpZGF0ZSkgPT0gJ2Z1bmN0aW9uJykge2lmIChQYWdlX0NsaWVudFZhbGlkYXRlKCkgPT0gZmFsc2UpIHsgcmV0dXJuIGZhbHNlOyB9fSB0aGlzLnZhbHVlID0gJ3dhaXQuLi4nO3RoaXMuZGlzYWJsZWQgPSB0cnVlO19fZG9Qb3N0QmFjaygnY2NCdG5MTjQnLCcnKTtkAgIPFgIeBXN0eWxlBRhkaXNwbGF5OmJsb2NrICFpbXBvcnRhbnRkAgQPDxYGHgtOYXZpZ2F0ZVVybAUZaHR0cDovL3d3dy50cmlwbWlkYXMuY29tLx4GVGFyZ2V0BQZfYmxhbmsfAQUKVHJpcCBNaWRhc2RkAgUPDxYCHwJoZGQCBA8VASlodHRwczovL2FnZW50cy50cmF2ZWxsZXJzcGFzcy5jb20vUG9saWN5L2RkvluRCOXCxcKKgKd7MonWWw04KdysC7btAFnQuhcoMCw=" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/4.6/1/WebForms.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+window.WebForm_PostBackOptions||document.write('<script type="text/javascript" src="/WebResource.axd?d=1LHUCuf_NVGgN2VwmrDO7yjhvhmzvzZguJ2XR4z-4NKP8oIsbNSi_6bY2feXspq89E3-BATmC8DLGzE28_G8FIsnuC3ohOA-CXP1eG7twsg1&amp;t=636161042560000000"><\/script>');//]]>
+</script>
+
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/4.6/1/WebUIValidation.js" type="text/javascript"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/4.6/1/MicrosoftAjax.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+(window.Sys && Sys._Application && Sys.Observer)||document.write('<script type="text/javascript" src="/ScriptResource.axd?d=Y6Wz86SI7OyIreV-nrlfvu4J115jFKbPaM54iLsNBc3wkrc4vI5xqOPUICxznnkbDuGG0GDcg6-8KB5kmo9pDaFF8QKu-q39jiiKJnEMDCTW88kHZgWyciN019anb40GLU_0WPj-3_R1Dm46L4qbZCbjO5j3O-rWvhyY0iIT8B01&t=2a48f442"><\/script>');//]]>
+</script>
+
+<script src="https://ajax.aspnetcdn.com/ajax/4.6/1/MicrosoftAjaxWebForms.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+(window.Sys && Sys.WebForms)||document.write('<script type="text/javascript" src="/ScriptResource.axd?d=iUmeaZEQsf1mt1NCPaNqMKdIEblvhk1zfCCOXWmr8wUHkSHssI7fD3WFl04KGi1Vjj08huGKovbfVvAx5w_zDyii_TpXvpN0gTeYzRhvnxjUIxw27hBOq00Y5xhwc9jfpsqCeowOm5xl66DJfK7b32NjLBdPUxzfQ5HAAiEYEAdAHW0BGzYKBExSyDowBjQQ0&t=2a48f442"><\/script>');//]]>
+</script>
+
+<script src="https://ajax.aspnetcdn.com/ajax/4.6/1/Focus.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="4ACE71A8" />
+</div>
+        
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ToolkitScriptManager1', 'form1', [], [], [], 90, '');
+//]]>
+</script>
+
+        
+               
+            <div style=" margin-top: 150px;">
+            
+
+            
+            
+            
+
+            
+            <div id="div3" class="login_box">
+                <div class="midcontainer_login" style="background-image:url(Admin_Themes/img/Login_images/Login_tripmidas.png);background-size:490px;overflow:visible;">
+                    
+                    <div class="rightpanel">
+                        <div class="main_view">
+                            <div class="window">
+                            </div>
+                        </div>
+                        <div class="logindiv">
+                            <input type="hidden" name="hfChildWindow" id="hfChildWindow" value="0">
+                            <div class="loginpanel">
+                                <div id="UpdatePanel1">
+                                    <div class="panelcntnt">
+                                        <div class="newfnt" style="padding-left: 92px;font-size: 25px;padding-top: 5px;color: #353737;height: 46px;margin-left: 48px; margin-top: 201px;font-weight: 500;">
+                                            TravellersPass
+                                        </div>
+                                        <div id="div1">
+                                            
+                                            <div class="formsdiv_outsd">
+                                                
+                                                <div class="formsdiv">
+                                                    <div class="forms">
+                                                      
+                                                    </div>
+                                                    <div class="forms">
+                                                     
+                                                        <label>
+                                                            
+                                                            
+                                                            <input name="ccTxtUN" type="text" value="salaimani" id="ccTxtUN" class="forms21" onblur="WaterMark(&#39;Username&#39;,this, event);" onfocus="WaterMark(&#39;Username&#39;,this, event);" autocomplete="off" style="color: gray;background-color: #fbed1d!important;" />
+                                                            
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="formsdiv" style="border: 1px solid grey;
+    margin-top: 41px;
+    position: relative;
+    width: 172px;
+    margin-left: 137px;">
+                                                    <div class="forms">
+                                                    
+                                                    </div>
+                                                    <div class="forms">
+                                                        
+                                                        <label>
+                                                            
+                                                            <input name="ccTxtPW" type="password" id="ccTxtPW" class="forms22" onblur="WaterMark(&#39;.................&#39;,this, event);" onfocus="WaterMark(&#39;.................&#39;,this, event);" autocomplete="off" style="color: gray;background-color: #fbed1d!important;" />
+                                                        </label>
+                                                    
+                                                </div>
+                                                    </div>
+                                                <div class="formsdiv">
+                                                    <div class="chkformcontent">
+                                                        <a id="ccLnkUnable" class="clr" href="javascript:__doPostBack(&#39;ccLnkUnable&#39;,&#39;&#39;)">FORGOT PASSWORD</a>
+                                                    </div>
+                                                    <div class="chkform" style="margin-top: -100px;">
+                                                        
+                                                        <input type="submit" name="ccBtnLn" value="LOGIN" id="ccBtnLn" class="login" style="height: 34px;width: 195px;border-radius: 6px;" />
+                                                    </div>
+                                                     <div class="Cust">
+                                                     <a href="ctcomm/Security/Clogin.aspx" style="color:#ed2553;"" class="styleCust">CUSTOMER LOGIN</a>
+                                                       </div>
+                                                </div>
+                                            </div>
+                                            <div class="chkformcontent dispnone">
+                                            </div>
+                                            <div class="chkformerrors" style="padding-top: 9px;">
+                                                <span id="lblMsg"></span>
+                                            </div>
+                                        </div>
+                                        <div id="div2" class="formsdiv_outsd" style="margin-top: 10px; display: none">
+                                            <div>
+                                                <div style="text-align:right; margin-top: 10px;">
+                                                    Enter your registered username
+                                                </div>
+                                                <br />
+                                                <div>
+                                                    <input name="ccTxtPW3" type="text" id="ccTxtPW3" class="forms2" autocomplete="off" style="height: 27px; background-color: #fbed1d;border-radius: 6px; width: 180px;" />&nbsp;
+                         <div class="chkformerrors" style="text-align: left;     margin-left: -100px;">
+                             
+                         </div>
+                                                    <div class="chkformerrors" style="text-align: left;        margin-left: -160px;">
+                                                        <span id="ccVal3" title="Please enter your username" style="color:Red;visibility:hidden;">* Please enter your username</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="chkform" style="margin-left: 115px;">
+                                                <input type="submit" name="ccBtnLN4" value="Submit" onclick="_ClearMsg();if (typeof(Page_ClientValidate) == &#39;function&#39;) {if (Page_ClientValidate() == false) { return false; }} this.value = &#39;wait...&#39;;this.disabled = true;__doPostBack(&#39;ccBtnLN4&#39;,&#39;&#39;);WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ccBtnLN4&quot;, &quot;&quot;, true, &quot;Email&quot;, &quot;&quot;, false, false))" id="ccBtnLN4" class="login" style=" margin-top: 23px;" />
+                                                <input type="submit" name="ccBtnCancel" value="Cancel" id="ccBtnCancel" class="login" />
+                                            </div>
+                                            <div class="chkform" style="margin-left: 32px;     margin-top: 76px;">
+                                                <i>Note : Please enter the username that you have given earlier to create your account.</i>
+                                            </div>
+                                            <div class="chkformerrors" style="display: none;">
+                                                <div id="valSum" style="color:Red;display:none;">
+
+</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+<div id="div44" style="display:block !important">
+
+            <div class="ad_box" style="display: none">
+
+                <div class="adbx">
+
+                    <div id="wrapper">
+                        <div id="carousel">
+                            
+                        </div>
+
+                    </div>
+                    <a id="prev" href="#">&lsaquo;</a>
+                    <a id="next" href="#">&rsaquo;</a>
+
+                    <!-- Jssor Slider Begin -->
+                    <!-- To move inline styles to css file/block, please specify a class name for each element. -->
+                    
+                    
+                    
+                </div>
+
+                <!--#region Arrow Navigator Skin Begin -->
+
+
+                <!-- Arrow Left -->
+
+                
+
+                <!-- Arrow Right -->
+
+                
+                <!--#endregion Arrow Navigator Skin End -->
+                
+                <!-- Trigger -->
+
+
+                
+
+                <!-- Jssor Slider End -->
+
+
+
+
+
+                
+                
+                
+                
+            </div>
+    </div>
+            
+            <div class="ad_txt" style="margin-top: 115px;">
+                <div class="styletxt"></div>
+            </div>
+           
+             <div style="float: left; margin: auto; width: 100%; text-align: center; font-size: 11px; color: #fff;background:#333">
+                 <span id="Label1"></span>
+            <a id="hlkKolumbusWebsite" href="http://www.tripmidas.com/" target="_blank" style="color:White;">Trip Midas</a>
+                 
+                <br />
+                <span id="lblVersion">Version: 3.2.0.81</span>
+            </div>
+            <div>
+                <input type="hidden" name="hfChildWindow" id="hfChildWindow" value="0,0" />
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-1.8.2.min.js" type="text/javascript"></script>
+        <script src="Optimizer_Themes/scripts/coin-slider.min.js"></script>
+        
+        
+        <script src="Script/v-636283003851895684/Login.js" type="text/javascript"></script>
+
+        <script type="text/javascript" src="Script/jquery.carouFredSel-6.0.4-packed.js"></script>
+        
+        
+        <script type="text/javascript">
+            $(function () {
+                var _center = {
+                    width: 700,
+                    height: 400,
+                    marginLeft: 0,
+                    marginTop: 0,
+                    marginRight: 0
+                };
+                var _left = {
+                    width: 450,
+                    height: 280,
+                    marginLeft: 0,
+                    marginTop: 60,
+                    marginRight: -150
+                };
+                var _right = {
+                    width: 500,
+                    height: 280,
+                    marginLeft: -150,
+                    marginTop: 60,
+                    marginRight: 0
+                };
+                var _outLeft = {
+                    width: 150,
+                    height: 100,
+                    marginLeft: 150,
+                    marginTop: 200,
+                    marginRight: -200
+                };
+                var _outRight = {
+                    width: 150,
+                    height: 100,
+                    marginLeft: -200,
+                    marginTop: 200,
+                    marginRight: 50
+                };
+
+
+
+                $('#carousel').carouFredSel({
+                    width: 1300,
+                    height: 400,
+                    align: false,
+                    items: {
+                        visible: 3,
+                        width: 100
+                    },
+                    scroll: {
+                        items: 1,
+                        duration: 850,
+                        onBefore: function (data) {
+                            data.items.old.eq(0).animate(_outLeft);
+                            data.items.visible.eq(0).animate(_left);
+                            data.items.visible.eq(1).animate(_center);
+                            data.items.visible.eq(2).animate(_right).css({ zIndex: 1 });
+                            data.items.visible.eq(2).next().css(_outRight).css({ zIndex: 0 });
+
+                            setTimeout(function () {
+                                data.items.old.eq(0).css({ zIndex: 1 });
+                                data.items.visible.eq(0).css({ zIndex: 2 });
+                                data.items.visible.eq(1).css({ zIndex: 3 });
+                                data.items.visible.eq(2).css({ zIndex: 2 });
+                            }, 200);
+
+                        }
+                    }
+                });
+                $('#carousel').children().eq(0).css(_left).css({ zIndex: 2 });
+                $('#carousel').children().eq(1).css(_center).css({ zIndex: 3 });
+                $('#carousel').children().eq(2).css(_right).css({ zIndex: 2 });
+                $('#carousel').children().eq(3).css(_outRight).css({ zIndex: 1 });
+
+
+            });
+
+
+        </script>
+
+        
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("valSum"));
+var Page_Validators =  new Array(document.getElementById("ccVal3"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ccVal3 = document.all ? document.all["ccVal3"] : document.getElementById("ccVal3");
+ccVal3.controltovalidate = "ccTxtPW3";
+ccVal3.errormessage = "Please enter your username";
+ccVal3.validationGroup = "Email";
+ccVal3.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ccVal3.initialvalue = "";
+var valSum = document.all ? document.all["valSum"] : document.getElementById("valSum");
+valSum.validationGroup = "Login";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+CreateSliderImg(["002.jpg","003.jpg","004.jpg","005.jpg","006.jpg","007.jpg","008.jpg","009.jpg","02_635865116288922908.jpg","1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","slide2_635809667179161358.jpg"]);jssor_slider1_starter('slider1_container');
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        
+(function(id) {
+    var e = document.getElementById(id);
+    if (e) {
+        e.dispose = function() {
+            Array.remove(Page_ValidationSummaries, document.getElementById(id));
+        }
+        e = null;
+    }
+})('valSum');
+WebForm_AutoFocus('ccTxtUN');
+document.getElementById('ccVal3').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ccVal3'));
+}
+//]]>
+</script>
+</form>
+</body>
+
+<script type="text/javascript">
+    var urlBase = "https://agents.travellerspass.com/Policy/";
+   
+</script>
+
+</html>

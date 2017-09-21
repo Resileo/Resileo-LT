@@ -1,0 +1,10 @@
+GET /qamdemo/images/spcg/report_bug_16x16.gif HTTP/1.1
+Host: demo-apps.appedo.com
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: https://demo-apps.appedo.com/qamdemo/css/Styles_50271.css
+Cookie: JSESSIONID=C63A1C249FD5CE2F76C155638566DDBD
+Connection: keep-alive
+

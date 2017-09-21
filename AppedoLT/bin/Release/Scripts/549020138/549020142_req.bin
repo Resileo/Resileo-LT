@@ -1,0 +1,9 @@
+GET / HTTP/1.1
+Host: www.google.com
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Cookie: SID=DQAAABcBAAAT-dvmtDXHijTL9P4qKax3zxDNP6K2g37LDmYHn2zCyXJn7Ad2qZM2Y5UKuMdfUo8yt2o6dAdR6rnCxMVKo-SUEvWF4FvGOLDwGVZHL_EP5Qc2OV6snbI8YdDhyZvSy2fp_rtbZqU4F2JRs9ivXUN3O4sieg6upXWL-K07PRaD-LJKKIOO64a8Mrg__8-ysTEXm5Io4Ip0CyH8YzvjapUyVbver8Pmval_XkGOtDVPqTUCMp2llHBH97pDnX8DXKmDpG_e5qkhP9fk6BLuYZB999HaenPuKMSe3qxNw1QMtbEYbz-UJqkh4fKpoXfm3_UWGzHl710mt-HwsTMcCSNCnQ_8x-VlATty-p58jzPxSljzeKEFajuWNYQErEdAsaw; HSID=ATuvwueDr4KLWDf5-; APISID=ZujdbOPjW0UFekf5/ADVW4r-FdaV3gruaK
+Connection: keep-alive
+

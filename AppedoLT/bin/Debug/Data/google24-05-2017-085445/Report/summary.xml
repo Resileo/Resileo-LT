@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<report reportname="google24-05-2017-085445">
+  <summaryreport>
+    <val starttime="24-05-2017 08:58:20" endtime="24-05-2017 08:59:42" durationsec="0" usercount="1" totalhits="1" avgresponse="82.0743006" avghits="0" totalthroughput="0.204" avgthroughput="0" totalerrors="0" totalpage="1" avgpageresponse="82.0743006" reponse200="1" reponse300="0" reponse400="0" reponse500="0" />
+  </summaryreport>
+  <log />
+  <error />
+  <graphs>
+    <val gmttime="1495596582" localtime="2017-05-24 08:59:42" gmt="2017-05-24 03:29:42" hitpersec="0.2" totalkb="208.39" kbps="41.68" avgresponsetime="82074.3" />
+  </graphs>
+  <errorgraph />
+  <pageresponsegraph>
+    <val endtime="1495596582" localtime="2017-05-24 08:59:42" resptime="82" />
+  </pageresponsegraph>
+  <vuserrungraph>
+    <val gmt="1495596500" localtime="2017-05-24 08:58:20" vusercnt="1" vuserrunning="1" />
+    <val gmt="1495596501" localtime="2017-05-24 08:58:21" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596502" localtime="2017-05-24 08:58:22" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596503" localtime="2017-05-24 08:58:23" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596504" localtime="2017-05-24 08:58:24" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596505" localtime="2017-05-24 08:58:25" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596506" localtime="2017-05-24 08:58:26" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596507" localtime="2017-05-24 08:58:27" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596508" localtime="2017-05-24 08:58:28" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596509" localtime="2017-05-24 08:58:29" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596510" localtime="2017-05-24 08:58:30" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596511" localtime="2017-05-24 08:58:31" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596512" localtime="2017-05-24 08:58:32" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596513" localtime="2017-05-24 08:58:33" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596514" localtime="2017-05-24 08:58:34" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596515" localtime="2017-05-24 08:58:35" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596516" localtime="2017-05-24 08:58:36" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596517" localtime="2017-05-24 08:58:37" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596518" localtime="2017-05-24 08:58:38" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596519" localtime="2017-05-24 08:58:39" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596520" localtime="2017-05-24 08:58:40" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596521" localtime="2017-05-24 08:58:41" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596522" localtime="2017-05-24 08:58:42" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596523" localtime="2017-05-24 08:58:43" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596524" localtime="2017-05-24 08:58:44" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596525" localtime="2017-05-24 08:58:45" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596526" localtime="2017-05-24 08:58:46" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596527" localtime="2017-05-24 08:58:47" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596528" localtime="2017-05-24 08:58:48" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596529" localtime="2017-05-24 08:58:49" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596530" localtime="2017-05-24 08:58:50" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596531" localtime="2017-05-24 08:58:51" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596532" localtime="2017-05-24 08:58:52" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596533" localtime="2017-05-24 08:58:53" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596534" localtime="2017-05-24 08:58:54" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596535" localtime="2017-05-24 08:58:55" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596536" localtime="2017-05-24 08:58:56" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596537" localtime="2017-05-24 08:58:57" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596538" localtime="2017-05-24 08:58:58" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596539" localtime="2017-05-24 08:58:59" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596540" localtime="2017-05-24 08:59:00" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596541" localtime="2017-05-24 08:59:01" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596542" localtime="2017-05-24 08:59:02" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596543" localtime="2017-05-24 08:59:03" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596544" localtime="2017-05-24 08:59:04" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596545" localtime="2017-05-24 08:59:05" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596546" localtime="2017-05-24 08:59:06" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596547" localtime="2017-05-24 08:59:07" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596548" localtime="2017-05-24 08:59:08" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596549" localtime="2017-05-24 08:59:09" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596550" localtime="2017-05-24 08:59:10" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596551" localtime="2017-05-24 08:59:11" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596552" localtime="2017-05-24 08:59:12" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596553" localtime="2017-05-24 08:59:13" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596554" localtime="2017-05-24 08:59:14" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596555" localtime="2017-05-24 08:59:15" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596556" localtime="2017-05-24 08:59:16" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596557" localtime="2017-05-24 08:59:17" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596558" localtime="2017-05-24 08:59:18" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596559" localtime="2017-05-24 08:59:19" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596560" localtime="2017-05-24 08:59:20" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596561" localtime="2017-05-24 08:59:21" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596562" localtime="2017-05-24 08:59:22" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596563" localtime="2017-05-24 08:59:23" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596564" localtime="2017-05-24 08:59:24" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596565" localtime="2017-05-24 08:59:25" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596566" localtime="2017-05-24 08:59:26" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596567" localtime="2017-05-24 08:59:27" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596568" localtime="2017-05-24 08:59:28" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596569" localtime="2017-05-24 08:59:29" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596570" localtime="2017-05-24 08:59:30" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596571" localtime="2017-05-24 08:59:31" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596572" localtime="2017-05-24 08:59:32" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596573" localtime="2017-05-24 08:59:33" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596574" localtime="2017-05-24 08:59:34" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596575" localtime="2017-05-24 08:59:35" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596576" localtime="2017-05-24 08:59:36" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596577" localtime="2017-05-24 08:59:37" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596578" localtime="2017-05-24 08:59:38" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596579" localtime="2017-05-24 08:59:39" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596580" localtime="2017-05-24 08:59:40" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596581" localtime="2017-05-24 08:59:41" vusercnt="" vuserrunning="1" />
+    <val gmt="1495596582" localtime="2017-05-24 08:59:42" vusercnt="-1" vuserrunning="0" />
+    <val gmt="1495596583" localtime="2017-05-24 08:59:43" vusercnt="" vuserrunning="0" />
+    <val gmt="1495596584" localtime="2017-05-24 08:59:44" vusercnt="" vuserrunning="0" />
+    <val gmt="1495596585" localtime="2017-05-24 08:59:45" vusercnt="" vuserrunning="0" />
+    <val gmt="1495596586" localtime="2017-05-24 08:59:46" vusercnt="" vuserrunning="0" />
+    <val gmt="1495596587" localtime="2017-05-24 08:59:47" vusercnt="" vuserrunning="0" />
+    <val gmt="1495596588" localtime="2017-05-24 08:59:48" vusercnt="" vuserrunning="0" />
+    <val gmt="1495596589" localtime="2017-05-24 08:59:49" vusercnt="" vuserrunning="0" />
+    <val gmt="1495596590" localtime="2017-05-24 08:59:50" vusercnt="" vuserrunning="0" />
+    <val gmt="1495596591" localtime="2017-05-24 08:59:51" vusercnt="" vuserrunning="0" />
+    <val gmt="1495596592" localtime="2017-05-24 08:59:52" vusercnt="" vuserrunning="0" />
+    <val gmt="1495596593" localtime="2017-05-24 08:59:53" vusercnt="" vuserrunning="0" />
+    <val gmt="1495596594" localtime="2017-05-24 08:59:54" vusercnt="" vuserrunning="0" />
+    <val gmt="1495596595" localtime="2017-05-24 08:59:55" vusercnt="" vuserrunning="0" />
+    <val gmt="1495596596" localtime="2017-05-24 08:59:56" vusercnt="" vuserrunning="0" />
+  </vuserrungraph>
+  <script name="google.com" id="548831277">
+    <settings>
+      <val type="Duration" durationTime="0:5:0" iterations="4" incrementUser="1" incrementTime="0:0:0" maxUser="1" browserCache="false" startUserId="1" replayThinkTime="true" bandwidth="Full Speed" enableparallelcon="false" parallelconnections="6" />
+    </settings>
+    <requests>
+      <val containerid="548831279" containername="Actions" requestid="548831308" address="/search" />
+    </requests>
+    <requestresponse>
+      <val containerid="548831279" containername="Actions" requestid="548831308" address="/search" min="82074.3006" max="82074.3006" avg="82074.3006" throughput="213389" hitcount="1" minttfb="82067.7519" maxttfb="82067.7519" avgttfb="82067.7519" />
+    </requestresponse>
+    <containerresponse>
+      <val containerid="548831279" containername="Actions" min="82074.3006" max="82074.3006" avg="82074.3006" />
+    </containerresponse>
+    <errorcount />
+    <errorcode />
+    <transactions />
+  </script>
+</report>

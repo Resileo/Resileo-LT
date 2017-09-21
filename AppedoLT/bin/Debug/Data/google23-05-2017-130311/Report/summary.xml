@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<report reportname="google23-05-2017-130311">
+  <summaryreport>
+    <val starttime="23-05-2017 13:03:39" endtime="23-05-2017 13:03:41" durationsec="1" usercount="1" totalhits="3" avgresponse="0.342052033333333" avghits="3" totalthroughput="0.176" avgthroughput="1.40753173828125" totalerrors="0" totalpage="1" avgpageresponse="1.0261561" reponse200="3" reponse300="0" reponse400="0" reponse500="0" />
+  </summaryreport>
+  <log />
+  <error />
+  <graphs>
+    <val gmttime="1495524821" localtime="2017-05-23 13:03:41" gmt="2017-05-23 07:33:41" hitpersec="0.6" totalkb="180.16" kbps="36.03" avgresponsetime="342.05" />
+  </graphs>
+  <errorgraph />
+  <pageresponsegraph>
+    <val endtime="1495524821" localtime="2017-05-23 13:03:41" resptime="2" />
+  </pageresponsegraph>
+  <vuserrungraph>
+    <val gmt="1495524819" localtime="2017-05-23 13:03:39" vusercnt="1" vuserrunning="1" />
+    <val gmt="1495524820" localtime="2017-05-23 13:03:40" vusercnt="" vuserrunning="1" />
+    <val gmt="1495524821" localtime="2017-05-23 13:03:41" vusercnt="-1" vuserrunning="0" />
+    <val gmt="1495524822" localtime="2017-05-23 13:03:42" vusercnt="" vuserrunning="0" />
+    <val gmt="1495524823" localtime="2017-05-23 13:03:43" vusercnt="" vuserrunning="0" />
+    <val gmt="1495524824" localtime="2017-05-23 13:03:44" vusercnt="" vuserrunning="0" />
+    <val gmt="1495524825" localtime="2017-05-23 13:03:45" vusercnt="" vuserrunning="0" />
+    <val gmt="1495524826" localtime="2017-05-23 13:03:46" vusercnt="" vuserrunning="0" />
+    <val gmt="1495524827" localtime="2017-05-23 13:03:47" vusercnt="" vuserrunning="0" />
+    <val gmt="1495524828" localtime="2017-05-23 13:03:48" vusercnt="" vuserrunning="0" />
+    <val gmt="1495524829" localtime="2017-05-23 13:03:49" vusercnt="" vuserrunning="0" />
+    <val gmt="1495524830" localtime="2017-05-23 13:03:50" vusercnt="" vuserrunning="0" />
+    <val gmt="1495524831" localtime="2017-05-23 13:03:51" vusercnt="" vuserrunning="0" />
+    <val gmt="1495524832" localtime="2017-05-23 13:03:52" vusercnt="" vuserrunning="0" />
+    <val gmt="1495524833" localtime="2017-05-23 13:03:53" vusercnt="" vuserrunning="0" />
+    <val gmt="1495524834" localtime="2017-05-23 13:03:54" vusercnt="" vuserrunning="0" />
+    <val gmt="1495524835" localtime="2017-05-23 13:03:55" vusercnt="" vuserrunning="0" />
+  </vuserrungraph>
+  <script name="google.com" id="548831277">
+    <settings>
+      <val type="Duration" durationTime="0:3:0" iterations="1" incrementUser="1" incrementTime="0:0:0" maxUser="1" browserCache="false" startUserId="1" replayThinkTime="true" bandwidth="Full Speed" enableparallelcon="false" parallelconnections="6" />
+    </settings>
+    <requests>
+      <val containerid="548831279" containername="Actions" requestid="548831306" address="/complete/search" />
+      <val containerid="548831279" containername="Actions" requestid="548831307" address="/complete/search" />
+      <val containerid="548831279" containername="Actions" requestid="548831308" address="/search" />
+    </requests>
+    <requestresponse>
+      <val containerid="548831279" containername="Actions" requestid="548831306" address="/complete/search" min="152.6002" max="152.6002" avg="152.6002" throughput="1474" hitcount="1" minttfb="152.2889" maxttfb="152.2889" avgttfb="152.2889" />
+      <val containerid="548831279" containername="Actions" requestid="548831307" address="/complete/search" min="191.725" max="191.725" avg="191.725" throughput="1474" hitcount="1" minttfb="177.2167" maxttfb="177.2167" avgttfb="177.2167" />
+      <val containerid="548831279" containername="Actions" requestid="548831308" address="/search" min="681.8309" max="681.8309" avg="681.8309" throughput="181540" hitcount="1" minttfb="412.3505" maxttfb="412.3505" avgttfb="412.3505" />
+    </requestresponse>
+    <containerresponse>
+      <val containerid="548831279" containername="Actions" min="1026.1561" max="1026.1561" avg="1026.1561" />
+    </containerresponse>
+    <errorcount />
+    <errorcode />
+    <transactions />
+  </script>
+</report>

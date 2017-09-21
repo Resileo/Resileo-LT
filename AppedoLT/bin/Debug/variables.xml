@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<variables>
+  <variable from="variablemanager" modified="636312164958510384" policy="eachoccurrence" name="myTest" type="file" location="E:\SriramanAppedoLTDesign\search.txt" vituallocation="\Variables\636312164958510384_search.txt" start="1" delimiter="," columns="search;search1" />
+  <variable from="variablemanager" modified="636317583630379793" policy="eachiteration" name="CurrentDate" type="currentdate" index="2" value="" dateformat="yyyy-MM-dd" />
+  <variable from="variablemanager" modified="636332840431034318" policy="eachiteration" name="tripmads_login" type="file" location="E:\ALLAN\APPEDO\APPEDO_BUILDS\APPEDOLT_CONTROLER_LOADGEN\16MARCH-IterationError_Cloud\AppedoLT\bin\Debug\Variables\tripmads_credentials.csv" vituallocation="\Variables\636332840431034318_tripmads_credentials.csv" start="1" delimiter="," columns="username;password" />
+  <variable from="variablemanager" modified="636332841427214092" policy="eachiteration" name="passenger_details" type="file" location="E:\ALLAN\APPEDO\APPEDO_BUILDS\APPEDOLT_CONTROLER_LOADGEN\16MARCH-IterationError_Cloud\AppedoLT\bin\Debug\Variables\passenger.csv" vituallocation="\Variables\636332841427214092_passenger.csv" start="1" delimiter="," columns="title;first;last;mobile;email" />
+  <variable from="variablemanager" modified="636332915872995063" policy="eachiteration" name="jsvariable" type="number" value="1" />
+  <variable from="variablemanager" modified="636332951325799167" policy="eachiteration" name="search_details" type="file" location="E:\ALLAN\APPEDO\APPEDO_BUILDS\APPEDOLT_CONTROLER_LOADGEN\16MARCH-IterationError_Cloud\AppedoLT\bin\Debug\Variables\search_details.csv" vituallocation="\Variables\636332951325799167_search_details.csv" start="1" delimiter=";" columns="source;date;destination;ltid" />
+</variables>

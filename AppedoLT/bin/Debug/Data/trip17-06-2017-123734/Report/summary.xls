@@ -1,0 +1,1490 @@
+﻿<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Appedo</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/appedo-16.ico">
+    <link rel="stylesheet" href="css/morris.css">
+    <script src="js/raphael-min.js">
+    </script>
+    <script src="js/jquery-1.8.2.min.js">
+    </script>
+    <script src="js/morris-0.4.1.min.js">
+    </script>
+    <script>
+          function drawCharts()
+          {
+            drawSummaryGraph();
+            drawErrorGraph();
+            drawPageResponseGraph();
+            drawVUserGraph();
+            
+              drawTransactionGraph_550669453();
+            
+          }        
+        </script>
+    <style>
+          body {
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          font-size: 14px;
+          line-height: 1.42857143;
+          color: #333;
+          background-color: #fff;
+          }
+
+          .graphheadingrow
+          {
+          text-align: center;
+          border-bottom: 1px solid #1b639e;
+          }
+
+          .graph
+          {
+          width: 400px; 
+          height: 250px;
+          padding: 25px;
+          }
+        </style>
+  </head>
+  <body onload="drawCharts();">
+    <h1 style="width:600px; padding-bottom: 6px; background-color:#31c0be; color:#FFFFFF; text-align: center;">Appedo</h1>
+    <span>
+      <b>Report Name:  </b>trip17-06-2017-123734</span>
+    <h4> Summary Report</h4>
+    <table border="1" cellspacing="0">
+      <tr>
+        <td style="bgcolor=#9acd32">
+          <b>Start Time</b>
+        </td>
+        <td style="text-align:right">17-06-2017 12:37:38</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>End Time</b>
+        </td>
+        <td style="text-align:right">17-06-2017 12:40:43</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Duration(sec)</b>
+        </td>
+        <td style="text-align:right">184</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>User Count</b>
+        </td>
+        <td style="text-align:right">1</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Total Hits</b>
+        </td>
+        <td style="text-align:right">36</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Request Response(sec)</b>
+        </td>
+        <td style="text-align:right">2.870</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Page Response(sec)</b>
+        </td>
+        <td style="text-align:right">7.948</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Hits/Sec</b>
+        </td>
+        <td style="text-align:right">.196</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b> Total Throughput(MB)</b>
+        </td>
+        <td style="text-align:right">4.332</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Throughput(Mbps)</b>
+        </td>
+        <td style="text-align:right">.188</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Total Errors</b>
+        </td>
+        <td style="text-align:right">3</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Total pages</b>
+        </td>
+        <td style="text-align:right">13</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 200 Count</b>
+        </td>
+        <td style="text-align:right">29</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 300 Count</b>
+        </td>
+        <td style="text-align:right">7</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 400 Count</b>
+        </td>
+        <td style="text-align:right">0</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 500 Count</b>
+        </td>
+        <td style="text-align:right">0</td>
+      </tr>
+    </table>
+    <h4> Graphs </h4>
+    <table style="width: 875px;" cellpadding="10" cellspacing="0">
+      <tr>
+        <td class="graphheadingrow">
+          <b>Virtual User Running Graph</b>
+        </td>
+        <td>
+        </td>
+        <td class="graphheadingrow">
+          <b>Hits per Sec Graph</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="vuser_" class="graph">
+          </div>
+        </td>
+        <td style="width: 15px;">
+        </td>
+        <td>
+          <div id="hps_" class="graph">
+          </div>
+        </td>
+      </tr>
+      <br>
+      <br>
+      <tr>
+        <td class="graphheadingrow">
+          <b>Throughput per Sec Graph (KBps)</b>
+        </td>
+        <td>
+        </td>
+        <td class="graphheadingrow">
+          <b>Page Response Time Graph (secs)</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="kbps_" style="width: 400px; height: 250px;">
+          </div>
+        </td>
+        <td>
+        </td>
+        <td>
+          <div id="pageres_" style="width: 400px; height: 250px;">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <script>
+      function drawSummaryGraph() {      
+      new Morris.Line({
+      element: 'hps_',
+      data: [
+      
+            { time: '2017-06-17 12:37:40', hitspersec: 1 },
+          
+            { time: '2017-06-17 12:37:49', hitspersec: 0.4 },
+          
+            { time: '2017-06-17 12:37:59', hitspersec: 1 },
+          
+            { time: '2017-06-17 12:38:04', hitspersec: 0.2 },
+          
+            { time: '2017-06-17 12:38:06', hitspersec: 0.2 },
+          
+            { time: '2017-06-17 12:38:13', hitspersec: 0.2 },
+          
+            { time: '2017-06-17 12:38:17', hitspersec: 0.4 },
+          
+            { time: '2017-06-17 12:38:58', hitspersec: 0.2 },
+          
+            { time: '2017-06-17 12:39:08', hitspersec: 0.6 },
+          
+            { time: '2017-06-17 12:39:14', hitspersec: 0.2 },
+          
+            { time: '2017-06-17 12:39:15', hitspersec: 0.2 },
+          
+            { time: '2017-06-17 12:39:24', hitspersec: 0.4 },
+          
+            { time: '2017-06-17 12:39:25', hitspersec: 0.2 },
+          
+            { time: '2017-06-17 12:39:34', hitspersec: 0.4 },
+          
+            { time: '2017-06-17 12:39:43', hitspersec: 0.6 },
+          
+            { time: '2017-06-17 12:40:43', hitspersec: 1 }
+          
+      ],
+      xkey: 'time',
+      ykeys: ['hitspersec'],
+      labels: ['Hits per Sec'],
+      lineColors: ['#D26B16'],
+      lineWidth: 1,
+      pointSize: 2,
+      hideHover: 'auto'
+      });
+
+      new Morris.Line({
+      element: 'kbps_',
+      data: [
+      
+            { time: '2017-06-17 12:37:40', kbps: 20.36 },
+          
+            { time: '2017-06-17 12:37:49', kbps: 4.55 },
+          
+            { time: '2017-06-17 12:37:59', kbps: 199.02 },
+          
+            { time: '2017-06-17 12:38:04', kbps: 0.04 },
+          
+            { time: '2017-06-17 12:38:06', kbps: 8.77 },
+          
+            { time: '2017-06-17 12:38:13', kbps: 0.02 },
+          
+            { time: '2017-06-17 12:38:17', kbps: 38.04 },
+          
+            { time: '2017-06-17 12:38:58', kbps: 0.04 },
+          
+            { time: '2017-06-17 12:39:08', kbps: 430.48 },
+          
+            { time: '2017-06-17 12:39:14', kbps: 0.04 },
+          
+            { time: '2017-06-17 12:39:15', kbps: 0.02 },
+          
+            { time: '2017-06-17 12:39:24', kbps: 42.41 },
+          
+            { time: '2017-06-17 12:39:25', kbps: 45.6 },
+          
+            { time: '2017-06-17 12:39:34', kbps: 35.96 },
+          
+            { time: '2017-06-17 12:39:43', kbps: 36.04 },
+          
+            { time: '2017-06-17 12:40:43', kbps: 25.71 }
+          
+      ],
+      xkey: 'time',
+      ykeys: ['kbps'],
+      labels: ['KBps'],
+      lineColors: ['#800000'],
+      lineWidth: 1,
+      pointSize: 2,
+      hideHover: 'auto'
+      });
+
+      new Morris.Line({
+      element: 'art_',
+      data: [
+      
+            { time: '2017-06-17 12:37:40', avgresponsetime: 1753.78 },
+          
+            { time: '2017-06-17 12:37:49', avgresponsetime: 1725.05 },
+          
+            { time: '2017-06-17 12:37:59', avgresponsetime: 1389.97 },
+          
+            { time: '2017-06-17 12:38:04', avgresponsetime: 545.56 },
+          
+            { time: '2017-06-17 12:38:06', avgresponsetime: 2373.05 },
+          
+            { time: '2017-06-17 12:38:13', avgresponsetime: 1468.94 },
+          
+            { time: '2017-06-17 12:38:17', avgresponsetime: 1409.35 },
+          
+            { time: '2017-06-17 12:38:58', avgresponsetime: 42513.6 },
+          
+            { time: '2017-06-17 12:39:08', avgresponsetime: 1590.54 },
+          
+            { time: '2017-06-17 12:39:14', avgresponsetime: 610.27 },
+          
+            { time: '2017-06-17 12:39:15', avgresponsetime: 2422.35 },
+          
+            { time: '2017-06-17 12:39:24', avgresponsetime: 2023.92 },
+          
+            { time: '2017-06-17 12:39:25', avgresponsetime: 4317.54 },
+          
+            { time: '2017-06-17 12:39:34', avgresponsetime: 2369.23 },
+          
+            { time: '2017-06-17 12:39:43', avgresponsetime: 2130.76 },
+          
+            { time: '2017-06-17 12:40:43', avgresponsetime: 1427.36 }
+          
+      ],
+      xkey: 'time',
+      ykeys: ['avgresponsetime'],
+      labels: ['Avg. Response Time'],
+      lineColors: ['#800000'],
+      lineWidth: 1,
+      pointSize: 2,
+      hideHover: 'auto'
+      });
+      }
+    </script>
+    <script>
+      function drawPageResponseGraph() {
+        new Morris.Line({
+        element: 'pageres_',
+        data: [
+        
+              { time: '2017-06-17 12:37:40', resptime: 2 },
+            
+              { time: '2017-06-17 12:37:49', resptime: 3 },
+            
+              { time: '2017-06-17 12:37:59', resptime: 5 },
+            
+              { time: '2017-06-17 12:38:06', resptime: 2 },
+            
+              { time: '2017-06-17 12:38:13', resptime: 2 },
+            
+              { time: '2017-06-17 12:38:58', resptime: 43 },
+            
+              { time: '2017-06-17 12:39:08', resptime: 5 },
+            
+              { time: '2017-06-17 12:39:15', resptime: 2 },
+            
+              { time: '2017-06-17 12:39:25', resptime: 5 },
+            
+              { time: '2017-06-17 12:39:34', resptime: 4 },
+            
+              { time: '2017-06-17 12:39:43', resptime: 4 },
+            
+              { time: '2017-06-17 12:40:43', resptime: 2 }
+            
+        ],
+        xkey: 'time',
+        ykeys: ['resptime'],
+        labels: ['Avg. Response Time'],
+        lineColors: ['#2616D2'],
+        lineWidth: 1,
+        pointSize: 2,
+        hideHover: 'auto'
+        });
+      }
+    </script>
+    <br>
+    <br>
+    <table style="width: 875px;" cellpadding="10" cellspacing="0">
+      <tr>
+        <td class="graphheadingrow">
+          <b>Request Response Graph (ms)</b>
+        </td>
+        <td>
+        </td>
+        <td class="graphheadingrow">
+          <b>Error Graph</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="art_" class="graph">
+          </div>
+        </td>
+        <td style="width: 15px;">
+        </td>
+        <td>
+          <div id="error_" class="graph">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <script>
+      
+      
+      function drawErrorGraph() {
+        new Morris.Line({
+            element: 'error_',
+            data: [
+            
+                  { time: '2017-06-17 12:39:39', errorcount: 1 },
+                
+                  { time: '2017-06-17 12:41:58', errorcount: 1 },
+                
+                  { time: '2017-06-17 12:42:02', errorcount: 1 }
+                
+            ],
+            xkey: 'time',
+            ykeys: ['errorcount'],
+            labels: ['Error Count'],
+            lineColors: ['#D21629'],
+            lineWidth: 1,
+            pointSize: 2,
+            hideHover: 'auto'
+        });
+      }
+    </script>
+    <script>
+      function drawVUserGraph() {
+        new Morris.Line({
+        element: 'vuser_',
+        data: [
+        
+              { time: '2017-06-17 12:37:38', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:39', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:40', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:41', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:42', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:43', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:44', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:45', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:46', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:47', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:48', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:49', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:50', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:51', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:52', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:53', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:54', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:55', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:56', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:57', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:58', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:37:59', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:00', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:01', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:02', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:03', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:04', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:05', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:06', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:07', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:08', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:09', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:10', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:11', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:12', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:13', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:14', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:15', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:16', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:17', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:18', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:19', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:20', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:21', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:22', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:23', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:24', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:25', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:26', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:27', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:28', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:29', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:30', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:31', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:32', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:33', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:34', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:35', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:36', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:37', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:38', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:39', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:40', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:41', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:42', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:43', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:44', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:45', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:46', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:47', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:48', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:49', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:50', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:51', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:52', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:53', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:54', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:55', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:56', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:57', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:58', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:38:59', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:00', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:01', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:02', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:03', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:04', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:05', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:06', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:07', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:08', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:09', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:10', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:11', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:12', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:13', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:14', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:15', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:16', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:17', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:18', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:19', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:20', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:21', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:22', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:23', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:24', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:25', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:26', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:27', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:28', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:29', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:30', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:31', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:32', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:33', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:34', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:35', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:36', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:37', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:38', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:39', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:40', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:41', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:42', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:43', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:44', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:45', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:46', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:47', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:48', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:49', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:50', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:51', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:52', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:53', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:54', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:55', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:56', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:57', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:58', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:39:59', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:00', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:01', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:02', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:03', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:04', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:05', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:06', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:07', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:08', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:09', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:10', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:11', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:12', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:13', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:14', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:15', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:16', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:17', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:18', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:19', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:20', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:21', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:22', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:23', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:24', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:25', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:26', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:27', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:28', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:29', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:30', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:31', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:32', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:33', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:34', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:35', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:36', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:37', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:38', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:39', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:40', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:41', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:42', vuserrunning: 1 },
+            
+              { time: '2017-06-17 12:40:43', vuserrunning: 0 },
+            
+              { time: '2017-06-17 12:40:44', vuserrunning: 0 },
+            
+              { time: '2017-06-17 12:40:45', vuserrunning: 0 },
+            
+              { time: '2017-06-17 12:40:46', vuserrunning: 0 },
+            
+              { time: '2017-06-17 12:40:47', vuserrunning: 0 },
+            
+              { time: '2017-06-17 12:40:48', vuserrunning: 0 },
+            
+              { time: '2017-06-17 12:40:49', vuserrunning: 0 },
+            
+              { time: '2017-06-17 12:40:50', vuserrunning: 0 },
+            
+              { time: '2017-06-17 12:40:51', vuserrunning: 0 },
+            
+              { time: '2017-06-17 12:40:52', vuserrunning: 0 },
+            
+              { time: '2017-06-17 12:40:53', vuserrunning: 0 },
+            
+              { time: '2017-06-17 12:40:54', vuserrunning: 0 },
+            
+              { time: '2017-06-17 12:40:55', vuserrunning: 0 },
+            
+              { time: '2017-06-17 12:40:56', vuserrunning: 0 },
+            
+              { time: '2017-06-17 12:40:57', vuserrunning: 0 }
+            
+        ],
+        xkey: 'time',
+        ykeys: ['vuserrunning'],
+        labels: ['VUsers Running'],
+        lineColors: ['#B22222'],
+        lineWidth: 1,
+        pointSize: 2,
+        hideHover: 'auto'
+        });
+      }
+    </script>
+    <br>
+    <span>
+            Script Name: <b>Trip_Booking</b></span>
+    <br>
+    <h4> Settings</h4>
+    <table border="1" cellspacing="0" cellpadding="3">
+      <tr>
+        <td style="width: 160px;">
+          <b>Browser Cache</b>
+        </td>
+        <td style="width: 100px;">true</td>
+        <td style="width: 160px;">
+          <b>Replay Think Time</b>
+        </td>
+        <td style="width: 100px;">true</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Bandwidth</b>
+        </td>
+        <td>Full Speed</td>
+        <td>
+          <b>Parallel Connections</b>
+        </td>
+        <td style="text-align:right">6</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Start User Count</b>
+        </td>
+        <td style="text-align:right">1</td>
+        <td>
+          <b>Max Users</b>
+        </td>
+        <td style="text-align:right">1</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Mode</b>
+        </td>
+        <td>Iteration</td>
+        <td>
+          <b>Iterations</b>
+        </td>
+        <td style="text-align:right">1</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Increment User</b>
+        </td>
+        <td style="text-align:right">1</td>
+        <td>
+          <b>Increment Time</b>
+        </td>
+        <td style="text-align:right">0:0:0</td>
+      </tr>
+    </table>
+    <h4> Request response</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Containername</th>
+        <th>Address</th>
+        <th>Hit Count</th>
+        <th>Throughput(Byte)</th>
+        <th>Min(ms)</th>
+        <th>Max(ms)</th>
+        <th>Avg(ms)</th>
+        <th>Min TTFB(ms)</th>
+        <th>Max TTFB(ms)</th>
+        <th>Avg TTFB(ms)</th>
+      </tr>
+      <tr>
+        <td>Homepage</td>
+        <td>/bbl.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">22991</td>
+        <td style="text-align:right">1754.326</td>
+        <td style="text-align:right">1754.326</td>
+        <td style="text-align:right">1754.326</td>
+        <td style="text-align:right">1748.475</td>
+        <td style="text-align:right">1748.475</td>
+        <td style="text-align:right">1748.475</td>
+      </tr>
+      <tr>
+        <td>Homepage</td>
+        <td>/WebResource.axd</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">23063</td>
+        <td style="text-align:right">1683.559</td>
+        <td style="text-align:right">1683.559</td>
+        <td style="text-align:right">1683.559</td>
+        <td style="text-align:right">1673.272</td>
+        <td style="text-align:right">1673.272</td>
+        <td style="text-align:right">1673.272</td>
+      </tr>
+      <tr>
+        <td>Homepage</td>
+        <td>/ScriptResource.axd</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">25609</td>
+        <td style="text-align:right">1845.676</td>
+        <td style="text-align:right">1845.676</td>
+        <td style="text-align:right">1845.676</td>
+        <td style="text-align:right">1845.344</td>
+        <td style="text-align:right">1845.344</td>
+        <td style="text-align:right">1845.344</td>
+      </tr>
+      <tr>
+        <td>Homepage</td>
+        <td>/ScriptResource.axd</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">9984</td>
+        <td style="text-align:right">1727.488</td>
+        <td style="text-align:right">1727.488</td>
+        <td style="text-align:right">1727.488</td>
+        <td style="text-align:right">1727.399</td>
+        <td style="text-align:right">1727.399</td>
+        <td style="text-align:right">1727.399</td>
+      </tr>
+      <tr>
+        <td>Homepage</td>
+        <td>/Optimizer_Themes/css/Default/v-636283003788365387/fnt/cd97136a8f3e6f455d4d4f50789ae7c2.woff</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">22604</td>
+        <td style="text-align:right">1757.863</td>
+        <td style="text-align:right">1757.863</td>
+        <td style="text-align:right">1757.863</td>
+        <td style="text-align:right">1753.239</td>
+        <td style="text-align:right">1753.239</td>
+        <td style="text-align:right">1753.239</td>
+      </tr>
+      <tr>
+        <td>Login</td>
+        <td>/bbl.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">23092</td>
+        <td style="text-align:right">3164.548</td>
+        <td style="text-align:right">3164.548</td>
+        <td style="text-align:right">3164.548</td>
+        <td style="text-align:right">2887.143</td>
+        <td style="text-align:right">2887.143</td>
+        <td style="text-align:right">2887.143</td>
+      </tr>
+      <tr>
+        <td>Login</td>
+        <td>/rcomm/Flight/SearchFlight.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">180</td>
+        <td style="text-align:right">285.543</td>
+        <td style="text-align:right">285.543</td>
+        <td style="text-align:right">285.543</td>
+        <td style="text-align:right">285.392</td>
+        <td style="text-align:right">285.392</td>
+        <td style="text-align:right">285.392</td>
+      </tr>
+      <tr>
+        <td>Login</td>
+        <td>/rcomm/Flight/SearchFlight.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">88230</td>
+        <td style="text-align:right">1745.001</td>
+        <td style="text-align:right">1745.001</td>
+        <td style="text-align:right">1745.001</td>
+        <td style="text-align:right">602.737</td>
+        <td style="text-align:right">602.737</td>
+        <td style="text-align:right">602.737</td>
+      </tr>
+      <tr>
+        <td>Login</td>
+        <td>/rcomm/Flight/SearchFlight.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">182991</td>
+        <td style="text-align:right">1899.006</td>
+        <td style="text-align:right">1899.006</td>
+        <td style="text-align:right">1899.006</td>
+        <td style="text-align:right">542.074</td>
+        <td style="text-align:right">542.074</td>
+        <td style="text-align:right">542.074</td>
+      </tr>
+      <tr>
+        <td>Login</td>
+        <td>/rcomm/Flight/AutoComplete.asmx/GetAirlineNames</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">18631</td>
+        <td style="text-align:right">563.838</td>
+        <td style="text-align:right">563.838</td>
+        <td style="text-align:right">563.838</td>
+        <td style="text-align:right">558.722</td>
+        <td style="text-align:right">558.722</td>
+        <td style="text-align:right">558.722</td>
+      </tr>
+      <tr>
+        <td>Login</td>
+        <td>/rcomm/Flight/AutoComplete.asmx/GetAirportCityList</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">714890</td>
+        <td style="text-align:right">2171.512</td>
+        <td style="text-align:right">2171.512</td>
+        <td style="text-align:right">2171.512</td>
+        <td style="text-align:right">723.812</td>
+        <td style="text-align:right">723.812</td>
+        <td style="text-align:right">723.812</td>
+      </tr>
+      <tr>
+        <td>Login</td>
+        <td>/rcomm/Flight/AutoComplete.asmx/GetAirportCityListDom</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">14248</td>
+        <td style="text-align:right">570.470</td>
+        <td style="text-align:right">570.470</td>
+        <td style="text-align:right">570.470</td>
+        <td style="text-align:right">570.116</td>
+        <td style="text-align:right">570.116</td>
+        <td style="text-align:right">570.116</td>
+      </tr>
+      <tr>
+        <td>EnterSearchDetails</td>
+        <td>/rcomm/Flight/SearchFlight.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">44905</td>
+        <td style="text-align:right">2373.054</td>
+        <td style="text-align:right">2373.054</td>
+        <td style="text-align:right">2373.054</td>
+        <td style="text-align:right">1528.120</td>
+        <td style="text-align:right">1528.120</td>
+        <td style="text-align:right">1528.120</td>
+      </tr>
+      <tr>
+        <td>EnterSearchDetails</td>
+        <td>/rcomm/Flight/SearchFlight.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">210</td>
+        <td style="text-align:right">545.560</td>
+        <td style="text-align:right">545.560</td>
+        <td style="text-align:right">545.560</td>
+        <td style="text-align:right">545.387</td>
+        <td style="text-align:right">545.387</td>
+        <td style="text-align:right">545.387</td>
+      </tr>
+      <tr>
+        <td>ClickSearch</td>
+        <td>/rcomm/Flight/SearchFlight.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">99</td>
+        <td style="text-align:right">1468.938</td>
+        <td style="text-align:right">1468.938</td>
+        <td style="text-align:right">1468.938</td>
+        <td style="text-align:right">1468.739</td>
+        <td style="text-align:right">1468.739</td>
+        <td style="text-align:right">1468.739</td>
+      </tr>
+      <tr>
+        <td>ClickSearch</td>
+        <td>/rcomm/Flight/BBFlightSearchProgress.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">5600</td>
+        <td style="text-align:right">819.359</td>
+        <td style="text-align:right">819.359</td>
+        <td style="text-align:right">819.359</td>
+        <td style="text-align:right">557.595</td>
+        <td style="text-align:right">557.595</td>
+        <td style="text-align:right">557.595</td>
+      </tr>
+      <tr>
+        <td>ClickSearch</td>
+        <td>/rcomm/Flight/BBFlightSearchResultsDom.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">183</td>
+        <td style="text-align:right">42513.601</td>
+        <td style="text-align:right">42513.601</td>
+        <td style="text-align:right">42513.601</td>
+        <td style="text-align:right">42513.306</td>
+        <td style="text-align:right">42513.306</td>
+        <td style="text-align:right">42513.306</td>
+      </tr>
+      <tr>
+        <td>ClickSearch</td>
+        <td>/rcomm/Flight/BBFlightSearchResultsDom.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">189166</td>
+        <td style="text-align:right">1999.342</td>
+        <td style="text-align:right">1999.342</td>
+        <td style="text-align:right">1999.342</td>
+        <td style="text-align:right">574.084</td>
+        <td style="text-align:right">574.084</td>
+        <td style="text-align:right">574.084</td>
+      </tr>
+      <tr>
+        <td>ClickSearch</td>
+        <td>/rcomm/Flight/BBFlightSearchResultsDom.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">1470559</td>
+        <td style="text-align:right">3347.604</td>
+        <td style="text-align:right">3347.604</td>
+        <td style="text-align:right">3347.604</td>
+        <td style="text-align:right">779.782</td>
+        <td style="text-align:right">779.782</td>
+        <td style="text-align:right">779.782</td>
+      </tr>
+      <tr>
+        <td>ClickSearch</td>
+        <td>/rcomm/Flight/AutoComplete.asmx/GetAirlineNames</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">18631</td>
+        <td style="text-align:right">564.314</td>
+        <td style="text-align:right">564.314</td>
+        <td style="text-align:right">564.314</td>
+        <td style="text-align:right">558.834</td>
+        <td style="text-align:right">558.834</td>
+        <td style="text-align:right">558.834</td>
+      </tr>
+      <tr>
+        <td>ClickSearch</td>
+        <td>/rcomm/Flight/AutoComplete.asmx/GetAirportCityList</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">714890</td>
+        <td style="text-align:right">859.698</td>
+        <td style="text-align:right">859.698</td>
+        <td style="text-align:right">859.698</td>
+        <td style="text-align:right">714.029</td>
+        <td style="text-align:right">714.029</td>
+        <td style="text-align:right">714.029</td>
+      </tr>
+      <tr>
+        <td>ClickBook</td>
+        <td>/rcomm/Flight/BBFlightSearchResultsDom.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">103</td>
+        <td style="text-align:right">2422.347</td>
+        <td style="text-align:right">2422.347</td>
+        <td style="text-align:right">2422.347</td>
+        <td style="text-align:right">2422.182</td>
+        <td style="text-align:right">2422.182</td>
+        <td style="text-align:right">2422.182</td>
+      </tr>
+      <tr>
+        <td>ClickBook</td>
+        <td>/rcomm/Flight/BBFlightBooking.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">218</td>
+        <td style="text-align:right">610.268</td>
+        <td style="text-align:right">610.268</td>
+        <td style="text-align:right">610.268</td>
+        <td style="text-align:right">609.982</td>
+        <td style="text-align:right">609.982</td>
+        <td style="text-align:right">609.982</td>
+      </tr>
+      <tr>
+        <td>ClickBook</td>
+        <td>/rcomm/Flight/BBFlightBooking.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">233476</td>
+        <td style="text-align:right">4317.536</td>
+        <td style="text-align:right">4317.536</td>
+        <td style="text-align:right">4317.536</td>
+        <td style="text-align:right">2950.321</td>
+        <td style="text-align:right">2950.321</td>
+        <td style="text-align:right">2950.321</td>
+      </tr>
+      <tr>
+        <td>ClickBook</td>
+        <td>/rcomm/Flight/BBFlightBooking.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">216523</td>
+        <td style="text-align:right">3176.531</td>
+        <td style="text-align:right">3176.531</td>
+        <td style="text-align:right">3176.531</td>
+        <td style="text-align:right">2066.021</td>
+        <td style="text-align:right">2066.021</td>
+        <td style="text-align:right">2066.021</td>
+      </tr>
+      <tr>
+        <td>ClickBook</td>
+        <td>/App_Themes/Images/Close-1.png</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">612</td>
+        <td style="text-align:right">871.299</td>
+        <td style="text-align:right">871.299</td>
+        <td style="text-align:right">871.299</td>
+        <td style="text-align:right">870.920</td>
+        <td style="text-align:right">870.920</td>
+        <td style="text-align:right">870.920</td>
+      </tr>
+      <tr>
+        <td>EnterPassengerDetails</td>
+        <td>/rcomm/Flight/BBFlightBooking.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">183914</td>
+        <td style="text-align:right">3934.543</td>
+        <td style="text-align:right">3934.543</td>
+        <td style="text-align:right">3934.543</td>
+        <td style="text-align:right">2793.737</td>
+        <td style="text-align:right">2793.737</td>
+        <td style="text-align:right">2793.737</td>
+      </tr>
+      <tr>
+        <td>EnterPassengerDetails</td>
+        <td>/rcomm/Flight/BBFlightBooking.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">210</td>
+        <td style="text-align:right">803.925</td>
+        <td style="text-align:right">803.925</td>
+        <td style="text-align:right">803.925</td>
+        <td style="text-align:right">803.757</td>
+        <td style="text-align:right">803.757</td>
+        <td style="text-align:right">803.757</td>
+      </tr>
+      <tr>
+        <td>ClickConfirm</td>
+        <td>/rcomm/Flight/BBFlightBooking.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">183568</td>
+        <td style="text-align:right">4467.270</td>
+        <td style="text-align:right">4467.270</td>
+        <td style="text-align:right">4467.270</td>
+        <td style="text-align:right">3331.159</td>
+        <td style="text-align:right">3331.159</td>
+        <td style="text-align:right">3331.159</td>
+      </tr>
+      <tr>
+        <td>ClickConfirm</td>
+        <td>/ScriptResource.axd</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">786</td>
+        <td style="text-align:right">817.839</td>
+        <td style="text-align:right">817.839</td>
+        <td style="text-align:right">817.839</td>
+        <td style="text-align:right">817.601</td>
+        <td style="text-align:right">817.601</td>
+        <td style="text-align:right">817.601</td>
+      </tr>
+      <tr>
+        <td>ClickConfirm</td>
+        <td>/rcomm/Flight/BBFlightBooking.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">196</td>
+        <td style="text-align:right">1107.169</td>
+        <td style="text-align:right">1107.169</td>
+        <td style="text-align:right">1107.169</td>
+        <td style="text-align:right">1106.847</td>
+        <td style="text-align:right">1106.847</td>
+        <td style="text-align:right">1106.847</td>
+      </tr>
+      <tr>
+        <td>Logout</td>
+        <td>/rcomm/Flight/BBFlightBooking.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">126</td>
+        <td style="text-align:right">2169.121</td>
+        <td style="text-align:right">2169.121</td>
+        <td style="text-align:right">2169.121</td>
+        <td style="text-align:right">2168.920</td>
+        <td style="text-align:right">2168.920</td>
+        <td style="text-align:right">2168.920</td>
+      </tr>
+      <tr>
+        <td>Logout</td>
+        <td>/bbl.aspx</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">23168</td>
+        <td style="text-align:right">1363.153</td>
+        <td style="text-align:right">1363.153</td>
+        <td style="text-align:right">1363.153</td>
+        <td style="text-align:right">1293.120</td>
+        <td style="text-align:right">1293.120</td>
+        <td style="text-align:right">1293.120</td>
+      </tr>
+      <tr>
+        <td>Logout</td>
+        <td>/Optimizer_Themes/css/Default/v-636283003788875763/coin-slider-styles.css</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">496</td>
+        <td style="text-align:right">893.983</td>
+        <td style="text-align:right">893.983</td>
+        <td style="text-align:right">893.983</td>
+        <td style="text-align:right">893.841</td>
+        <td style="text-align:right">893.841</td>
+        <td style="text-align:right">893.841</td>
+      </tr>
+      <tr>
+        <td>Logout</td>
+        <td>/Optimizer_Themes/css/Default/v-636283003788365387/CBTColors.css</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">107864</td>
+        <td style="text-align:right">1845.700</td>
+        <td style="text-align:right">1845.700</td>
+        <td style="text-align:right">1845.700</td>
+        <td style="text-align:right">1054.673</td>
+        <td style="text-align:right">1054.673</td>
+        <td style="text-align:right">1054.673</td>
+      </tr>
+      <tr>
+        <td>Logout</td>
+        <td>/Admin_Themes/img/Login_images/Login_tripmidas.png</td>
+        <td style="text-align:right">1</td>
+        <td style="text-align:right">0</td>
+        <td style="text-align:right">864.828</td>
+        <td style="text-align:right">864.828</td>
+        <td style="text-align:right">864.828</td>
+        <td style="text-align:right">864.571</td>
+        <td style="text-align:right">864.571</td>
+        <td style="text-align:right">864.571</td>
+      </tr>
+    </table>
+    <h4> Container response</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Containername</th>
+        <th>Min(ms)</th>
+        <th>Max(ms)</th>
+        <th>Avg(ms)</th>
+      </tr>
+      <tr>
+        <td>Homepage</td>
+        <td style="text-align:right">8768.913</td>
+        <td style="text-align:right">8768.913</td>
+        <td style="text-align:right">8768.913</td>
+      </tr>
+      <tr>
+        <td>Login</td>
+        <td style="text-align:right">10399.919</td>
+        <td style="text-align:right">10399.919</td>
+        <td style="text-align:right">10399.919</td>
+      </tr>
+      <tr>
+        <td>EnterSearchDetails</td>
+        <td style="text-align:right">2918.613</td>
+        <td style="text-align:right">2918.613</td>
+        <td style="text-align:right">2918.613</td>
+      </tr>
+      <tr>
+        <td>ClickSearch</td>
+        <td style="text-align:right">51572.857</td>
+        <td style="text-align:right">51572.857</td>
+        <td style="text-align:right">51572.857</td>
+      </tr>
+      <tr>
+        <td>ClickBook</td>
+        <td style="text-align:right">11397.981</td>
+        <td style="text-align:right">11397.981</td>
+        <td style="text-align:right">11397.981</td>
+      </tr>
+      <tr>
+        <td>EnterPassengerDetails</td>
+        <td style="text-align:right">4738.468</td>
+        <td style="text-align:right">4738.468</td>
+        <td style="text-align:right">4738.468</td>
+      </tr>
+      <tr>
+        <td>ClickConfirm</td>
+        <td style="text-align:right">6392.278</td>
+        <td style="text-align:right">6392.278</td>
+        <td style="text-align:right">6392.278</td>
+      </tr>
+      <tr>
+        <td>Logout</td>
+        <td style="text-align:right">7136.784</td>
+        <td style="text-align:right">7136.784</td>
+        <td style="text-align:right">7136.784</td>
+      </tr>
+    </table>
+    <h4> Transactions response</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Transaction Name</th>
+        <th>Min(ms)</th>
+        <th>Max(ms)</th>
+        <th>Avg(ms)</th>
+      </tr>
+    </table>
+    <br>
+    <table style="width: 475px;" cellpadding="10" cellspacing="0">
+      <tr>
+        <td class="graphheadingrow">
+          <b>Transaction Graph</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="transactions_550669453" class="graph">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <script>
+      function drawTransactionGraph_550669453() {
+        new Morris.Bar({
+		    barSizeRatio:0.40,
+        element: 'transactions_550669453',
+        data: [
+        
+        ],
+        xkey: 'transaction',
+        ykeys: ['min', 'max', 'avg'],
+        labels: ['Min', 'Max', 'Avg.'],
+        barColors: ['#373BF0', '#68D216', '#D26B16'],
+        hideHover: 'auto'
+        });
+      }
+    </script>
+    <h4>Error count</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Containername</th>
+        <th>Address</th>
+        <th>Count</th>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td></td>
+        <td style="text-align:right">3</td>
+      </tr>
+    </table>
+    <h4>Error Description</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Errorcode</th>
+        <th>Message</th>
+        <th>Count</th>
+      </tr>
+      <tr>
+        <td>700</td>
+        <td>Unable to evaluate EXT_LOG_INV</td>
+        <td style="text-align:right">1</td>
+      </tr>
+      <tr>
+        <td>700</td>
+        <td>Unable to evaluate EXT_LOG_PNR</td>
+        <td style="text-align:right">1</td>
+      </tr>
+      <tr>
+        <td>700</td>
+        <td>Unable to evaluate TRP_EXT_CNFVS</td>
+        <td style="text-align:right">1</td>
+      </tr>
+    </table>
+    <br>
+  </body>
+</html>

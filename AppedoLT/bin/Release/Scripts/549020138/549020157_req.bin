@@ -1,0 +1,10 @@
+GET /search?sclient=psy-ab&site=&source=hp&q=books&oq=books&gs_l=hp.3..0j0i131k1j0j0i131k1.1929.2777.0.3612.5.5.0.0.0.0.565.2163.3-3j1j1.5.0....0...1.1.64.psy-ab..1.4.1555.hG3tjNRRzgE&pbx=1&bav=on.2,or.&fp=1&biw=1366&bih=657&dpr=1&tch=1&ech=1&psi=f6UmWYHcEY3X0gScpp5Y.1495704949297.3 HTTP/1.1
+Host: www.google.co.in
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: https://www.google.co.in
+Cookie: NID=104=GoJpG7oM6X0Z07YAsOL0hedcYH7F62IyN64CO4_Wj4Ed_Rq6foNnbuq5DtEUzlj4EfDUOWoV9vfbFQg6Pno9ZzuY0HXZ9mBqMmVtzJbo1u51PE8AwS-FXDo8OfkUQhS9
+Connection: keep-alive
+

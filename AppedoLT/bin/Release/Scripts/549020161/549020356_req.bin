@@ -1,0 +1,10 @@
+GET /qamdemo/view/Cap_Img.jsp HTTP/1.1
+Host: demo-apps.appedo.com
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0
+Accept: image/png,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: https://demo-apps.appedo.com/qamdemo/logout?_dc=1495705105347
+Cookie: JSESSIONID=6E67C09B38A6B5C528DD1C2F71B20A84
+Connection: keep-alive
+

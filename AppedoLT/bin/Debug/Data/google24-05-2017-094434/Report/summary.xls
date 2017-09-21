@@ -1,0 +1,1280 @@
+﻿<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Appedo</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/appedo-16.ico">
+    <link rel="stylesheet" href="css/morris.css">
+    <script src="js/raphael-min.js">
+    </script>
+    <script src="js/jquery-1.8.2.min.js">
+    </script>
+    <script src="js/morris-0.4.1.min.js">
+    </script>
+    <script>
+          function drawCharts()
+          {
+            drawSummaryGraph();
+            drawErrorGraph();
+            drawPageResponseGraph();
+            drawVUserGraph();
+            
+              drawTransactionGraph_548831277();
+            
+          }        
+        </script>
+    <style>
+          body {
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          font-size: 14px;
+          line-height: 1.42857143;
+          color: #333;
+          background-color: #fff;
+          }
+
+          .graphheadingrow
+          {
+          text-align: center;
+          border-bottom: 1px solid #1b639e;
+          }
+
+          .graph
+          {
+          width: 400px; 
+          height: 250px;
+          padding: 25px;
+          }
+        </style>
+  </head>
+  <body onload="drawCharts();">
+    <h1 style="width:600px; padding-bottom: 6px; background-color:#31c0be; color:#FFFFFF; text-align: center;">Appedo</h1>
+    <span>
+      <b>Report Name:  </b>google24-05-2017-094434</span>
+    <h4> Summary Report</h4>
+    <table border="1" cellspacing="0">
+      <tr>
+        <td style="bgcolor=#9acd32">
+          <b>Start Time</b>
+        </td>
+        <td style="text-align:right">24-05-2017 09:44:37</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>End Time</b>
+        </td>
+        <td style="text-align:right">24-05-2017 09:46:37</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Duration(sec)</b>
+        </td>
+        <td style="text-align:right">120</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>User Count</b>
+        </td>
+        <td style="text-align:right">1</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Total Hits</b>
+        </td>
+        <td style="text-align:right">543</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Request Response(sec)</b>
+        </td>
+        <td style="text-align:right">.297</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Page Response(sec)</b>
+        </td>
+        <td style="text-align:right">5.044</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Hits/Sec</b>
+        </td>
+        <td style="text-align:right">4.525</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b> Total Throughput(MB)</b>
+        </td>
+        <td style="text-align:right">24.135</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Throughput(Mbps)</b>
+        </td>
+        <td style="text-align:right">1.609</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Total Errors</b>
+        </td>
+        <td style="text-align:right">0</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Total pages</b>
+        </td>
+        <td style="text-align:right">32</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 200 Count</b>
+        </td>
+        <td style="text-align:right">511</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 300 Count</b>
+        </td>
+        <td style="text-align:right">32</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 400 Count</b>
+        </td>
+        <td style="text-align:right">0</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 500 Count</b>
+        </td>
+        <td style="text-align:right">0</td>
+      </tr>
+    </table>
+    <h4> Graphs </h4>
+    <table style="width: 875px;" cellpadding="10" cellspacing="0">
+      <tr>
+        <td class="graphheadingrow">
+          <b>Virtual User Running Graph</b>
+        </td>
+        <td>
+        </td>
+        <td class="graphheadingrow">
+          <b>Hits per Sec Graph</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="vuser_" class="graph">
+          </div>
+        </td>
+        <td style="width: 15px;">
+        </td>
+        <td>
+          <div id="hps_" class="graph">
+          </div>
+        </td>
+      </tr>
+      <br>
+      <br>
+      <tr>
+        <td class="graphheadingrow">
+          <b>Throughput per Sec Graph (KBps)</b>
+        </td>
+        <td>
+        </td>
+        <td class="graphheadingrow">
+          <b>Page Response Time Graph (secs)</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="kbps_" style="width: 400px; height: 250px;">
+          </div>
+        </td>
+        <td>
+        </td>
+        <td>
+          <div id="pageres_" style="width: 400px; height: 250px;">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <script>
+      function drawSummaryGraph() {      
+      new Morris.Line({
+      element: 'hps_',
+      data: [
+      
+            { time: '2017-05-24 09:44:39', hitspersec: 2.4 },
+          
+            { time: '2017-05-24 09:44:44', hitspersec: 3.6 },
+          
+            { time: '2017-05-24 09:44:49', hitspersec: 6 },
+          
+            { time: '2017-05-24 09:44:54', hitspersec: 4 },
+          
+            { time: '2017-05-24 09:44:59', hitspersec: 3.6 },
+          
+            { time: '2017-05-24 09:45:04', hitspersec: 5.2 },
+          
+            { time: '2017-05-24 09:45:09', hitspersec: 4.6 },
+          
+            { time: '2017-05-24 09:45:14', hitspersec: 3.8 },
+          
+            { time: '2017-05-24 09:45:19', hitspersec: 5 },
+          
+            { time: '2017-05-24 09:45:24', hitspersec: 5 },
+          
+            { time: '2017-05-24 09:45:29', hitspersec: 3.6 },
+          
+            { time: '2017-05-24 09:45:34', hitspersec: 5.2 },
+          
+            { time: '2017-05-24 09:45:39', hitspersec: 4.8 },
+          
+            { time: '2017-05-24 09:45:44', hitspersec: 3.8 },
+          
+            { time: '2017-05-24 09:45:49', hitspersec: 5.8 },
+          
+            { time: '2017-05-24 09:45:54', hitspersec: 4.8 },
+          
+            { time: '2017-05-24 09:45:59', hitspersec: 3.4 },
+          
+            { time: '2017-05-24 09:46:04', hitspersec: 5.6 },
+          
+            { time: '2017-05-24 09:46:09', hitspersec: 4.2 },
+          
+            { time: '2017-05-24 09:46:14', hitspersec: 3.8 },
+          
+            { time: '2017-05-24 09:46:19', hitspersec: 5.6 },
+          
+            { time: '2017-05-24 09:46:24', hitspersec: 4.8 },
+          
+            { time: '2017-05-24 09:46:29', hitspersec: 2.8 },
+          
+            { time: '2017-05-24 09:46:34', hitspersec: 5.4 },
+          
+            { time: '2017-05-24 09:46:37', hitspersec: 1.8 }
+          
+      ],
+      xkey: 'time',
+      ykeys: ['hitspersec'],
+      labels: ['Hits per Sec'],
+      lineColors: ['#D26B16'],
+      lineWidth: 1,
+      pointSize: 2,
+      hideHover: 'auto'
+      });
+
+      new Morris.Line({
+      element: 'kbps_',
+      data: [
+      
+            { time: '2017-05-24 09:44:39', kbps: 105.36 },
+          
+            { time: '2017-05-24 09:44:44', kbps: 118.73 },
+          
+            { time: '2017-05-24 09:44:49', kbps: 259.49 },
+          
+            { time: '2017-05-24 09:44:54', kbps: 232.31 },
+          
+            { time: '2017-05-24 09:44:59', kbps: 120.7 },
+          
+            { time: '2017-05-24 09:45:04', kbps: 248.4 },
+          
+            { time: '2017-05-24 09:45:09', kbps: 285.08 },
+          
+            { time: '2017-05-24 09:45:14', kbps: 141.11 },
+          
+            { time: '2017-05-24 09:45:19', kbps: 291.26 },
+          
+            { time: '2017-05-24 09:45:24', kbps: 231.31 },
+          
+            { time: '2017-05-24 09:45:29', kbps: 106.72 },
+          
+            { time: '2017-05-24 09:45:34', kbps: 220.23 },
+          
+            { time: '2017-05-24 09:45:39', kbps: 250.11 },
+          
+            { time: '2017-05-24 09:45:44', kbps: 140.39 },
+          
+            { time: '2017-05-24 09:45:49', kbps: 215.58 },
+          
+            { time: '2017-05-24 09:45:54', kbps: 281.2 },
+          
+            { time: '2017-05-24 09:45:59', kbps: 137.69 },
+          
+            { time: '2017-05-24 09:46:04', kbps: 208.98 },
+          
+            { time: '2017-05-24 09:46:09', kbps: 278.53 },
+          
+            { time: '2017-05-24 09:46:14', kbps: 130 },
+          
+            { time: '2017-05-24 09:46:19', kbps: 204.91 },
+          
+            { time: '2017-05-24 09:46:24', kbps: 270.14 },
+          
+            { time: '2017-05-24 09:46:29', kbps: 118.93 },
+          
+            { time: '2017-05-24 09:46:34', kbps: 208.58 },
+          
+            { time: '2017-05-24 09:46:37', kbps: 137.14 }
+          
+      ],
+      xkey: 'time',
+      ykeys: ['kbps'],
+      labels: ['KBps'],
+      lineColors: ['#800000'],
+      lineWidth: 1,
+      pointSize: 2,
+      hideHover: 'auto'
+      });
+
+      new Morris.Line({
+      element: 'art_',
+      data: [
+      
+            { time: '2017-05-24 09:44:39', avgresponsetime: 421.84 },
+          
+            { time: '2017-05-24 09:44:44', avgresponsetime: 262.33 },
+          
+            { time: '2017-05-24 09:44:49', avgresponsetime: 279.22 },
+          
+            { time: '2017-05-24 09:44:54', avgresponsetime: 351.29 },
+          
+            { time: '2017-05-24 09:44:59', avgresponsetime: 292.73 },
+          
+            { time: '2017-05-24 09:45:04', avgresponsetime: 300.16 },
+          
+            { time: '2017-05-24 09:45:09', avgresponsetime: 310.86 },
+          
+            { time: '2017-05-24 09:45:14', avgresponsetime: 257.57 },
+          
+            { time: '2017-05-24 09:45:19', avgresponsetime: 322.58 },
+          
+            { time: '2017-05-24 09:45:24', avgresponsetime: 291.84 },
+          
+            { time: '2017-05-24 09:45:29', avgresponsetime: 249.97 },
+          
+            { time: '2017-05-24 09:45:34', avgresponsetime: 312.75 },
+          
+            { time: '2017-05-24 09:45:39', avgresponsetime: 310.75 },
+          
+            { time: '2017-05-24 09:45:44', avgresponsetime: 277.67 },
+          
+            { time: '2017-05-24 09:45:49', avgresponsetime: 265.05 },
+          
+            { time: '2017-05-24 09:45:54', avgresponsetime: 311.84 },
+          
+            { time: '2017-05-24 09:45:59', avgresponsetime: 285.11 },
+          
+            { time: '2017-05-24 09:46:04', avgresponsetime: 276.25 },
+          
+            { time: '2017-05-24 09:46:09', avgresponsetime: 357.88 },
+          
+            { time: '2017-05-24 09:46:14', avgresponsetime: 246.77 },
+          
+            { time: '2017-05-24 09:46:19', avgresponsetime: 259.41 },
+          
+            { time: '2017-05-24 09:46:24', avgresponsetime: 335.79 },
+          
+            { time: '2017-05-24 09:46:29', avgresponsetime: 354.65 },
+          
+            { time: '2017-05-24 09:46:34', avgresponsetime: 278.46 },
+          
+            { time: '2017-05-24 09:46:37', avgresponsetime: 291.42 }
+          
+      ],
+      xkey: 'time',
+      ykeys: ['avgresponsetime'],
+      labels: ['Avg. Response Time'],
+      lineColors: ['#800000'],
+      lineWidth: 1,
+      pointSize: 2,
+      hideHover: 'auto'
+      });
+      }
+    </script>
+    <script>
+      function drawPageResponseGraph() {
+        new Morris.Line({
+        element: 'pageres_',
+        data: [
+        
+              { time: '2017-05-24 09:44:42', resptime: 5 },
+            
+              { time: '2017-05-24 09:44:49', resptime: 3.5 },
+            
+              { time: '2017-05-24 09:44:53', resptime: 4 },
+            
+              { time: '2017-05-24 09:44:58', resptime: 5 },
+            
+              { time: '2017-05-24 09:45:01', resptime: 3 },
+            
+              { time: '2017-05-24 09:45:05', resptime: 4 },
+            
+              { time: '2017-05-24 09:45:12', resptime: 3 },
+            
+              { time: '2017-05-24 09:45:17', resptime: 5 },
+            
+              { time: '2017-05-24 09:45:20', resptime: 3.5 },
+            
+              { time: '2017-05-24 09:45:27', resptime: 3 },
+            
+              { time: '2017-05-24 09:45:31', resptime: 4 },
+            
+              { time: '2017-05-24 09:45:35', resptime: 3.5 },
+            
+              { time: '2017-05-24 09:45:42', resptime: 4 },
+            
+              { time: '2017-05-24 09:45:49', resptime: 3.5 },
+            
+              { time: '2017-05-24 09:45:53', resptime: 4 },
+            
+              { time: '2017-05-24 09:45:56', resptime: 3 },
+            
+              { time: '2017-05-24 09:46:04', resptime: 4 },
+            
+              { time: '2017-05-24 09:46:08', resptime: 4 },
+            
+              { time: '2017-05-24 09:46:12', resptime: 4 },
+            
+              { time: '2017-05-24 09:46:19', resptime: 3.5 },
+            
+              { time: '2017-05-24 09:46:22', resptime: 3 },
+            
+              { time: '2017-05-24 09:46:26', resptime: 4 },
+            
+              { time: '2017-05-24 09:46:31', resptime: 5 },
+            
+              { time: '2017-05-24 09:46:35', resptime: 3 }
+            
+        ],
+        xkey: 'time',
+        ykeys: ['resptime'],
+        labels: ['Avg. Response Time'],
+        lineColors: ['#2616D2'],
+        lineWidth: 1,
+        pointSize: 2,
+        hideHover: 'auto'
+        });
+      }
+    </script>
+    <br>
+    <br>
+    <table style="width: 875px;" cellpadding="10" cellspacing="0">
+      <tr>
+        <td class="graphheadingrow">
+          <b>Request Response Graph (ms)</b>
+        </td>
+        <td>
+        </td>
+        <td class="graphheadingrow">
+          <b>Error Graph</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="art_" class="graph">
+          </div>
+        </td>
+        <td style="width: 15px;">
+        </td>
+        <td>
+          <div id="error_" class="graph">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <script>
+      
+      
+      function drawErrorGraph() {
+        new Morris.Line({
+            element: 'error_',
+            data: [
+            
+            ],
+            xkey: 'time',
+            ykeys: ['errorcount'],
+            labels: ['Error Count'],
+            lineColors: ['#D21629'],
+            lineWidth: 1,
+            pointSize: 2,
+            hideHover: 'auto'
+        });
+      }
+    </script>
+    <script>
+      function drawVUserGraph() {
+        new Morris.Line({
+        element: 'vuser_',
+        data: [
+        
+              { time: '2017-05-24 09:44:37', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:38', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:39', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:40', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:41', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:42', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:43', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:44', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:45', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:46', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:47', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:48', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:49', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:50', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:51', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:52', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:53', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:54', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:55', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:56', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:57', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:58', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:44:59', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:00', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:01', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:02', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:03', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:04', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:05', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:06', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:07', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:08', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:09', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:10', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:11', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:12', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:13', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:14', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:15', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:16', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:17', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:18', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:19', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:20', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:21', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:22', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:23', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:24', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:25', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:26', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:27', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:28', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:29', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:30', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:31', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:32', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:33', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:34', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:35', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:36', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:37', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:38', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:39', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:40', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:41', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:42', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:43', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:44', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:45', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:46', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:47', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:48', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:49', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:50', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:51', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:52', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:53', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:54', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:55', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:56', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:57', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:58', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:45:59', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:00', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:01', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:02', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:03', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:04', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:05', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:06', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:07', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:08', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:09', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:10', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:11', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:12', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:13', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:14', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:15', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:16', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:17', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:18', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:19', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:20', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:21', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:22', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:23', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:24', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:25', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:26', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:27', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:28', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:29', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:30', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:31', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:32', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:33', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:34', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:35', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:36', vuserrunning: 1 },
+            
+              { time: '2017-05-24 09:46:37', vuserrunning: 0 },
+            
+              { time: '2017-05-24 09:46:38', vuserrunning: 0 },
+            
+              { time: '2017-05-24 09:46:39', vuserrunning: 0 },
+            
+              { time: '2017-05-24 09:46:40', vuserrunning: 0 },
+            
+              { time: '2017-05-24 09:46:41', vuserrunning: 0 },
+            
+              { time: '2017-05-24 09:46:42', vuserrunning: 0 },
+            
+              { time: '2017-05-24 09:46:43', vuserrunning: 0 },
+            
+              { time: '2017-05-24 09:46:44', vuserrunning: 0 },
+            
+              { time: '2017-05-24 09:46:45', vuserrunning: 0 },
+            
+              { time: '2017-05-24 09:46:46', vuserrunning: 0 },
+            
+              { time: '2017-05-24 09:46:47', vuserrunning: 0 },
+            
+              { time: '2017-05-24 09:46:48', vuserrunning: 0 },
+            
+              { time: '2017-05-24 09:46:49', vuserrunning: 0 },
+            
+              { time: '2017-05-24 09:46:50', vuserrunning: 0 },
+            
+              { time: '2017-05-24 09:46:51', vuserrunning: 0 }
+            
+        ],
+        xkey: 'time',
+        ykeys: ['vuserrunning'],
+        labels: ['VUsers Running'],
+        lineColors: ['#B22222'],
+        lineWidth: 1,
+        pointSize: 2,
+        hideHover: 'auto'
+        });
+      }
+    </script>
+    <br>
+    <span>
+            Script Name: <b>google.com</b></span>
+    <br>
+    <h4> Settings</h4>
+    <table border="1" cellspacing="0" cellpadding="3">
+      <tr>
+        <td style="width: 160px;">
+          <b>Browser Cache</b>
+        </td>
+        <td style="width: 100px;">false</td>
+        <td style="width: 160px;">
+          <b>Replay Think Time</b>
+        </td>
+        <td style="width: 100px;">true</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Bandwidth</b>
+        </td>
+        <td>Full Speed</td>
+        <td>
+          <b>Parallel Connections</b>
+        </td>
+        <td style="text-align:right">6</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Start User Count</b>
+        </td>
+        <td style="text-align:right">1</td>
+        <td>
+          <b>Max Users</b>
+        </td>
+        <td style="text-align:right">1</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Mode</b>
+        </td>
+        <td>Duration</td>
+        <td>
+          <b>Duration</b>
+        </td>
+        <td style="text-align:right;">0:2:0</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Increment User</b>
+        </td>
+        <td style="text-align:right">1</td>
+        <td>
+          <b>Increment Time</b>
+        </td>
+        <td style="text-align:right">0:0:0</td>
+      </tr>
+    </table>
+    <h4> Request response</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Containername</th>
+        <th>Address</th>
+        <th>Hit Count</th>
+        <th>Throughput(Byte)</th>
+        <th>Min(ms)</th>
+        <th>Max(ms)</th>
+        <th>Avg(ms)</th>
+        <th>Min TTFB(ms)</th>
+        <th>Max TTFB(ms)</th>
+        <th>Avg TTFB(ms)</th>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/search</td>
+        <td style="text-align:right">47</td>
+        <td style="text-align:right">8673813</td>
+        <td style="text-align:right">628.628</td>
+        <td style="text-align:right">1370.554</td>
+        <td style="text-align:right">884.696</td>
+        <td style="text-align:right">232.097</td>
+        <td style="text-align:right">676.840</td>
+        <td style="text-align:right">277.148</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/gen_204</td>
+        <td style="text-align:right">48</td>
+        <td style="text-align:right">0</td>
+        <td style="text-align:right">160.873</td>
+        <td style="text-align:right">235.744</td>
+        <td style="text-align:right">186.120</td>
+        <td style="text-align:right">160.534</td>
+        <td style="text-align:right">235.494</td>
+        <td style="text-align:right">185.930</td>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td>/xjs/_/js/k=xjs.s.en.FLyc3sNzBUc.O/m=aspn,tl,vs,tnv,mrn,me,atn/am=AEcoyuMFByD_RwgFw00IC9IKzDCA/exm=sx,c,sb,cdos,cr,elog,hsm,jsa,r,qsm,j,p,d,csi,aa,abd,async,dvl,foot,fpe,ipv6,lu,m,sf,d3l/rt=j/d=1/ed=1/t=zcms/rs=ACT90oFKKOUQfv3jvC_3ML8fclGhvl362g</td>
+        <td style="text-align:right">48</td>
+        <td style="text-align:right">4318090</td>
+        <td style="text-align:right">79.404</td>
+        <td style="text-align:right">346.487</td>
+        <td style="text-align:right">128.116</td>
+        <td style="text-align:right">55.666</td>
+        <td style="text-align:right">159.944</td>
+        <td style="text-align:right">78.100</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">4176</td>
+        <td style="text-align:right">177.668</td>
+        <td style="text-align:right">289.060</td>
+        <td style="text-align:right">204.183</td>
+        <td style="text-align:right">177.514</td>
+        <td style="text-align:right">281.807</td>
+        <td style="text-align:right">203.566</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">4432</td>
+        <td style="text-align:right">242.447</td>
+        <td style="text-align:right">300.874</td>
+        <td style="text-align:right">265.069</td>
+        <td style="text-align:right">242.298</td>
+        <td style="text-align:right">300.788</td>
+        <td style="text-align:right">264.874</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">3291597</td>
+        <td style="text-align:right">435.845</td>
+        <td style="text-align:right">923.255</td>
+        <td style="text-align:right">695.703</td>
+        <td style="text-align:right">236.723</td>
+        <td style="text-align:right">475.673</td>
+        <td style="text-align:right">379.383</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">81392</td>
+        <td style="text-align:right">117.862</td>
+        <td style="text-align:right">798.451</td>
+        <td style="text-align:right">189.173</td>
+        <td style="text-align:right">117.633</td>
+        <td style="text-align:right">784.517</td>
+        <td style="text-align:right">187.990</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/images/branding/product/ico/googleg_lodp.ico</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">123040</td>
+        <td style="text-align:right">116.375</td>
+        <td style="text-align:right">163.120</td>
+        <td style="text-align:right">138.934</td>
+        <td style="text-align:right">116.025</td>
+        <td style="text-align:right">161.901</td>
+        <td style="text-align:right">137.519</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">95504</td>
+        <td style="text-align:right">262.070</td>
+        <td style="text-align:right">548.698</td>
+        <td style="text-align:right">315.179</td>
+        <td style="text-align:right">260.835</td>
+        <td style="text-align:right">548.049</td>
+        <td style="text-align:right">314.001</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/images/hpp/ic_wahlberg_product_core_48.png8.png</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">33456</td>
+        <td style="text-align:right">132.068</td>
+        <td style="text-align:right">529.873</td>
+        <td style="text-align:right">315.562</td>
+        <td style="text-align:right">131.865</td>
+        <td style="text-align:right">529.617</td>
+        <td style="text-align:right">315.340</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/xjs/_/js/k=xjs.s.en.FLyc3sNzBUc.O/m=sx,c,sb,cdos,cr,elog,hsm,jsa,r,qsm,j,p,d,csi/am=AEcoyuMFByD_RwgFw00IC9IKzDCA/rt=j/d=1/t=zcms/rs=ACT90oFKKOUQfv3jvC_3ML8fclGhvl362g</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">7097984</td>
+        <td style="text-align:right">638.745</td>
+        <td style="text-align:right">952.252</td>
+        <td style="text-align:right">726.971</td>
+        <td style="text-align:right">188.968</td>
+        <td style="text-align:right">484.530</td>
+        <td style="text-align:right">265.952</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/xjs/_/js/k=xjs.s.en.FLyc3sNzBUc.O/m=aa,abd,async,dvl,foot,fpe,ipv6,lu,m,sf,d3l/am=AEcoyuMFByD_RwgFw00IC9IKzDCA/exm=sx,c,sb,cdos,cr,elog,hsm,jsa,r,qsm,j,p,d,csi/rt=j/d=1/ed=1/t=zcms/rs=ACT90oFKKOUQfv3jvC_3ML8fclGhvl362g</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">1045632</td>
+        <td style="text-align:right">346.538</td>
+        <td style="text-align:right">669.118</td>
+        <td style="text-align:right">426.124</td>
+        <td style="text-align:right">211.912</td>
+        <td style="text-align:right">493.809</td>
+        <td style="text-align:right">256.375</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/images/nav_logo242.png</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">268576</td>
+        <td style="text-align:right">127.860</td>
+        <td style="text-align:right">231.464</td>
+        <td style="text-align:right">157.718</td>
+        <td style="text-align:right">112.802</td>
+        <td style="text-align:right">226.393</td>
+        <td style="text-align:right">149.491</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/gen_204</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">0</td>
+        <td style="text-align:right">165.686</td>
+        <td style="text-align:right">241.664</td>
+        <td style="text-align:right">187.692</td>
+        <td style="text-align:right">165.559</td>
+        <td style="text-align:right">238.332</td>
+        <td style="text-align:right">187.336</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">22772</td>
+        <td style="text-align:right">205.750</td>
+        <td style="text-align:right">248.941</td>
+        <td style="text-align:right">228.475</td>
+        <td style="text-align:right">205.520</td>
+        <td style="text-align:right">242.542</td>
+        <td style="text-align:right">226.460</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/gen_204</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">0</td>
+        <td style="text-align:right">172.005</td>
+        <td style="text-align:right">218.961</td>
+        <td style="text-align:right">185.902</td>
+        <td style="text-align:right">171.856</td>
+        <td style="text-align:right">218.811</td>
+        <td style="text-align:right">185.743</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">23168</td>
+        <td style="text-align:right">206.885</td>
+        <td style="text-align:right">369.466</td>
+        <td style="text-align:right">232.794</td>
+        <td style="text-align:right">206.378</td>
+        <td style="text-align:right">369.258</td>
+        <td style="text-align:right">232.427</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/gen_204</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">0</td>
+        <td style="text-align:right">166.548</td>
+        <td style="text-align:right">357.799</td>
+        <td style="text-align:right">198.312</td>
+        <td style="text-align:right">166.458</td>
+        <td style="text-align:right">357.668</td>
+        <td style="text-align:right">198.191</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">22680</td>
+        <td style="text-align:right">193.111</td>
+        <td style="text-align:right">223.628</td>
+        <td style="text-align:right">211.018</td>
+        <td style="text-align:right">192.773</td>
+        <td style="text-align:right">223.369</td>
+        <td style="text-align:right">209.266</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">23328</td>
+        <td style="text-align:right">186.208</td>
+        <td style="text-align:right">216.411</td>
+        <td style="text-align:right">203.177</td>
+        <td style="text-align:right">185.994</td>
+        <td style="text-align:right">216.146</td>
+        <td style="text-align:right">202.551</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">23320</td>
+        <td style="text-align:right">187.498</td>
+        <td style="text-align:right">377.814</td>
+        <td style="text-align:right">214.103</td>
+        <td style="text-align:right">186.935</td>
+        <td style="text-align:right">375.272</td>
+        <td style="text-align:right">212.221</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">22548</td>
+        <td style="text-align:right">181.829</td>
+        <td style="text-align:right">215.233</td>
+        <td style="text-align:right">200.304</td>
+        <td style="text-align:right">181.606</td>
+        <td style="text-align:right">214.838</td>
+        <td style="text-align:right">199.271</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/gen_204</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">0</td>
+        <td style="text-align:right">169.558</td>
+        <td style="text-align:right">361.427</td>
+        <td style="text-align:right">218.232</td>
+        <td style="text-align:right">169.455</td>
+        <td style="text-align:right">361.285</td>
+        <td style="text-align:right">218.069</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">39004</td>
+        <td style="text-align:right">190.178</td>
+        <td style="text-align:right">275.746</td>
+        <td style="text-align:right">209.779</td>
+        <td style="text-align:right">189.810</td>
+        <td style="text-align:right">275.510</td>
+        <td style="text-align:right">209.159</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">23040</td>
+        <td style="text-align:right">183.655</td>
+        <td style="text-align:right">217.052</td>
+        <td style="text-align:right">201.875</td>
+        <td style="text-align:right">182.895</td>
+        <td style="text-align:right">216.828</td>
+        <td style="text-align:right">201.227</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">22936</td>
+        <td style="text-align:right">191.106</td>
+        <td style="text-align:right">358.199</td>
+        <td style="text-align:right">215.539</td>
+        <td style="text-align:right">190.412</td>
+        <td style="text-align:right">357.796</td>
+        <td style="text-align:right">215.070</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">23580</td>
+        <td style="text-align:right">185.111</td>
+        <td style="text-align:right">215.948</td>
+        <td style="text-align:right">200.228</td>
+        <td style="text-align:right">184.976</td>
+        <td style="text-align:right">215.734</td>
+        <td style="text-align:right">199.710</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td>/complete/search</td>
+        <td style="text-align:right">16</td>
+        <td style="text-align:right">23488</td>
+        <td style="text-align:right">186.617</td>
+        <td style="text-align:right">276.133</td>
+        <td style="text-align:right">204.821</td>
+        <td style="text-align:right">186.397</td>
+        <td style="text-align:right">276.002</td>
+        <td style="text-align:right">204.256</td>
+      </tr>
+    </table>
+    <h4> Container response</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Containername</th>
+        <th>Min(ms)</th>
+        <th>Max(ms)</th>
+        <th>Avg(ms)</th>
+      </tr>
+      <tr>
+        <td>Actions</td>
+        <td style="text-align:right">922.374</td>
+        <td style="text-align:right">1923.102</td>
+        <td style="text-align:right">1196.328</td>
+      </tr>
+      <tr>
+        <td>Container1</td>
+        <td style="text-align:right">6077.747</td>
+        <td style="text-align:right">8149.111</td>
+        <td style="text-align:right">6546.868</td>
+      </tr>
+    </table>
+    <h4> Transactions response</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Transaction Name</th>
+        <th>Min(ms)</th>
+        <th>Max(ms)</th>
+        <th>Avg(ms)</th>
+      </tr>
+    </table>
+    <br>
+    <table style="width: 475px;" cellpadding="10" cellspacing="0">
+      <tr>
+        <td class="graphheadingrow">
+          <b>Transaction Graph</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="transactions_548831277" class="graph">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <script>
+      function drawTransactionGraph_548831277() {
+        new Morris.Bar({
+		    barSizeRatio:0.40,
+        element: 'transactions_548831277',
+        data: [
+        
+        ],
+        xkey: 'transaction',
+        ykeys: ['min', 'max', 'avg'],
+        labels: ['Min', 'Max', 'Avg.'],
+        barColors: ['#373BF0', '#68D216', '#D26B16'],
+        hideHover: 'auto'
+        });
+      }
+    </script>
+    <h4>Error count</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Containername</th>
+        <th>Address</th>
+        <th>Count</th>
+      </tr>
+    </table>
+    <h4>Error Description</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Errorcode</th>
+        <th>Message</th>
+        <th>Count</th>
+      </tr>
+    </table>
+    <br>
+  </body>
+</html>

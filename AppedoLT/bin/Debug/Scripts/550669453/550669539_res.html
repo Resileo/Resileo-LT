@@ -1,0 +1,127 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><title>
+	Trip Midas - Flight Search Progress
+</title>
+
+    <script src="../../Optimizer_Themes/menucontroles/jquery.min.js" type="text/javascript"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="../../Optimizer_Themes/images/favicon.ico" />
+    <script src="../../Optimizer_Themes/scripts/progress_bar.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        function goSearch() {
+            window.location.href = document.getElementById("hidRPage").value;
+        }
+        window.history.forward(1);
+
+        function CreateSlider(list) {
+            var imgs = "";
+
+            $.each(list, function (i, img) {
+                if (i == 0)
+                    imgs = imgs + "<img src='../../UserResources/Advt_progress/" + img + "' alt=' ' width='722px' class='active' height='191px' />";
+                else
+                    imgs = imgs + "<img src='../../UserResources/Advt_progress/" + img + "' alt=' ' width='722px' height='191px' />";
+            });
+            $(".adslide").append(imgs);
+        }
+    </script>
+
+</head>
+<body>
+    <form name="form1" method="post" action="./BBFlightSearchProgress.aspx?qid=636329731883392620" id="form1">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJOTMwMzgzMjMwZGRkx7xKPOgcGcE/IVFYb0+ZbCzBBj7MAitOkUNGAoMFBw==" />
+</div>
+
+<link rel="stylesheet" type="text/css" href="../../App_Themes/StyleSheets/CalendarSimple.css"/>
+<script src="../../Menu/DropDownMenu.js" type="text/javascript"></script><link rel="stylesheet" type="text/css" href="../../Optimizer_Themes/css/Default/defaultstyle.css"/>
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="847731ED" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAJjsNJjy7PkchS9cX+Ihj2ZdFAXNl+nije0m1f4oYIY/v+Q6pnO3P6FNkdIP86psntFjnTcRUFNLWQM1ARrbVgR" />
+</div>
+        <div class="searchbody">
+            <div class="searchinner">
+                <div class="wait_bg">
+                    <div class="searchlogo">
+                        
+                    </div>
+                    
+                    <div id="progressBar" align="center" class="loader">
+                        <img src="../../UserResources/Advt_searchFlight/loading_default_en.gif"  style="width:245px"/>
+                       
+                    </div>
+                    <div class="wait ">
+                        <span id="ccLblSearchMessage">It may take few seconds and it is dependent on your internet speed...</span>
+                        
+                    </div>
+                    <span id="ccLblMCSectors"></span>
+                    <div id="ccDomIntDiv" class="load_details">
+                        <div class="detail_blocks">
+                            <span id="ccLblOrigin" class="detail_header"> Origin : </span>
+                            <span id="ccLblOriginValue" class="detail_content">Chennai</span>
+                        </div>
+                        <div class="detail_blocks">
+                            <span id="ccLblDest" class="detail_header"> Destination : </span>
+                            <span id="ccLblDestValue" class="detail_content">Delhi</span>
+                        </div>
+                        <div class="detail_blocks">
+                            <span id="ccLblDepart" class="detail_header">Dep Date : </span>
+                            <span id="ccLblDepartValue" class="detail_content">29-Oct-2017</span>
+                        </div>
+                        <div class="detail_blocks">
+                            
+                            
+                        </div>
+                    </div>
+                    <div id="slideshow" class="adslide">
+                       
+                    </div>
+                    <div class="load_details" style="margin-left: 0px;">
+                        <div class="detail_blocks" style="width: 100%; text-align: center;">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input name="hidRPage" type="hidden" id="hidRPage" value="/rcomm/Flight/BBFlightSearchResultsDom.aspx?qid=636329731883392620" />
+
+        <script type="text/javascript">
+            window.setTimeout("goSearch()", 1500);
+        </script>
+
+        <script type="text/javascript">
+            function slideSwitch() {
+                var $active = $('#slideshow IMG.active');
+
+                if ($active.length == 0) $active = $('#slideshow IMG:last');
+
+                var $next = $active.next().length ? $active.next() : $('#slideshow IMG:first');
+
+                $active.addClass('last-active');
+
+                $next.css({ opacity: 0.0 })
+                .addClass('active')
+                .animate({ opacity: 1.0 }, 1000, function () {
+                    $active.removeClass('active last-active');
+                });
+            }
+
+            $(function () {
+                setInterval("slideSwitch()", 5000);
+            });
+        </script>
+
+    
+
+<script type="text/javascript">
+//<![CDATA[
+CreateSlider(["progressslide1__635869240110794283.jpg","progressslide_2_635869240446583490.jpg","slider1.jpg","slider2.jpg"]);//]]>
+</script>
+</form>
+</body>
+</html>
