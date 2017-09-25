@@ -37,6 +37,8 @@ namespace AppedoLT
         private ExecutionReport executionReport = ExecutionReport.GetInstance();
         private DataServer _dataServer = DataServer.GetInstance();
         private int _hitCount = 0;
+        private XmlNode _setting = null;
+        
         private BindingList<VUScriptStatus> _vususerStatus = new BindingList<VUScriptStatus>();
         private IPAddress _localIpAddress = null;
 
@@ -863,6 +865,8 @@ namespace AppedoLT
                             {
                                 string scriptid = script.Attributes["id"].Value;
                                 XmlNode setting = script.SelectNodes("//script[@id='" + scriptid + "']//setting")[0];
+                                // Set global settings - To avoid generation of report when createduser and completeduser count matches in Loadgen Status Check - 25Sep2017
+                                _setting = setting;
                                 XmlNode vuscript = script.SelectNodes("//script[@id='" + scriptid + "']//vuscript")[0];
                                 ScriptExecutor scriptRunnerSce = new ScriptExecutor(setting, vuscript, executionReport.ReportName);
 
@@ -983,6 +987,9 @@ namespace AppedoLT
                                         {
                                             string scriptid = script.Attributes["id"].Value;
                                             XmlNode setting = script.SelectNodes("//script[@id='" + scriptid + "']//setting")[0];
+                                            // Set global settings - To avoid generation of report when createduser and completeduser count matches in Loadgen Status Check - 25Sep2017
+                                            _setting = setting;
+                                            // System.Diagnostics.Debug.WriteLine("Setting.maxuser: " + _setting.Attributes["maxuser"].Value);
                                             XmlNode vuscript = script.SelectNodes("//script[@id='" + scriptid + "']//vuscript")[0];
                                             
                                             // Write Settings
@@ -1421,10 +1428,12 @@ namespace AppedoLT
                     lblElapsedTime.Text = "0";
                 }
 
+               // System.Diagnostics.Debug.WriteLine("lblcreated: " + lblUserCreated.Text + " completed: " + lblUserCompleted.Text + " iscomp: " + isCompleted + " loadgenip: " + _loadGeneratorips.Count);
                 if (_isUseLoadGen)
                 {
                     #region loadgen
-                    if (lblUserCreated.Text != "0" && lblUserCreated.Text == lblUserCompleted.Text && _loadGeneratorips.Count == isCompleted)
+                    // Check for maxuser vs createduser for report generation rather than isCompleted variable - 25Sep2017
+                    if (lblUserCreated.Text != "0" && lblUserCreated.Text == lblUserCompleted.Text &&  lblUserCreated.Text == _setting.Attributes["maxuser"].Value) //&& _loadGeneratorips.Count == isCompleted)
                     {
                         lblElapsedTime.Text = string.Format("{0}:{1}:{2}", runTime.Elapsed.Hours.ToString("00"), runTime.Elapsed.Minutes.ToString("00"), runTime.Elapsed.Seconds.ToString("00"));
                         executionReport.ExecutionStatus = Status.Completed;

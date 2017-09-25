@@ -9,3 +9,4 @@ D:\Resileo\Resileo-LT\AppedoLT.Core\bin\Release\AppedoLT.Core.pdb
 D:\Resileo\Resileo-LT\AppedoLT.Core\bin\Release\Ionic.Zip.dll
 D:\Resileo\Resileo-LT\AppedoLT.Core\obj\Release\AppedoLT.Core.dll
 D:\Resileo\Resileo-LT\AppedoLT.Core\obj\Release\AppedoLT.Core.pdb
+D:\Resileo\Resileo-LT\AppedoLT.Core\obj\Release\AppedoLT.Core.csprojResolveAssemblyReference.cache

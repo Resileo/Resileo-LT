@@ -410,7 +410,6 @@ namespace AppedoLT.BusinessLogic
                     }
                 }
                 #endregion
-
                 for (int index = 1; index <= int.Parse(_setting.StartUser); index++)
                 {
                     _createdUserCount++;

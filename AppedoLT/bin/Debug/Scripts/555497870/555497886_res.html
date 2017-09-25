@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>AdactIn.com - Search Hotel</title>
+<link type="text/css" rel="stylesheet" href="css/main.css" />
+<!--<link type="text/css" rel="stylesheet" href="css/calendar.css" />
+<script type="text/javascript" src="js/datepickr.js">//Date Picker</script>-->
+<script type="text/javascript" src="js/search_hotel.js">//Search Validation</script>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="header">
+  <tr>
+    <td><img src="img/AdactIn_logo.png" alt="AdactIn Group" class="logo" /></td>
+    <td class="header_title"><img src="img/hotel.jpg" alt="AdactIn Group: Hotel Reservation System" /></td>
+  </tr>
+  <tr>
+    <td colspan="2" class="header_rule"></td>
+  </tr>
+</table><!-- SEARCH HOTELS BODY STARTS -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="content">
+  <tr>
+    <td valign="top" class="welcome_menu">Welcome to AdactIn Group of Hotels</td>
+    <td align="right" valign="top" class="welcome_menu"><input type="text" name="username_show" id="username_show" class="input_show" value="Hello testuser000!" /> <a href="SearchHotel.php">Search Hotel</a> | <a href="BookedItinerary.php">Booked Itinerary</a> | <a href="ChangePassword.php">Change Password</a> | <a href="Logout.php">Logout</a></td>
+    <td width="20%" rowspan="2" align="left" valign="top" bgcolor="#99CCFF"><table width="100%" border="0" cellspacing="0" cellpadding="10" class="right_adv">
+  <tr>
+    <td><h4 style="margin:0px;">Sample TestCases </h4><a href="http://www.adactin.com/HotelApp/resources/HotelAppTestCases.zip" target="_blank">DOWNLOAD</a> a complete set of readymade sample TEST CASES for this application. <span style="text-decoration:blink;">Enjoy automation!</span>
+	</td>
+  </tr>
+  <tr>
+    <td><h4 style="margin:0px;">HotelApp Web Services </h4>Access Hotel App SOAP and Rest Services to learn web services testing. <a href="http://www.adactin.com/HotelApp/WebServicesArtifacts.php" target="_blank">Click</a> to know more.
+	</td>
+  </tr>
+  <tr>
+    <td><h4 style="margin:0px;">Known Defects </h4><a href="http://www.adactin.com/HotelApp/resources/KnownDefects_HotelApp.pdf" target="_blank">DOWNLOAD</a> list of known defects for this application.
+	</td>
+  </tr>
+  <tr>
+	<td style="padding:0 0 0 5px; margin:0; background-color:#99CCFF;">
+	<iframe src="http://www.adactin.com/HotelApp/jQuery-scroll-books/index.html" frameBorder="0" height="323"></iframe>
+	</td>
+  </tr>
+  <tr>
+    <td><h4 style="margin:0px;">About AdactIn</h4>Get solutions for all your testing needs. Visit <a href="http://www.adactin.com">www.adactin.com</a> today!
+</td>
+  </tr>
+</table></td>
+  </tr>
+  <tr>
+    <td colspan="2" valign="top"><form name="search_form" id="search_form" method="post" action="SelectHotel.php" onsubmit="return search_validate();">
+      <table width="100%" border="0" cellpadding="2" cellspacing="0" class="login">
+        <tr>
+          <td colspan="2" class="login_title">Search Hotel <span class="login_title_comm">(Fields marked with Red asterix (*) are mandatory)</span></td>
+        </tr>
+        <tr>
+          <td width="150" align="right">Location<span class="reg_error">*</span>&nbsp;</td>
+          <td><select name="location" class="search_combobox" id="location">
+            <option value="">- Select Location -</option>
+            <option value="Sydney">Sydney</option>
+            <option value="Melbourne">Melbourne</option>
+            <option value="Brisbane">Brisbane</option>
+            <option value="Adelaide">Adelaide</option>
+			<option value="London">London</option>
+            <option value="New York">New York</option>
+            <option value="Los Angeles">Los Angeles</option>
+            <option value="Paris">Paris</option>
+          </select>
+          &nbsp;<span id="location_span" class="reg_error"></span></td>
+        </tr>
+        <tr>
+          <td align="right">Hotels&nbsp;</td>
+          <td><select name="hotels" id="hotels" class="search_combobox">
+            <option value="">- Select Hotel -</option>
+            <option value="Hotel Creek">Hotel Creek</option>
+            <option value="Hotel Sunshine">Hotel Sunshine</option>
+            <option value="Hotel Hervey">Hotel Hervey</option>
+            <option value="Hotel Cornice">Hotel Cornice</option>
+          </select>
+            &nbsp;<span id="hotel_span" class="reg_error"></span></td>
+        </tr>
+        <tr>
+          <td align="right">Room Type&nbsp;</td>
+          <td><select name="room_type" id="room_type" class="search_combobox">
+            <option value="">- Select Room Type -</option>
+            <option value="Standard">Standard</option>
+            <option value="Double">Double</option>
+            <option value="Deluxe">Deluxe</option>
+            <option value="Super Deluxe">Super Deluxe</option>
+          </select>
+            &nbsp;<span id="room_type_span" class="reg_error"></span></td>
+        </tr>
+        <tr>
+          <td align="right">Number of Rooms<span class="reg_error">*</span>&nbsp;</td>
+          <td><select name="room_nos" id="room_nos" class="search_combobox">
+            <option value="">- Select Number of Rooms -</option>
+            <option value="1" selected="selected">1 - One</option>
+            <option value="2">2 - Two</option>
+            <option value="3">3 - Three</option>
+            <option value="4">4 - Four</option>
+			<option value="5">5 - Five</option>
+            <option value="6">6 - Six</option>
+            <option value="7">7 - Seven</option>
+			<option value="8">8 - Eight</option>
+            <option value="9">9 - Nine</option>
+            <option value="10">10 - Ten</option>
+          </select>
+            &nbsp;<span id="num_room_span" class="reg_error"></span></td>
+        </tr>
+		<tr>
+          <td align="right">Check In Date<span class="reg_error">*</span>&nbsp;</td>
+          <td><input name="datepick_in" type="text" class="date_pick" id="datepick_in" value="08/08/2017" maxlength="10" />
+			<!--<script type="text/javascript">
+				new datepickr('datepick_in', { dateFormat: 'm/d/Y' });
+			</script>-->
+            (dd/mm/yyyy)&nbsp;<span id="checkin_span" class="reg_error"></span></td>
+        </tr>
+		<tr>
+          <td align="right">Check Out Date<span class="reg_error">*</span>&nbsp;</td>
+          <td><input name="datepick_out" type="text" class="date_pick" id="datepick_out" value="09/08/2017" maxlength="10" />
+			<!--<script type="text/javascript">
+				new datepickr('datepick_out', { dateFormat: 'm/d/Y' });
+			</script>-->
+            (dd/mm/yyyy)&nbsp;<span id="checkout_span" class="reg_error"></span></td>
+        </tr>
+		<tr>
+          <td align="right">Adults per Room<span class="reg_error">*</span>&nbsp;</td>
+          <td><select name="adult_room" id="adult_room" class="search_combobox">
+            <option value="">- Select Adults per Room -</option>
+            <option value="1" selected="selected">1 - One</option>
+            <option value="2">2 - Two</option>
+            <option value="3">3 - Three</option>
+            <option value="4">4 - Four</option>
+          </select>
+            &nbsp;<span id="adults_room_span" class="reg_error"></span></td>
+        </tr>
+		<tr>
+          <td align="right">Children per Room&nbsp;</td>
+          <td><select name="child_room" id="child_room" class="search_combobox">
+            <option value="">- Select Children per Room -</option>
+            <option value="1">1 - One</option>
+            <option value="2">2 - Two</option>
+            <option value="3">3 - Three</option>
+            <option value="4">4 - Four</option>
+          </select>
+            &nbsp;<span id="child_room_span" class="reg_error"></span></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><input type="submit" name="Submit" id="Submit" class="reg_button" value="Search"/>
+              <input type="reset" name="Reset" id="Reset" class="reg_button" value="Reset" />
+			  
+			  <input type="hidden" name="datepick_diff" id="datepick_diff" value="0" />
+			  </td>
+        </tr>
+      </table>
+    </form></td>
+  </tr>
+</table>
+<!-- SEARCH HOTELS BODY ENDS -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="footer_rule"></td>
+  </tr>
+  <tr>
+    <td class="footer">&copy; 2013 - <a href="http://www.adactin.com">Adactin.com</a>. All Rights Reserved. AdactIn Group Pty. Ltd.</td>
+  </tr>
+</table>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30741095-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script></body>
+</html>

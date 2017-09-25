@@ -1,0 +1,12 @@
+GET /HotelApp/css/main.css HTTP/1.1
+Host: adactin.com
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:54.0) Gecko/20100101 Firefox/54.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://adactin.com/HotelApp/
+Cookie: __utma=60557565.316786090.1501561323.1501847738.1501930837.14; __utmz=60557565.1501561323.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
+Connection: keep-alive
+If-Modified-Since: Thu, 26 Sep 2013 08:05:33 GMT
+If-None-Match: "a77-4e744d58d615d-gzip"
+

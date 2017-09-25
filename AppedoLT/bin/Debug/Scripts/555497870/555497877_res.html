@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>AdactIn.com - Hotel Reservation System</title>
+<link type="text/css" rel="stylesheet" href="css/main.css" />
+<script type="text/javascript" src="js/login.js">//Login Validation</script>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="header">
+  <tr>
+    <td><img src="img/AdactIn_logo.png" alt="AdactIn Group" class="logo" /></td>
+    <td class="header_title"><img src="img/hotel.jpg" alt="AdactIn Group: Hotel Reservation System" /></td>
+  </tr>
+  <tr>
+    <td colspan="2" class="header_rule"></td>
+  </tr>
+</table><!-- INDEX BODY STARTS -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="content">
+  <tr>
+    <td valign="top" class="content_left"><p>Welcome to AdactIn Group of Hotels</p>
+      <table width="498" border="0" cellpadding="5" cellspacing="0">
+        <tr>
+          <td width="380" rowspan="3"><img src="img/Hotel3.jpg" alt="Hotel Image 3" width="380" height="298" /></td>
+          <td width="118"><img src="img/Hotel1.jpg" alt="Hotel Image 1" width="118" height="121" /></td>
+        </tr>
+        <tr>
+          <td><img src="img/Hotel2.jpg" alt="Hotel Image 2" width="118" height="79" /></td>
+        </tr>
+        <tr>
+          <td><img src="img/Hotel4.jpg" alt="Hotel Image 4" width="118" height="75" /></td>
+        </tr>
+      </table>      
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p></td>
+    <td width="40%" align="left" valign="top" bgcolor="#EEEEEE"><form name="login_form" id="login_form" method="post" action="" onsubmit="return log_validate();">
+      <table width="100%" border="0" cellpadding="2" cellspacing="0" class="login">
+        <tr>
+          <td colspan="2" class="login_title">Existing User Login - Build 1</td>
+          </tr>
+        <tr>
+          <td width="150" align="right">Username&nbsp;</td>
+          <td><input type="text" name="username" id="username" class="login_input" value="" />&nbsp;<span id="username_span" class="login_error"></span></td>
+          </tr>
+        <tr>
+          <td align="right">Password&nbsp;</td>
+          <td><input type="password" name="password" id="password" class="login_input" value="" />&nbsp;<span id="password_span" class="login_error"></span></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><div class="login_forgot"><a href="ForgotPassword.php">Forgot Password?</a></div></td>
+        </tr>
+		<tr>
+          <td></td>
+          <td><div class="auth_error"></div></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><input type="Submit" name="login" id="login" class="login_button" value="Login"/></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center" class="login_register"><a href="Register.php">New User Register Here</a></td>
+          </tr>
+      </table>
+	  </form>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="build">
+                  <tr>
+                    <td class="build_title">Important Note:</td>
+                  </tr>
+                  <tr>
+                    <td> &nbsp;&nbsp;Hotel Application has 2 builds:
+                      <ul>
+  <li><strong>Build 1</strong> – Has been developed with known defects. Thus, functional test cases and automation scripts will fail on this build. <br />
+    <br />
+  </li>
+  <li><strong>Build 2</strong> – Known defects have been fixed. Thus, functional test cases and automation test scripts should pass when executed on this build. <a href="../HotelAppBuild2"><strong>Go to Build 2 </strong></a></li>
+</ul>
+</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                  </tr>
+                </table>
+    
+    </td>
+  </tr>
+</table>
+<!-- INDEX BODY ENDS -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="footer_rule"></td>
+  </tr>
+  <tr>
+    <td class="footer">&copy; 2013 - <a href="http://www.adactin.com">Adactin.com</a>. All Rights Reserved. AdactIn Group Pty. Ltd.</td>
+  </tr>
+</table>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30741095-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script></body>
+</html>

@@ -1,0 +1,41 @@
+/* CSS Document */
+body { margin:0; padding:0; font-family:Verdana, Arial, Helvetica, sans-serif; }
+.header { background-image:url(../img/header-bg.jpg); }
+.logo { padding:10px; }
+.header_title { font-family:Geneva, Arial, Helvetica, sans-serif; font-size:36px; font-weight:bold; text-align:right; }
+.header_rule { height:3px; background-color:#6699CC; }
+.footer_rule { height:3px; background-color:#6699CC; }
+.footer { text-align:center; padding:5px; font-size:12px; }
+.content { background-color:#CCCCFF; height:100%; }
+.content_left { padding:10px; font-size:16px; }
+.login { font-size: 14px; background-color:#eeeeee; }
+.login_title { font-size:18px; background-color:#eeeeee; padding:10px; font-weight:bold; }
+.login_title_comm { font-size:12px; font-weight:normal; }
+.data_input_tip { font-size:12px; font-weight:normal; color:#666666; }
+.login_register, .login_register a { font-size:16px; padding:10px; font-weight:bold; text-decoration:none; }
+.login_input { height:25px; width:150px; }
+.login_forgot { font-size:11px; padding-bottom:5px; width:155px; text-align:right; color:#CCCCCC; }
+.login_button { height:30px; width:100px; margin-top:5px; }
+.login_error { font-size:11px; color:#FF0000; }
+.auth_error { font-size:13px; color:#FF0000; }
+.reg_success { font-size:16px; padding: 50px 0px; text-align:center; font-weight:bold; }
+.reg_input { height:25px; width:250px; }
+.reg_error { font-size:12px; color:#FF0000; }
+.reg_button { height:30px; width:100px; font-weight:bold; margin:10px 0 20px 0;}
+.input_show { border:0px; background-color:#CCCCFF; font-size:14px; text-align:right; }
+.search_combobox { height:25px; width:250px; font-size:14px; }
+.select_combobox { height:25px; width:255px; font-size:14px; }
+.select_combobox2 { height:25px; width:125px; font-size:14px; }
+.date_pick { height:25px; width:245px; }
+.welcome_menu { padding:10px; font-size:14px; }
+.welcome_menu a { text-decoration:none; }
+.select_text { border:0px; width:100%; font-size:14px; }
+.disable_text { border:1px solid #999999; width:248px; height:25px; padding-left:5px; background-color:#EEEEEE; }
+.txtarea { width:250px; font-family:Geneva, Arial, Helvetica, sans-serif; font-size:13px; line-height:20px; }
+.disable_textarea { border:1px solid #999999; width:248px; padding-left:5px; background-color:#EEEEEE; font-family:Geneva, Arial, Helvetica, sans-serif; font-size:13px; line-height:20px; }
+.input_search {height:20px;}
+.right_adv { font-size: 14px; }
+.button_search {height:25px; width:30px; font-weight:bold;}
+.register_msg { color:#0000FF; font-size:12px; }
+.build_title { font-size:16px; padding:10px; font-weight:bold; color:#990000; }
+.build { font-size: 14px; color:#222222; }
