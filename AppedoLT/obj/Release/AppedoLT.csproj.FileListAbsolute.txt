@@ -216,3 +216,4 @@ D:\Resileo\Resileo-LT\AppedoLT\obj\Release\AppedoLT.UCMultipartPost.resources
 D:\Resileo\Resileo-LT\AppedoLT\obj\Release\AppedoLT.UCServer.resources
 D:\Resileo\Resileo-LT\AppedoLT\obj\Release\AppedoLT.UCTime.resources
 D:\Resileo\Resileo-LT\AppedoLT\obj\Release\AppedoLT.csproj.GenerateResource.Cache
+D:\Resileo\Resileo-LT\AppedoLT\bin\Release\Appedo.pfx
