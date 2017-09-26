@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<report reportname="adactin26-09-2017-124000">
+  <summaryreport>
+    <val starttime="26-09-2017 12:40:00" endtime="26-09-2017 12:40:10" durationsec="10" usercount="5" totalhits="65" avgresponse="0.149570553846154" avghits="6.5" totalthroughput="0.689" avgthroughput="0.550843811035156" totalerrors="13" totalpage="45" avgpageresponse="0.216046355555555" reponse200="48" reponse300="4" reponse400="0" reponse500="0" />
+  </summaryreport>
+  <log />
+  <error>
+    <val loadgen="192.168.56.1" reportname="" scenarioname="adactin" scriptname="adactin" containerid="555497872" containername="home" requestid="555497880" request="/HotelApp/css/main.css" userid="5" iterationid="1" errorcode="700" message="Unable to connect to the remote server" time="26-09-2017 07:10:09" />
+    <val loadgen="192.168.56.1" reportname="" scenarioname="adactin" scriptname="adactin" containerid="555497872" containername="home" requestid="555497877" request="/HotelApp/" userid="5" iterationid="1" errorcode="700" message="Unable to connect to the remote server" time="26-09-2017 07:10:10" />
+    <val loadgen="192.168.56.1" reportname="" scenarioname="adactin" scriptname="adactin" containerid="555497872" containername="home" requestid="555497882" request="/favicon.ico" userid="5" iterationid="1" errorcode="700" message="Unable to connect to the remote server" time="26-09-2017 07:10:10" />
+    <val loadgen="192.168.56.1" reportname="" scenarioname="adactin" scriptname="adactin" containerid="555497873" containername="Login" requestid="555497883" request="/HotelApp/" userid="5" iterationid="1" errorcode="700" message="Unable to connect to the remote server" time="26-09-2017 07:10:10" />
+    <val loadgen="192.168.56.1" reportname="" scenarioname="adactin" scriptname="adactin" containerid="555497884" containername="Landing page" requestid="555497886" request="/HotelApp/SearchHotel.php" userid="5" iterationid="1" errorcode="700" message="Unable to connect to the remote server" time="26-09-2017 07:10:10" />
+    <val loadgen="192.168.56.1" reportname="" scenarioname="adactin" scriptname="adactin" containerid="555497884" containername="Landing page" requestid="555497888" request="/HotelApp/jQuery-scroll-books/index.html" userid="5" iterationid="1" errorcode="700" message="Unable to connect to the remote server" time="26-09-2017 07:10:10" />
+    <val loadgen="192.168.56.1" reportname="" scenarioname="adactin" scriptname="adactin" containerid="555497884" containername="Landing page" requestid="555497886" request="/HotelApp/SearchHotel.php" userid="5" iterationid="2" errorcode="700" message="Unable to connect to the remote server" time="26-09-2017 07:10:10" />
+    <val loadgen="192.168.56.1" reportname="" scenarioname="adactin" scriptname="adactin" containerid="555497884" containername="Landing page" requestid="555497888" request="/HotelApp/jQuery-scroll-books/index.html" userid="5" iterationid="2" errorcode="700" message="Unable to connect to the remote server" time="26-09-2017 07:10:10" />
+    <val loadgen="192.168.56.1" reportname="" scenarioname="adactin" scriptname="adactin" containerid="559639360" containername="Logout" requestid="555497894" request="/HotelApp/jQuery-scroll-books/css/bootstrap-theme.min.css" userid="5" iterationid="2" errorcode="700" message="Unable to connect to the remote server" time="26-09-2017 07:10:10" />
+    <val loadgen="192.168.56.1" reportname="" scenarioname="adactin" scriptname="adactin" containerid="559639360" containername="Logout" requestid="555497895" request="/HotelApp/jQuery-scroll-books/css/bootstrap.min.css" userid="5" iterationid="2" errorcode="700" message="Unable to connect to the remote server" time="26-09-2017 07:10:10" />
+    <val loadgen="192.168.56.1" reportname="" scenarioname="adactin" scriptname="adactin" containerid="559639360" containername="Logout" requestid="555497891" request="/HotelApp/jQuery-scroll-books/css/site.css" userid="5" iterationid="2" errorcode="700" message="Unable to connect to the remote server" time="26-09-2017 07:10:10" />
+    <val loadgen="192.168.56.1" reportname="" scenarioname="adactin" scriptname="adactin" containerid="559639360" containername="Logout" requestid="555497896" request="/HotelApp/Logout.php" userid="5" iterationid="2" errorcode="700" message="Unable to connect to the remote server" time="26-09-2017 07:10:10" />
+    <val loadgen="192.168.56.1" reportname="" scenarioname="adactin" scriptname="adactin" containerid="559639360" containername="Logout" requestid="555497899" request="/HotelApp/jQuery-scroll-books/index.html" userid="5" iterationid="2" errorcode="700" message="Unable to connect to the remote server" time="26-09-2017 07:10:10" />
+  </error>
+  <graphs>
+    <val gmttime="1506409803" localtime="2017-09-26 12:40:03" gmt="2017-09-26 07:10:03" hitpersec="5.2" totalkb="353.47" kbps="70.69" avgresponsetime="140.31" />
+    <val gmttime="1506409809" localtime="2017-09-26 12:40:09" gmt="2017-09-26 07:10:09" hitpersec="5.4" totalkb="351.61" kbps="70.32" avgresponsetime="223.51" />
+    <val gmttime="1506409810" localtime="2017-09-26 12:40:10" gmt="2017-09-26 07:10:10" hitpersec="2.4" totalkb="0" kbps="0" avgresponsetime="3.27" />
+  </graphs>
+  <errorgraph>
+    <val gmttime="1506390009" localtime="2017-09-26 07:10:09" errorcount="1" />
+    <val gmttime="1506390010" localtime="2017-09-26 07:10:10" errorcount="12" />
+  </errorgraph>
+  <pageresponsegraph>
+    <val endtime="1506409803" localtime="2017-09-26 12:40:03" resptime="0.17" />
+    <val endtime="1506409809" localtime="2017-09-26 12:40:09" resptime="0.28" />
+    <val endtime="1506409810" localtime="2017-09-26 12:40:10" resptime="0.11" />
+  </pageresponsegraph>
+  <vuserrungraph>
+    <val gmt="1506409800" localtime="2017-09-26 12:40:00" vusercnt="1" vuserrunning="1" />
+    <val gmt="1506409801" localtime="2017-09-26 12:40:01" vusercnt="" vuserrunning="1" />
+    <val gmt="1506409802" localtime="2017-09-26 12:40:02" vusercnt="1" vuserrunning="2" />
+    <val gmt="1506409803" localtime="2017-09-26 12:40:03" vusercnt="-1" vuserrunning="1" />
+    <val gmt="1506409804" localtime="2017-09-26 12:40:04" vusercnt="" vuserrunning="1" />
+    <val gmt="1506409805" localtime="2017-09-26 12:40:05" vusercnt="" vuserrunning="1" />
+    <val gmt="1506409806" localtime="2017-09-26 12:40:06" vusercnt="1" vuserrunning="2" />
+    <val gmt="1506409807" localtime="2017-09-26 12:40:07" vusercnt="1" vuserrunning="3" />
+    <val gmt="1506409808" localtime="2017-09-26 12:40:08" vusercnt="" vuserrunning="3" />
+    <val gmt="1506409809" localtime="2017-09-26 12:40:09" vusercnt="1" vuserrunning="4" />
+    <val gmt="1506409810" localtime="2017-09-26 12:40:10" vusercnt="-1" vuserrunning="3" />
+    <val gmt="1506409811" localtime="2017-09-26 12:40:11" vusercnt="" vuserrunning="3" />
+    <val gmt="1506409812" localtime="2017-09-26 12:40:12" vusercnt="" vuserrunning="3" />
+    <val gmt="1506409813" localtime="2017-09-26 12:40:13" vusercnt="" vuserrunning="3" />
+    <val gmt="1506409814" localtime="2017-09-26 12:40:14" vusercnt="" vuserrunning="3" />
+    <val gmt="1506409815" localtime="2017-09-26 12:40:15" vusercnt="" vuserrunning="3" />
+    <val gmt="1506409816" localtime="2017-09-26 12:40:16" vusercnt="" vuserrunning="3" />
+    <val gmt="1506409817" localtime="2017-09-26 12:40:17" vusercnt="" vuserrunning="3" />
+    <val gmt="1506409818" localtime="2017-09-26 12:40:18" vusercnt="" vuserrunning="3" />
+    <val gmt="1506409819" localtime="2017-09-26 12:40:19" vusercnt="" vuserrunning="3" />
+    <val gmt="1506409820" localtime="2017-09-26 12:40:20" vusercnt="" vuserrunning="3" />
+    <val gmt="1506409821" localtime="2017-09-26 12:40:21" vusercnt="" vuserrunning="3" />
+    <val gmt="1506409822" localtime="2017-09-26 12:40:22" vusercnt="" vuserrunning="3" />
+    <val gmt="1506409823" localtime="2017-09-26 12:40:23" vusercnt="" vuserrunning="3" />
+    <val gmt="1506409824" localtime="2017-09-26 12:40:24" vusercnt="" vuserrunning="3" />
+  </vuserrungraph>
+  <script name="adactin" id="555497870">
+    <settings>
+      <val type="Iteration" durationTime="0:2:0" iterations="2" incrementUser="1" incrementTime="0:0:1" maxUser="5" browserCache="false" startUserId="1" replayThinkTime="true" bandwidth="Full Speed" enableparallelcon="false" parallelconnections="6" />
+    </settings>
+    <requests>
+      <val containerid="555497872" containername="home" requestid="555497877" address="/HotelApp/" />
+      <val containerid="555497872" containername="home" requestid="555497880" address="/HotelApp/css/main.css" />
+      <val containerid="555497872" containername="home" requestid="555497882" address="/favicon.ico" />
+      <val containerid="555497873" containername="Login" requestid="555497883" address="/HotelApp/" />
+      <val containerid="555497884" containername="Landing page" requestid="555497886" address="/HotelApp/SearchHotel.php" />
+      <val containerid="555497884" containername="Landing page" requestid="555497888" address="/HotelApp/jQuery-scroll-books/index.html" />
+      <val containerid="559639360" containername="Logout" requestid="555497891" address="/HotelApp/jQuery-scroll-books/css/site.css" />
+      <val containerid="559639360" containername="Logout" requestid="555497894" address="/HotelApp/jQuery-scroll-books/css/bootstrap-theme.min.css" />
+      <val containerid="559639360" containername="Logout" requestid="555497895" address="/HotelApp/jQuery-scroll-books/css/bootstrap.min.css" />
+      <val containerid="559639360" containername="Logout" requestid="555497896" address="/HotelApp/Logout.php" />
+      <val containerid="559639360" containername="Logout" requestid="555497899" address="/HotelApp/jQuery-scroll-books/index.html" />
+    </requests>
+    <requestresponse>
+      <val containerid="555497872" containername="home" requestid="555497877" address="/HotelApp/" min="28.687" max="254.94" avg="153.4262" throughput="35652" hitcount="5" minttfb="1.2864" maxttfb="235.3668" avgttfb="141.49736" />
+      <val containerid="555497872" containername="home" requestid="555497880" address="/HotelApp/css/main.css" min="2.5437" max="240.7544" avg="135.17538" throughput="10716" hitcount="5" minttfb="2.39" maxttfb="240.5076" avgttfb="134.99764" />
+      <val containerid="555497872" containername="home" requestid="555497882" address="/favicon.ico" min="0.5656" max="76.1501" avg="48.1019" throughput="0" hitcount="5" minttfb="0.5116" maxttfb="76.0343" avgttfb="47.96036" />
+      <val containerid="555497873" containername="Login" requestid="555497883" address="/HotelApp/" min="0.5958" max="257.1672" avg="152.10864" throughput="35799" hitcount="5" minttfb="0.5954" maxttfb="254.7423" avgttfb="150.30094" />
+      <val containerid="555497884" containername="Landing page" requestid="555497886" address="/HotelApp/SearchHotel.php" min="0.4361" max="534.4562" avg="133.67868" throughput="113531" hitcount="10" minttfb="0.396" maxttfb="288.8127" avgttfb="102.86963" />
+      <val containerid="555497884" containername="Landing page" requestid="555497888" address="/HotelApp/jQuery-scroll-books/index.html" min="1.2195" max="793.02" avg="169.87419" throughput="32296" hitcount="10" minttfb="1.198" maxttfb="792.7286" avgttfb="169.69099" />
+      <val containerid="559639360" containername="Logout" requestid="555497891" address="/HotelApp/jQuery-scroll-books/css/site.css" min="1.5911" max="394.0866" avg="162.18444" throughput="1320" hitcount="5" minttfb="1.5582" maxttfb="393.938" avgttfb="162.04708" />
+      <val containerid="559639360" containername="Logout" requestid="555497894" address="/HotelApp/jQuery-scroll-books/css/bootstrap-theme.min.css" min="1.3475" max="412.5494" avg="146.07588" throughput="52540" hitcount="5" minttfb="1.306" maxttfb="406.819" avgttfb="135.72152" />
+      <val containerid="559639360" containername="Logout" requestid="555497895" address="/HotelApp/jQuery-scroll-books/css/bootstrap.min.css" min="1.2214" max="545.3622" avg="320.37212" throughput="398192" hitcount="5" minttfb="1.209" maxttfb="168.6551" avgttfb="102.58508" />
+      <val containerid="559639360" containername="Logout" requestid="555497896" address="/HotelApp/Logout.php" min="0.8095" max="241.8943" avg="125.36704" throughput="25808" hitcount="5" minttfb="0.7664" maxttfb="241.3368" avgttfb="125.14566" />
+      <val containerid="559639360" containername="Logout" requestid="555497899" address="/HotelApp/jQuery-scroll-books/index.html" min="1.0323" max="163.0697" avg="94.49986" throughput="16148" hitcount="5" minttfb="0.9934" maxttfb="162.7591" avgttfb="94.30464" />
+    </requestresponse>
+    <containerresponse>
+      <val containerid="555497872" containername="home" min="31.7963" max="551.055" avg="336.70348" />
+      <val containerid="555497873" containername="Login" min="0.5958" max="257.1672" avg="152.10864" />
+      <val containerid="555497884" containername="Landing page" min="1.6556" max="899.2035" avg="303.55287" />
+      <val containerid="559639360" containername="Logout" min="6.0018" max="1756.9622" avg="848.49934" />
+    </containerresponse>
+    <errorcount>
+      <val containerid="555497872" containername="home" requestid="555497877" address="/HotelApp/" count="1" />
+      <val containerid="555497872" containername="home" requestid="555497880" address="/HotelApp/css/main.css" count="1" />
+      <val containerid="555497872" containername="home" requestid="555497882" address="/favicon.ico" count="1" />
+      <val containerid="555497873" containername="Login" requestid="555497883" address="/HotelApp/" count="1" />
+      <val containerid="555497884" containername="Landing page" requestid="555497886" address="/HotelApp/SearchHotel.php" count="2" />
+      <val containerid="555497884" containername="Landing page" requestid="555497888" address="/HotelApp/jQuery-scroll-books/index.html" count="2" />
+      <val containerid="559639360" containername="Logout" requestid="555497891" address="/HotelApp/jQuery-scroll-books/css/site.css" count="1" />
+      <val containerid="559639360" containername="Logout" requestid="555497894" address="/HotelApp/jQuery-scroll-books/css/bootstrap-theme.min.css" count="1" />
+      <val containerid="559639360" containername="Logout" requestid="555497895" address="/HotelApp/jQuery-scroll-books/css/bootstrap.min.css" count="1" />
+      <val containerid="559639360" containername="Logout" requestid="555497896" address="/HotelApp/Logout.php" count="1" />
+      <val containerid="559639360" containername="Logout" requestid="555497899" address="/HotelApp/jQuery-scroll-books/index.html" count="1" />
+    </errorcount>
+    <errorcode>
+      <val errorcode="700" message="Unable to connect to the remote server" count="13" />
+    </errorcode>
+    <transactions />
+  </script>
+</report>

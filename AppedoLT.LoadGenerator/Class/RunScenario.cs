@@ -401,6 +401,8 @@ namespace AppedoLTLoadGenerator
                     {
                         byte[] dataBuf;
                         bool hasData = false;
+                        // Set iscompleted to 0 for completed count reset - 26Sep2017
+                        _isCompleted = 0;
 
                         #region Report data
                         try

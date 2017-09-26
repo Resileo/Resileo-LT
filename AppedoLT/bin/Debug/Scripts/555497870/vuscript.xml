@@ -100,6 +100,7 @@
         </request>
       </page>
     </container>
+    <log id="559725104" name="Message" message="Message" />
   </container>
   <container name="End" id="555497892">
     <container name="Logout" id="559639360">

@@ -1183,6 +1183,7 @@ namespace AppedoLT.BusinessLogic
                     {
                         JavaScriptRunner.ScriptErrorsSuppressed = true;
                     }
+                    
                     JavaScriptRunner.Document.Write(script.ToString());
                     JavaScriptRunner.Document.Window.Error += new HtmlElementErrorEventHandler(GetScriptException);
                     JavaScriptRunner.Document.InvokeScript("main");

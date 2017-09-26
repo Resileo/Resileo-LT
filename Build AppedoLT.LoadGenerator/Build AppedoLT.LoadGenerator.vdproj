@@ -64,7 +64,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_57734B4432E0498E240C695D62F52496"
+        "OwnerKey" = "8:_75CA0F3DAC374998BB5F833832106E21"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -76,7 +76,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_75CA0F3DAC374998BB5F833832106E21"
+        "OwnerKey" = "8:_57734B4432E0498E240C695D62F52496"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -414,7 +414,7 @@
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.026"
+        "ProductVersion" = "8:1.1.028"
         "Manufacturer" = "8:Appedo"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

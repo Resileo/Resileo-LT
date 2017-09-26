@@ -1406,6 +1406,9 @@ namespace AppedoLT
                         catch (Exception ex)
                         {
                             isCompleted++;
+                            //Added message for failure of LoadGen during run - 26Sep2017
+                            ExceptionHandler.WritetoEventLog(ex.Message + " Need to stop the run manually");
+                            lblStatus.Text = ex.Message + " Need to stop the run manually";
                         }
                         finally
                         {
@@ -1428,13 +1431,16 @@ namespace AppedoLT
                     lblElapsedTime.Text = "0";
                 }
 
-               // System.Diagnostics.Debug.WriteLine("lblcreated: " + lblUserCreated.Text + " completed: " + lblUserCompleted.Text + " iscomp: " + isCompleted + " loadgenip: " + _loadGeneratorips.Count);
+                // System.Diagnostics.Debug.WriteLine("lblcreated: " + lblUserCreated.Text + " completed: " + lblUserCompleted.Text + " iscomp: " + isCompleted + " loadgenip: " + _loadGeneratorips.Count);
                 if (_isUseLoadGen)
                 {
                     #region loadgen
                     // Check for maxuser vs createduser for report generation rather than isCompleted variable - 25Sep2017
-                    if (lblUserCreated.Text != "0" && lblUserCreated.Text == lblUserCompleted.Text &&  lblUserCreated.Text == _setting.Attributes["maxuser"].Value) //&& _loadGeneratorips.Count == isCompleted)
+                    if (lblUserCreated.Text != "0" && lblUserCreated.Text == lblUserCompleted.Text &&  lblUserCreated.Text == _setting.Attributes["maxuser"].Value /* && _loadGeneratorips.Count == isCompleted */)
                     {
+                        // Give sleep for loadgen count * 5 seconds for data collection - 26sep2017
+                        lblStatus.Text = "Report Generation in process. Waiting for data collection to complete (Approx. " + _loadGeneratorips.Count * 5 + "s)";
+                        Thread.Sleep(_loadGeneratorips.Count * 5000);
                         lblElapsedTime.Text = string.Format("{0}:{1}:{2}", runTime.Elapsed.Hours.ToString("00"), runTime.Elapsed.Minutes.ToString("00"), runTime.Elapsed.Seconds.ToString("00"));
                         executionReport.ExecutionStatus = Status.Completed;
                         runTime.Stop();
@@ -1465,7 +1471,6 @@ namespace AppedoLT
                     }
                     else
                     {
-                        Console.WriteLine("eLse");
                     }
                     #endregion
                 }

@@ -218,3 +218,4 @@ D:\Resileo\Resileo-LT\AppedoLT\obj\Debug\AppedoLT.UCTime.resources
 D:\Resileo\Resileo-LT\AppedoLT\obj\Debug\AppedoLT.csproj.GenerateResource.Cache
 D:\Resileo\Resileo-LT\AppedoLT\obj\Debug\APPEDO_LT.exe
 D:\Resileo\Resileo-LT\AppedoLT\obj\Debug\APPEDO_LT.pdb
+D:\Resileo\Resileo-LT\AppedoLT\bin\Debug\Appedo.pfx
