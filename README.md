@@ -1,17 +1,17 @@
 # Resileo-LT
 Resileo LT tool code base
 
-## 28-Sep-2017
+## AppedoLT 3.2.025 - Appedo Load Generator 1.1.029: 28-Sep-2017
 
 ### Changelog 
 
-*AppedoLT 3.2.025*
+**AppedoLT 3.2.025**
 * Fixed Automatic Proxy setting in Firefox
 * Fixed Default ReportName Date Format
 * Fixed Loadgen completed Status check
 * Fixed LT Freeze during Report Generation
 
-*Appedo Load Generator 1.1.029*
+**Appedo Load Generator 1.1.029**
 * Added tooltip for Showing IP of Loadgen on startup
 * Added tooltip for Connection to host
 * Added tooltip for Run Completed and Run Stop
