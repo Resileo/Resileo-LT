@@ -49,7 +49,8 @@ namespace AppedoLTLoadGenerator
                 ni.Text = "AppedoLT Loadgenerator.";
                 ni.Visible = true;
                 ni.ContextMenuStrip = new AppedoLTLoadGenerator.ContextMenus().Create();
-                ni.BalloonTipText = "AppedoLT Loadgenerator started";
+                // Display IP for ease of use - 28Sep2017
+                ni.BalloonTipText = "AppedoLT Loadgenerator started at "+ Dns.GetHostByName(Dns.GetHostName()).AddressList[0];
                 ni.ShowBalloonTip(1000);
                 ni.ContextMenuStrip = contextMenuStrip1;
                 worker.RunWorkerAsync();
@@ -224,11 +225,17 @@ namespace AppedoLTLoadGenerator
                                             }
                                             controller.Send(new TrasportData("ok", string.Empty, null));
                                             if (run != null) run.Stop();
+                                            // Added stop confirmation from host - 28Sep2017
+                                            ni.BalloonTipText = "Run has been stopped";
+                                            ni.ShowBalloonTip(1000);
                                         }
                                         break;
 
                                     case "test":
                                         {
+                                            // Added message for connection confirmation - 28Sep2017
+                                            ni.BalloonTipText = ( "Connected to " + ((IPEndPoint)controller.tcpClient.Client.RemoteEndPoint).Address.ToString());
+                                            ni.ShowBalloonTip(1000);
                                             controller.Send(new TrasportData("ok", string.Empty, null));
                                         }
                                         break;
@@ -315,13 +322,22 @@ namespace AppedoLTLoadGenerator
                             if (run.TotalCreatedUser != 0 && run.TotalCreatedUser == run.TotalCompletedUser && run.IsCompleted == 1)
                             {
 
-                                ni.Text = "Run completed" + System.Environment.NewLine + "Created: " + run.TotalCreatedUser.ToString() + Environment.NewLine + "Completed: " + run.TotalCompletedUser.ToString() + Environment.NewLine + timer.Elapsed.ToString(@"dd\.hh\:mm\:ss")+Environment.NewLine;
+                                ni.Text = "Run completed" + System.Environment.NewLine + "Created: " + run.TotalCreatedUser.ToString() + Environment.NewLine + "Completed: " + run.TotalCompletedUser.ToString() + Environment.NewLine + timer.Elapsed.ToString(@"dd\.hh\:mm\:ss") + Environment.NewLine;
+                                // Added Run completed message- 28Sep2017
+                                ni.BalloonTipText = "Run completed";
+                                ni.ShowBalloonTip(1000);
                                 break;
                             }
                             else
                             {
                                 ni.Text = "Running.." + System.Environment.NewLine + "Created: " + run.TotalCreatedUser.ToString() + Environment.NewLine + "Completed: " + run.TotalCompletedUser.ToString() + Environment.NewLine + timer.Elapsed.ToString(@"dd\.hh\:mm\:ss");
                             }
+                        }
+                        else
+                        {
+                            // Added Idle Text - 28Sep2017
+                            ni.Text = "LoadGen is Idle";
+                            break;
                         }
                     }
                 }).Start();

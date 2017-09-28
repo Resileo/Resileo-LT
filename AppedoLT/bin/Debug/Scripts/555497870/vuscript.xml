@@ -68,7 +68,7 @@
     </container>
   </container>
   <container name="Actions" id="555497875">
-    <container name="Landing page" id="555497884">
+    <container name="landing page" id="555497884">
       <page pagename="/HotelApp/SearchHotel.php" host="adactin.com" delay="2003" id="555497887" name="/HotelApp/SearchHotel.php" starttime="636377995474700427">
         <request id="555497886" Method="GET" Path="/HotelApp/SearchHotel.php" Protocal="HTTP" Version="1.1&#xD;" name="/HotelApp/SearchHotel.php" Schema="http" Host="adactin.com" Port="80" QueryString="" Address="http://adactin.com/HotelApp/SearchHotel.php" Url="http://adactin.com/HotelApp/SearchHotel.php" Excludesecondaryreq="true" HasErrorResponse="False" ResponseHeader="HTTP/1.1 200 OK&#xD;&#xA;Date: Tue, 08 Aug 2017 09:02:26 GMT&#xD;&#xA;Server: Apache&#xD;&#xA;Expires: Thu, 19 Nov 1981 08:52:00 GMT&#xD;&#xA;Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0&#xD;&#xA;Pragma: no-cache&#xD;&#xA;Vary: Accept-Encoding&#xD;&#xA;Content-Encoding: gzip&#xD;&#xA;Content-Length: 2498&#xD;&#xA;Keep-Alive: timeout=5, max=100&#xD;&#xA;Connection: Keep-Alive&#xD;&#xA;Content-Type: text/html&#xD;&#xA;&#xD;&#xA;" resFilename="555497886_res.html" reqFilename="555497886_req.bin" IsEnable="True">
           <headers>
@@ -100,10 +100,9 @@
         </request>
       </page>
     </container>
-    <log id="559725104" name="Message" message="Message" />
   </container>
   <container name="End" id="555497892">
-    <container name="Logout" id="559639360">
+    <container name="Logout" id="559803913">
       <page pagename="/HotelApp/jQuery-scroll-books/css/site.css" host="www.adactin.com" delay="2009" id="555497893" name="/HotelApp/jQuery-scroll-books/css/site.css" starttime="636377995514852624">
         <request id="555497891" Method="GET" Path="/HotelApp/jQuery-scroll-books/css/site.css" Protocal="HTTP" Version="1.1&#xD;" name="/HotelApp/jQuery-scroll-books/css/site.css" Schema="http" Host="www.adactin.com" Port="80" QueryString="" Address="http://www.adactin.com/HotelApp/jQuery-scroll-books/css/site.css" Url="http://www.adactin.com/HotelApp/jQuery-scroll-books/css/site.css" Excludesecondaryreq="false" HasErrorResponse="False" ResponseHeader="HTTP/1.1 200 OK&#xD;&#xA;Date: Tue, 08 Aug 2017 09:02:31 GMT&#xD;&#xA;Server: Apache&#xD;&#xA;Last-Modified: Sun, 20 Nov 2016 13:06:33 GMT&#xD;&#xA;ETag: &quot;14a-541bb355e02b6-gzip&quot;&#xD;&#xA;Accept-Ranges: bytes&#xD;&#xA;Cache-Control: max-age=86400&#xD;&#xA;Expires: Wed, 09 Aug 2017 09:02:31 GMT&#xD;&#xA;Vary: Accept-Encoding&#xD;&#xA;Content-Encoding: gzip&#xD;&#xA;Content-Length: 189&#xD;&#xA;Keep-Alive: timeout=5, max=100&#xD;&#xA;Connection: Keep-Alive&#xD;&#xA;Content-Type: text/css&#xD;&#xA;&#xD;&#xA;" resFilename="555497891_res.css" reqFilename="555497891_req.bin" IsEnable="True">
           <headers>

@@ -360,7 +360,8 @@ namespace AppedoLT.Core
         {
             try
             {
-                DirectoryInfo[] myProfileDirectory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Mozilla\\Firefox\\Profiles\\").GetDirectories("*.default");
+                // Modified directory search for finding pref.js file - 26Sep2017
+                DirectoryInfo[] myProfileDirectory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Mozilla\\Firefox\\Profiles\\").GetDirectories("*.default*");
                 String myFFPrefFile = myProfileDirectory[0].FullName + "\\prefs.js";
                 if (File.Exists(myFFPrefFile) == true)
                 {
@@ -455,10 +456,12 @@ namespace AppedoLT.Core
                         string s = process.ProcessName.ToLower();
                         //if (s == "iexplore" || s == "iexplorer" || s == "chrome" || s == "firefox")
                         if (s == "firefox")
-                            process.Kill();
+                             process.Kill();
+                           // process.CloseMainWindow();
                     }
                 }
-                DirectoryInfo[] myProfileDirectory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Mozilla\\Firefox\\Profiles\\").GetDirectories("*.default");
+                // Modified directory search for finding pref.js file - 26Sep2017
+                DirectoryInfo[] myProfileDirectory = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Mozilla\\Firefox\\Profiles\\").GetDirectories("*.default*");
                 String myFFPrefFile = myProfileDirectory[0].FullName + "\\prefs.js";
                 if (File.Exists(myFFPrefFile) == true)
                 {

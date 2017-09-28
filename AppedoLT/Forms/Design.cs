@@ -723,7 +723,7 @@ namespace AppedoLT
                             break;
                         }
 
-                        Thread.Sleep(1);
+                        Thread.Sleep(100);
                     }
                     btnRun.Visible = true;
                     btnClear.Visible = true;
@@ -808,7 +808,8 @@ namespace AppedoLT
                     MessageBox.Show("Please save any changes done, before validating or running scripts.");
                     _scriptExecutorList.Clear();
                     tmrExecution.Stop();
-                    string reportNme = tvScenarios.SelectedNode.Text + DateTime.Now.ToString().Replace(" ","-").Replace(":","");
+                    // Formatted date for auto report name - 28Sep2017
+                    string reportNme = tvScenarios.SelectedNode.Text + DateTime.Now.ToString("_ddMMyyyy_HHmmss");
                     frmRun objFrmRun = new frmRun(reportNme);
 
                     if (objFrmRun.ShowDialog() == DialogResult.OK)
@@ -1391,30 +1392,47 @@ namespace AppedoLT
                             executionReport.CreatedUser = 0;
                             executionReport.CompletedUser = 0;
                             #endregion
-
-                            #region Consolidate Createted and completed info
-                            foreach (string keys in loadGenUserDetail.Keys)
-                            {
-                                executionReport.CreatedUser += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[0]);
-                                executionReport.CompletedUser += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[1]);
-                                isCompleted += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[2]);
-                            }
+                            //foreach (string keys in loadGenUserDetail.Keys)
+                            //{
+                            //    executionReport.CreatedUser += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[0]);
+                            //    executionReport.CompletedUser += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[1]);
+                            //    isCompleted += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[2]);
+                            //}
 
                             controller.Close();
-                            #endregion
                         }
                         catch (Exception ex)
                         {
-                            isCompleted++;
                             //Added message for failure of LoadGen during run - 26Sep2017
-                            ExceptionHandler.WritetoEventLog(ex.Message + " Need to stop the run manually");
-                            lblStatus.Text = ex.Message + " Need to stop the run manually";
+                            ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message + " might need to stop the run manually");
+                            lblStatus.Text = ex.Message + " might need to stop the run manually";
                         }
                         finally
                         {
                             loadGenCreatedUser = 0;
                             loadGenCompetedUser = 0;
                         }
+                    }
+                    // Compute LoadGen stats from LoadgenDetail Dict - 28Sep2017
+                    try
+                    {
+
+                        executionReport.CreatedUser = 0;
+                        executionReport.CompletedUser = 0;
+                        #region Consolidate Createted and completed info
+                        foreach (string keys in loadGenUserDetail.Keys)
+                        {
+                            executionReport.CreatedUser += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[0]);
+                            executionReport.CompletedUser += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[1]);
+                            isCompleted += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[2]);
+                        }
+
+                        #endregion
+                    }
+                    catch (FormatException ex)
+                    {
+                        isCompleted += 1;
+                        ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
                     }
                 }
 
@@ -1435,12 +1453,13 @@ namespace AppedoLT
                 if (_isUseLoadGen)
                 {
                     #region loadgen
-                    // Check for maxuser vs createduser for report generation rather than isCompleted variable - 25Sep2017
-                    if (lblUserCreated.Text != "0" && lblUserCreated.Text == lblUserCompleted.Text &&  lblUserCreated.Text == _setting.Attributes["maxuser"].Value /* && _loadGeneratorips.Count == isCompleted */)
+                    // Check for maxuser vs createduser for report generation rather than isCompleted variable - 25Sep2017 - NW
+                    // iscompleted Count fixed - 28Sep2017
+                    if (lblUserCreated.Text != "0" && lblUserCreated.Text == lblUserCompleted.Text /*&&  lblUserCreated.Text == _setting.Attributes["maxuser"].Value */ && _loadGeneratorips.Count == isCompleted )
                     {
-                        // Give sleep for loadgen count * 5 seconds for data collection - 26sep2017
-                        lblStatus.Text = "Report Generation in process. Waiting for data collection to complete (Approx. " + _loadGeneratorips.Count * 5 + "s)";
-                        Thread.Sleep(_loadGeneratorips.Count * 5000);
+                        // Give sleep for loadgen count * 5 seconds for data collection - 26sep2017 - NW
+                        // lblStatus.Text = "Report Generation in process. Waiting for data collection to complete (Approx. " + _loadGeneratorips.Count * 5 + "s)";
+                        // Thread.Sleep(_loadGeneratorips.Count * 5000);
                         lblElapsedTime.Text = string.Format("{0}:{1}:{2}", runTime.Elapsed.Hours.ToString("00"), runTime.Elapsed.Minutes.ToString("00"), runTime.Elapsed.Seconds.ToString("00"));
                         executionReport.ExecutionStatus = Status.Completed;
                         runTime.Stop();
@@ -1450,14 +1469,25 @@ namespace AppedoLT
                         {
                             new Thread(() => { UpdateReportStatus(); }).Start();
                             
-                            CreateSummaryReport(executionReport.ReportName);
-                            ReportMaster reportMaster = new ReportMaster(executionReport.ReportName);
+                            //CreateSummaryReport(executionReport.ReportName);
+                            //ReportMaster reportMaster = new ReportMaster(executionReport.ReportName);
+                            // Added Thread for Report Generation to prevent LTFreeze - 28Sep2017
                             new Thread(() =>
                             {
+                                CreateSummaryReport(executionReport.ReportName);
+                                ReportMaster reportMaster = new ReportMaster(executionReport.ReportName);
                                 reportMaster.GenerateReports();
+
+  
                             }).Start();
                            // UpdateReportStatus();
+
+                            while (!ReportMaster.IsReportGenerationCompleted)
+                            {
+                                Thread.Sleep(100);
+                            }
                             userControlReports2.LoadReportName(executionReport.ReportName);
+                           // userControlReports2.LoadReportName(executionReport.ReportName);
                         }
                         //ReceiveAllLoadGenDatafiles(executionReport.ReportName);
                         //WaitUntillExecutionComplete();
@@ -1507,13 +1537,23 @@ namespace AppedoLT
                             //MessageBox.Show("Report Generation is in progress. Please wait.");
                             lblStatus.Text = "Report generation started";
                             new Thread(()=>{UpdateReportStatus();}).Start();
-                            CreateSummaryReport(executionReport.ReportName);
-                            ReportMaster reportMaster = new ReportMaster(executionReport.ReportName);
-                            reportMaster.GenerateReports();
-
+                            // Added Thread for Report Generation to prevent LTFreeze - 28Sep2017
+                            new Thread(() =>
+                            {
+                                CreateSummaryReport(executionReport.ReportName);
+                                ReportMaster reportMaster = new ReportMaster(executionReport.ReportName);
+                                reportMaster.GenerateReports();
+                            }).Start();
+                            //CreateSummaryReport(executionReport.ReportName);
+                            //ReportMaster reportMaster = new ReportMaster(executionReport.ReportName);
+                            //reportMaster.GenerateReports();
+                            while (!ReportMaster.IsReportGenerationCompleted)
+                            {
+                                Thread.Sleep(100);
+                            }
                             userControlReports2.LoadReportName(executionReport.ReportName);
-                            Thread.Sleep(10000);
-                            MessageBox.Show("Report generation completed.");
+                            // Thread.Sleep(10000);
+                            // MessageBox.Show("Report generation completed.");
                         }
                     }
                 }
