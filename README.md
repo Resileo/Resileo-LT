@@ -6,7 +6,7 @@ Resileo LT tool code base
 ### Changelog 
 
 **AppedoLT 3.2.026**
-* Fixed VUser Chart generation 
+* Fixed On-Prem LoadGen VUser Chart generation 
 
 ## AppedoLT 3.2.025 - Appedo Load Generator 1.1.029: 28-Sep-2017
 
