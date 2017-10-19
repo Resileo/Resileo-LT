@@ -1401,6 +1401,11 @@ namespace AppedoLT
 
                             controller.Close();
                         }
+                        // Separated convert to int exception from connection failure exception - 29Sep2017
+                        catch (FormatException fe)
+                        {
+                            ExceptionHandler.WritetoEventLog(fe.StackTrace + fe.Message);
+                        }
                         catch (Exception ex)
                         {
                             //Added message for failure of LoadGen during run - 26Sep2017

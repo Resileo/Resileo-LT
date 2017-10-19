@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<report reportname="adactin_19102017_142730">
+  <summaryreport>
+    <val starttime="19-10-2017 14:27:30" endtime="19-10-2017 14:27:35" durationsec="5" usercount="5" totalhits="55" avgresponse="0.0981720872727272" avghits="11" totalthroughput="0.789" avgthroughput="1.26268005371094" totalerrors="0" totalpage="35" avgpageresponse="0.154270422857143" reponse200="50" reponse300="5" reponse400="0" reponse500="0" />
+  </summaryreport>
+  <log />
+  <error />
+  <graphs>
+    <val gmttime="1508403454" localtime="2017-10-19 14:27:34" gmt="2017-10-19 08:57:34" hitpersec="10.4" totalkb="700.66" kbps="140.13" avgresponsetime="97.17" />
+    <val gmttime="1508403455" localtime="2017-10-19 14:27:35" gmt="2017-10-19 08:57:35" hitpersec="0.6" totalkb="107.46" kbps="21.49" avgresponsetime="115.61" />
+  </graphs>
+  <errorgraph />
+  <pageresponsegraph>
+    <val endtime="1508403454" localtime="2017-10-19 14:27:34" resptime="0.09" />
+    <val endtime="1508403455" localtime="2017-10-19 14:27:35" resptime="0.33" />
+  </pageresponsegraph>
+  <vuserrungraph>
+    <val gmt="1508403450" localtime="2017-10-19 14:27:30" vusercnt="1" vuserrunning="1" />
+    <val gmt="1508403451" localtime="2017-10-19 14:27:31" vusercnt="1" vuserrunning="2" />
+    <val gmt="1508403452" localtime="2017-10-19 14:27:32" vusercnt="1" vuserrunning="3" />
+    <val gmt="1508403453" localtime="2017-10-19 14:27:33" vusercnt="1" vuserrunning="4" />
+    <val gmt="1508403454" localtime="2017-10-19 14:27:34" vusercnt="1" vuserrunning="5" />
+    <val gmt="1508403455" localtime="2017-10-19 14:27:35" vusercnt="-1" vuserrunning="4" />
+    <val gmt="1508403456" localtime="2017-10-19 14:27:36" vusercnt="" vuserrunning="4" />
+    <val gmt="1508403457" localtime="2017-10-19 14:27:37" vusercnt="" vuserrunning="4" />
+    <val gmt="1508403458" localtime="2017-10-19 14:27:38" vusercnt="" vuserrunning="4" />
+    <val gmt="1508403459" localtime="2017-10-19 14:27:39" vusercnt="" vuserrunning="4" />
+    <val gmt="1508403460" localtime="2017-10-19 14:27:40" vusercnt="" vuserrunning="4" />
+    <val gmt="1508403461" localtime="2017-10-19 14:27:41" vusercnt="" vuserrunning="4" />
+    <val gmt="1508403462" localtime="2017-10-19 14:27:42" vusercnt="" vuserrunning="4" />
+    <val gmt="1508403463" localtime="2017-10-19 14:27:43" vusercnt="" vuserrunning="4" />
+    <val gmt="1508403464" localtime="2017-10-19 14:27:44" vusercnt="" vuserrunning="4" />
+    <val gmt="1508403465" localtime="2017-10-19 14:27:45" vusercnt="" vuserrunning="4" />
+    <val gmt="1508403466" localtime="2017-10-19 14:27:46" vusercnt="" vuserrunning="4" />
+    <val gmt="1508403467" localtime="2017-10-19 14:27:47" vusercnt="" vuserrunning="4" />
+    <val gmt="1508403468" localtime="2017-10-19 14:27:48" vusercnt="" vuserrunning="4" />
+    <val gmt="1508403469" localtime="2017-10-19 14:27:49" vusercnt="" vuserrunning="4" />
+  </vuserrungraph>
+  <script name="adactin" id="555497870">
+    <settings>
+      <val type="Iteration" durationTime="0:2:0" iterations="1" incrementUser="1" incrementTime="0:0:1" maxUser="5" browserCache="false" startUserId="1" replayThinkTime="true" bandwidth="Full Speed" enableparallelcon="false" parallelconnections="6" />
+    </settings>
+    <requests>
+      <val containerid="555497872" containername="home" requestid="555497877" address="/HotelApp/" />
+      <val containerid="555497872" containername="home" requestid="555497880" address="/HotelApp/css/main.css" />
+      <val containerid="555497872" containername="home" requestid="555497882" address="/favicon.ico" />
+      <val containerid="555497873" containername="Login" requestid="555497883" address="/HotelApp/" />
+      <val containerid="555497884" containername="landing page" requestid="555497886" address="/HotelApp/SearchHotel.php" />
+      <val containerid="555497884" containername="landing page" requestid="555497888" address="/HotelApp/jQuery-scroll-books/index.html" />
+      <val containerid="559803913" containername="Logout" requestid="555497891" address="/HotelApp/jQuery-scroll-books/css/site.css" />
+      <val containerid="559803913" containername="Logout" requestid="555497894" address="/HotelApp/jQuery-scroll-books/css/bootstrap-theme.min.css" />
+      <val containerid="559803913" containername="Logout" requestid="555497895" address="/HotelApp/jQuery-scroll-books/css/bootstrap.min.css" />
+      <val containerid="559803913" containername="Logout" requestid="555497896" address="/HotelApp/Logout.php" />
+      <val containerid="559803913" containername="Logout" requestid="555497899" address="/HotelApp/jQuery-scroll-books/index.html" />
+    </requests>
+    <requestresponse>
+      <val containerid="555497872" containername="home" requestid="555497877" address="/HotelApp/" min="105.2692" max="128.4244" avg="113.57308" throughput="47670" hitcount="5" minttfb="105.0759" maxttfb="126.1686" avgttfb="111.61292" />
+      <val containerid="555497872" containername="home" requestid="555497880" address="/HotelApp/css/main.css" min="83.8742" max="131.3855" avg="100.64756" throughput="13395" hitcount="5" minttfb="83.7258" maxttfb="131.3175" avgttfb="100.49916" />
+      <val containerid="555497872" containername="home" requestid="555497882" address="/favicon.ico" min="44.8543" max="51.3867" avg="47.41276" throughput="0" hitcount="5" minttfb="44.776" maxttfb="51.1083" avgttfb="47.27368" />
+      <val containerid="555497873" containername="Login" requestid="555497883" address="/HotelApp/" min="140.7998" max="154.3372" avg="148.20976" throughput="47670" hitcount="5" minttfb="140.5907" maxttfb="154.0276" avgttfb="147.11414" />
+      <val containerid="555497884" containername="landing page" requestid="555497886" address="/HotelApp/SearchHotel.php" min="61.9625" max="67.504" avg="65.28854" throughput="81080" hitcount="5" minttfb="59.5839" maxttfb="64.7692" avgttfb="61.81122" />
+      <val containerid="555497884" containername="landing page" requestid="555497888" address="/HotelApp/jQuery-scroll-books/index.html" min="85.9709" max="99.3749" avg="90.09666" throughput="20185" hitcount="5" minttfb="85.8632" maxttfb="99.1768" avgttfb="89.93766" />
+      <val containerid="559803913" containername="Logout" requestid="555497891" address="/HotelApp/jQuery-scroll-books/css/site.css" min="43.8938" max="88.3641" avg="61.7523" throughput="1650" hitcount="5" minttfb="43.659" maxttfb="88.2644" avgttfb="61.60688" />
+      <val containerid="559803913" containername="Logout" requestid="555497894" address="/HotelApp/jQuery-scroll-books/css/bootstrap-theme.min.css" min="46.2369" max="145.8" avg="87.58576" throughput="65675" hitcount="5" minttfb="43.5371" maxttfb="142.404" avgttfb="82.81222" />
+      <val containerid="559803913" containername="Logout" requestid="555497895" address="/HotelApp/jQuery-scroll-books/css/bootstrap.min.css" min="137.3743" max="228.2253" avg="161.57074" throughput="497740" hitcount="5" minttfb="83.216" maxttfb="142.2671" avgttfb="99.08018" />
+      <val containerid="559803913" containername="Logout" requestid="555497896" address="/HotelApp/Logout.php" min="101.5892" max="120.0185" avg="109.61174" throughput="32260" hitcount="5" minttfb="101.4331" maxttfb="119.7696" avgttfb="109.389" />
+      <val containerid="559803913" containername="Logout" requestid="555497899" address="/HotelApp/jQuery-scroll-books/index.html" min="87.8646" max="113.6289" avg="94.14406" throughput="20185" hitcount="5" minttfb="87.682" maxttfb="113.5186" avgttfb="93.90748" />
+    </requestresponse>
+    <containerresponse>
+      <val containerid="555497872" containername="home" min="235.6595" max="307.3092" avg="261.6334" />
+      <val containerid="555497873" containername="Login" min="140.7998" max="154.3372" avg="148.20976" />
+      <val containerid="555497884" containername="landing page" min="151.7327" max="165.9266" avg="155.3852" />
+      <val containerid="559803913" containername="Logout" min="460.297" max="620.6165" avg="514.6646" />
+    </containerresponse>
+    <errorcount />
+    <errorcode />
+    <transactions />
+  </script>
+</report>

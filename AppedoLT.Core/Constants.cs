@@ -997,9 +997,11 @@ namespace AppedoLT.Core
                                         (Select userid, max(endtime), strftime('%s',strftime('%Y-%m-%dT%H:%M:%S', Max(endtime))) -19800 as gmt from reportdata group by userid, scriptid order by gmt) 
                                         group by gmt;
 
-                                        update vuserrungraph set vusercnt = (select vusercnt from vusergr where vuserrungraph.gmt = vusergr.gmt);
+                                        
+                                        update vuserrungraph set vusercnt = (select sum(vusercnt) from vusergr where vuserrungraph.gmt = vusergr.gmt);
                                         update vuserrungraph set vuserrunning = (select sum(vusercnt) from vuserrungraph as t2  where t2.gmt <= vuserrungraph.gmt);", timeinterval);
-
+                // Changed query to sum for correct vuser running graph - 19Oct2017
+                // update vuserrungraph set vusercnt = (select vusercnt from vusergr where vuserrungraph.gmt = vusergr.gmt);
                 foreach (XmlNode script in runNode.SelectSingleNode("scripts").ChildNodes)
                 {
                     #region Script Query

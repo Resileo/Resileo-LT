@@ -46,7 +46,8 @@ namespace AppedoLTLoadGenerator
 
                 ni.Icon = new Form().Icon;
                 DataService();
-                ni.Text = "AppedoLT Loadgenerator.";
+                // Display IP on hover also - 29Sep2017
+                ni.Text = "AppedoLT Loadgenerator IP: " + Dns.GetHostByName(Dns.GetHostName()).AddressList[0];
                 ni.Visible = true;
                 ni.ContextMenuStrip = new AppedoLTLoadGenerator.ContextMenus().Create();
                 // Display IP for ease of use - 28Sep2017

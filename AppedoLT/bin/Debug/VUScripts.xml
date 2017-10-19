@@ -13,13 +13,13 @@
     </scenario>
     <scenario id="559635954" name="adactin" enableipspoofing="False">
       <script id="555497870" name="adactin">
-        <setting type="1" durationtime="0;2;0" incrementtime="0;0;1" iterations="1" maxuser="3" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
+        <setting type="1" durationtime="0;2;0" incrementtime="0;0;1" iterations="3" maxuser="5" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
       </script>
     </scenario>
   </scenarios>
   <flag />
   <loadgens>
-    <loadgen ipaddress="192.168.1.243" hostname="192.168.1.243" isdefaultzone="True" ischecked="True" />
+    <loadgen ipaddress="192.168.1.7" hostname="192.168.1.7" isdefaultzone="True" ischecked="False" />
   </loadgens>
   <runs>
     <run reportname="google23-05-2017110554" starttime="23-05-2017 11:06:17" loadgenused="False">
@@ -1305,6 +1305,53 @@
         <script id="555497870" name="adactin" />
       </scripts>
       <loadgen ipaddress="192.168.1.243" hostname="192.168.1.243" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+    </run>
+    <run reportname="adactin_19102017_140832" starttime="19-10-2017 14:08:41" loadgenused="True">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+      <loadgen ipaddress="192.168.1.7" hostname="192.168.1.7" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+    </run>
+    <run reportname="adactin_19102017_141626" starttime="19-10-2017 14:16:28" loadgenused="True">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+      <loadgen ipaddress="192.168.1.7" hostname="192.168.1.7" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+    </run>
+    <run reportname="adactin_19102017_142435" starttime="19-10-2017 14:24:37" loadgenused="True">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+      <loadgen ipaddress="192.168.1.7" hostname="192.168.1.7" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+    </run>
+    <run reportname="adactin_19102017_142730" starttime="19-10-2017 14:27:32" loadgenused="True">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+      <loadgen ipaddress="192.168.1.7" hostname="192.168.1.7" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+    </run>
+    <run reportname="adactin_19102017_142808" starttime="19-10-2017 14:28:11" loadgenused="True">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+      <loadgen ipaddress="192.168.1.7" hostname="192.168.1.7" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+    </run>
+    <run reportname="adactin_19102017_142908" starttime="19-10-2017 14:29:10" loadgenused="True">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+      <loadgen ipaddress="192.168.1.7" hostname="192.168.1.7" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+    </run>
+    <run reportname="adactin_19102017_143123" starttime="19-10-2017 14:31:24" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_19102017_150336" starttime="19-10-2017 15:03:38" loadgenused="True">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+      <loadgen ipaddress="192.168.1.7" hostname="192.168.1.7" isdefaultzone="True" ischecked="False" resultfilereceived="False" />
     </run>
   </runs>
 </root>

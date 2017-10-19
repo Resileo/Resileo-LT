@@ -1,6 +1,13 @@
 # Resileo-LT
 Resileo LT tool code base
 
+## AppedoLT 3.2.026: 19-Oct-2017
+
+### Changelog 
+
+**AppedoLT 3.2.026**
+* Fixed VUser Chart generation 
+
 ## AppedoLT 3.2.025 - Appedo Load Generator 1.1.029: 28-Sep-2017
 
 ### Changelog 
@@ -16,5 +23,5 @@ Resileo LT tool code base
 * Added tooltip for Connection to host
 * Added tooltip for Run Completed and Run Stop
 
-### Known Issues
+## Known Issues
 * AppedoLT will continue to show status as 'Running' if Loadgen is disconnected during the run

@@ -15,19 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0537EAB199A0696115160045C7280C98"
-        "OwnerKey" = "8:_75CA0F3DAC374998BB5F833832106E21"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_713EFD2A1D428E2719E2A59BB4E228A7"
-        "OwnerKey" = "8:_B57902F86932C5874F201442F91C1796"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_713EFD2A1D428E2719E2A59BB4E228A7"
+        "MsmKey" = "8:_69E00722EFDCA3A19E53D63319781987"
         "OwnerKey" = "8:_75CA0F3DAC374998BB5F833832106E21"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -39,31 +27,43 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_771215D60CB8DA57B50CDAABB68FA578"
+        "OwnerKey" = "8:_69E00722EFDCA3A19E53D63319781987"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_771215D60CB8DA57B50CDAABB68FA578"
+        "OwnerKey" = "8:_75CA0F3DAC374998BB5F833832106E21"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9A513AA656C547B29833DF05DAE770A9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B57902F86932C5874F201442F91C1796"
-        "OwnerKey" = "8:_0537EAB199A0696115160045C7280C98"
+        "MsmKey" = "8:_C1BAC942DB7CFB811AB80D1C1E396325"
+        "OwnerKey" = "8:_69E00722EFDCA3A19E53D63319781987"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B57902F86932C5874F201442F91C1796"
+        "MsmKey" = "8:_C1BAC942DB7CFB811AB80D1C1E396325"
         "OwnerKey" = "8:_75CA0F3DAC374998BB5F833832106E21"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_C1BAC942DB7CFB811AB80D1C1E396325"
-        "OwnerKey" = "8:_0537EAB199A0696115160045C7280C98"
+        "MsmKey" = "8:_D4D64E315D0701E4A588DC0EFC21152C"
+        "OwnerKey" = "8:_771215D60CB8DA57B50CDAABB68FA578"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_C1BAC942DB7CFB811AB80D1C1E396325"
+        "MsmKey" = "8:_D4D64E315D0701E4A588DC0EFC21152C"
         "OwnerKey" = "8:_75CA0F3DAC374998BB5F833832106E21"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -76,7 +76,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0537EAB199A0696115160045C7280C98"
+        "OwnerKey" = "8:_69E00722EFDCA3A19E53D63319781987"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -88,13 +88,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B57902F86932C5874F201442F91C1796"
+        "OwnerKey" = "8:_771215D60CB8DA57B50CDAABB68FA578"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_713EFD2A1D428E2719E2A59BB4E228A7"
+        "OwnerKey" = "8:_D4D64E315D0701E4A588DC0EFC21152C"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -248,14 +248,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0537EAB199A0696115160045C7280C98"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_69E00722EFDCA3A19E53D63319781987"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:AppedoLT.BusinessLogic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_0537EAB199A0696115160045C7280C98"
+                    "_69E00722EFDCA3A19E53D63319781987"
                     {
                     "Name" = "8:AppedoLT.BusinessLogic.dll"
                     "Attributes" = "3:512"
@@ -279,20 +279,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_713EFD2A1D428E2719E2A59BB4E228A7"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_771215D60CB8DA57B50CDAABB68FA578"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:AppedoLT.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_713EFD2A1D428E2719E2A59BB4E228A7"
+                    "_771215D60CB8DA57B50CDAABB68FA578"
                     {
-                    "Name" = "8:Ionic.Zip.dll"
+                    "Name" = "8:AppedoLT.Core.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:Ionic.Zip.dll"
+            "SourcePath" = "8:AppedoLT.Core.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_DD960546DE5D4C51B33A55EC3C31EE14"
@@ -330,20 +330,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B57902F86932C5874F201442F91C1796"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C1BAC942DB7CFB811AB80D1C1E396325"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AppedoLT.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_B57902F86932C5874F201442F91C1796"
+                    "_C1BAC942DB7CFB811AB80D1C1E396325"
                     {
-                    "Name" = "8:AppedoLT.Core.dll"
+                    "Name" = "8:log4net.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:AppedoLT.Core.dll"
+            "SourcePath" = "8:log4net.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_DD960546DE5D4C51B33A55EC3C31EE14"
@@ -361,20 +361,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C1BAC942DB7CFB811AB80D1C1E396325"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D4D64E315D0701E4A588DC0EFC21152C"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_C1BAC942DB7CFB811AB80D1C1E396325"
+                    "_D4D64E315D0701E4A588DC0EFC21152C"
                     {
-                    "Name" = "8:log4net.dll"
+                    "Name" = "8:Ionic.Zip.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:log4net.dll"
+            "SourcePath" = "8:Ionic.Zip.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_DD960546DE5D4C51B33A55EC3C31EE14"
@@ -720,8 +720,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1203"
+                            "Setting" = "3:2"
+                            "Value" = "8:The installer will guide you through the steps required to install [ProductName] [ProductVersion] on your computer."
                             "DefaultValue" = "8:#1203"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -981,8 +981,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1203"
+                            "Setting" = "3:2"
+                            "Value" = "8:The installer will guide you through the steps required to install [ProductName] [ProductVersion] on your computer."
                             "DefaultValue" = "8:#1203"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1048,7 +1048,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_75CA0F3DAC374998BB5F833832106E21"
             {
-            "SourcePath" = "8:..\\AppedoLT.LoadGenerator\\obj\\Release\\APPEDO_LT_LOAD_GENERATOR.exe"
+            "SourcePath" = "8:..\\AppedoLT.LoadGenerator\\obj\\Debug\\APPEDO_LT_LOAD_GENERATOR.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_DD960546DE5D4C51B33A55EC3C31EE14"
