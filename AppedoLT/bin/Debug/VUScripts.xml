@@ -13,13 +13,12 @@
     </scenario>
     <scenario id="559635954" name="adactin" enableipspoofing="False">
       <script id="555497870" name="adactin">
-        <setting type="1" durationtime="0;2;0" incrementtime="0;0;1" iterations="3" maxuser="5" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
+        <setting type="1" durationtime="0;2;0" incrementtime="0;0;1" iterations="3" maxuser="1" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
       </script>
     </scenario>
   </scenarios>
   <flag />
   <loadgens>
-    <loadgen ipaddress="192.168.1.7" hostname="192.168.1.7" isdefaultzone="True" ischecked="False" />
   </loadgens>
   <runs>
     <run reportname="google23-05-2017110554" starttime="23-05-2017 11:06:17" loadgenused="False">
@@ -1352,6 +1351,21 @@
         <script id="555497870" name="adactin" />
       </scripts>
       <loadgen ipaddress="192.168.1.7" hostname="192.168.1.7" isdefaultzone="True" ischecked="False" resultfilereceived="False" />
+    </run>
+    <run reportname="adactin_07112017_115531" starttime="07-11-2017 11:55:34" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_07112017_120710" starttime="07-11-2017 12:07:13" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_07112017_121030" starttime="07-11-2017 12:10:32" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
     </run>
   </runs>
 </root>

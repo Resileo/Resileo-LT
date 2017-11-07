@@ -1,5 +1,13 @@
 # Resileo-LT
-Resileo LT tool code base
+Resileo Labs Load Testing tool code base
+
+## AppedoLT 3.2.027 - Appedo Load Generator 1.1.030 - Appedo Load Controller 1.1.032: 07-Nov-2017
+
+### Changelog 
+
+**AppedoLT 3.2.027**
+* Fixed and formatted Assertion message response
+
 
 ## AppedoLT 3.2.026: 19-Oct-2017
 

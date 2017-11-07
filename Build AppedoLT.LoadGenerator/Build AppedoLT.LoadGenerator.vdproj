@@ -478,7 +478,7 @@
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.1.029"
+        "ProductVersion" = "8:1.1.030"
         "Manufacturer" = "8:Appedo"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1048,7 +1048,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_75CA0F3DAC374998BB5F833832106E21"
             {
-            "SourcePath" = "8:..\\AppedoLT.LoadGenerator\\obj\\Debug\\APPEDO_LT_LOAD_GENERATOR.exe"
+            "SourcePath" = "8:..\\AppedoLT.LoadGenerator\\obj\\Release\\APPEDO_LT_LOAD_GENERATOR.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_DD960546DE5D4C51B33A55EC3C31EE14"

@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<report reportname="adactin_07112017_120710">
+  <summaryreport>
+    <val starttime="07-11-2017 12:07:15" endtime="07-11-2017 12:07:41" durationsec="26" usercount="1" totalhits="15" avgresponse="0.104568693333333" avghits="0.576923076923077" totalthroughput="0.192" avgthroughput="0.0589884244478666" totalerrors="6" totalpage="11" avgpageresponse="0.142593672727273" reponse200="14" reponse300="1" reponse400="0" reponse500="0" />
+  </summaryreport>
+  <log>
+    <val loadgen="192.168.1.24" reportname="adactin_07112017_120710" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="563351174" logname="initiate" userid="1" iterationid="1" message="init" time="07-11-2017 12:07:20" />
+    <val loadgen="192.168.1.24" reportname="adactin_07112017_120710" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="563351173" logname="res" userid="1" iterationid="1" message="" time="07-11-2017 12:07:24" />
+    <val loadgen="192.168.1.24" reportname="adactin_07112017_120710" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="563351173" logname="res" userid="1" iterationid="2" message="" time="07-11-2017 12:07:29" />
+    <val loadgen="192.168.1.24" reportname="adactin_07112017_120710" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="563351173" logname="res" userid="1" iterationid="3" message="" time="07-11-2017 12:07:33" />
+  </log>
+  <error>
+    <val loadgen="192.168.1.24" reportname="adactin_07112017_120710" scenarioname="adactin" scriptname="adactin" containerid="555497884" containername="landing page" requestid="555497886" request="/HotelApp/SearchHotel.php" userid="1" iterationid="1" errorcode="800" message="1 Pass: Expected value(Select Location) present in the response. 2 Pass: Expected value(Appedo) not present in the response. 3 Fail: Expected value(Resileo) not present in the response. " time="07-11-2017 12:07:22" />
+    <val loadgen="192.168.1.24" reportname="adactin_07112017_120710" scenarioname="adactin" scriptname="adactin" containerid="555497875" containername="Actions" requestid="0" request="" userid="1" iterationid="1" errorcode="700" message="Unable to evaluate ext_resp" time="07-11-2017 12:07:24" />
+    <val loadgen="192.168.1.24" reportname="adactin_07112017_120710" scenarioname="adactin" scriptname="adactin" containerid="555497884" containername="landing page" requestid="555497886" request="/HotelApp/SearchHotel.php" userid="1" iterationid="2" errorcode="800" message="1 Pass: Expected value(Select Location) present in the response. 2 Pass: Expected value(Appedo) not present in the response. 3 Fail: Expected value(Resileo) not present in the response. " time="07-11-2017 12:07:26" />
+    <val loadgen="192.168.1.24" reportname="adactin_07112017_120710" scenarioname="adactin" scriptname="adactin" containerid="555497875" containername="Actions" requestid="0" request="" userid="1" iterationid="2" errorcode="700" message="Unable to evaluate ext_resp" time="07-11-2017 12:07:29" />
+    <val loadgen="192.168.1.24" reportname="adactin_07112017_120710" scenarioname="adactin" scriptname="adactin" containerid="555497884" containername="landing page" requestid="555497886" request="/HotelApp/SearchHotel.php" userid="1" iterationid="3" errorcode="800" message="1 Pass: Expected value(Select Location) present in the response. 2 Pass: Expected value(Appedo) not present in the response. 3 Fail: Expected value(Resileo) not present in the response. " time="07-11-2017 12:07:31" />
+    <val loadgen="192.168.1.24" reportname="adactin_07112017_120710" scenarioname="adactin" scriptname="adactin" containerid="555497875" containername="Actions" requestid="0" request="" userid="1" iterationid="3" errorcode="700" message="Unable to evaluate ext_resp" time="07-11-2017 12:07:33" />
+  </error>
+  <graphs>
+    <val gmttime="1510036635" localtime="2017-11-07 12:07:15" gmt="2017-11-07 06:37:15" hitpersec="0.6" totalkb="11.93" kbps="2.39" avgresponsetime="82.63" />
+    <val gmttime="1510036644" localtime="2017-11-07 12:07:24" gmt="2017-11-07 06:37:24" hitpersec="0.6" totalkb="28.88" kbps="5.78" avgresponsetime="133.85" />
+    <val gmttime="1510036648" localtime="2017-11-07 12:07:28" gmt="2017-11-07 06:37:28" hitpersec="0.4" totalkb="18.16" kbps="3.63" avgresponsetime="100.39" />
+    <val gmttime="1510036653" localtime="2017-11-07 12:07:33" gmt="2017-11-07 06:37:33" hitpersec="0.4" totalkb="16.74" kbps="3.35" avgresponsetime="99.27" />
+    <val gmttime="1510036659" localtime="2017-11-07 12:07:39" gmt="2017-11-07 06:37:39" hitpersec="0.8" totalkb="116.67" kbps="23.33" avgresponsetime="107.98" />
+    <val gmttime="1510036661" localtime="2017-11-07 12:07:41" gmt="2017-11-07 06:37:41" hitpersec="0.2" totalkb="3.94" kbps="0.79" avgresponsetime="87.85" />
+  </graphs>
+  <errorgraph>
+    <val gmttime="1510036644" localtime="2017-11-07 12:07:24" errorcount="2" />
+    <val gmttime="1510036649" localtime="2017-11-07 12:07:29" errorcount="2" />
+    <val gmttime="1510036653" localtime="2017-11-07 12:07:33" errorcount="2" />
+  </errorgraph>
+  <pageresponsegraph>
+    <val endtime="1510036635" localtime="2017-11-07 12:07:15" resptime="0" />
+    <val endtime="1510036644" localtime="2017-11-07 12:07:24" resptime="0" />
+    <val endtime="1510036648" localtime="2017-11-07 12:07:28" resptime="0" />
+    <val endtime="1510036653" localtime="2017-11-07 12:07:33" resptime="0" />
+    <val endtime="1510036659" localtime="2017-11-07 12:07:39" resptime="0" />
+    <val endtime="1510036661" localtime="2017-11-07 12:07:41" resptime="0" />
+  </pageresponsegraph>
+  <vuserrungraph>
+    <val gmt="1510036635" localtime="2017-11-07 12:07:15" vusercnt="1" vuserrunning="1" />
+    <val gmt="1510036636" localtime="2017-11-07 12:07:16" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036637" localtime="2017-11-07 12:07:17" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036638" localtime="2017-11-07 12:07:18" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036639" localtime="2017-11-07 12:07:19" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036640" localtime="2017-11-07 12:07:20" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036641" localtime="2017-11-07 12:07:21" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036642" localtime="2017-11-07 12:07:22" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036643" localtime="2017-11-07 12:07:23" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036644" localtime="2017-11-07 12:07:24" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036645" localtime="2017-11-07 12:07:25" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036646" localtime="2017-11-07 12:07:26" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036647" localtime="2017-11-07 12:07:27" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036648" localtime="2017-11-07 12:07:28" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036649" localtime="2017-11-07 12:07:29" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036650" localtime="2017-11-07 12:07:30" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036651" localtime="2017-11-07 12:07:31" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036652" localtime="2017-11-07 12:07:32" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036653" localtime="2017-11-07 12:07:33" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036654" localtime="2017-11-07 12:07:34" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036655" localtime="2017-11-07 12:07:35" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036656" localtime="2017-11-07 12:07:36" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036657" localtime="2017-11-07 12:07:37" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036658" localtime="2017-11-07 12:07:38" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036659" localtime="2017-11-07 12:07:39" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036660" localtime="2017-11-07 12:07:40" vusercnt="" vuserrunning="1" />
+    <val gmt="1510036661" localtime="2017-11-07 12:07:41" vusercnt="-1" vuserrunning="0" />
+    <val gmt="1510036662" localtime="2017-11-07 12:07:42" vusercnt="" vuserrunning="0" />
+    <val gmt="1510036663" localtime="2017-11-07 12:07:43" vusercnt="" vuserrunning="0" />
+    <val gmt="1510036664" localtime="2017-11-07 12:07:44" vusercnt="" vuserrunning="0" />
+    <val gmt="1510036665" localtime="2017-11-07 12:07:45" vusercnt="" vuserrunning="0" />
+    <val gmt="1510036666" localtime="2017-11-07 12:07:46" vusercnt="" vuserrunning="0" />
+    <val gmt="1510036667" localtime="2017-11-07 12:07:47" vusercnt="" vuserrunning="0" />
+    <val gmt="1510036668" localtime="2017-11-07 12:07:48" vusercnt="" vuserrunning="0" />
+    <val gmt="1510036669" localtime="2017-11-07 12:07:49" vusercnt="" vuserrunning="0" />
+    <val gmt="1510036670" localtime="2017-11-07 12:07:50" vusercnt="" vuserrunning="0" />
+    <val gmt="1510036671" localtime="2017-11-07 12:07:51" vusercnt="" vuserrunning="0" />
+    <val gmt="1510036672" localtime="2017-11-07 12:07:52" vusercnt="" vuserrunning="0" />
+    <val gmt="1510036673" localtime="2017-11-07 12:07:53" vusercnt="" vuserrunning="0" />
+    <val gmt="1510036674" localtime="2017-11-07 12:07:54" vusercnt="" vuserrunning="0" />
+    <val gmt="1510036675" localtime="2017-11-07 12:07:55" vusercnt="" vuserrunning="0" />
+  </vuserrungraph>
+  <script name="adactin" id="555497870">
+    <settings>
+      <val type="Iteration" durationTime="0:2:0" iterations="3" incrementUser="1" incrementTime="0:0:1" maxUser="1" browserCache="false" startUserId="1" replayThinkTime="true" bandwidth="Full Speed" enableparallelcon="false" parallelconnections="6" />
+    </settings>
+    <requests>
+      <val containerid="555497872" containername="home" requestid="555497877" address="/HotelApp/" />
+      <val containerid="555497872" containername="home" requestid="555497880" address="/HotelApp/css/main.css" />
+      <val containerid="555497872" containername="home" requestid="555497882" address="/favicon.ico" />
+      <val containerid="555497873" containername="Login" requestid="555497883" address="/HotelApp/" />
+      <val containerid="555497884" containername="landing page" requestid="555497886" address="/HotelApp/SearchHotel.php" />
+      <val containerid="555497884" containername="landing page" requestid="555497888" address="/HotelApp/jQuery-scroll-books/index.html" />
+      <val containerid="559803913" containername="Logout" requestid="555497891" address="/HotelApp/jQuery-scroll-books/css/site.css" />
+      <val containerid="559803913" containername="Logout" requestid="555497894" address="/HotelApp/jQuery-scroll-books/css/bootstrap-theme.min.css" />
+      <val containerid="559803913" containername="Logout" requestid="555497895" address="/HotelApp/jQuery-scroll-books/css/bootstrap.min.css" />
+      <val containerid="559803913" containername="Logout" requestid="555497896" address="/HotelApp/Logout.php" />
+      <val containerid="559803913" containername="Logout" requestid="555497899" address="/HotelApp/jQuery-scroll-books/index.html" />
+    </requests>
+    <requestresponse>
+      <val containerid="555497872" containername="home" requestid="555497877" address="/HotelApp/" min="108.837" max="108.837" avg="108.837" throughput="9534" hitcount="1" minttfb="104.4278" maxttfb="104.4278" avgttfb="104.4278" />
+      <val containerid="555497872" containername="home" requestid="555497880" address="/HotelApp/css/main.css" min="88.217" max="88.217" avg="88.217" throughput="2679" hitcount="1" minttfb="88.0392" maxttfb="88.0392" avgttfb="88.0392" />
+      <val containerid="555497872" containername="home" requestid="555497882" address="/favicon.ico" min="50.8442" max="50.8442" avg="50.8442" throughput="0" hitcount="1" minttfb="50.7711" maxttfb="50.7711" avgttfb="50.7711" />
+      <val containerid="555497873" containername="Login" requestid="555497883" address="/HotelApp/" min="201.1036" max="201.1036" avg="201.1036" throughput="9534" hitcount="1" minttfb="197.2349" maxttfb="197.2349" avgttfb="197.2349" />
+      <val containerid="555497884" containername="landing page" requestid="555497886" address="/HotelApp/SearchHotel.php" min="106.7151" max="110.8489" avg="109.2191" throughput="43665" hitcount="3" minttfb="101.6576" maxttfb="106.7288" avgttfb="103.9233" />
+      <val containerid="555497884" containername="landing page" requestid="555497888" address="/HotelApp/jQuery-scroll-books/index.html" min="89.5914" max="91.8172" avg="90.6961" throughput="12111" hitcount="3" minttfb="89.3224" maxttfb="90.4428" avgttfb="89.7087" />
+      <val containerid="559803913" containername="Logout" requestid="555497891" address="/HotelApp/jQuery-scroll-books/css/site.css" min="88.1324" max="88.1324" avg="88.1324" throughput="330" hitcount="1" minttfb="87.9699" maxttfb="87.9699" avgttfb="87.9699" />
+      <val containerid="559803913" containername="Logout" requestid="555497894" address="/HotelApp/jQuery-scroll-books/css/bootstrap-theme.min.css" min="87.659" max="87.659" avg="87.659" throughput="13135" hitcount="1" minttfb="84.4805" maxttfb="84.4805" avgttfb="84.4805" />
+      <val containerid="559803913" containername="Logout" requestid="555497895" address="/HotelApp/jQuery-scroll-books/css/bootstrap.min.css" min="150.8512" max="150.8512" avg="150.8512" throughput="99548" hitcount="1" minttfb="89.3631" maxttfb="89.3631" avgttfb="89.3631" />
+      <val containerid="559803913" containername="Logout" requestid="555497896" address="/HotelApp/Logout.php" min="105.2945" max="105.2945" avg="105.2945" throughput="6452" hitcount="1" minttfb="105.0713" maxttfb="105.0713" avgttfb="105.0713" />
+      <val containerid="559803913" containername="Logout" requestid="555497899" address="/HotelApp/jQuery-scroll-books/index.html" min="87.8459" max="87.8459" avg="87.8459" throughput="4037" hitcount="1" minttfb="87.594" maxttfb="87.594" avgttfb="87.594" />
+    </requestresponse>
+    <containerresponse>
+      <val containerid="555497872" containername="home" min="247.8982" max="247.8982" avg="247.8982" />
+      <val containerid="555497873" containername="Login" min="201.1036" max="201.1036" avg="201.1036" />
+      <val containerid="555497884" containername="landing page" min="198.5323" max="200.773" avg="199.9152" />
+      <val containerid="559803913" containername="Logout" min="519.783" max="519.783" avg="519.783" />
+    </containerresponse>
+    <errorcount>
+      <val containerid="555497875" containername="Actions" requestid="0" address="" count="3" />
+      <val containerid="555497884" containername="landing page" requestid="555497886" address="/HotelApp/SearchHotel.php" count="3" />
+    </errorcount>
+    <errorcode>
+      <val errorcode="800" message="1 Pass: Expected value(Select Location) present in the response. 2 Pass: Expected value(Appedo) not present in the response. 3 Fail: Expected value(Resileo) not present in the response. " count="3" />
+      <val errorcode="700" message="Unable to evaluate ext_resp" count="3" />
+    </errorcode>
+    <transactions />
+  </script>
+</report>

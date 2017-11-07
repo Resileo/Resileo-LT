@@ -478,8 +478,11 @@ namespace AppedoLT.BusinessLogic
 
             if (RequestNode.SelectSingleNode("assertions") != null && RequestNode.SelectSingleNode("assertions").ChildNodes.Count > 0)
             {
+                // Added assertion number - 07Nov2017
+                var asser_count = 0;
                 foreach (XmlNode assertion in RequestNode.SelectNodes("assertions/assertion"))
                 {
+                    asser_count++;
                     if (assertion.Attributes["type"].Value == "text")
                     {
                         #region Text
@@ -488,13 +491,13 @@ namespace AppedoLT.BusinessLogic
                             if (ResponseStr.Contains(assertion.Attributes["text"].Value) == true)
                             {
                                 AssertionResult = true;
-                                AssertionFaildMsg.Append(string.Format("Expected value({0}) present in the response.\r\n", assertion.Attributes["text"].Value));
+                                AssertionFaildMsg.Append(string.Format("{1} Pass: Expected value({0}) present in the response.\r\n", assertion.Attributes["text"].Value, asser_count));
                             }
                             else
                             {
                                 AssertionResult = false;
                                 // AssertionFaildMsg.Append(string.Format("Assertion({0}) Failed.\r\n", assertion.Attributes["name"].Value));
-                                AssertionFaildMsg.Append(string.Format("Expected value({0}) not present in the response.\r\n", assertion.Attributes["text"].Value));
+                                AssertionFaildMsg.Append(string.Format("{1} Fail: Expected value({0}) not present in the response.\r\n", assertion.Attributes["text"].Value, asser_count));
                             }
                         }
                         else
@@ -502,12 +505,14 @@ namespace AppedoLT.BusinessLogic
                             if (!(ResponseStr.Contains(assertion.Attributes["text"].Value) == true))
                             {
                                 AssertionResult = true;
-                                AssertionFaildMsg.Append(string.Format("Expected value({0}) present in the response.\r\n", assertion.Attributes["text"].Value));
+                                // Added 'not present' - 7Nov2017
+                                AssertionFaildMsg.Append(string.Format("{1} Pass: Expected value({0}) not present in the response.\r\n", assertion.Attributes["text"].Value, asser_count));
                             }
                             else
                             {
                                 AssertionResult = false;
-                                AssertionFaildMsg.Append(string.Format("Assertion({0}) Failed.\r\n", assertion.Attributes["name"].Value));
+                                //AssertionFaildMsg.Append(string.Format("Assertion({0}) Failed.\r\n", assertion.Attributes["name"].Value));
+                                AssertionFaildMsg.Append(string.Format("{1} Fail: Expected value({0}) present in the response.\r\n", assertion.Attributes["text"].Value, asser_count));
                             }
                         }
                         #endregion
@@ -529,12 +534,13 @@ namespace AppedoLT.BusinessLogic
                             if (matchCount > 0)
                             {
                                 AssertionResult = true;
-                                AssertionFaildMsg.Append(string.Format("Expected value({0}) present in the response.\r\n", assertion.Attributes["text"].Value));
+                                AssertionFaildMsg.Append(string.Format("{1} Pass: Expected value({0}) present in the response.\r\n", assertion.Attributes["text"].Value, asser_count));
                             }
                             else
                             {
                                 AssertionResult = false;
-                                AssertionFaildMsg.Append(string.Format("Assertion({0}) Faild.\r\n", assertion.Attributes["name"].Value));
+                                //AssertionFaildMsg.Append(string.Format("Assertion({0}) Faild.\r\n", assertion.Attributes["name"].Value));
+                                AssertionFaildMsg.Append(string.Format("{1} Fail: Expected value({0}) not present in the response.\r\n", assertion.Attributes["text"].Value, asser_count));
                             }
                         }
                         else
@@ -542,12 +548,14 @@ namespace AppedoLT.BusinessLogic
                             if (!(matchCount > 0))
                             {
                                 AssertionResult = true;
-                                AssertionFaildMsg.Append(string.Format("Expected value({0}) present in the response.\r\n", assertion.Attributes["text"].Value));
+                                // Added 'not' in response - 07Nov2017
+                                AssertionFaildMsg.Append(string.Format("{1} Pass: Expected value({0}) not present in the response.\r\n", assertion.Attributes["text"].Value, asser_count));
                             }
                             else
                             {
                                 AssertionResult = false;
-                                AssertionFaildMsg.Append(string.Format("Assertion({0}) Faild.\r\n", assertion.Attributes["name"].Value));
+                                //AssertionFaildMsg.Append(string.Format("Assertion({0}) Faild.\r\n", assertion.Attributes["name"].Value));
+                                AssertionFaildMsg.Append(string.Format("{1} Fail: Expected value({0}) present in the response.\r\n", assertion.Attributes["text"].Value, asser_count));
                             }
                         }
                         #endregion

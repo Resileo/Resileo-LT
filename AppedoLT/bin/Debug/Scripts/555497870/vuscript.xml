@@ -66,6 +66,7 @@
         </request>
       </page>
     </container>
+    <log id="563351174" name="initiate" message="init" />
   </container>
   <container name="Actions" id="555497875">
     <container name="landing page" id="555497884">
@@ -82,6 +83,12 @@
             <header name="Connection" value="keep-alive" />
             <header name="Upgrade-Insecure-Requests" value="1" />
           </headers>
+          <assertions>
+            <assertion name="Select Location" condition="Response contain" type="text" text="Select Location" />
+            <assertion name="Appedo" condition="Response not contain" type="text" text="Appedo" />
+            <assertion name="Resileo" condition="Response contain" type="text" text="Resileo" />
+          </assertions>
+          <extractor name="ext_resp" start="&lt;td valign=&quot;top&quot; class=&quot;welcome_menu&quot;&gt;" end="&lt;/td&gt;" mode="1" selctiontype="single" regex="&lt;td\ valign=&quot;top&quot;\ class=&quot;welcome_menu&quot;&gt;(.*?)&lt;/td&gt;" groupindex="1" ordinal="1" />
         </request>
       </page>
       <page pagename="/HotelApp/jQuery-scroll-books/index.html" host="www.adactin.com" delay="2005" id="555497889" name="/HotelApp/jQuery-scroll-books/index.html" starttime="636377995494755457">
@@ -100,6 +107,7 @@
         </request>
       </page>
     </container>
+    <log id="563351173" name="res" message="$$ext_resp$$" />
   </container>
   <container name="End" id="555497892">
     <container name="Logout" id="559803913">
