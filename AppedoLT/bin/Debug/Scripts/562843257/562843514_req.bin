@@ -1,0 +1,17 @@
+POST /psln/faces/PSNAVMAIN?_adf.ctrl-state=t8z9x4bif_3&Adf-Window-Id=ps_window13171 HTTP/1.1
+Accept: */*
+Origin: http://sflchnweb03.sfl.ad
+Referer: http://sflchnweb03.sfl.ad/psln/faces/PSNAVMAIN?_adf.ctrl-state=t8z9x4bif_3
+Accept-Language: en-IN
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Adf-Ads-Page-Id: 5
+Adf-Rich-Message: true
+Accept-Encoding: gzip, deflate
+Host: sflchnweb03.sfl.ad
+Content-Length: 779
+Proxy-Connection: Keep-Alive
+Pragma: no-cache
+Cookie: JSESSIONID=m4h24wilLZlU0r3zKmH07-mkQdkMUI_Y1dVfvVWNXaTog6yb9p2_!-1609397229
+
+pt1:menuName=&pt1:itnav1=&org.apache.myfaces.trinidad.faces.FORM=f1&Adf-Window-Id=ps_window13171&javax.faces.ViewState=!ob90d1vlk&oracle.adf.view.rich.DELTAS=%7Bpt1%3Apt_t1%3D%7B_afrLocalDiscState%3D%2C_afrFstVbl%3D0%2C_afrVblRws%3D25%7D%7D&event=pt1%3Apt_t1&event.pt1:pt_t1=%3Cm+xmlns%3D%22http%3A%2F%2Foracle.com%2FrichClient%2Fcomm%22%3E%3Ck+v%3D%22id%22%3E%3Cn%3E0%3C%2Fn%3E%3C%2Fk%3E%3Ck+v%3D%22subtype%22%3E%3Cn%3E2%3C%2Fn%3E%3C%2Fk%3E%3Ck+v%3D%22index%22%3E%3Cn%3E24%3C%2Fn%3E%3C%2Fk%3E%3Ck+v%3D%22clientKey%22%3E%3Cs%3E24%3C%2Fs%3E%3C%2Fk%3E%3Ck+v%3D%22renderOnly%22%3E%3Cb%3E1%3C%2Fb%3E%3C%2Fk%3E%3Ck+v%3D%22suppressMessageClear%22%3E%3Cs%3Etrue%3C%2Fs%3E%3C%2Fk%3E%3Ck+v%3D%22type%22%3E%3Cs%3Efetch%3C%2Fs%3E%3C%2Fk%3E%3C%2Fm%3E&oracle.adf.view.rich.PROCESS=pt1%3Apt_t1

@@ -1,0 +1,18 @@
+POST /psln/faces/PSNAVMAIN?_adf.ctrl-state=t8z9x4bif_3 HTTP/1.1
+Accept: */*
+Origin: http://sflchnweb03.sfl.ad
+Referer: http://sflchnweb03.sfl.ad/psln/faces/PSNAVMAIN?_adf.ctrl-state=t8z9x4bif_3
+Accept-Language: en-IN
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063
+Content-Type: application/x-www-form-urlencoded
+Adf-Window-Unloaded: true
+Adf-Window-Id: ps_window13171
+Adf-Rich-Message: true
+Accept-Encoding: gzip, deflate
+Host: sflchnweb03.sfl.ad
+Content-Length: 28
+Proxy-Connection: Keep-Alive
+Pragma: no-cache
+Cookie: JSESSIONID=m4h24wilLZlU0r3zKmH07-mkQdkMUI_Y1dVfvVWNXaTog6yb9p2_!-1609397229
+
+Adf-Window-Id=ps_window13171

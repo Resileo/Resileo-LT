@@ -1,0 +1,9 @@
+GET /imageglue/WebResource.axd?d=3-8xkXDHEFwxAsHJTiNU8ABbuQxe47Y58qTolOQjkdojnzwIvB5qriGk7Z_HtGUPTgLR_7TL-psH4XeN1WHtcCgW8NRbR7pEBMsoF9CrkyM1&t=635802997220000000 HTTP/1.1
+Host: demo.websupergoo.com
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://demo.websupergoo.com/imageglue/
+Connection: keep-alive
+

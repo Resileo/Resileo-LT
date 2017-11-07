@@ -1,0 +1,10 @@
+GET /pslogin/adf/styles/cache/richblue-desktop-gjdz7x-ltr-safari-cmp.css HTTP/1.1
+Accept: text/css, */*
+Referer: http://sflchnweb03.sfl.ad/pslogin/faces/PS00065?_adf.ctrl-state=ydcptft65_3&_afrRedirect=180072446043738
+Accept-Language: en-IN
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063
+Accept-Encoding: gzip, deflate
+Host: sflchnweb03.sfl.ad
+Proxy-Connection: Keep-Alive
+Cookie: JSESSIONID=Sit24nilN_GtFaN1LwoQt7yQb_KT2oXu7dkrXAn2Gx3vqwSyDMua!501059795
+

@@ -308,32 +308,52 @@ namespace AppedoLT.BusinessLogic
                             }
                             else if (pData.type == 2)
                             {
-                                if (_bandwidthInKbps <= 0)
-                                    _bufferSize = 8192;
+                                //if (_bandwidthInKbps <= 0)
+                                //    _bufferSize = 8192;
 
-                                byte[] buff = new byte[_bufferSize];
-                                using (FileStream stream = new FileStream(pData.value.ToString(), FileMode.Open, FileAccess.Read))
+                                //byte[] buff = new byte[_bufferSize];
+                                //using (FileStream stream = new FileStream(pData.value.ToString(), FileMode.Open, FileAccess.Read))
+                                //{
+                                //    int bytesWritten = 0;
+                                //    int bytesToWrite = _bufferSize;
+                                //    while (bytesWritten < stream.Length)
+                                //    {
+                                //        // Write in chunks to ensure the bandwidth allocation
+                                //        bytesToWrite = (int)stream.Length - bytesWritten;
+                                //        if (bytesToWrite > _bufferSize)
+                                //        {
+                                //            bytesToWrite = _bufferSize;
+                                //        }
+
+                                //        int readSize = stream.Read(buff, bytesWritten, bytesToWrite);
+                                //        try
+                                //        {
+                                //            tStream.Write(buff, 0, readSize);
+                                //        }
+                                //        catch { }
+                                //        bytesWritten += readSize;
+                                //    }
+                                //}
+
+                                // Commented bandwidth emulated stream writer and replaced with fixed 8KB buffer - 07Nov2017
+                                // SFL multipart-form upload issue
+                                if (File.Exists(pData.value.ToString()))
                                 {
-                                    int bytesWritten = 0;
-                                    int bytesToWrite = _bufferSize;
-                                    while (bytesWritten < stream.Length)
+                                    int bytesRead = 0;
+                                    byte[] buffer = new byte[8192];
+
+                                    using (FileStream fileStream = new FileStream(pData.value.ToString(), FileMode.Open, FileAccess.Read))
                                     {
-                                        // Write in chunks to ensure the bandwidth allocation
-                                        bytesToWrite = (int)stream.Length - bytesWritten;
-                                        if (bytesToWrite > _bufferSize)
+                                        while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) != 0)
                                         {
-                                            bytesToWrite = _bufferSize;
+                                            // Write file content to stream, byte by byte
+                                            tStream.Write(buffer, 0, bytesRead);
                                         }
 
-                                        int readSize = stream.Read(buff, bytesWritten, bytesToWrite);
-                                        try
-                                        {
-                                            tStream.Write(buff, 0, readSize);
-                                        }
-                                        catch { }
-                                        bytesWritten += readSize;
+                                        fileStream.Close();
                                     }
                                 }
+
                             }
                         }
                         dataStream.Close();

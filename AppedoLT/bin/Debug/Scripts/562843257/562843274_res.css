@@ -1,0 +1,30 @@
+.vkb_content
+{
+background:url(../images/kb_bg.gif) repeat-x; 
+border:1px solid #538EAD; 
+color:#36505E;
+font:80% Arial, Helvetica, sans-serif; 
+vertical-align:top; 
+margin:0px; 
+padding:5px; 
+border-style: none  ;
+}
+.keyboardtblenb {
+padding:3px 8px 3px 8px; 
+background:#D6E1EF ;
+text-align:center; 
+cursor:pointer; 
+font-weight:bold; 
+vertical-align:middle;
+border:1px solid #377292;
+color: Black; 
+}
+.keyboardtbldis {
+padding:3px 8px 3px 8px; 
+background-color:#edf2f2;
+text-align:center; 
+vertical-align:middle; 
+border:1px solid #d9d8d8; 
+color:#929290; 
+font-weight:bold
+}

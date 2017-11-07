@@ -1,0 +1,9 @@
+GET /imageglue/images/news/temp/321c2d1c-dde7-4821-818e-141268d2b438.jpg HTTP/1.1
+Host: demo.websupergoo.com
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://demo.websupergoo.com/imageglue/
+Connection: keep-alive
+

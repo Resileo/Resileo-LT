@@ -1,0 +1,104 @@
+//Caps Lock ON/OFF Warning
+var capsLockEnabled = null;
+var appVersion = window.navigator.appVersion;
+var msie = (appVersion.indexOf("MSIE") !=  - 1);
+
+function getChar(e) {
+    if (e.which == null) {
+        return String.fromCharCode(e.keyCode);// IE
+    }
+    if (e.which != 0 && e.charCode != 0) {
+        return String.fromCharCode(e.which);
+    }
+    return null;
+}
+
+function onKeyDownOnFields(e) {
+    if (msie) {
+        e = window.event;
+    }
+    if (e.keyCode == 20 && capsLockEnabled != null) {
+        capsLockEnabled = !capsLockEnabled;
+    }
+}
+
+function onKeyPressOnFields(e) {
+    if (msie) {
+        e = window.event;
+    }
+    var chr = getChar(e);
+    if (!chr) {
+        return;// special key
+    }
+    if (chr.toLowerCase() == chr.toUpperCase()) {
+        // caseless symbol, like whitespace
+        // can't use it to detect Caps Lock
+        return;
+    }
+    capsLockEnabled = (chr.toLowerCase() == chr && e.shiftKey) || (chr.toUpperCase() == chr && !e.shiftKey);
+}
+
+/**
+ * Check caps lock
+ */
+function checkCapsWarning() {
+    var capsLockGroup = document.getElementById("ps:capsLockGroup");
+    if (capsLockEnabled) {
+        if (capsLockGroup != null) {
+            capsLockGroup.style.display = 'block';
+        }
+    }
+    else {
+        if (capsLockGroup != null) {
+            capsLockGroup.style.display = 'none';
+        }
+    }
+}
+
+function userIdOnfocus() {
+   var capsLockGroup = document.getElementById("ps:capsLockGroup");
+    if (capsLockGroup != null) {
+        capsLockGroup.style.display = 'none';
+    }
+    capsLockEnabled = null;
+}
+
+window.onblur = function (e) {
+    var capsLockGroup = document.getElementById("ps:capsLockGroup");
+    if (capsLockGroup != null) {
+        capsLockGroup.style.display = 'none';
+    }
+    capsLockEnabled = null;
+}
+
+/* To restrict control key combinations*/
+function disableCtrlKey(e) {
+    var forbiddenKeys = new Array('a','n','c','x','v','j');
+    var key;
+    var isCtrl;
+    if (window.event) {
+        key = window.event.keyCode;//IE
+        if (window.event.ctrlKey)
+            isCtrl = true;
+        else 
+            isCtrl = false;
+    }
+    else {
+        key = e.which;//firefox
+        if (e.ctrlKey)
+            isCtrl = true;
+        else 
+            isCtrl = false;
+    }
+    //if ctrl is pressed check if other key is in forbidenKeys array
+    if (isCtrl) {
+        for (i = 0;i < forbiddenKeys.length;i++) {
+            //case-insensitive comparation
+            if (forbiddenKeys[i].toLowerCase() == String.fromCharCode(key).toLowerCase()) {
+                window.status = "We have disabled function control key combinations";
+                e.cancel();
+              
+            }
+        }
+    }
+}

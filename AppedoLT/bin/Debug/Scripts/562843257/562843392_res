@@ -1,0 +1,55 @@
+JSCommonUtils = {
+    
+    initializeLibraries : function () {
+        if (this.fLibraries && this.fLibraries instanceof Array) {
+            for (var lIndex in this.fLibraries) {
+                var lLibrary = this.fLibraries[lIndex];
+                if (lLibrary.initialize) {
+                    lLibrary.initialize();
+                }
+            }
+        }
+    },
+    getAdfDocument : function () {
+        return this.fDocument;
+    },
+    onDocumentLoad : function (aEvent) {
+        var lSource = aEvent.getSource();
+        if (lSource != null && lSource.getComponentType() == "oracle.adf.RichDocument") {
+            this.fDocument = lSource;
+        }
+        this.initializeLibraries();
+    },
+    addEventListener : function (aObject, aEvent, aHandler, aUseCapture) {
+        
+        if (aObject.addEventListener != null) {
+            aObject.addEventListener(aEvent, aHandler, aUseCapture);
+        }else {
+            aObject.attachEvent("on" + aEvent, aHandler);
+        }
+    },
+    removeEventListener : function (aObject, aEvent, aHandler, aUseCapture) {
+        if (aObject.removeEventListener != null) {
+            aObject.removeEventListener(aEvent, aHandler, aUseCapture);
+        }
+        else {
+            aObject.detachEvent(aEvent, aHandler);
+        }
+    },
+    registerLibrary : function (aLibrary) {
+        if (aLibrary) {
+            if (!this.fLibraries) {
+                this.fLibraries = new Array();
+            }
+            this.fLibraries.push(aLibrary);
+        }
+    },
+    arrayContains : function (aArray, aItem) {
+        for (var lIndex in aArray) {
+            if (aArray[lIndex] == aItem) {
+                return true;
+            }
+        }
+        return false;
+    }
+}

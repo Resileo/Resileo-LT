@@ -1,0 +1,10 @@
+GET /psln/afr/partition/webkit/n/default/opt/status-11.1.2.4.0-4050.js HTTP/1.1
+Accept: application/javascript, */*;q=0.8
+Referer: http://sflchnweb03.sfl.ad/psln/faces/PS00003?jsessionid=Sit24nilN_GtFaN1LwoQt7yQb_KT2oXu7dkrXAn2Gx3vqwSyDMua%21501059795%211509528074405&_adf.ctrl-state=t8z9x4bif_3
+Accept-Language: en-IN
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063
+Accept-Encoding: gzip, deflate
+Host: sflchnweb03.sfl.ad
+Proxy-Connection: Keep-Alive
+Cookie: JSESSIONID=m4h24wilLZlU0r3zKmH07-mkQdkMUI_Y1dVfvVWNXaTog6yb9p2_!-1609397229
+

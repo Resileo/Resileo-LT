@@ -15,3 +15,4 @@ D:\Resileo\Resileo-LT\AppedoLT.Core\bin\Debug\AppedoLT.Core.pdb
 D:\Resileo\Resileo-LT\AppedoLT.Core\bin\Debug\Ionic.Zip.dll
 D:\Resileo\Resileo-LT\AppedoLT.Core\obj\Debug\AppedoLT.Core.dll
 D:\Resileo\Resileo-LT\AppedoLT.Core\obj\Debug\AppedoLT.Core.pdb
+D:\Resileo\Resileo-LT\AppedoLT.Core\obj\Debug\AppedoLT.Core.csprojResolveAssemblyReference.cache

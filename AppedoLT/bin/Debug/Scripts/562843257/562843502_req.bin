@@ -1,0 +1,17 @@
+POST /psln/faces/PS00653U?_adf.ctrl-state=t8z9x4bif_3&Adf-Window-Id=ps_window13171 HTTP/1.1
+Accept: */*
+Origin: http://sflchnweb03.sfl.ad
+Referer: http://sflchnweb03.sfl.ad/psln/faces/PS00653U?_adf.ctrl-state=t8z9x4bif_3
+Accept-Language: en-IN
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Adf-Ads-Page-Id: 4
+Adf-Rich-Message: true
+Accept-Encoding: gzip, deflate
+Host: sflchnweb03.sfl.ad
+Content-Length: 563
+Proxy-Connection: Keep-Alive
+Pragma: no-cache
+Cookie: JSESSIONID=m4h24wilLZlU0r3zKmH07-mkQdkMUI_Y1dVfvVWNXaTog6yb9p2_!-1609397229
+
+pt1:it2=&pt1:bankCodeId=009&pt1:if1::hiddendata=UPDATE&pt1:if1=&org.apache.myfaces.trinidad.faces.FORM=f1&Adf-Window-Id=ps_window13171&javax.faces.ViewState=!ob90d1vlj&oracle.adf.view.rich.DELTAS=%7Bpt1%3ApsPopupConfirm%3D%7B_shown%3Dpt1%3ApsPopupConfirm%7D%2Cpt1%3AbusyMsg%3D%7B_unconvertedValue%3DProcessing..+Please+Wait..%7D%7D&event=pt1%3Abdacb1&event.pt1:bdacb1=%3Cm+xmlns%3D%22http%3A%2F%2Foracle.com%2FrichClient%2Fcomm%22%3E%3Ck+v%3D%22type%22%3E%3Cs%3Eaction%3C%2Fs%3E%3C%2Fk%3E%3C%2Fm%3E&oracle.adf.view.rich.PROCESS=pt1%3ApsPopupConfirm%2Cpt1%3Abdacb1

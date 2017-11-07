@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></meta>
+  <title>Index Page</title>
+    <script language="JavaScript" type="text/javascript">
+        function bustOut() {
+            try {
+                //var winPos = "width="+ (self.screen.width - 10) +",height="+ (self.screen.height - 73) +",scrollbars=yes,menubar=no,status=yes,resizable=yes,directories=false,location=false,left=0,top=0,maximize=true,fullscreen=yes";
+                //var winPos = "fullscreen=yes,status=yes";
+                var winPos = "width="+ (self.screen.width - 10) +",height="+ (self.screen.height - 73) +",scrollbars=yes,menubar=no,status=yes,resizable=yes,directories=false,location=false,left=0,top=0,maximize=true";
+                var ua = window.navigator.appVersion;
+                var msie = ua.indexOf ( "MSIE " );
+                var curURL = document.URL;
+                if (curURL.indexOf("index") != -1)  {
+                    curURL = curURL.substring(0,curURL.indexOf("index") );
+                }
+                var version = ua.substring(msie+5,msie+8);
+                var rnd_no = Math.floor(20000*Math.random());
+                var windowName="ps_window"+rnd_no ;
+                if (version >= "7.0")   {
+                        var newWin = window.open( curURL +"/faces/login/login.jspx",windowName,winPos);
+                        if ( newWin)   {
+                                window.open("","_parent","");
+                                window.close();
+                        }
+                } else  {
+                        var newWin = window.open(curURL + "/faces/login/login.jspx",windowName,winPos);
+                        closewindow();
+                }
+            } catch(e){  }
+        } //bustOut
+        function closewindow() {
+            try{
+                window.opener = 'x';
+                window.close();
+            }catch(e) {     } 
+        }// close window
+	</script>
+   </head>
+   <body onLoad="JavaScript:bustOut()"></body>
+</html>
