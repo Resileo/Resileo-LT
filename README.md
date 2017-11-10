@@ -1,6 +1,13 @@
 # Resileo-LT
 Resileo Labs Load Testing tool code base
 
+## AppedoLT 3.2.029 - Appedo Load Generator 1.1.032: 10-Nov-2017
+
+### Changelog 
+
+**AppedoLT 3.2.029**
+* Changed to save response body during run for Chunked Transfer-encoding as Assertion was failing
+
 ## AppedoLT 3.2.028 - Appedo Load Generator 1.1.031 - Appedo Load Controller 1.1.033: 07-Nov-2017
 
 ### Changelog 

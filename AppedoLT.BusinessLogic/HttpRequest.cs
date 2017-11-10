@@ -822,12 +822,16 @@ namespace AppedoLT.BusinessLogic
                 {
                     _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
                     ResponseSize += _bytesRead;
-                    if (StoreResult) responseBody.Write(_buffer, 0, _bytesRead);
+                    // Removed comparison of StoreResult for writing responseBody due to omission of writing large responseBody - 10Nov2017
+                    // Removed this because assertion was failing as there was no response to compare.
+                    //if (StoreResult) 
+                    responseBody.Write(_buffer, 0, _bytesRead);
                     while (_bytesRead > 0)
                     {
                         ResponseSize += _bytesRead;
                         _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
-                        if (StoreResult) responseBody.Write(_buffer, 0, _bytesRead);
+                        //if (StoreResult) 
+                        responseBody.Write(_buffer, 0, _bytesRead);
                     }
                 }
                 else if (contentLength == 0)
