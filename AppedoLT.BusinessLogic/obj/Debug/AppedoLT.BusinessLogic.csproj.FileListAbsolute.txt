@@ -21,3 +21,14 @@ D:\Resileo\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\log4net.xml
 D:\Resileo\Resileo-LT\AppedoLT.BusinessLogic\obj\Debug\AppedoLT.BusinessLogic.csprojResolveAssemblyReference.cache
 D:\Resileo\Resileo-LT\AppedoLT.BusinessLogic\obj\Debug\AppedoLT.BusinessLogic.dll
 D:\Resileo\Resileo-LT\AppedoLT.BusinessLogic\obj\Debug\AppedoLT.BusinessLogic.pdb
+D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\AppedoLT.BusinessLogic.dll.config
+D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\AppedoLT.BusinessLogic.dll
+D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\AppedoLT.BusinessLogic.pdb
+D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\AppedoLT.Core.dll
+D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\log4net.dll
+D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\Ionic.Zip.dll
+D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\AppedoLT.Core.pdb
+D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\log4net.xml
+D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\obj\Debug\AppedoLT.BusinessLogic.csprojResolveAssemblyReference.cache
+D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\obj\Debug\AppedoLT.BusinessLogic.dll
+D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\obj\Debug\AppedoLT.BusinessLogic.pdb

@@ -3,7 +3,7 @@
   <scenarios>
     <scenario id="548831312" name="google" enableipspoofing="False">
       <script id="548831277" name="google.com">
-        <setting type="1" durationtime="0;5;0" incrementtime="0;0;1" iterations="1" maxuser="30" startuser="1" incrementuser="1" browsercache="true" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
+        <setting type="2" durationtime="0;5;0" incrementtime="0;0;1" iterations="1" maxuser="4" startuser="1" incrementuser="1" browsercache="true" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
       </script>
     </scenario>
     <scenario id="550981968" name="trip" enableipspoofing="False">
@@ -1365,6 +1365,16 @@
     <run reportname="adactin_07112017_121030" starttime="07-11-2017 12:10:32" loadgenused="False">
       <scripts>
         <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="google_28112017_095533" starttime="28-11-2017 09:55:37" loadgenused="False">
+      <scripts>
+        <script id="548831277" name="google.com" />
+      </scripts>
+    </run>
+    <run reportname="google_28112017_095743" starttime="28-11-2017 09:57:44" loadgenused="False">
+      <scripts>
+        <script id="548831277" name="google.com" />
       </scripts>
     </run>
   </runs>

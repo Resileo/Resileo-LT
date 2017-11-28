@@ -22,3 +22,15 @@ D:\Resileo\Resileo-LT\AppedoLT.DataAccessLayer\bin\Debug\AppedoLT.Core.pdb
 D:\Resileo\Resileo-LT\AppedoLT.DataAccessLayer\obj\Debug\AppedoLT.DataAccessLayer.csprojResolveAssemblyReference.cache
 D:\Resileo\Resileo-LT\AppedoLT.DataAccessLayer\obj\Debug\AppedoLT.DataAccessLayer.dll
 D:\Resileo\Resileo-LT\AppedoLT.DataAccessLayer\obj\Debug\AppedoLT.DataAccessLayer.pdb
+D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\bin\Debug\database.db
+D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\bin\Debug\AppedoLT.DataAccessLayer.dll
+D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\bin\Debug\AppedoLT.DataAccessLayer.pdb
+D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\bin\Debug\AppedoLT.Core.dll
+D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\bin\Debug\Mono.Security.dll
+D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\bin\Debug\Npgsql.dll
+D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\bin\Debug\System.Data.SQLite.dll
+D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\bin\Debug\Ionic.Zip.dll
+D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\bin\Debug\AppedoLT.Core.pdb
+D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\obj\Debug\AppedoLT.DataAccessLayer.csprojResolveAssemblyReference.cache
+D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\obj\Debug\AppedoLT.DataAccessLayer.dll
+D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\obj\Debug\AppedoLT.DataAccessLayer.pdb

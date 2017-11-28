@@ -225,19 +225,18 @@ namespace AppedoLT.BusinessLogic
                             //To abort request
                             if (req != null) req.Abort();
                             // 25-Sep-2017 - To execute end container after stop
-                            foreach (XmlNode container in _vuScriptXml.ChildNodes)
-                            {
-                                if (container.Attributes["name"].Value == "End")
-                                {
-                                    Break = false;
-                                    _containerId.Push(new string[2] { container.Attributes["id"].Value, container.Attributes["name"].Value });
-                                    ExecuteContainer(container);
-                                    _containerId.Pop();
-                                }
-                            }
+                            //foreach (XmlNode container in _vuScriptXml.ChildNodes)
+                            //{
+                            //    if (container.Attributes["name"].Value == "End")
+                            //    {
+                            //        Break = false;
+                            //        _containerId.Push(new string[2] { container.Attributes["id"].Value, container.Attributes["name"].Value });
+                            //        ExecuteContainer(container);
+                            //        _containerId.Pop();
+                            //    }
+                            //}
                             //To stop vuser thread
                             _userThread.Abort();
-
                         }
                         catch (Exception ex)
                         {
