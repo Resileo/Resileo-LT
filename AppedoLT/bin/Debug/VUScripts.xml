@@ -13,7 +13,7 @@
     </scenario>
     <scenario id="559635954" name="adactin" enableipspoofing="False">
       <script id="555497870" name="adactin">
-        <setting type="1" durationtime="0;2;0" incrementtime="0;0;1" iterations="3" maxuser="1" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
+        <setting type="1" durationtime="0;2;0" incrementtime="0;0;1" iterations="1" maxuser="1" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
       </script>
     </scenario>
   </scenarios>
@@ -1375,6 +1375,16 @@
     <run reportname="google_28112017_095743" starttime="28-11-2017 09:57:44" loadgenused="False">
       <scripts>
         <script id="548831277" name="google.com" />
+      </scripts>
+    </run>
+    <run reportname="adactin_28112017_163724" starttime="28-11-2017 16:37:27" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_28112017_165747" starttime="28-11-2017 16:57:50" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
       </scripts>
     </run>
   </runs>

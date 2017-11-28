@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<report reportname="adactin_28112017_165747">
+  <summaryreport>
+    <val starttime="28-11-2017 16:57:53" endtime="28-11-2017 16:57:54" durationsec="1" usercount="1" totalhits="3" avgresponse="0.302328866666667" avghits="3" totalthroughput="0.011" avgthroughput="0.088623046875" totalerrors="0" totalpage="1" avgpageresponse="0.9069866" reponse200="3" reponse300="0" reponse400="0" reponse500="0" />
+  </summaryreport>
+  <log />
+  <error />
+  <graphs>
+    <val gmttime="1511868474" localtime="2017-11-28 16:57:54" gmt="2017-11-28 11:27:54" hitpersec="0.6" totalkb="11.34" kbps="2.27" avgresponsetime="302.33" />
+  </graphs>
+  <errorgraph />
+  <pageresponsegraph>
+    <val endtime="1511868474" localtime="2017-11-28 16:57:54" resptime="1" />
+  </pageresponsegraph>
+  <vuserrungraph>
+    <val gmt="1511868473" localtime="2017-11-28 16:57:53" vusercnt="1" vuserrunning="1" />
+    <val gmt="1511868474" localtime="2017-11-28 16:57:54" vusercnt="-1" vuserrunning="0" />
+    <val gmt="1511868475" localtime="2017-11-28 16:57:55" vusercnt="" vuserrunning="0" />
+    <val gmt="1511868476" localtime="2017-11-28 16:57:56" vusercnt="" vuserrunning="0" />
+    <val gmt="1511868477" localtime="2017-11-28 16:57:57" vusercnt="" vuserrunning="0" />
+    <val gmt="1511868478" localtime="2017-11-28 16:57:58" vusercnt="" vuserrunning="0" />
+    <val gmt="1511868479" localtime="2017-11-28 16:57:59" vusercnt="" vuserrunning="0" />
+    <val gmt="1511868480" localtime="2017-11-28 16:58:00" vusercnt="" vuserrunning="0" />
+    <val gmt="1511868481" localtime="2017-11-28 16:58:01" vusercnt="" vuserrunning="0" />
+    <val gmt="1511868482" localtime="2017-11-28 16:58:02" vusercnt="" vuserrunning="0" />
+    <val gmt="1511868483" localtime="2017-11-28 16:58:03" vusercnt="" vuserrunning="0" />
+    <val gmt="1511868484" localtime="2017-11-28 16:58:04" vusercnt="" vuserrunning="0" />
+    <val gmt="1511868485" localtime="2017-11-28 16:58:05" vusercnt="" vuserrunning="0" />
+    <val gmt="1511868486" localtime="2017-11-28 16:58:06" vusercnt="" vuserrunning="0" />
+    <val gmt="1511868487" localtime="2017-11-28 16:58:07" vusercnt="" vuserrunning="0" />
+    <val gmt="1511868488" localtime="2017-11-28 16:58:08" vusercnt="" vuserrunning="0" />
+  </vuserrungraph>
+  <script name="adactin" id="555497870">
+    <settings>
+      <val type="Iteration" durationTime="0:2:0" iterations="1" incrementUser="1" incrementTime="0:0:1" maxUser="1" browserCache="false" startUserId="1" replayThinkTime="true" bandwidth="Full Speed" enableparallelcon="false" parallelconnections="6" />
+    </settings>
+    <requests>
+      <val containerid="555497872" containername="home" requestid="555497877" address="/HotelApp/" />
+      <val containerid="555497872" containername="home" requestid="555497880" address="/HotelApp/css/main.css" />
+      <val containerid="555497872" containername="home" requestid="555497882" address="/favicon.ico" />
+    </requests>
+    <requestresponse>
+      <val containerid="555497872" containername="home" requestid="555497877" address="/HotelApp/" min="175.2579" max="175.2579" avg="175.2579" throughput="8937" hitcount="1" minttfb="128.2627" maxttfb="128.2627" avgttfb="128.2627" />
+      <val containerid="555497872" containername="home" requestid="555497880" address="/HotelApp/css/main.css" min="132.1404" max="132.1404" avg="132.1404" throughput="2679" hitcount="1" minttfb="127.3074" maxttfb="127.3074" avgttfb="127.3074" />
+      <val containerid="555497872" containername="home" requestid="555497882" address="/favicon.ico" min="599.5883" max="599.5883" avg="599.5883" throughput="0" hitcount="1" minttfb="599.4237" maxttfb="599.4237" avgttfb="599.4237" />
+    </requestresponse>
+    <containerresponse>
+      <val containerid="555497872" containername="home" min="906.9866" max="906.9866" avg="906.9866" />
+    </containerresponse>
+    <errorcount />
+    <errorcode />
+    <transactions />
+  </script>
+</report>

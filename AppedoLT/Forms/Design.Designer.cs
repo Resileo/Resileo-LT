@@ -128,6 +128,8 @@ namespace AppedoLT
             this.radMenuItem1 = new Telerik.WinControls.UI.RadMenuItem();
             this.imageListForHeading = new System.Windows.Forms.ImageList(this.components);
             this.tabItem4 = new Telerik.WinControls.UI.TabItem();
+            this.radMenuItem2 = new Telerik.WinControls.UI.RadMenuItem();
+            this.menuManualReport = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
             ((System.ComponentModel.ISupportInitialize)(this.tabsDesign)).BeginInit();
             this.tabsDesign.SuspendLayout();
@@ -545,44 +547,13 @@ namespace AppedoLT
             ((object)(resources.GetObject("comboBrowserVersion.Items10"))),
             ((object)(resources.GetObject("comboBrowserVersion.Items11"))),
             ((object)(resources.GetObject("comboBrowserVersion.Items12")))});
+            
             this.comboBrowserVersion.Location = new System.Drawing.Point(355, 5);
             this.comboBrowserVersion.Name = "comboBrowserVersion";
             this.comboBrowserVersion.Size = new System.Drawing.Size(121, 21);
             this.comboBrowserVersion.TabIndex = 44;
             this.comboBrowserVersion.ValueMember = "Value";
-
-
-            //-----------------------------------------------------------------------------------------------------
-            //AddedManually - For comboBrowserVersion
-            //
-
-            this.comboBrowserVersion.FormattingEnabled = true;
-            this.comboBrowserVersion.Location = new System.Drawing.Point(355, 5);
-            this.comboBrowserVersion.Name = "comboBrowserVersion";
-            this.comboBrowserVersion.Size = new System.Drawing.Size(121, 21);
-            this.comboBrowserVersion.TabIndex = 44;
-            Dictionary<string, string> comboSource = new Dictionary<string, string>();
-
-            // Recorded Agent
-            comboSource.Add("Recorded Agent", "Recorded Agent");
-            comboSource.Add("Chrome 45", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36");
-            comboSource.Add("Chrome 44", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2395.5 Safari/537.36");
-            comboSource.Add("Chrome 43", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2314.2 Safari/537.36");
-            comboSource.Add("Chrome 42", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2302.4 Safari/537.36");
-            comboSource.Add("Firefox 38", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0");
-            comboSource.Add("Firefox 37", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0");
-            comboSource.Add("Firefox 36", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:36.0) Gecko/20100101 Firefox/36.0");
-            comboSource.Add("Firefox 35", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:35.0) Gecko/20100101 Firefox/35.0");
-            comboSource.Add("IE 11", "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko");
-            comboSource.Add("IE 10", "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)");
-            comboSource.Add("IE 09", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; Media Center PC 6.0)");
-            comboSource.Add("Edge", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240SS");
-            comboBrowserVersion.DataSource = new BindingSource(comboSource, null);
-            comboBrowserVersion.DisplayMember = "Key";
-            comboBrowserVersion.ValueMember = "Value";
-
-
-
+            this.comboBrowserVersion.SelectedIndex = 0;
             // 
             // label6
             // 
@@ -1361,13 +1332,27 @@ namespace AppedoLT
             this.tabItem4.StretchHorizontally = false;
             this.tabItem4.Text = "tabItem4";
             // 
+            // radMenuItem2
+            // 
+            this.radMenuItem2.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.menuManualReport});
+            this.radMenuItem2.Name = "radMenuItem2";
+            this.radMenuItem2.Text = "Reports";
+            // 
+            // menuManualReport
+            // 
+            this.menuManualReport.Name = "menuManualReport";
+            this.menuManualReport.Text = "Manual Report Generation";
+            this.menuManualReport.Click += new System.EventHandler(this.menuManualReport_Click);
+            // 
             // radMenu1
             // 
             this.radMenu1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radMenu1.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.mnuiVuscript,
             this.radMenuItem3,
-            this.radMenuItem4});
+            this.radMenuItem4,
+            this.radMenuItem2});
             this.radMenu1.Location = new System.Drawing.Point(0, 0);
             this.radMenu1.Name = "radMenu1";
             this.radMenu1.Size = new System.Drawing.Size(942, 23);
@@ -1525,7 +1510,6 @@ namespace AppedoLT
         private System.Windows.Forms.ColumnHeader lcvMessage;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader ivcErrorCode;
-        private Telerik.WinControls.UI.RadMenu radMenu1;
         private Telerik.WinControls.UI.TabItem tabItem3;
         private System.Windows.Forms.ColumnHeader lvcContainerId;
         private System.Windows.Forms.ColumnHeader lvcContainerName;
@@ -1556,5 +1540,8 @@ namespace AppedoLT
         private Telerik.WinControls.UI.TabItem compareReportsTab;
         private userControlCompareReports userControlCompareReports1;
         private Telerik.WinControls.UI.RadButton btnClear;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem2;
+        private Telerik.WinControls.UI.RadMenu radMenu1;
+        private Telerik.WinControls.UI.RadMenuItem menuManualReport;
     }
 }

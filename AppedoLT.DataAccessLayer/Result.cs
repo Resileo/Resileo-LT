@@ -312,7 +312,14 @@ namespace AppedoLT.DataAccessLayer
                 string sourceDirectory = Constants.GetInstance().ExecutingAssemblyLocation + "\\js";
                 foreach (string fileName in Directory.GetFiles(sourceDirectory, "*.js"))
                 {
-                    File.Copy(fileName, reportFolder + "\\js\\" + Path.GetFileName(fileName));
+                    try
+                    {
+                        File.Copy(fileName, reportFolder + "\\js\\" + Path.GetFileName(fileName));
+                    }
+                    catch (Exception)
+                    {
+                        
+                    }
                 }
 
                 // Copy all css files
@@ -320,7 +327,15 @@ namespace AppedoLT.DataAccessLayer
                 sourceDirectory = Constants.GetInstance().ExecutingAssemblyLocation + "\\css";
                 foreach (string fileName in Directory.GetFiles(sourceDirectory, "*.css"))
                 {
-                    File.Copy(fileName, reportFolder + "\\css\\" + Path.GetFileName(fileName));
+                    try
+                    {
+                        File.Copy(fileName, reportFolder + "\\css\\" + Path.GetFileName(fileName));
+                    }
+                    catch (Exception)
+                    {
+                        
+                     
+                    }
                 }
 
                 using (SQLiteConnection _con = new SQLiteConnection("Data Source=" + databasePath + "\\database.db;Version=3;New=True;Compress=True;"))

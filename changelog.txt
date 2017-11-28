@@ -1,3 +1,17 @@
+## AppedoLT 3.2.031: 28-Nov-2017
+
+### Changelog 
+
+**AppedoLT 3.2.031**
+* Added Manual Report Generation menu item for generating reports from database.db
+
+## AppedoLT 3.2.030 - Appedo Load Generator 1.1.033 - Appedo Load Controller 1.1.034: 27-Nov-2017
+
+### Changelog 
+
+**AppedoLT 3.2.030**
+* Removed running the 'end' container on clicking stop during run
+
 ## AppedoLT 3.2.029 - Appedo Load Generator 1.1.032: 10-Nov-2017
 
 ### Changelog 
@@ -12,14 +26,12 @@
 **AppedoLT 3.2.028**
 * Removed bandwidth emulation for multipart/form file upload
 
-
 ## AppedoLT 3.2.027 - Appedo Load Generator 1.1.030 - Appedo Load Controller 1.1.032: 07-Nov-2017
 
 ### Changelog 
 
 **AppedoLT 3.2.027**
 * Fixed and formatted Assertion message response
-
 
 ## AppedoLT 3.2.026: 19-Oct-2017
 

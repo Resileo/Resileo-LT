@@ -149,7 +149,6 @@ namespace AppedoLT
         }
 
         #region Design
-
         public void GetTreeNode(XmlNode ContainerNode, RadTreeNode parentNode)
         {
             foreach (XmlNode action in ContainerNode.ChildNodes)
@@ -1554,11 +1553,11 @@ namespace AppedoLT
                             //reportMaster.GenerateReports();
                             while (!ReportMaster.IsReportGenerationCompleted)
                             {
-                                Thread.Sleep(100);
+                              Thread.Sleep(100);
                             }
                             userControlReports2.LoadReportName(executionReport.ReportName);
                             // Thread.Sleep(10000);
-                            // MessageBox.Show("Report generation completed.");
+                             MessageBox.Show("Report generation completed.");
                         }
                     }
                 }
@@ -1690,6 +1689,26 @@ namespace AppedoLT
         }
 
         #endregion
+        // Added manual summary report generation from database.db for failed reports 28-Nov-2017
+        public void ManualSummaryReport(string reportName)
+        {
+            try
+            {
+
+                CreateSummaryReport(reportName);
+                ReportMaster reportMaster = new ReportMaster(reportName);
+                reportMaster.GenerateReports();
+                userControlReports2.LoadReportName(reportName);
+                MessageBox.Show("Report Generation Completed");
+            }
+            catch (Exception ex)
+            {
+
+                ExceptionHandler.WritetoEventLog(ex.StackTrace + Environment.NewLine + ex.Message);
+                MessageBox.Show("Report Generation Failed " + ex.Message);
+            }
+            
+        }
 
         private void CreateSummaryReport(string reportName)
         {
@@ -2191,7 +2210,39 @@ namespace AppedoLT
             lblStatus.ResetText();
             lsvErrors.Items.Clear();
             
-        }   
+        }
+
+        // Menu item for getting report name for manual report generation - 28Nov2017
+        private void menuManualReport_Click(object sender, EventArgs e)
+        {
+            string promptValue = ReportNamePrompt("Report Name", "Manual Report Generation");
+            if(promptValue != "")
+                ManualSummaryReport(promptValue);
+        }
+
+        // Form for getting report name for manual report generation  - 28Nov2017
+        public static string ReportNamePrompt(string text, string caption)
+        {
+            Form prompt = new Form()
+            {
+                Width = 500,
+                Height = 150,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                Text = caption,
+                StartPosition = FormStartPosition.CenterScreen
+            };
+            Label textLabel = new Label() { Left = 50, Top = 20, Text = text };
+            TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
+            Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Top = 70, DialogResult = DialogResult.OK };
+            confirmation.Click += (sender, e) => { prompt.Close(); };
+            prompt.Controls.Add(textBox);
+            prompt.Controls.Add(confirmation);
+            prompt.Controls.Add(textLabel);
+            prompt.AcceptButton = confirmation;
+
+            return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
+        }
+          
 
     }
 }
