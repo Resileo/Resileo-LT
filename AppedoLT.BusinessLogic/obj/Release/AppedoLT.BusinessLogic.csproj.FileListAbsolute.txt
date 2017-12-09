@@ -31,5 +31,3 @@ D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Release\log4net.xml
 D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\obj\Release\AppedoLT.BusinessLogic.csprojResolveAssemblyReference.cache
 D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\obj\Release\AppedoLT.BusinessLogic.dll
 D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\obj\Release\AppedoLT.BusinessLogic.pdb
-D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Release\AppedoLT.BusinessLogic.dll.CodeAnalysisLog.xml
-D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Release\AppedoLT.BusinessLogic.dll.lastcodeanalysissucceeded

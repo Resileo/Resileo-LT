@@ -1,1 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><root><scenarios/><flag/><loadgens/><runs/></root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <scenarios>
+    <scenario id="565194845" name="google" enableipspoofing="False">
+      <script id="549020138" name="google.com">
+        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="1" maxuser="1" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
+      </script>
+    </scenario>
+  </scenarios>
+  <flag />
+  <loadgens />
+  <runs />
+</root>

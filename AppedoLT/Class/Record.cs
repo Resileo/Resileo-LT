@@ -98,7 +98,9 @@ namespace AppedoLT
                 String certFilePath = String.Empty;
                 if (ConfigurationManager.AppSettings["CertificateFile"] != null)
                     certFilePath = Constants.GetInstance().CertificatePath;
+                //_certificate = new X509Certificate2(certFilePath, "Pass@12345");
                 _certificate = new X509Certificate2(certFilePath, "pass@12345");
+                //  _certificate = new X509Certificate2(certFilePath);
             }
             catch (Exception ex)
             {

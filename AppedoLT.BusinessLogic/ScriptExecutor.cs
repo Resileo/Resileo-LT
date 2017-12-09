@@ -491,6 +491,7 @@ namespace AppedoLT.BusinessLogic
                                             Thread.Sleep(100);
                                         }
                                         thread.Stop();
+                                        
                                         _completedUserCount++;
                                         StatusSummary.TotalVUserCompleted++;
                                     }

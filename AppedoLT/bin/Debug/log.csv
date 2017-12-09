@@ -1,7 +1,5 @@
 Thread ID,Total Thread,Active Threads,User ID,Iteration Number,RequestId,Timestamp,Status,Type,Request
-12,32,2,1,1,555497877,2017-11-28 04:57:52.981744,Before Request, Sequential,http://adactin.com:80/HotelApp/
-13,33,2,1,1,555497880,2017-11-28 04:57:52.995745,Before Request, Parallel,http://adactin.com:80/HotelApp/css/main.css
-13,35,1,1,1,555497880,2017-11-28 04:57:53.185756,After Request, Parallel,http://adactin.com:80/HotelApp/css/main.css
-12,34,2,1,1,555497877,2017-11-28 04:57:54.225815,After Request, Sequential,http://adactin.com:80/HotelApp/
-12,34,2,1,1,555497882,2017-11-28 04:57:54.231816,Before Request, Sequential,http://adactin.com:80/favicon.ico
-12,34,1,1,1,555497882,2017-11-28 04:57:54.837850,After Request, Sequential,http://adactin.com:80/favicon.ico
+11,30,1,1,1,511923106,2017-12-09 12:29:08.762487,Before Request, Sequential,MyQueue.LocalQueue.SvrConChannel/TCP/DESKTOP-0D5EHEU(1414)
+11,35,2,1,1,511923106,2017-12-09 12:29:22.482248,After Request, Sequential,MyQueue.LocalQueue.SvrConChannel/TCP/DESKTOP-0D5EHEU(1414)
+11,35,1,1,1,511923106,2017-12-09 12:29:22.517262,Before Request, Sequential,MyQueue.LocalQueue.SvrConChannel/TCP/DESKTOP-0D5EHEU(1414)
+11,37,3,1,1,511923106,2017-12-09 12:29:25.260386,After Request, Sequential,MyQueue.LocalQueue.SvrConChannel/TCP/DESKTOP-0D5EHEU(1414)
