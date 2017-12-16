@@ -14,3 +14,4 @@ D:\workspace\Resileo-LT\AppedoLT.Core\bin\Release\AppedoLT.Core.pdb
 D:\workspace\Resileo-LT\AppedoLT.Core\bin\Release\Ionic.Zip.dll
 D:\workspace\Resileo-LT\AppedoLT.Core\obj\Release\AppedoLT.Core.dll
 D:\workspace\Resileo-LT\AppedoLT.Core\obj\Release\AppedoLT.Core.pdb
+D:\workspace\Resileo-LT\AppedoLT.Core\obj\Release\AppedoLT.Core.csprojResolveAssemblyReference.cache

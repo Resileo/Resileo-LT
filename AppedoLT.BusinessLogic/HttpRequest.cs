@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using System.Collections;
 using System.Configuration;
+using System.IO.Compression;
 
 namespace AppedoLT.BusinessLogic
 {
@@ -256,6 +257,7 @@ namespace AppedoLT.BusinessLogic
 
                 }
                 #endregion
+                WebHeaderCollection collReqHeaders = (WebHeaderCollection)_request.Headers;
                 responseTime.Start();
                 firstByteTime.Start();
                 StartTime = DateTime.Now;
@@ -368,6 +370,7 @@ namespace AppedoLT.BusinessLogic
                     #region GetVaildResponse
                     using (var httpWebResponse = _request.GetResponse() as HttpWebResponse)
                     {
+                        
                         if (httpWebResponse != null)
                         {
                             //The HttpWebResponse object has already the information about the HTTP headers set, so the data has been already read and parsed.
@@ -383,8 +386,19 @@ namespace AppedoLT.BusinessLogic
                             }
                             responseTime.Start();
                             result.Append(Environment.NewLine);
+                            Stream respStream = httpWebResponse.GetResponseStream();
                             ResponseStream.Write(Encoding.ASCII.GetBytes(result.ToString()), 0, result.Length);
-                            ReadResponseBody(result.ToString(), httpWebResponse.ContentLength, httpWebResponse.GetResponseStream(), ref ResponseStream);
+                            Stream respStreamBody = httpWebResponse.GetResponseStream();
+                            //Newly added code on 14-Dec-2017 to take care of gzipped response. 
+                            if (result.ToString().ToLower().Contains("gzip"))
+                            {
+                                byte[] receiveByteArr = StreamToByteArray(respStreamBody);
+                                GZipStream zipstream = new GZipStream(new MemoryStream(receiveByteArr), CompressionMode.Decompress);
+                                byte[] unZipStream = gzipStreamToByteArray(zipstream);
+                                respStreamBody = new MemoryStream(unZipStream);
+                            }
+                            //Old code from here
+                            ReadResponseBody(result.ToString(), httpWebResponse.ContentLength, respStreamBody, ref ResponseStream);
 
                             #region StoreCookies
                             if (httpWebResponse.Headers["Set-Cookie"] != null)
@@ -910,6 +924,39 @@ namespace AppedoLT.BusinessLogic
             return att;
         }
 
+        private  byte[] StreamToByteArray(Stream input)
+        {
+            byte[] buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+            }
+        }
+
+        private byte[] gzipStreamToByteArray(Stream input)
+        {
+            const int size = 4096;
+            byte[] buffer = new byte[size];
+            using (MemoryStream memory = new MemoryStream())
+            {
+                int count = 0;
+                do
+                {
+                    count = input.Read(buffer, 0, size);
+                    if (count > 0)
+                    {
+                        memory.Write(buffer, 0, count);
+                    }
+                }
+                while (count > 0);
+                return memory.ToArray();
+            }
+        }
         #endregion
 
     }

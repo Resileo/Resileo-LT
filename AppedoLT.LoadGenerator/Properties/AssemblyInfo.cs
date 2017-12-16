@@ -32,6 +32,10 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.2.034.0")]
-[assembly: AssemblyFileVersion("1.2.034.0")]
+[assembly: AssemblyVersion("1.2.038.0")]
+[assembly: AssemblyFileVersion("1.2.038.0")]
+//1.2.038/0 - Changes as mentioned in AppedoLT version 3.3.037 Business logic layer changed, extraction from gzip format added, extraction failure modified
+//1.2.037.0 - Changes as mentioned in AppedoLT version 3.3.035 Business logic layer changed, WaitInterval Parameter Added.
+//1.2.036.0 - Changes as mentioned in AppedoLT version 3.3.034 Business logic layer changed, CharacterSet issue fixed.
+//1.2.035.0 - Changes as mentioned in AppedoLT version 3.3.033 Business logic layer changed, Two additional Parameters added.
 //1.2.034.0 - Changes as mentioned in AppedoLT version 3.3.032 Business logic layer changed, Add MQ.cs new Class

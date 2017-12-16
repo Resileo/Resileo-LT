@@ -32,8 +32,14 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.3.032.0")]
-[assembly: AssemblyFileVersion("3.3.032.0")]
+[assembly: AssemblyVersion("3.3.037.0")]
+[assembly: AssemblyFileVersion("3.3.037.0")]
+//3.3.037 - Exraction from gZipped response fixed, Extraction failure handled with NOTFOUND static Text, and this fixes of using extracted variable in both js and conditions even when extraction fails, Condition statements validation fixed.
+//3.3.036 - Enabled Wait for wait interval. Start time and stop time also added for read message. 
+//3.3.035 - Based on review added one more parameter for wait till message is available for read in get messages. Added parameter WaitInterval for this functionality.
+//3.3.034 - While writing to the MQ,it adds null character for every character that we send. It has been found that it is because of Character SEt that is defaulted in MQ. We are supposed to use character set 437 and fixed now.
+
+//3.3.033 - ReplyToQueueName and Persistence parameter added based on the review from the Client (mannai-ESB on 10-12-2017)
 //3.3.032 - New Module added for load testing IBM Websphere MQ services
     //Business logic layer changed, Add MQ.cs new Class
     //vuser script XML has to be manually prepared for this services

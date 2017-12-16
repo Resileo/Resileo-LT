@@ -1073,6 +1073,9 @@ namespace AppedoLT.BusinessLogic
                     String msgID = string.Empty;
                     String corrId = string.Empty;
                     String strRetMsg = string.Empty;
+                    String replyQName = string.Empty;
+                    int persistence = 0;
+                    int waitInterval = 0;
 
                     mqReq = new MQ(request, ref receivedCookies, _userid.ToString() + (_createdConnection++ % _maxConnection).ToString(), _IPAddress, IsValidation, _bandwidthInKbps);
                     //If request has parameterization. 
@@ -1091,6 +1094,9 @@ namespace AppedoLT.BusinessLogic
                         {
                             if (qsp.Attributes["name"].Value == "MessageId") msgID = qsp.Attributes["value"].Value;
                             if (qsp.Attributes["name"].Value == "CorrelationId") corrId = qsp.Attributes["value"].Value;
+                            if (qsp.Attributes["name"].Value == "ReplyToQueueName") replyQName = qsp.Attributes["value"].Value;
+                            if (qsp.Attributes["name"].Value == "Persistence") persistence = qsp.Attributes["value"].Value != string.Empty ? Convert.ToInt32(qsp.Attributes["value"].Value) : persistence;
+                            if (qsp.Attributes["name"].Value == "WaitInterval") waitInterval = qsp.Attributes["value"].Value != string.Empty ? Convert.ToInt32(qsp.Attributes["value"].Value) : waitInterval;
                         }
                     }
 
@@ -1105,11 +1111,12 @@ namespace AppedoLT.BusinessLogic
                                 pDataBuffer.Append(queueText.Attributes["value"].Value);
                             }
                             
-                             strRetMsg = mqReq.WriteMsg(pDataBuffer.ToString(), msgID, corrId);
+                             strRetMsg = mqReq.WriteMsg(pDataBuffer.ToString(), msgID, corrId, replyQName, persistence);
+                             ExceptionHandler.WritetoEventLog(strRetMsg);
                         }
                         else
                         {
-                            strRetMsg = mqReq.ReadMsg(msgID, corrId);
+                            strRetMsg = mqReq.ReadMsg(msgID, corrId, waitInterval);
                             //String StrReadMsg = mqueue.ReadMsg(strRetMsg);
 
                         }
@@ -1214,6 +1221,9 @@ namespace AppedoLT.BusinessLogic
                     }
                     else
                     {
+                        _exVariablesValues.Remove(variableName);
+                        _exVariablesValues.Add(variableName, "\"NOTFOUND\"");
+                        req.ExtractedVariables.Add(new AppedoLT.Core.Tuple<string, string>(variableName, "NOTFOUND"));
                         //Extrator faild
                     }
                 }

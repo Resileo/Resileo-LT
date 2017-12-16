@@ -255,7 +255,7 @@ namespace AppedoLT.Core
         {
             //Break Expression Apart into List
             if (!_bParsed)
-                for (int x = 0; x < Expression.Length; x = NextToken(x)) ;
+                for (int x = 0; x < Expression.Length-1; x = NextToken(x)) ;
             _bParsed = true;
 
             //Perform Operations
@@ -273,6 +273,7 @@ namespace AppedoLT.Core
             Match mRet = null;
             int nRet = nIdx;
             object val = null;
+            int pos = 0;
 
             //Check for preceeding white space from last token index
             Match m = DefinedRegex.WhiteSpace.Match(Expression, nIdx);
@@ -353,7 +354,8 @@ namespace AppedoLT.Core
             if (mRet == null || mRet.Index > nIdx)
             {
                 m = DefinedRegex.Numeric.Match(Expression, nIdx);
-                if (m.Success && (mRet == null || m.Index < mRet.Index))
+//                if (m.Success && (mRet == null || m.Index < mRet.Index))
+                if (m.Success && (mRet == null &&  m.Index == nIdx))
                 {
                     while (m.Success && ("" + m.Value == ""))
                         m = m.NextMatch();
@@ -361,6 +363,7 @@ namespace AppedoLT.Core
                     {
                         mRet = m;
                         val = double.Parse(m.Value, CultureInfo.CurrentCulture);
+                        pos += mRet.Length;
                     }
                 }
             }
@@ -369,32 +372,38 @@ namespace AppedoLT.Core
             {
                 //Check String
                 m = DefinedRegex.String.Match(Expression, nIdx);
-                if (m.Success && (mRet == null || m.Index < mRet.Index))
-                { mRet = m; val = m.Groups["String"].Value.Replace("\\\"", "\""); }
+//                if (m.Success && (mRet == null || m.Index < mRet.Index))
+                if (m.Success && (mRet == null && m.Index == nIdx))
+                { mRet = m; val = m.Groups["String"].Value.Replace("\\\"", "\""); pos += mRet.Length; }
             }
 
             //Check Binary Operator
             if (mRet == null || mRet.Index > nIdx)
             {
                 m = DefinedRegex.BinaryOp.Match(Expression, nIdx);
-                if (m.Success && (mRet == null || m.Index < mRet.Index))
-                { mRet = m; val = new BinaryOp(m.Value); }
+//                if (m.Success && (mRet == null || m.Index < mRet.Index))
+                if (m.Success && (mRet == null && m.Index == nIdx))
+                {
+                    if (val != null) { _expressionlist.Add(val); }
+                    mRet = m; val = new BinaryOp(m.Value); pos += mRet.Length;
+                }
             }
 
             if (mRet == null)
                 throw new ArgumentException("Invalid expression construction: \"" + Expression + "\".");
 
-            if (mRet.Index != nIdx)
-            {
-                throw new ArgumentException(
-                    "Invalid token in expression: [" +
-                        Expression.Substring(nIdx, mRet.Index - nIdx).Trim() + "]"
-                );
-            }
+            //if (mRet.Index != nIdx)
+            //{
+            //    throw new ArgumentException(
+            //        "Invalid token in expression: [" +
+            //            Expression.Substring(nIdx, mRet.Index - nIdx).Trim() + "]"
+            //    );
+            //}
 
             if (mRet.Value == "(" || mRet.Value.StartsWith("$"))
             {
-                nRet = mRet.Index + mRet.Length;
+//          -      nRet = mRet.Index + mRet.Length;
+                nRet = nRet + mRet.Length + pos;
                 int nDepth = 1;
                 bool bInQuotes = false;
                 while (nDepth > 0)
@@ -434,7 +443,8 @@ namespace AppedoLT.Core
             }
             else
             {
-                nRet = mRet.Index + mRet.Length;
+//                nRet = mRet.Index + mRet.Length ;
+                nRet = nRet + pos;
                 _expressionlist.Add(val);
             }
 

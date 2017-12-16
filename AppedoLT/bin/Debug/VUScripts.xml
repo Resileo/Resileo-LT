@@ -31,8 +31,15 @@
         <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="5" maxuser="5" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
       </script>
     </scenario>
+    <scenario id="566666854" name="docSyn" enableipspoofing="False">
+      <script id="566666793" name="PatientApp">
+        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="1" maxuser="4" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
+      </script>
+    </scenario>
   </scenarios>
-  <flag />
+  <flag>
+    <flagrequest type="responsebody" condition="contain" text="169356" hasvariablename="" scriptid="566666793" />
+  </flag>
   <loadgens>
   </loadgens>
   <runs>
@@ -1505,6 +1512,31 @@
     <run reportname="MQServices_09122017_113111" starttime="09-12-2017 11:31:13" loadgenused="False">
       <scripts>
         <script id="511923100" name="MQTest" />
+      </scripts>
+    </run>
+    <run reportname="docSyn_15122017_212553" starttime="15-12-2017 21:25:55" loadgenused="False">
+      <scripts>
+        <script id="566666793" name="PatientApp" />
+      </scripts>
+    </run>
+    <run reportname="docSyn_15122017_214204" starttime="15-12-2017 21:42:07" loadgenused="False">
+      <scripts>
+        <script id="566666793" name="PatientApp" />
+      </scripts>
+    </run>
+    <run reportname="docSyn_15122017_221045" starttime="15-12-2017 22:10:47" loadgenused="False">
+      <scripts>
+        <script id="566666793" name="PatientApp" />
+      </scripts>
+    </run>
+    <run reportname="docSyn_15122017_223427" starttime="15-12-2017 22:34:29" loadgenused="False">
+      <scripts>
+        <script id="566666793" name="PatientApp" />
+      </scripts>
+    </run>
+    <run reportname="docSyn_15122017_225522" starttime="15-12-2017 22:55:25" loadgenused="False">
+      <scripts>
+        <script id="566666793" name="PatientApp" />
       </scripts>
     </run>
   </runs>
