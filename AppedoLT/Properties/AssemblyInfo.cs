@@ -32,8 +32,10 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.3.037.0")]
-[assembly: AssemblyFileVersion("3.3.037.0")]
+[assembly: AssemblyVersion("3.3.039.0")]
+[assembly: AssemblyFileVersion("3.3.039.0")]
+//3.3.039 - When run with concurrent users MQ.put is putting the data to read queue due to gloable declaration of variable
+//3.3.038 - Exception on MQ connection handled with proper response. Could not get proper error message before for connection failure of MQ service.
 //3.3.037 - Exraction from gZipped response fixed, Extraction failure handled with NOTFOUND static Text, and this fixes of using extracted variable in both js and conditions even when extraction fails, Condition statements validation fixed.
 //3.3.036 - Enabled Wait for wait interval. Start time and stop time also added for read message. 
 //3.3.035 - Based on review added one more parameter for wait till message is available for read in get messages. Added parameter WaitInterval for this functionality.
@@ -41,19 +43,19 @@ using System.Runtime.InteropServices;
 
 //3.3.033 - ReplyToQueueName and Persistence parameter added based on the review from the Client (mannai-ESB on 10-12-2017)
 //3.3.032 - New Module added for load testing IBM Websphere MQ services
-    //Business logic layer changed, Add MQ.cs new Class
-    //vuser script XML has to be manually prepared for this services
-    //Schema Attribute is QueueManagerName, Path Attribute - QueueName, URL Attribute - ChannelInfo, 
-    //port must define the lisener port default being 1414. MQ uses TCP connection and it is defined as part of Channel Info
-    //Type must be MQ (capital)
-    //MQ Server/Client version 7.5 is used for this testing. 
-    //Where ever appedo LT is running, MQ Client must be installed in that machine
-    //amqmdnet.dll is referenced to the appedo-business logic layer and it is must to get all the IBM MQ class and methods.
-    //For PUT - method must be POST, for Read from queue - method must be GET
-    //to read the message that has been put, extracting message id is important and use that message id as part of reading 
-    //to be defined as part of the query string parameters.
-    //Text parameter is used for the content of the message used for put
-    //sample xml is as below for both read and write
+//Business logic layer changed, Add MQ.cs new Class
+//vuser script XML has to be manually prepared for this services
+//Schema Attribute is QueueManagerName, Path Attribute - QueueName, URL Attribute - ChannelInfo, 
+//port must define the lisener port default being 1414. MQ uses TCP connection and it is defined as part of Channel Info
+//Type must be MQ (capital)
+//MQ Server/Client version 7.5 is used for this testing. 
+//Where ever appedo LT is running, MQ Client must be installed in that machine
+//amqmdnet.dll is referenced to the appedo-business logic layer and it is must to get all the IBM MQ class and methods.
+//For PUT - method must be POST, for Read from queue - method must be GET
+//to read the message that has been put, extracting message id is important and use that message id as part of reading 
+//to be defined as part of the query string parameters.
+//Text parameter is used for the content of the message used for put
+//sample xml is as below for both read and write
 /*
  <?xml version="1.0" encoding="utf-8"?>
 <vuscript name="MQTest" id="511923100" type="MQ" exclutionfiletypes="" dynamicreqenable="False">

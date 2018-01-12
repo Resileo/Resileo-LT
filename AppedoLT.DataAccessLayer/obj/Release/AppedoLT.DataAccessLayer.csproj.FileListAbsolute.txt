@@ -32,5 +32,6 @@ D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\bin\Release\System.Data.SQLite.
 D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\bin\Release\Ionic.Zip.dll
 D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\bin\Release\AppedoLT.Core.pdb
 D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\obj\Release\AppedoLT.DataAccessLayer.csprojResolveAssemblyReference.cache
+D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\obj\Release\AppedoLT.DataAccessLayer.csproj.CoreCompileInputs.cache
 D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\obj\Release\AppedoLT.DataAccessLayer.dll
 D:\workspace\Resileo-LT\AppedoLT.DataAccessLayer\obj\Release\AppedoLT.DataAccessLayer.pdb

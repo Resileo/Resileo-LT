@@ -1076,7 +1076,6 @@ namespace AppedoLT.BusinessLogic
                     String replyQName = string.Empty;
                     int persistence = 0;
                     int waitInterval = 0;
-
                     mqReq = new MQ(request, ref receivedCookies, _userid.ToString() + (_createdConnection++ % _maxConnection).ToString(), _IPAddress, IsValidation, _bandwidthInKbps);
                     //If request has parameterization. 
                     List<AppedoLT.Core.Tuple<string, string>> variables = new List<AppedoLT.Core.Tuple<string, string>>();
@@ -1100,9 +1099,9 @@ namespace AppedoLT.BusinessLogic
                         }
                     }
 
-                    if(mqReq.ConnectMQ(queueManagerName,queueName,channelInfo))
+                    if (mqReq.ConnectMQ(queueManagerName, channelInfo))
                     {
-                        if (method=="POST")
+                        if (method == "POST")
                         {
                             StringBuilder pDataBuffer = new StringBuilder();
                             XmlNode queueData = request.SelectSingleNode("//params");
@@ -1110,43 +1109,39 @@ namespace AppedoLT.BusinessLogic
                             {
                                 pDataBuffer.Append(queueText.Attributes["value"].Value);
                             }
-                            
-                             strRetMsg = mqReq.WriteMsg(pDataBuffer.ToString(), msgID, corrId, replyQName, persistence);
-                             ExceptionHandler.WritetoEventLog(strRetMsg);
+
+                            strRetMsg = mqReq.WriteMsg(pDataBuffer.ToString(), msgID, corrId, replyQName, persistence, queueName);
+                            ExceptionHandler.WritetoEventLog(strRetMsg);
                         }
                         else
                         {
-                            strRetMsg = mqReq.ReadMsg(msgID, corrId, waitInterval);
+                            strRetMsg = mqReq.ReadMsg(msgID, corrId, waitInterval, queueName);
                             //String StrReadMsg = mqueue.ReadMsg(strRetMsg);
-
                         }
-                        //For validation
-                        if (OnLockRequestResponse != null)
-                        {
-                            responseResult.PostData = strRetMsg;
-                            responseResult.RequestResult = mqReq;
-                            responseResult.Response = mqReq.ResponseStr;
-                            responseResult.ResponseCode = mqReq.ResponseCode.ToString();
-                            responseResult.WebRequestResponseId = Convert.ToInt32(Constants.GetInstance().UniqueID);
-                            LockRequestResponse(responseResult);
-                        }
-                        if (OnResponse != null)
-                        {
-                            ResponseDetail details = new ResponseDetail();
-                            details.ReportName = _reportName;
-                            details.UserId = _userid;
-                            details.ScriptName = _scriptName;
-                            details.IterationId = _iterationid;
-                            details.ResponseString = strRetMsg;
-                            details.ResponseCode = mqReq.ResponseCode;
-                            details.RequestName = queueManagerName + " " + queueName + " " + channelInfo + " " + method;
-                            OnResponse.Invoke(details);
-                        }
-                        LockResponseTime(request.Attributes["id"].Value, request.Attributes["Path"].Value, mqReq.StartTime, mqReq.FirstByteReceivedTime, mqReq.EndTime, mqReq.TimeForFirstByte, mqReq.ResponseTime, mqReq.ResponseSize, mqReq.ResponseCode.ToString());
-                        
                     }
-
-
+                    //For validation
+                    if (OnLockRequestResponse != null)
+                    {
+                        responseResult.PostData = strRetMsg==string.Empty? mqReq.ErrorMessage:strRetMsg;
+                        responseResult.RequestResult = mqReq;
+                        responseResult.Response = mqReq.ResponseStr;
+                        responseResult.ResponseCode = mqReq.ResponseCode.ToString();
+                        responseResult.WebRequestResponseId = Convert.ToInt32(Constants.GetInstance().UniqueID);
+                        LockRequestResponse(responseResult);
+                    }
+                    if (OnResponse != null)
+                    {
+                        ResponseDetail details = new ResponseDetail();
+                        details.ReportName = _reportName;
+                        details.UserId = _userid;
+                        details.ScriptName = _scriptName;
+                        details.IterationId = _iterationid;
+                        details.ResponseString = strRetMsg;
+                        details.ResponseCode = mqReq.ResponseCode;
+                        details.RequestName = queueManagerName + " " + queueName + " " + channelInfo + " " + method;
+                        OnResponse.Invoke(details);
+                    }
+                    LockResponseTime(request.Attributes["id"].Value, request.Attributes["Path"].Value, mqReq.StartTime, mqReq.FirstByteReceivedTime, mqReq.EndTime, mqReq.TimeForFirstByte, mqReq.ResponseTime, mqReq.ResponseSize, mqReq.ResponseCode.ToString());
                     #endregion 
                 }
                 #endregion

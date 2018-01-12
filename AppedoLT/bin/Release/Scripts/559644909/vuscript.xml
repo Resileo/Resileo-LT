@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<vuscript name="https://demo-apps.appedo.com/qamdemo/" id="559644909" type="http" exclutionfiletypes="" dynamicreqenable="False">
-  <container name="Initialize" id="559644910" />
-  <container name="Actions" id="559644911" />
-  <container name="End" id="559644912" />
-</vuscript>

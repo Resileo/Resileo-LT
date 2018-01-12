@@ -100,25 +100,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F31E9AE9260287E4E81F39B530207B8F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E6BCBC74271D59EB96E79E1B988B8197"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2C2EB2BF893EE07A83CC3E26C61431E4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E39A91A07CED474F67F441822300FFC3"
+        "OwnerKey" = "8:_B6451708C35C88C4EFA8CD36E0FC037C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -130,7 +112,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B6451708C35C88C4EFA8CD36E0FC037C"
+        "OwnerKey" = "8:_E39A91A07CED474F67F441822300FFC3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_2C2EB2BF893EE07A83CC3E26C61431E4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E6BCBC74271D59EB96E79E1B988B8197"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F31E9AE9260287E4E81F39B530207B8F"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -291,11 +291,6 @@
             "AssemblyAsmDisplayName" = "8:AppedoLT.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_2C2EB2BF893EE07A83CC3E26C61431E4"
-                    {
-                    "Name" = "8:AppedoLT.Core.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:AppedoLT.Core.dll"
             "TargetName" = "8:"
@@ -373,11 +368,6 @@
             "AssemblyAsmDisplayName" = "8:amqmdnet, Version=7.5.0.2, Culture=neutral, PublicKeyToken=dd3cb1c9aae9ec97, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_B8B7CA9A94C6C7090C27B2CD2270AD30"
-                    {
-                    "Name" = "8:amqmdnet.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:amqmdnet.dll"
             "TargetName" = "8:"
@@ -404,11 +394,6 @@
             "AssemblyAsmDisplayName" = "8:Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_E39A91A07CED474F67F441822300FFC3"
-                    {
-                    "Name" = "8:Ionic.Zip.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Ionic.Zip.dll"
             "TargetName" = "8:"
@@ -435,11 +420,6 @@
             "AssemblyAsmDisplayName" = "8:log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_E6BCBC74271D59EB96E79E1B988B8197"
-                    {
-                    "Name" = "8:log4net.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:log4net.dll"
             "TargetName" = "8:"
@@ -466,11 +446,6 @@
             "AssemblyAsmDisplayName" = "8:AppedoLT.BusinessLogic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_F31E9AE9260287E4E81F39B530207B8F"
-                    {
-                    "Name" = "8:AppedoLT.BusinessLogic.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:AppedoLT.BusinessLogic.dll"
             "TargetName" = "8:"
@@ -576,7 +551,7 @@
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.2.038"
+        "ProductVersion" = "8:1.2.040"
         "Manufacturer" = "8:Appedo"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

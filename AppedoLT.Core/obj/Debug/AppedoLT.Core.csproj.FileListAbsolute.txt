@@ -21,3 +21,10 @@ D:\workspace\Resileo-LT\AppedoLT.Core\bin\Debug\Ionic.Zip.dll
 D:\workspace\Resileo-LT\AppedoLT.Core\obj\Debug\AppedoLT.Core.csprojResolveAssemblyReference.cache
 D:\workspace\Resileo-LT\AppedoLT.Core\obj\Debug\AppedoLT.Core.dll
 D:\workspace\Resileo-LT\AppedoLT.Core\obj\Debug\AppedoLT.Core.pdb
+G:\workspace\Resileo-LT\AppedoLT.Core\bin\Debug\AppedoLT.Core.dll
+G:\workspace\Resileo-LT\AppedoLT.Core\bin\Debug\AppedoLT.Core.pdb
+G:\workspace\Resileo-LT\AppedoLT.Core\bin\Debug\Ionic.Zip.dll
+G:\workspace\Resileo-LT\AppedoLT.Core\obj\Debug\AppedoLT.Core.csprojResolveAssemblyReference.cache
+G:\workspace\Resileo-LT\AppedoLT.Core\obj\Debug\AppedoLT.Core.csproj.CoreCompileInputs.cache
+G:\workspace\Resileo-LT\AppedoLT.Core\obj\Debug\AppedoLT.Core.dll
+G:\workspace\Resileo-LT\AppedoLT.Core\obj\Debug\AppedoLT.Core.pdb

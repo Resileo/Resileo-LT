@@ -86,5 +86,6 @@ D:\workspace\Resileo-LT\AppedoLT.Controller\obj\Release\AppedoLTController.frmCo
 D:\workspace\Resileo-LT\AppedoLT.Controller\obj\Release\AppedoLTController.Properties.Resources.resources
 D:\workspace\Resileo-LT\AppedoLT.Controller\obj\Release\AppedoLTController.ReportGenerate.resources
 D:\workspace\Resileo-LT\AppedoLT.Controller\obj\Release\AppedoLT.Controller.csproj.GenerateResource.Cache
+D:\workspace\Resileo-LT\AppedoLT.Controller\obj\Release\AppedoLT.Controller.csproj.CoreCompileInputs.cache
 D:\workspace\Resileo-LT\AppedoLT.Controller\obj\Release\APPEDO_LT_CONTROLLER.exe
 D:\workspace\Resileo-LT\AppedoLT.Controller\obj\Release\APPEDO_LT_CONTROLLER.pdb
