@@ -2040,7 +2040,6 @@ namespace AppedoLT
                                 dumpData[detail.UserId].Add(detail);
                             }
                         }
-
                         WriteRequestResponseToFile(dumpData);
                     }
                     #endregion

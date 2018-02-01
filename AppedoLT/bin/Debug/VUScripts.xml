@@ -1,39 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <scenarios>
-    <scenario id="548831312" name="google" enableipspoofing="False">
-      <script id="548831277" name="google.com">
-        <setting type="2" durationtime="0;5;0" incrementtime="0;0;1" iterations="1" maxuser="4" startuser="1" incrementuser="1" browsercache="true" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
-      </script>
-    </scenario>
-    <scenario id="550981968" name="trip" enableipspoofing="False">
-      <script id="550669453" name="Trip_Booking">
-        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="1" maxuser="1" startuser="1" incrementuser="1" browsercache="true" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
-      </script>
-    </scenario>
     <scenario id="559635954" name="adactin" enableipspoofing="False">
       <script id="555497870" name="adactin">
-        <setting type="1" durationtime="0;2;0" incrementtime="0;0;1" iterations="1" maxuser="1" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
-      </script>
-    </scenario>
-    <scenario id="565263714" name="service" enableipspoofing="False">
-      <script id="511923000" name="CRMSReopenServiceRequest">
-        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="1" maxuser="1" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
-      </script>
-    </scenario>
-    <scenario id="565800467" name="patientapp" enableipspoofing="False">
-      <script id="565793463" name="PatientApp1">
-        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="1" maxuser="1" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
-      </script>
-    </scenario>
-    <scenario id="566037224" name="MQServices" enableipspoofing="False">
-      <script id="511923100" name="MQTest">
-        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="5" maxuser="5" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
-      </script>
-    </scenario>
-    <scenario id="566666854" name="docSyn" enableipspoofing="False">
-      <script id="566666793" name="PatientApp">
-        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="1" maxuser="4" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
+        <setting type="1" durationtime="0;2;0" incrementtime="0;0;1" iterations="5" maxuser="5" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
       </script>
     </scenario>
   </scenarios>
@@ -1537,6 +1507,374 @@
     <run reportname="docSyn_15122017_225522" starttime="15-12-2017 22:55:25" loadgenused="False">
       <scripts>
         <script id="566666793" name="PatientApp" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_150008" starttime="31-01-2018 15:00:12" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_160657" starttime="31-01-2018 16:06:59" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_160756" starttime="31-01-2018 16:07:57" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_164231" starttime="31-01-2018 16:42:34" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_164607" starttime="31-01-2018 16:46:10" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_171158" starttime="31-01-2018 17:12:00" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_192944" starttime="31-01-2018 19:29:48" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_194526" starttime="31-01-2018 19:45:29" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_194851" starttime="31-01-2018 19:48:54" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_195011" starttime="31-01-2018 19:50:13" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_195459" starttime="31-01-2018 19:55:01" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_200512" starttime="31-01-2018 20:05:15" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_201435" starttime="31-01-2018 20:14:37" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_201918" starttime="31-01-2018 20:19:20" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_203001" starttime="31-01-2018 20:30:04" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_203222" starttime="31-01-2018 20:32:24" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_203452" starttime="31-01-2018 20:34:54" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_204609" starttime="31-01-2018 20:46:12" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_205513" starttime="31-01-2018 20:55:16" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_205739" starttime="31-01-2018 20:57:41" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_210412" starttime="31-01-2018 21:04:15" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_213153" starttime="31-01-2018 21:31:55" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_213358" starttime="31-01-2018 21:34:00" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_213712" starttime="31-01-2018 21:37:15" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_213843" starttime="31-01-2018 21:38:45" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_214026" starttime="31-01-2018 21:40:29" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_215045" starttime="31-01-2018 21:50:47" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_215605" starttime="31-01-2018 21:56:07" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_215826" starttime="31-01-2018 21:58:28" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="google_31012018_220013" starttime="31-01-2018 22:00:14" loadgenused="False">
+      <scripts />
+    </run>
+    <run reportname="trip_31012018_220150" starttime="31-01-2018 22:01:52" loadgenused="False">
+      <scripts>
+        <script id="550669453" name="Trip_Booking" />
+      </scripts>
+    </run>
+    <run reportname="adactin_31012018_220226" starttime="31-01-2018 22:02:28" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_074204" starttime="01-02-2018 07:42:10" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_075023" starttime="01-02-2018 07:50:26" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_080059" starttime="01-02-2018 08:01:01" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_080536" starttime="01-02-2018 08:05:38" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_094717" starttime="01-02-2018 09:47:20" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_100734" starttime="01-02-2018 10:07:36" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_105252" starttime="01-02-2018 10:52:54" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_110339" starttime="01-02-2018 11:03:42" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_110549" starttime="01-02-2018 11:05:51" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_111747" starttime="01-02-2018 11:17:49" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_120803" starttime="01-02-2018 12:08:06" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_135610" starttime="01-02-2018 13:56:15" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_140030" starttime="01-02-2018 14:00:32" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_140244" starttime="01-02-2018 14:02:46" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_140628" starttime="01-02-2018 14:06:31" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_140946" starttime="01-02-2018 14:09:49" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_141311" starttime="01-02-2018 14:13:14" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_141535" starttime="01-02-2018 14:15:37" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_142124" starttime="01-02-2018 14:21:27" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_145924" starttime="01-02-2018 14:59:27" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_151803" starttime="01-02-2018 15:18:09" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_160234" starttime="01-02-2018 16:02:38" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_160751" starttime="01-02-2018 16:07:53" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_160914" starttime="01-02-2018 16:09:16" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_161106" starttime="01-02-2018 16:11:08" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_161212" starttime="01-02-2018 16:12:15" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_161424" starttime="01-02-2018 16:14:27" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_161552" starttime="01-02-2018 16:15:55" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_161808" starttime="01-02-2018 16:18:10" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_164458" starttime="01-02-2018 16:45:02" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_164844" starttime="01-02-2018 16:48:46" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_165118" starttime="01-02-2018 16:51:20" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_165900" starttime="01-02-2018 16:59:02" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_170359" starttime="01-02-2018 17:04:01" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_170716" starttime="01-02-2018 17:07:19" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_171216" starttime="01-02-2018 17:12:18" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_184519" starttime="01-02-2018 18:45:23" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_184906" starttime="01-02-2018 18:49:08" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_185905" starttime="01-02-2018 18:59:07" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_190428" starttime="01-02-2018 19:04:30" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_195250" starttime="01-02-2018 19:52:53" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
+      </scripts>
+    </run>
+    <run reportname="adactin_01022018_200218" starttime="01-02-2018 20:02:21" loadgenused="False">
+      <scripts>
+        <script id="555497870" name="adactin" />
       </scripts>
     </run>
   </runs>

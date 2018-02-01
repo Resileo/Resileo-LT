@@ -1,1 +1,0 @@
-({metaData:{"root":"records","id":"id","fields":[{"name":"status","type":"string"},{"name":"count","type":"string"}]},"success":"true","totals":0,"records":[],columns:[{"header":"STATUS","dataIndex":"status"},{"header":"COUNT","dataIndex":"count"}]})

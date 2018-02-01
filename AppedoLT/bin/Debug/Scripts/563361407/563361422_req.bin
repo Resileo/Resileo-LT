@@ -1,9 +1,0 @@
-GET /imageglue/images/page_bg.gif HTTP/1.1
-Host: demo.websupergoo.com
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Referer: http://demo.websupergoo.com/imageglue/App_Themes/mystyles.css
-Connection: keep-alive
-

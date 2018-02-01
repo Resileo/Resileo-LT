@@ -1,5 +1,0 @@
-RequestedAt, User, Iteration, Parameter, Value
-2017-09-21 14:20:21.7002029,2,1,myTest.search,books
-2017-09-21 14:20:21.7002029,2,1,CurrentDate,2017-09-21
-2017-09-21 14:20:21.7282045,1,1,myTest.search,c#code
-2017-09-21 14:20:21.7282045,1,1,CurrentDate,2017-09-21

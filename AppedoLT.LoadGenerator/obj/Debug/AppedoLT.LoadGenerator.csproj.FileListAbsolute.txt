@@ -63,3 +63,8 @@ G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\obj\Debug\AppedoLT.LoadGenerator.
 G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\obj\Debug\AppedoLT.LoadGenerator.csproj.CoreCompileInputs.cache
 G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\obj\Debug\APPEDO_LT_LOAD_GENERATOR.exe
 G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\obj\Debug\APPEDO_LT_LOAD_GENERATOR.pdb
+D:\workspace\Resileo-LT\AppedoLT.LoadGenerator\bin\Debug\amqmdnet.dll
+D:\workspace\Resileo-LT\AppedoLT.LoadGenerator\bin\Debug\amqmdxcs.dll
+D:\workspace\Resileo-LT\AppedoLT.LoadGenerator\bin\Debug\AppedoLT.BusinessLogic.dll.config
+D:\workspace\Resileo-LT\AppedoLT.LoadGenerator\obj\Debug\AppedoLT.LoadGenerator.csprojResolveAssemblyReference.cache
+D:\workspace\Resileo-LT\AppedoLT.LoadGenerator\obj\Debug\AppedoLT.LoadGenerator.csproj.CoreCompileInputs.cache

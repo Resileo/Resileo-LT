@@ -56,6 +56,7 @@ namespace AppedoLT.Core
         private object _logObj = new object();
         private DateTime _dateTime = new DateTime(2000, 1, 1);
         public string btnExecutionType = "Run";
+        public List<int> _excludeLogList = new List<int>();
 
         public string ChartsSummaryFileName = "chart_summary.csv";
         public string ChartsAvgResponse = "chart_useravgresponse.csv";
@@ -615,7 +616,7 @@ namespace AppedoLT.Core
             });
 //            HeaderExcludeList.AddRange(new string[] { "Cookie", "Connection", "Accept", "Host", "User-Agent", "Referer", "Accept-Encoding", "Content-Type", "Content-Length", "Expect", "If-Modified-Since" });
             //Modified on 15-Dec-2017 by Sriraman, removed Accept-Encoding and User Agent from the exclude list - When the html is gzipped we are not able receive those request. hence removed 
-            HeaderExcludeList.AddRange(new string[] { "Cookie", "Connection", "Accept", "Host", "Referer", "Content-Type", "Content-Length", "Expect", "If-Modified-Since" });
+            HeaderExcludeList.AddRange(new string[] { "Cookie", "Connection", "Accept", "Host", "Referer", "Content-Type", "Content-Length", "Expect", "If-Modified-Since","User-Agent"});
         }
         private string GetXMLAsString(XmlDocument myxml)
         {

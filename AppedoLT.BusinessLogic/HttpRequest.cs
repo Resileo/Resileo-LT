@@ -388,11 +388,11 @@ namespace AppedoLT.BusinessLogic
                             result.Append(Environment.NewLine);
                             Stream respStream = httpWebResponse.GetResponseStream();
                             ResponseStream.Write(Encoding.ASCII.GetBytes(result.ToString()), 0, result.Length);
-                            Stream respStreamBody = httpWebResponse.GetResponseStream();
+                            Stream respStreamBody = new MemoryStream();
                             //Newly added code on 14-Dec-2017 to take care of gzipped response. 
                             if (result.ToString().ToLower().Contains("gzip"))
                             {
-                                byte[] receiveByteArr = StreamToByteArray(respStreamBody);
+                                byte[] receiveByteArr = StreamToByteArray(respStream);
                                 GZipStream zipstream = new GZipStream(new MemoryStream(receiveByteArr), CompressionMode.Decompress);
                                 byte[] unZipStream = gzipStreamToByteArray(zipstream);
                                 respStreamBody = new MemoryStream(unZipStream);
@@ -604,16 +604,6 @@ namespace AppedoLT.BusinessLogic
                     ErrorMessage = AssertionFaildMsg.ToString();
                     ErrorCode = "800";
                 }
-
-                //if (AssertionResult == false)
-                //{
-                //    Success = false;
-                //    HasError = true;
-                //    ErrorMessage = AssertionFaildMsg.ToString();
-                //    ErrorCode = "800";
-                //}
-
-
             }
             #endregion
         }
@@ -783,7 +773,7 @@ namespace AppedoLT.BusinessLogic
             return postDataBuffer;
         }
 
-        private MemoryStream ReadResponseBody(string contentType, long contentLength, Stream responseStream, ref MemoryStream responseBody)
+        private MemoryStream ReadResponseBody(string contentType, long contentLength,Stream responseStream, ref MemoryStream responseBody)
         {
             int _bytesRead = 0;
             bool StoreResult = false;
@@ -809,63 +799,81 @@ namespace AppedoLT.BusinessLogic
             {
                 ThrottledStream bufferStream = new ThrottledStream(responseStream, (_bandwidthInKbps * 1024 / 8));
 
-                if (RequestNode.SelectSingleNode("./extractor") != null || StoreRequestBody == true)
-                {
-                    StoreResult = true;
-                }
-
-                if (contentLength > 0)
-                {
-                    #region Read Data
-                    while (contentLength > 0)
-                    {
-                        if (contentLength >= _buffer.Length)
-                        {
-                            _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
-                        }
-                        else
-                        {
-                            _bytesRead = bufferStream.Read(_buffer, 0, (int)contentLength);
-                        }
-                        responseBody.Write(_buffer, 0, _bytesRead);
-                        contentLength -= _bytesRead;
-                    }
-                    #endregion
-                }
-                else if (contentType.ToLower().Contains("Transfer-Encoding: chunked".ToLower()) == true)
-                {
-                    _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
-                    ResponseSize += _bytesRead;
-                    // Removed comparison of StoreResult for writing responseBody due to omission of writing large responseBody - 10Nov2017
-                    // Removed this because assertion was failing as there was no response to compare.
-                    //if (StoreResult) 
+                //if (RequestNode.SelectSingleNode("./extractor") != null || StoreRequestBody == true || (respCode>=400 && respCode<=900))
+                //{
+                //    StoreResult = true;
+                //}
+                _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
+                ResponseSize += _bytesRead;
+                //Below code modified to suit under all situation (for chunked data, gzip de compressed data. for gzip contentlength is not resulting in right length
+                //if (StoreResult)
                     responseBody.Write(_buffer, 0, _bytesRead);
                     while (_bytesRead > 0)
                     {
                         ResponseSize += _bytesRead;
                         _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
-                        //if (StoreResult) 
-                        responseBody.Write(_buffer, 0, _bytesRead);
+                       // if (StoreResult) 
+                            responseBody.Write(_buffer, 0, _bytesRead);
                     }
-                }
-                else if (contentLength == 0)
-                {
-                    _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
-                    ResponseSize += _bytesRead;
-                    if (StoreResult) responseBody.Write(_buffer, 0, _bytesRead);
-                    while (_bytesRead > 0)
+                    bufferStream.Flush();
+                    if (responseBody.Length > 0)
                     {
-                        ResponseSize += _bytesRead;
-                        _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
-                        if (StoreResult) responseBody.Write(_buffer, 0, _bytesRead);
+                        responseBody.Seek(0, SeekOrigin.Begin);
                     }
-                }
-                bufferStream.Flush();
-                if (responseBody.Length > 0)
-                {
-                    responseBody.Seek(0, SeekOrigin.Begin);
-                }
-                bufferStream.Close();
+                    bufferStream.Close();
+                //commented on 01-Feb-2018 as the below logic is slightly complicated
+                //if (contentLength > 0)
+                //{
+                //    #region Read Data
+                //    while (contentLength > 0)
+                //    {
+                //        if (contentLength >= _buffer.Length)
+                //        {
+                //            _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
+                //        }
+                //        else
+                //        {
+                //            _bytesRead = bufferStream.Read(_buffer, 0, (int)contentLength);
+                //        }
+                //        responseBody.Write(_buffer, 0, _bytesRead);
+                //        contentLength -= _bytesRead;
+                //    }
+                //    #endregion
+                //}
+                //if (contentType.ToLower().Contains("Transfer-Encoding: chunked".ToLower() ) == true || contentLength > 0)
+                //{
+                //    _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
+                //    ResponseSize += _bytesRead;
+                //    // Removed comparison of StoreResult for writing responseBody due to omission of writing large responseBody - 10Nov2017
+                //    // Removed this because assertion was failing as there was no response to compare.
+                //    //if (StoreResult) 
+                //    responseBody.Write(_buffer, 0, _bytesRead);
+                //    while (_bytesRead > 0)
+                //    {
+                //        ResponseSize += _bytesRead;
+                //        _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
+                //        //if (StoreResult) 
+                //        responseBody.Write(_buffer, 0, _bytesRead);
+                //    }
+                //}
+                //else if (contentLength == 0)
+                //{
+                //    _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
+                //    ResponseSize += _bytesRead;
+                //    if (StoreResult) responseBody.Write(_buffer, 0, _bytesRead);
+                //    while (_bytesRead > 0)
+                //    {
+                //        ResponseSize += _bytesRead;
+                //        _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
+                //        if (StoreResult) responseBody.Write(_buffer, 0, _bytesRead);
+                //    }
+                //}
+                //bufferStream.Flush();
+                //if (responseBody.Length > 0)
+                //{
+                //    responseBody.Seek(0, SeekOrigin.Begin);
+                //}
+                //bufferStream.Close();
             }
             catch (Exception ex)
             {

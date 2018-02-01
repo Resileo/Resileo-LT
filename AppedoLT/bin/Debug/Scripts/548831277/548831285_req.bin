@@ -1,9 +1,0 @@
-GET /?gfe_rd=cr&ei=u8MjWcCHOZTy8AeCsIyACA&gws_rd=ssl HTTP/1.1
-Host: www.google.co.in
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate, br
-Cookie: NID=104=NGNV5fN-pK6fLL-Degbkl7RannHVqdEaMWznsvARcv9wi2V3A0r47wzmDWr1ryMu03V-xZ33qhTMFNZETMY9WC7I1T5EQLFe_v1GhJy1_c1jHgJv2Ebjj5skmymDRNvZ
-Connection: keep-alive
-

@@ -119,3 +119,4 @@ G:\workspace\Resileo-LT\AppedoLT.Controller\obj\Debug\AppedoLT.Controller.csproj
 G:\workspace\Resileo-LT\AppedoLT.Controller\obj\Debug\AppedoLT.Controller.csproj.CoreCompileInputs.cache
 G:\workspace\Resileo-LT\AppedoLT.Controller\obj\Debug\APPEDO_LT_CONTROLLER.exe
 G:\workspace\Resileo-LT\AppedoLT.Controller\obj\Debug\APPEDO_LT_CONTROLLER.pdb
+D:\workspace\Resileo-LT\AppedoLT.Controller\obj\Debug\AppedoLT.Controller.csproj.CoreCompileInputs.cache

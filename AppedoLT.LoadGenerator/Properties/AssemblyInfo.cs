@@ -32,11 +32,12 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.2.040.0")]
-[assembly: AssemblyFileVersion("1.2.040.0")]
-//1.2.040/0 - Changes as mentioned in AppedoLT version 3.3.039 Business logic layer changed, Concurrency issue on MQ.PUT handled
-//1.2.039/0 - Changes as mentioned in AppedoLT version 3.3.038 Business logic layer changed, MQ connection error handled properly. 
-//1.2.038/0 - Changes as mentioned in AppedoLT version 3.3.037 Business logic layer changed, extraction from gzip format added, extraction failure modified
+[assembly: AssemblyVersion("1.2.041.0")]
+[assembly: AssemblyFileVersion("1.2.041.0")]
+//1.2.041.0 - Response Log will now have requestId, containerName, ScriptName. All load generator will generate log locally, No need to have MSMQ for Log response. Response log default will have only based on the percentage of user configured, in case of Error responses or assertion, default will be logged only those request for all other users. Changes done in RunScenario.cs
+//1.2.040.0 - Changes as mentioned in AppedoLT version 3.3.039 Business logic layer changed, Concurrency issue on MQ.PUT handled
+//1.2.039.0 - Changes as mentioned in AppedoLT version 3.3.038 Business logic layer changed, MQ connection error handled properly. 
+//1.2.038.0 - Changes as mentioned in AppedoLT version 3.3.037 Business logic layer changed, extraction from gzip format added, extraction failure modified
 //1.2.037.0 - Changes as mentioned in AppedoLT version 3.3.035 Business logic layer changed, WaitInterval Parameter Added.
 //1.2.036.0 - Changes as mentioned in AppedoLT version 3.3.034 Business logic layer changed, CharacterSet issue fixed.
 //1.2.035.0 - Changes as mentioned in AppedoLT version 3.3.033 Business logic layer changed, Two additional Parameters added.

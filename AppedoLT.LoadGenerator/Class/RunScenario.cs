@@ -11,6 +11,7 @@ using System.Xml;
 using System.Configuration;
 using System.Messaging;
 using log4net;
+using System.IO;
 
 namespace AppedoLTLoadGenerator
 {
@@ -669,12 +670,13 @@ namespace AppedoLTLoadGenerator
 
         private void ResponseMessageWriter()
         {
-            MessageQueue queue = GetMSMQ(string.Format("FormatName:Direct=TCP:{0}\\private$\\appedo_logs", _appedoIp));
-            if (queue == null)
-            {
-                // Don't run the thread when there is no MSMQ active service
-                return;
-            }
+            //All log is written locally to avoid data transfer from load gen to controller and also to avoid installation of MSMQ in client place in AppedoLT server. -- Sriraman 01-Feb-2018
+            //MessageQueue queue = GetMSMQ(string.Format("FormatName:Direct=TCP:{0}\\private$\\appedo_logs", _appedoIp));
+            //if (queue == null)
+            //{
+            //    // Don't run the thread when there is no MSMQ active service
+            //    return;
+            //}
 
             while (!_stopRunning)
             {
@@ -689,32 +691,56 @@ namespace AppedoLTLoadGenerator
                     #region Write Response Data
                     while (_responseDetailQueue.Count > 0)
                     {
-                        ResponseDetail detail = null;
+                        //ResponseDetail detail = null;
+                        Dictionary<int, List<ResponseDetail>> dumpData = new Dictionary<int, List<ResponseDetail>>();
                         lock (_responseDetailSyncObj)
                         {
-                            detail = _responseDetailQueue.Dequeue();
+                            //                            detail = _responseDetailQueue.Dequeue();
+                            while (_responseDetailQueue.Count > 0)
+                            {
+                                ResponseDetail detail = _responseDetailQueue.Dequeue();
+                                if (!dumpData.ContainsKey(detail.UserId))
+                                {
+                                    dumpData.Add(detail.UserId, new List<ResponseDetail>());
+                                }
+                                dumpData[detail.UserId].Add(detail);
+                            }
                         }
-
-                        if (detail != null)
-                        {
-                            queue.Send(detail, "ResponseData");
-                        }
+                        WriteRequestResponseToFile(dumpData);
+                        // Commented to have the log response in local rather than in appedo LT to avoid Data transfer -- Sriraman 01-Feb-2018
+                        //if (detail != null)
+                        //{
+                        //    queue.Send(detail, "ResponseData");
+                        //}
                     }
                     #endregion
 
                     #region Write Variable Data
                     while (_variableDetailQueue.Count > 0)
                     {
-                        VariableDetail detail = null;
+                        //VariableDetail detail = null;
+                        Dictionary<string, List<VariableDetail>> variableData = new Dictionary<string, List<VariableDetail>>();
+
                         lock (_variableDetailSyncObj)
                         {
-                            detail = _variableDetailQueue.Dequeue();
-                        }
+                            //                            detail = _variableDetailQueue.Dequeue();
+                            while (_variableDetailQueue.Count > 0)
+                            {
+                                VariableDetail detail = _variableDetailQueue.Dequeue();
+                                if (!variableData.ContainsKey(detail.ScriptName))
+                                {
+                                    variableData.Add(detail.ScriptName, new List<VariableDetail>());
+                                }
+                                variableData[detail.ScriptName].Add(detail);
+                            }
 
-                        if (detail != null)
-                        {
-                            queue.Send(detail, "VariableData");
                         }
+                        WriteVariableInfoToFile(variableData);
+
+                        //if (detail != null)
+                        //{
+                        //    queue.Send(detail, "VariableData");
+                        //}
                     }
                     #endregion
 
@@ -726,24 +752,103 @@ namespace AppedoLTLoadGenerator
                 }
             }
 
-            if (queue != null)
-            {
-                queue.Close();
-            }
+            //if (queue != null)
+            //{
+            //    queue.Close();
+            //}
         }
 
-        private MessageQueue GetMSMQ(string queueName)
+        //private MessageQueue GetMSMQ(string queueName)
+        //{
+        //    MessageQueue msmq = null;
+        //    try
+        //    {
+        //        msmq = new MessageQueue(queueName, false);
+        //    }
+        //    catch (Exception excp)
+        //    {
+        //        ExceptionHandler.WritetoEventLog("Error while opening the MSMQ for log response messages. " + Environment.NewLine + excp.StackTrace + Environment.NewLine + excp.Message);
+        //    }
+        //    return msmq;
+        //}
+        private static void WriteRequestResponseToFile(Dictionary<int, List<ResponseDetail>> dumpData)
         {
-            MessageQueue msmq = null;
-            try
+            new Thread(() =>
             {
-                msmq = new MessageQueue(queueName, false);
-            }
-            catch (Exception excp)
-            {
-                ExceptionHandler.WritetoEventLog("Error while opening the MSMQ for log response messages. " + Environment.NewLine + excp.StackTrace + Environment.NewLine + excp.Message);
-            }
-            return msmq;
+                foreach (KeyValuePair<int, List<ResponseDetail>> data in dumpData)
+                {
+                    try
+                    {
+                        // Add to the queue 
+                        string folderName = AppDomain.CurrentDomain.BaseDirectory + "\\Runlog\\" + data.Value[0].ScriptName + "\\" + data.Value[0].ReportName;
+                        if (!Directory.Exists(folderName))
+                            Directory.CreateDirectory(folderName);
+
+                        foreach (ResponseDetail detail in data.Value)
+                        {
+                            if (detail == null)
+                                continue;
+
+                            using (StreamWriter writer = new StreamWriter(folderName + "\\ResponseLog_" + data.Key.ToString() + ".log", true))
+                            {
+                                writer.WriteLine(detail.ToString());
+                                writer.Close();
+                            }
+                        }
+                    }
+                    catch (Exception excp)
+                    {
+                        ExceptionHandler.WritetoEventLog("Error while writing the response details to file. " + Environment.NewLine + excp.StackTrace + Environment.NewLine + excp.Message);
+                    }
+                }
+            }).Start();
         }
+
+        private static void WriteVariableInfoToFile(Dictionary<string, List<VariableDetail>> variableData)
+        {
+            new Thread(() =>
+            {
+                foreach (KeyValuePair<string, List<VariableDetail>> data in variableData)
+                {
+                    try
+                    {
+                        bool newFileCreated = false;
+                        // Add to the queue 
+                        string folderName = AppDomain.CurrentDomain.BaseDirectory + "\\Runlog\\" + data.Value[0].ScriptName + "\\" + data.Value[0].ReportName;
+                        if (!Directory.Exists(folderName))
+                            Directory.CreateDirectory(folderName);
+
+                        foreach (VariableDetail detail in data.Value)
+                        {
+                            if (string.IsNullOrEmpty(detail.Value))
+                                continue;
+
+                            newFileCreated = false;
+                            string fileName = folderName + "\\variables.csv";
+                            if (!File.Exists(fileName))
+                            {
+                                newFileCreated = true;
+                            }
+
+                            using (StreamWriter writer = new StreamWriter(fileName, true))
+                            {
+                                if (newFileCreated)
+                                {
+                                    writer.WriteLine("RequestedAt, User, Iteration, Parameter, Value");
+                                }
+
+                                writer.WriteLine(detail.ToString());
+                                writer.Close();
+                            }
+                        }
+                    }
+                    catch (Exception excp)
+                    {
+                        ExceptionHandler.WritetoEventLog("Error while writing the variable details to file. " + Environment.NewLine + excp.StackTrace + Environment.NewLine + excp.Message);
+                    }
+                }
+            }).Start();
+        }
+
     }
 }

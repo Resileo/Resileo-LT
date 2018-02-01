@@ -36,9 +36,9 @@ namespace AppedoLT.BusinessLogic
         private VUScriptSetting _setting = new VUScriptSetting();
         private bool _isStop = false;
         private Constants _constant = Constants.GetInstance();
-        List<int> excludeLogList = null;
+        //public List<int> excludeLogList = null;
         private long _scriptStartTime;
-
+       
         #endregion
 
         #region The public property
@@ -392,7 +392,7 @@ namespace AppedoLT.BusinessLogic
                     if (numberOfUsersToLog == 0)
                         numberOfUsersToLog = 1;
 
-                    excludeLogList = new List<int>();
+                    //excludeLogList = new List<int>();
                     if (numberOfUsersToLog < totalUsers)
                     {
                         int numberOfUsersToExclude = totalUsers - numberOfUsersToLog;
@@ -400,12 +400,13 @@ namespace AppedoLT.BusinessLogic
                         for (int i = 0; i < numberOfUsersToExclude; i++)
                         {
                             // Generate random numbers for which the data need not to be logged
-                            int randomNumber = rand.Next(0, totalUsers);
-                            while (excludeLogList.Contains(randomNumber))
+                            int randomNumber = rand.Next(1, totalUsers);
+                            while (_constant._excludeLogList.Contains(randomNumber))
                             {
-                                randomNumber = rand.Next(0, totalUsers);
+                                randomNumber = rand.Next(1, totalUsers);
                             }
-                            excludeLogList.Add(randomNumber);
+//                            excludeLogList.Add(randomNumber);
+                            _constant._excludeLogList.Add(randomNumber);
                         }
                     }
                 }
@@ -416,10 +417,11 @@ namespace AppedoLT.BusinessLogic
                     if (_createdUserCount >= _startUserid && _createdUserCount <= _endUserid)
                     {
                         VUser user = GetVUser(_createdUserCount);
-                        if (excludeLogList.Contains(_usersList.Count))
-                        {
-                            user.OnResponse -= OnResponse;
-                        }
+                        //validation Moved to vuser.cs to take care of loging all request that has errors. --Sriraman 01-Feb-2018
+                        //if (excludeLogList.Contains(_usersList.Count))
+                        //{
+                        //    user.OnResponse -= OnResponse;
+                        //}
                         _usersList.Add(user);
                     }
                 }
@@ -559,10 +561,11 @@ namespace AppedoLT.BusinessLogic
 
                         foreach (VUser user in VUCreatorUsers)
                         {
-                            if (excludeLogList.Contains(_usersList.Count))
-                            {
-                                user.OnResponse -= OnResponse;
-                            }
+                            //validation moved to vsuer.cs to take care of loging response of request that fails assertion or in response -- Sriraman 01-Feb-2018
+                            //if (excludeLogList.Contains(_usersList.Count))
+                            //{
+                            //    user.OnResponse -= OnResponse;
+                            //}
 
                             user.Start(_scriptStartTime);
                             StatusSummary.TotalVUserCreated++;

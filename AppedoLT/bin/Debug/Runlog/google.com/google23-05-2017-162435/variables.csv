@@ -1,7 +1,0 @@
-RequestedAt, User, Iteration, Parameter, Value
-2017-05-23 16:24:51.6839353,1,1,myTest.search,books
-2017-05-23 16:24:57.0532424,1,1,myTest.search,c#code
-2017-05-23 16:25:11.6030746,1,1,myTest.search,c#code
-2017-05-23 16:25:06.4427794,1,1,myTest.search,books
-2017-05-23 16:25:19.2945145,1,1,myTest.search,books
-2017-05-23 16:25:20.3275736,1,1,myTest.search,c#code

@@ -92,7 +92,7 @@ namespace AppedoLT.BusinessLogic
         public event VUserCreated OnVUserCreated;
         public event LockVariable OnVariableCreated;
         public event LockResponse OnResponse;
-        
+        public event LockResponse NewResponse;
         private string _reportName = string.Empty;
         private string _scriptName = string.Empty;
         private string _resposeUrl, _receivedCookies;
@@ -650,7 +650,7 @@ namespace AppedoLT.BusinessLogic
                                 Status = "Before Request, Direct",
                                 Request = (child == null || child.Attributes["Address"] == null) ? "" : child.Attributes["Address"].Value
                             });
-
+                            
                             ProcessRequest(child.Clone());
 
                             AppedoLogger.Log(new LogMessage()
@@ -741,6 +741,7 @@ namespace AppedoLT.BusinessLogic
 
             string url = (request == null || request.Attributes["Address"] == null) ? "" : request.Attributes["Address"].Value;
             string requestId = (request == null || request.Attributes["id"] == null) ? "" : request.Attributes["id"].Value;
+            
             if (requestId == "550669669" || requestId=="550669665")
             {
                 string wait = "wait";
@@ -894,32 +895,43 @@ namespace AppedoLT.BusinessLogic
 
                                     #endregion
                                 }
-
-                                if (OnResponse != null)
+                                bool logResponse = true;
+                                if (responseResult != null && req.Success && _constants._excludeLogList.Contains(_userid))
                                 {
-                                    // Log the response if someone has subscribed for the event
-                                    StringBuilder pDataBuffer = new StringBuilder();
+                                    logResponse = false;
+                                }
+                                //                                if (OnResponse != null )
+                                // Log the response if someone has subscribed for the event
+                                if (logResponse && OnResponse!=null)
+                                {
+                                    StringBuilder pDataBuffer1 = new StringBuilder();
                                     foreach (PostData pData in GetPostData(request.SelectSingleNode("//params")))
                                     {
-                                        pDataBuffer.Append(pData.value.ToString());
+                                        pDataBuffer1.Append(pData.value.ToString());
                                     }
-                                    responseResult.PostData = pDataBuffer.ToString();
+                                    responseResult.PostData = pDataBuffer1.ToString();
                                     responseResult.RequestResult = req;
                                     responseResult.WebRequestResponseId = Convert.ToInt32(Constants.GetInstance().UniqueID);
 
-                                    ResponseDetail details = new ResponseDetail();
-                                    details.ReportName = _reportName;
-                                    details.UserId = _userid;
-                                    details.ScriptName = _scriptName;
-                                    details.IterationId = _iterationid;
+                                    ResponseDetail details = new ResponseDetail
+                                    {
+                                        ReportName = _reportName,
+                                        UserId = _userid,
+                                        ScriptName = _scriptName,
+                                        IterationId = _iterationid,
+                                        RequestId = requestId
+                                    };
+
                                     if (responseResult != null && responseResult.RequestResult != null)
                                     {
+                                        details.ContainerName = this._containerId.ToArray()[0][1].ToString();
                                         details.ResponseCode = responseResult.RequestResult.ResponseCode;
                                         bool writeResponseData = false;
                                         if (mat.Success == true && mat.Groups[1] != null && mat.Groups[1].Value.Contains("/"))
                                         {
                                             if (mat.Groups[1].Value.ToLower().Contains("application") || mat.Groups[1].Value.ToLower().Contains("text"))
                                             {
+                                                details.ErrorMessage = responseResult.RequestResult.ErrorMessage;
                                                 writeResponseData = true;
                                             }
                                         }
@@ -934,7 +946,6 @@ namespace AppedoLT.BusinessLogic
                                         }
                                         details.RequestName = responseResult.RequestResult.RequestName;
                                     }
-
                                     OnResponse.Invoke(details);
                                 }
                                 LockResponseTime(req.RequestNode.Attributes["id"].Value, req.RequestNode.Attributes["Path"] == null ? req.RequestName : req.RequestNode.Attributes["Path"].Value, req.StartTime, req.FirstByteReceivedTime, req.EndTime, req.TimeForFirstByte, req.ResponseTime, req.ResponseSize, req.ResponseCode.ToString());
@@ -982,8 +993,14 @@ namespace AppedoLT.BusinessLogic
                                                                     LockException(Convert.ToString(secReq.RequestId), secReq.ErrorMessage, secReq.ErrorCode, secReq.RequestNode.Attributes["Address"].Value);
                                                                 }
                                                             }
-
-                                                            if (OnResponse != null)
+                                                            bool logResponse1 = true;
+                                                            if (responseResult != null && req.Success && _constants._excludeLogList.Contains(_userid))
+                                                            {
+                                                                logResponse1 = false;
+                                                            }
+                                                            //                                if (OnResponse != null )
+                                                            // Log the response if someone has subscribed for the event
+                                                            if (logResponse1 && OnResponse != null)
                                                             {
                                                                 mat = new Regex("Content-Type: (.*?)\r\n", RegexOptions.Singleline | RegexOptions.Multiline).Match(req.RequestNode.Attributes["ResponseHeader"].Value);
                              
@@ -991,19 +1008,24 @@ namespace AppedoLT.BusinessLogic
                                                                 responseResult.RequestResult = secReq;
                                                                 responseResult.WebRequestResponseId = Convert.ToInt32(Constants.GetInstance().UniqueID);
 
-                                                                ResponseDetail details = new ResponseDetail();
-                                                                details.ReportName = _reportName;
-                                                                details.UserId = _userid;
-                                                                details.ScriptName = _scriptName;
-                                                                details.IterationId = _iterationid;
+                                                                ResponseDetail details = new ResponseDetail
+                                                                {
+                                                                    ReportName = _reportName,
+                                                                    UserId = _userid,
+                                                                    ScriptName = _scriptName,
+                                                                    IterationId = _iterationid,
+                                                                    RequestId = requestId
+                                                                };
                                                                 if (responseResult != null && responseResult.RequestResult != null)
                                                                 {
+                                                                    details.ContainerName = this._containerId.ToArray()[0][1].ToString();
                                                                     details.ResponseCode = responseResult.RequestResult.ResponseCode;
                                                                     bool writeResponseData = false;
                                                                     if (mat.Success == true && mat.Groups[1] != null && mat.Groups[1].Value.Contains("/"))
                                                                     {
                                                                         if (mat.Groups[1].Value.ToLower().Contains("application") || mat.Groups[1].Value.ToLower().Contains("text"))
                                                                         {
+                                                                            details.ErrorMessage = responseResult.RequestResult.ErrorMessage;
                                                                             writeResponseData = true;
                                                                         }
                                                                     }
@@ -1219,7 +1241,7 @@ namespace AppedoLT.BusinessLogic
                         _exVariablesValues.Remove(variableName);
                         _exVariablesValues.Add(variableName, "\"NOTFOUND\"");
                         req.ExtractedVariables.Add(new AppedoLT.Core.Tuple<string, string>(variableName, "NOTFOUND"));
-                        //Extrator faild
+                        //Extrator failed
                     }
                 }
                 #endregion
@@ -1249,6 +1271,11 @@ namespace AppedoLT.BusinessLogic
                 responseResult = null;
                 request = null;
             }
+        }
+
+        private void VUser_OnResponse(ResponseDetail data)
+        {
+            throw new NotImplementedException();
         }
 
         #region HTTP Functions
@@ -2386,6 +2413,7 @@ namespace AppedoLT.BusinessLogic
             {
                 try
                 {
+                    
                     ProcessRequest pr = new ProcessRequest(_maxUser, _reportName, _type, _userid, _iterationid, _vuScriptXml, _browserCache, _IPAddress, _exVariablesValues, receivedCookies, OnLockError, VUserStatus, OnLockReportData, IsValidation, _pageId, _containerId, _bandwidthInKbps);
                     pr.ProcessParallelRequest(request);
                 }

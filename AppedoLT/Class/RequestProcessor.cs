@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 
 namespace AppedoLT
@@ -111,7 +112,6 @@ namespace AppedoLT
 
                 _browserStream = _browserTcpClient.GetStream();
                 RequestHeader = ReceiveRequestHeader();
-
                 //To url to end user
                 SetUrl();
 
@@ -122,12 +122,10 @@ namespace AppedoLT
                     ReceiveRequestBody(_browserTcpClient, _contentLength, RequestBody);
                 }
                 _label.Text = url.ToString();
-
-
                 if (url != null)
                 {
+                    Debug.WriteLine("Normal connection");
                     Connection connection = null;
-
                     try
                     {
                         StartTime = DateTime.Now;

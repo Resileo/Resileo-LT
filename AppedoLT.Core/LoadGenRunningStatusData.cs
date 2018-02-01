@@ -743,20 +743,31 @@ namespace AppedoLT.Core
         [DataMember(Name = "responsecode")]
         public int ResponseCode = 0;
 
+        [DataMember(Name = "requestid")]
+        public string RequestId = string.Empty;
+
         [DataMember(Name = "requestname")]
         public string RequestName = string.Empty;
+
+        [DataMember(Name = "containername")]
+        public string ContainerName = string.Empty;
+
+        [DataMember(Name = "errormessage")]
+        public string ErrorMessage = string.Empty;
 
         public override string ToString()
         {
             StringBuilder query = new StringBuilder();
-            query.Append(Environment.NewLine);
-            query.Append("------------------------------");
-            query.Append(Environment.NewLine);
+            query.Append("Script Name : " + this.ScriptName + Environment.NewLine);
+            query.Append("Container Name : " + this.ContainerName + Environment.NewLine);
+            query.Append("Iteration Id : " + this.IterationId + Environment.NewLine);
+            query.Append("Request Id : " + this.RequestId + Environment.NewLine);
             query.Append("Request URL : "+ this.RequestName + Environment.NewLine);
             query.Append("Result Code : " + this.ResponseCode.ToString() + Environment.NewLine);
-            query.Append("Response : " + Environment.NewLine);
-            query.Append(this.ResponseString);
-
+            query.Append("Error Message : " + this.ErrorMessage + Environment.NewLine);
+            query.Append("Response " + Environment.NewLine);
+            query.Append(this.ResponseString+Environment.NewLine);
+            query.Append("-----------------------------------------------------------------------------------------" + Environment.NewLine);
             return query.ToString();
         }
     }
