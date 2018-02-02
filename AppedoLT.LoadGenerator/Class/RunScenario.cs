@@ -682,7 +682,7 @@ namespace AppedoLTLoadGenerator
             {
                 try
                 {
-                    if (_responseDetailQueue.Count == 0 || _variableDetailQueue.Count == 0)
+                    if (_responseDetailQueue.Count == 0 && _variableDetailQueue.Count == 0)
                     {
                         Thread.Sleep(5000);
                         continue;

@@ -80,7 +80,7 @@ namespace AppedoLTLoadGenerator
                                         {
                                             try
                                             {
-                                                string reportFolder = data.Header["runid"] + "_" + (data.Header["loadgenname"] == null ? string.Empty : data.Header["loadgenname"]).Replace('.', '_');
+                                                string reportFolder = data.Header["runid"] + "_" + (data.Header["loadgenname"] ?? string.Empty).Replace('.', '_');
                                                 Dictionary<string, string> runDetail = new Dictionary<string, string>();
                                                 runDetail.Add("data", data.DataStr);
                                                 runDetail.Add("reportfoldername", reportFolder);
