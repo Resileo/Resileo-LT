@@ -242,7 +242,8 @@ namespace AppedoLTLoadGenerator
                                         break;
 
                                 }
-                                controller.Close();
+                                if (controller.Connected)
+                                    controller.Close();
                             }
                             catch (Exception ex)
                             {

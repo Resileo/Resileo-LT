@@ -32,8 +32,9 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.3.040.0")]
-[assembly: AssemblyFileVersion("3.3.040.0")]
+[assembly: AssemblyVersion("3.3.041.0")]
+[assembly: AssemblyFileVersion("3.3.041.0")]
+//3.3.041 - Load generator created users/completed users zero after the first successfull run resolved. Changes done in ScriptExecutor.cs. Variable not cleared after the first run was the issue resolved.
 //3.3.040 - Response Log will now have requestId, containerName, ScriptName. All load generator will generate log locally, No need to have MSMQ for Log response. Response log default will have only based on the percentage of user configured, in case of Error responses or assertion, default will be logged only those request for all other users. 
 //3.3.039 - When run with concurrent users MQ.put is putting the data to read queue due to gloable declaration of variable
 //3.3.038 - Exception on MQ connection handled with proper response. Could not get proper error message before for connection failure of MQ service.

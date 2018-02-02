@@ -393,6 +393,7 @@ namespace AppedoLT.BusinessLogic
                         numberOfUsersToLog = 1;
 
                     //excludeLogList = new List<int>();
+                    _constant._excludeLogList.Clear();
                     if (numberOfUsersToLog < totalUsers)
                     {
                         int numberOfUsersToExclude = totalUsers - numberOfUsersToLog;
@@ -400,10 +401,10 @@ namespace AppedoLT.BusinessLogic
                         for (int i = 0; i < numberOfUsersToExclude; i++)
                         {
                             // Generate random numbers for which the data need not to be logged
-                            int randomNumber = rand.Next(1, totalUsers);
+                            int randomNumber = rand.Next(0, totalUsers);
                             while (_constant._excludeLogList.Contains(randomNumber))
                             {
-                                randomNumber = rand.Next(1, totalUsers);
+                                randomNumber = rand.Next(0, totalUsers);
                             }
 //                            excludeLogList.Add(randomNumber);
                             _constant._excludeLogList.Add(randomNumber);
