@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <vuscript name="adactin" id="555497870" type="http" exclutionfiletypes="" dynamicreqenable="False">
   <container name="Initialize" id="555497871">
-    <container name="home" id="555497872">
-      <page pagename="/HotelApp/" host="adactin.com" delay="2003" id="555497878" name="/HotelApp/" starttime="636377995254378405">
+  </container>
+  <container name="Actions" id="555497872">
+    <container name="home" id="555497873">
+      <page pagename="/HotelApp/" host="adactin.com" delay="0" id="555497878" name="/HotelApp/" starttime="636377995254378405">
         <request id="555497877" Method="GET" Path="/HotelApp/" Protocal="HTTP" Version="1.1&#xD;" name="/HotelApp/" Schema="http" Host="adactin.com" Port="80" QueryString="" Address="http://adactin.com/HotelApp/" Url="http://adactin.com/HotelApp/" Excludesecondaryreq="true" HasErrorResponse="False" ResponseHeader="HTTP/1.1 200 OK&#xD;&#xA;Date: Tue, 08 Aug 2017 09:02:05 GMT&#xD;&#xA;Server: Apache&#xD;&#xA;Vary: Accept-Encoding&#xD;&#xA;Content-Encoding: gzip&#xD;&#xA;Content-Length: 1631&#xD;&#xA;Keep-Alive: timeout=5, max=100&#xD;&#xA;Connection: Keep-Alive&#xD;&#xA;Content-Type: text/html&#xD;&#xA;&#xD;&#xA;" resFilename="555497877_res.html" reqFilename="555497877_req.bin" IsEnable="True">
           <headers>
             <header name="Host" value="adactin.com" />
@@ -42,8 +44,8 @@
         </request>
       </page>
     </container>
-    <container name="Login" id="555497873">
-      <page pagename="/HotelApp/" host="adactin.com" delay="5000" id="555497885" name="/HotelApp/" starttime="636377995454660386">
+    <container name="Login" id="555497875">
+      <page pagename="/HotelApp/" host="adactin.com" delay="0000" id="555497885" name="/HotelApp/" starttime="636377995454660386">
         <request id="555497883" Method="POST" Path="/HotelApp/" Protocal="HTTP" Version="1.1&#xD;" name="/HotelApp/" Schema="http" Host="adactin.com" Port="80" QueryString="" Address="http://adactin.com/HotelApp/" Url="http://adactin.com/HotelApp/" Excludesecondaryreq="true" HasErrorResponse="False" ResponseHeader="HTTP/1.1 302 Moved Temporarily&#xD;&#xA;Date: Tue, 08 Aug 2017 09:02:25 GMT&#xD;&#xA;Server: Apache&#xD;&#xA;Expires: Thu, 19 Nov 1981 08:52:00 GMT&#xD;&#xA;Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0&#xD;&#xA;Pragma: no-cache&#xD;&#xA;Set-Cookie: PHPSESSID=9bitmbqq8tpfjjgeaivq8gmjh3; path=/&#xD;&#xA;Location: SearchHotel.php&#xD;&#xA;Keep-Alive: timeout=5, max=100&#xD;&#xA;Connection: Keep-Alive&#xD;&#xA;Transfer-Encoding: chunked&#xD;&#xA;Content-Type: text/html&#xD;&#xA;&#xD;&#xA;" resFilename="555497883_res.html" reqFilename="555497883_req.bin" IsEnable="True">
           <headers>
             <header name="Host" value="adactin.com" />
@@ -67,10 +69,8 @@
       </page>
     </container>
     <log id="563351174" name="initiate" message="init" />
-  </container>
-  <container name="Actions" id="555497875">
     <container name="landing page" id="555497884">
-      <page pagename="/HotelApp/SearchHotel.php" host="adactin.com" delay="2003" id="555497887" name="/HotelApp/SearchHotel.php" starttime="636377995474700427">
+      <page pagename="/HotelApp/SearchHotel.php" host="adactin.com" delay="0" id="555497887" name="/HotelApp/SearchHotel.php" starttime="636377995474700427">
         <request id="555497886" Method="GET" Path="/HotelApp/SearchHotel.php" Protocal="HTTP" Version="1.1&#xD;" name="/HotelApp/SearchHotel.php" Schema="http" Host="adactin.com" Port="80" QueryString="" Address="http://adactin.com/HotelApp/SearchHotel.php" Url="http://adactin.com/HotelApp/SearchHotel.php" Excludesecondaryreq="true" HasErrorResponse="False" ResponseHeader="HTTP/1.1 200 OK&#xD;&#xA;Date: Tue, 08 Aug 2017 09:02:26 GMT&#xD;&#xA;Server: Apache&#xD;&#xA;Expires: Thu, 19 Nov 1981 08:52:00 GMT&#xD;&#xA;Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0&#xD;&#xA;Pragma: no-cache&#xD;&#xA;Vary: Accept-Encoding&#xD;&#xA;Content-Encoding: gzip&#xD;&#xA;Content-Length: 2498&#xD;&#xA;Keep-Alive: timeout=5, max=100&#xD;&#xA;Connection: Keep-Alive&#xD;&#xA;Content-Type: text/html&#xD;&#xA;&#xD;&#xA;" resFilename="555497886_res.html" reqFilename="555497886_req.bin" IsEnable="True">
           <headers>
             <header name="Host" value="adactin.com" />
@@ -91,7 +91,7 @@
           <extractor name="ext_resp" start="&lt;td valign=&quot;top&quot; class=&quot;welcome_menu&quot;&gt;" end="&lt;/td&gt;" mode="1" selctiontype="single" regex="&lt;td\ valign=&quot;top&quot;\ class=&quot;welcome_menu&quot;&gt;(.*?)&lt;/td&gt;" groupindex="1" ordinal="1" />
         </request>
       </page>
-      <page pagename="/HotelApp/jQuery-scroll-books/index.html" host="www.adactin.com" delay="2005" id="555497889" name="/HotelApp/jQuery-scroll-books/index.html" starttime="636377995494755457">
+      <page pagename="/HotelApp/jQuery-scroll-books/index.html" host="www.adactin.com" delay="0" id="555497889" name="/HotelApp/jQuery-scroll-books/index.html" starttime="636377995494755457">
         <request id="555497888" Method="GET" Path="/HotelApp/jQuery-scroll-books/index.html" Protocal="HTTP" Version="1.1&#xD;" name="/HotelApp/jQuery-scroll-books/index.html" Schema="http" Host="www.adactin.com" Port="80" QueryString="" Address="http://www.adactin.com/HotelApp/jQuery-scroll-books/index.html" Url="http://www.adactin.com/HotelApp/jQuery-scroll-books/index.html" Excludesecondaryreq="true" HasErrorResponse="False" ResponseHeader="HTTP/1.1 200 OK&#xD;&#xA;Date: Tue, 08 Aug 2017 09:02:29 GMT&#xD;&#xA;Server: Apache&#xD;&#xA;Accept-Ranges: bytes&#xD;&#xA;Vary: Accept-Encoding&#xD;&#xA;Content-Encoding: gzip&#xD;&#xA;Content-Length: 1212&#xD;&#xA;Keep-Alive: timeout=5, max=100&#xD;&#xA;Connection: Keep-Alive&#xD;&#xA;Content-Type: text/html&#xD;&#xA;&#xD;&#xA;" resFilename="555497888_res.html" reqFilename="555497888_req.bin" IsEnable="True">
           <headers>
             <header name="Host" value="www.adactin.com" />
@@ -111,7 +111,7 @@
   </container>
   <container name="End" id="555497892">
     <container name="Logout" id="559803913">
-      <page pagename="/HotelApp/jQuery-scroll-books/css/site.css" host="www.adactin.com" delay="2009" id="555497893" name="/HotelApp/jQuery-scroll-books/css/site.css" starttime="636377995514852624">
+      <page pagename="/HotelApp/jQuery-scroll-books/css/site.css" host="www.adactin.com" delay="0" id="555497893" name="/HotelApp/jQuery-scroll-books/css/site.css" starttime="636377995514852624">
         <request id="555497891" Method="GET" Path="/HotelApp/jQuery-scroll-books/css/site.css" Protocal="HTTP" Version="1.1&#xD;" name="/HotelApp/jQuery-scroll-books/css/site.css" Schema="http" Host="www.adactin.com" Port="80" QueryString="" Address="http://www.adactin.com/HotelApp/jQuery-scroll-books/css/site.css" Url="http://www.adactin.com/HotelApp/jQuery-scroll-books/css/site.css" Excludesecondaryreq="false" HasErrorResponse="False" ResponseHeader="HTTP/1.1 200 OK&#xD;&#xA;Date: Tue, 08 Aug 2017 09:02:31 GMT&#xD;&#xA;Server: Apache&#xD;&#xA;Last-Modified: Sun, 20 Nov 2016 13:06:33 GMT&#xD;&#xA;ETag: &quot;14a-541bb355e02b6-gzip&quot;&#xD;&#xA;Accept-Ranges: bytes&#xD;&#xA;Cache-Control: max-age=86400&#xD;&#xA;Expires: Wed, 09 Aug 2017 09:02:31 GMT&#xD;&#xA;Vary: Accept-Encoding&#xD;&#xA;Content-Encoding: gzip&#xD;&#xA;Content-Length: 189&#xD;&#xA;Keep-Alive: timeout=5, max=100&#xD;&#xA;Connection: Keep-Alive&#xD;&#xA;Content-Type: text/css&#xD;&#xA;&#xD;&#xA;" resFilename="555497891_res.css" reqFilename="555497891_req.bin" IsEnable="True">
           <headers>
             <header name="Host" value="www.adactin.com" />
@@ -155,7 +155,7 @@
           </headers>
         </request>
       </page>
-      <page pagename="/HotelApp/Logout.php" host="adactin.com" delay="4018" id="555497897" name="/HotelApp/Logout.php" starttime="636377995555027402">
+      <page pagename="/HotelApp/Logout.php" host="adactin.com" delay="0" id="555497897" name="/HotelApp/Logout.php" starttime="636377995555027402">
         <request id="555497896" Method="GET" Path="/HotelApp/Logout.php" Protocal="HTTP" Version="1.1&#xD;" name="/HotelApp/Logout.php" Schema="http" Host="adactin.com" Port="80" QueryString="" Address="http://adactin.com/HotelApp/Logout.php" Url="http://adactin.com/HotelApp/Logout.php" Excludesecondaryreq="true" HasErrorResponse="False" ResponseHeader="HTTP/1.1 200 OK&#xD;&#xA;Date: Tue, 08 Aug 2017 09:02:35 GMT&#xD;&#xA;Server: Apache&#xD;&#xA;Expires: Thu, 19 Nov 1981 08:52:00 GMT&#xD;&#xA;Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0&#xD;&#xA;Pragma: no-cache&#xD;&#xA;Vary: Accept-Encoding&#xD;&#xA;Content-Encoding: gzip&#xD;&#xA;Content-Length: 1383&#xD;&#xA;Keep-Alive: timeout=5, max=100&#xD;&#xA;Connection: Keep-Alive&#xD;&#xA;Content-Type: text/html&#xD;&#xA;&#xD;&#xA;" resFilename="555497896_res.html" reqFilename="555497896_req.bin" IsEnable="True">
           <headers>
             <header name="Host" value="adactin.com" />
@@ -170,7 +170,7 @@
           </headers>
         </request>
       </page>
-      <page pagename="/HotelApp/jQuery-scroll-books/index.html" host="www.adactin.com" delay="2005" id="555497900" name="/HotelApp/jQuery-scroll-books/index.html" starttime="636377995575086935">
+      <page pagename="/HotelApp/jQuery-scroll-books/index.html" host="www.adactin.com" delay="0" id="555497900" name="/HotelApp/jQuery-scroll-books/index.html" starttime="636377995575086935">
         <request id="555497899" Method="GET" Path="/HotelApp/jQuery-scroll-books/index.html" Protocal="HTTP" Version="1.1&#xD;" name="/HotelApp/jQuery-scroll-books/index.html" Schema="http" Host="www.adactin.com" Port="80" QueryString="" Address="http://www.adactin.com/HotelApp/jQuery-scroll-books/index.html" Url="http://www.adactin.com/HotelApp/jQuery-scroll-books/index.html" Excludesecondaryreq="true" HasErrorResponse="False" ResponseHeader="HTTP/1.1 200 OK&#xD;&#xA;Date: Tue, 08 Aug 2017 09:02:38 GMT&#xD;&#xA;Server: Apache&#xD;&#xA;Accept-Ranges: bytes&#xD;&#xA;Vary: Accept-Encoding&#xD;&#xA;Content-Encoding: gzip&#xD;&#xA;Content-Length: 1212&#xD;&#xA;Keep-Alive: timeout=5, max=100&#xD;&#xA;Connection: Keep-Alive&#xD;&#xA;Content-Type: text/html&#xD;&#xA;&#xD;&#xA;" resFilename="555497899_res.html" reqFilename="555497899_req.bin" IsEnable="True">
           <headers>
             <header name="Host" value="www.adactin.com" />

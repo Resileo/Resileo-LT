@@ -43,7 +43,8 @@ namespace AppedoLT.Core
         {
             try
             {
-                new Thread(() =>
+                ThreadPool.QueueUserWorkItem(new WaitCallback(LogErrorThreadPool));
+                void LogErrorThreadPool(object callback)
                 {
                     try
                     {
@@ -75,8 +76,7 @@ namespace AppedoLT.Core
                     {
 
                     }
-
-                }).Start();
+                }
             }
             catch
             {
@@ -99,109 +99,109 @@ namespace AppedoLT.Core
             catch { }
         }
 
-        public static void WriteResponse(string filename, string strMessage)
-        {
-            try
-            {
-                string directoryPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Response\\";
-                if (!Directory.Exists(directoryPath))
-                {
-                    Directory.CreateDirectory(directoryPath);
-                }
-                string path = directoryPath + filename.Replace("/", "");
-                FileStream stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                StreamWriter writer = new StreamWriter(stream);
-                writer.BaseStream.Seek(0L, SeekOrigin.End);
-                writer.WriteLine(strMessage);
-                writer.Flush();
-                writer.Close();
-                stream.Close();
-            }
-            catch { }
-        }
+        //public static void WriteResponse(string filename, string strMessage)
+        //{
+        //    try
+        //    {
+        //        string directoryPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Response\\";
+        //        if (!Directory.Exists(directoryPath))
+        //        {
+        //            Directory.CreateDirectory(directoryPath);
+        //        }
+        //        string path = directoryPath + filename.Replace("/", "");
+        //        FileStream stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+        //        StreamWriter writer = new StreamWriter(stream);
+        //        writer.BaseStream.Seek(0L, SeekOrigin.End);
+        //        writer.WriteLine(strMessage);
+        //        writer.Flush();
+        //        writer.Close();
+        //        stream.Close();
+        //    }
+        //    catch { }
+        //}
 
-        public static void WriteResponseImage(string filename, System.Drawing.Image image)
-        {
-            try
-            {
-                string directoryPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Response\\";
-                if (!Directory.Exists(directoryPath))
-                {
-                    Directory.CreateDirectory(directoryPath);
-                }
-                string path = directoryPath + filename.Replace("/", "");
-                image.Save(path);
-            }
-            catch { }
-        }
+        //public static void WriteResponseImage(string filename, System.Drawing.Image image)
+        //{
+        //    try
+        //    {
+        //        string directoryPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Response\\";
+        //        if (!Directory.Exists(directoryPath))
+        //        {
+        //            Directory.CreateDirectory(directoryPath);
+        //        }
+        //        string path = directoryPath + filename.Replace("/", "");
+        //        image.Save(path);
+        //    }
+        //    catch { }
+        //}
 
-        public static void WriteRequest(string filename, string strMessage)
-        {
-            try
-            {
-                string directoryPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Request\\";
-                if (!Directory.Exists(directoryPath))
-                {
-                    Directory.CreateDirectory(directoryPath);
-                }
+        //public static void WriteRequest(string filename, string strMessage)
+        //{
+        //    try
+        //    {
+        //        string directoryPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Request\\";
+        //        if (!Directory.Exists(directoryPath))
+        //        {
+        //            Directory.CreateDirectory(directoryPath);
+        //        }
 
-                string path = directoryPath + filename.Replace("/", "");
-                FileStream stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                StreamWriter writer = new StreamWriter(stream);
-                writer.BaseStream.Seek(0L, SeekOrigin.End);
-                writer.WriteLine(strMessage);
-                writer.Flush();
-                writer.Close();
-                stream.Close();
-            }
-            catch { }
-        }
+        //        string path = directoryPath + filename.Replace("/", "");
+        //        FileStream stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+        //        StreamWriter writer = new StreamWriter(stream);
+        //        writer.BaseStream.Seek(0L, SeekOrigin.End);
+        //        writer.WriteLine(strMessage);
+        //        writer.Flush();
+        //        writer.Close();
+        //        stream.Close();
+        //    }
+        //    catch { }
+        //}
 
-        public static void WriteRepository(string strMessage)
-        {
-            try
-            {
-                string directoryPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                if (!Directory.Exists(directoryPath))
-                {
-                    Directory.CreateDirectory(directoryPath);
-                }
+        //public static void WriteRepository(string strMessage)
+        //{
+        //    try
+        //    {
+        //        string directoryPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        //        if (!Directory.Exists(directoryPath))
+        //        {
+        //            Directory.CreateDirectory(directoryPath);
+        //        }
 
-                string path = directoryPath + "\\Repository.xml";
-                if (File.Exists(path)) File.Delete(path);
-                FileStream stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                StreamWriter writer = new StreamWriter(stream);
-                writer.BaseStream.Seek(0L, SeekOrigin.End);
-                writer.WriteLine(strMessage);
-                writer.Flush();
-                writer.Close();
-                stream.Close();
-            }
-            catch { }
-        }
+        //        string path = directoryPath + "\\Repository.xml";
+        //        if (File.Exists(path)) File.Delete(path);
+        //        FileStream stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+        //        StreamWriter writer = new StreamWriter(stream);
+        //        writer.BaseStream.Seek(0L, SeekOrigin.End);
+        //        writer.WriteLine(strMessage);
+        //        writer.Flush();
+        //        writer.Close();
+        //        stream.Close();
+        //    }
+        //    catch { }
+        //}
 
-        public static void WriteRunTimeException(string strMessage)
-        {
-            try
-            {
-                string directoryPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                if (!Directory.Exists(directoryPath))
-                {
-                    Directory.CreateDirectory(directoryPath);
-                }
+        //public static void WriteRunTimeException(string strMessage)
+        //{
+        //    try
+        //    {
+        //        string directoryPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        //        if (!Directory.Exists(directoryPath))
+        //        {
+        //            Directory.CreateDirectory(directoryPath);
+        //        }
 
-                string path = directoryPath + "\\RunTimeException_" + DateTime.Now.ToString("dd_MMM_yyy_hh_mm_ss") + ".xml";
-                if (File.Exists(path)) File.Delete(path);
-                FileStream stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                StreamWriter writer = new StreamWriter(stream);
-                writer.BaseStream.Seek(0L, SeekOrigin.End);
-                writer.WriteLine(strMessage);
-                writer.Flush();
-                writer.Close();
-                stream.Close();
-            }
-            catch { }
-        }
+        //        string path = directoryPath + "\\RunTimeException_" + DateTime.Now.ToString("dd_MMM_yyy_hh_mm_ss") + ".xml";
+        //        if (File.Exists(path)) File.Delete(path);
+        //        FileStream stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+        //        StreamWriter writer = new StreamWriter(stream);
+        //        writer.BaseStream.Seek(0L, SeekOrigin.End);
+        //        writer.WriteLine(strMessage);
+        //        writer.Flush();
+        //        writer.Close();
+        //        stream.Close();
+        //    }
+        //    catch { }
+        //}
 
         public static string GetLog()
         {
@@ -234,30 +234,30 @@ namespace AppedoLT.Core
             return logDetail.ToString();
         }
 
-        public static string WriteReportData(string fileName, byte[] strMessage)
-        {
-            string path = string.Empty;
-            try
-            {
-                string directoryPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                if (!Directory.Exists(directoryPath))
-                {
-                    Directory.CreateDirectory(directoryPath);
-                }
+        //public static string WriteReportData(string fileName, byte[] strMessage)
+        //{
+        //    string path = string.Empty;
+        //    try
+        //    {
+        //        string directoryPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        //        if (!Directory.Exists(directoryPath))
+        //        {
+        //            Directory.CreateDirectory(directoryPath);
+        //        }
 
-                path = directoryPath + "\\Data\\" + fileName + ".json";
-                if (File.Exists(path)) File.Delete(path);
-                FileStream stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                stream.Write(strMessage, 0, strMessage.Length);
-                stream.Close();
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandler.WritetoEventLog(ex.StackTrace + Environment.NewLine + ex.Message);
-            }
+        //        path = directoryPath + "\\Data\\" + fileName + ".json";
+        //        if (File.Exists(path)) File.Delete(path);
+        //        FileStream stream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+        //        stream.Write(strMessage, 0, strMessage.Length);
+        //        stream.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ExceptionHandler.WritetoEventLog(ex.StackTrace + Environment.NewLine + ex.Message);
+        //    }
 
-            return path;
-        }
+        //    return path;
+        //}
 
         #endregion
     }

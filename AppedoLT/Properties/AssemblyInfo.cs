@@ -32,8 +32,10 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.3.041.0")]
-[assembly: AssemblyFileVersion("3.3.041.0")]
+[assembly: AssemblyVersion("3.3.042.0")]
+[assembly: AssemblyFileVersion("3.3.042.0")]
+//3.3.042 - Container Response time is calculated as difference from Max(endtime) - Min(Starttime) to take care parrallel connection effect and it is done at page level then moved to container level to avoid thinktime. Previously it was sum(diff) of all request within container. Changes done at constants.cs in Appedo.Core, hence will have impact in Load generator build, Container response time includes think time excludes think time of first page. When content type chunked and not a gzip, response was not captured. This is resolved.
+//          Container Response time does not include think time. Threadpool concept introduced where ever parallel threads are used to ensure thread overhead is avoided while doing multiple iterations or run in duration. This will considerably reduce the overhead. Usercreation is still with normal thread creation as it is very long thread and user count might vary for each run and it is one time activity for entire run.
 //3.3.041 - Load generator created users/completed users zero after the first successfull run resolved. Changes done in ScriptExecutor.cs. Variable not cleared after the first run was the issue resolved.
 //3.3.040 - Response Log will now have requestId, containerName, ScriptName. All load generator will generate log locally, No need to have MSMQ for Log response. Response log default will have only based on the percentage of user configured, in case of Error responses or assertion, default will be logged only those request for all other users. 
 //3.3.039 - When run with concurrent users MQ.put is putting the data to read queue due to gloable declaration of variable
@@ -42,7 +44,6 @@ using System.Runtime.InteropServices;
 //3.3.036 - Enabled Wait for wait interval. Start time and stop time also added for read message. 
 //3.3.035 - Based on review added one more parameter for wait till message is available for read in get messages. Added parameter WaitInterval for this functionality.
 //3.3.034 - While writing to the MQ,it adds null character for every character that we send. It has been found that it is because of Character SEt that is defaulted in MQ. We are supposed to use character set 437 and fixed now.
-
 //3.3.033 - ReplyToQueueName and Persistence parameter added based on the review from the Client (mannai-ESB on 10-12-2017)
 //3.3.032 - New Module added for load testing IBM Websphere MQ services
 //Business logic layer changed, Add MQ.cs new Class

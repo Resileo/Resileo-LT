@@ -214,7 +214,8 @@ namespace AppedoLT.BusinessLogic
         //To stop vuser.
         public void Stop()
         {
-            new Thread(() =>
+            ThreadPool.QueueUserWorkItem(new WaitCallback(processStopThreadPool));
+            void processStopThreadPool(object callback)
             {
                 Break = true;
                 try
@@ -225,18 +226,6 @@ namespace AppedoLT.BusinessLogic
                         {
                             //To abort request
                             if (req != null) req.Abort();
-                            // 25-Sep-2017 - To execute end container after stop
-                            //foreach (XmlNode container in _vuScriptXml.ChildNodes)
-                            //{
-                            //    if (container.Attributes["name"].Value == "End")
-                            //    {
-                            //        Break = false;
-                            //        _containerId.Push(new string[2] { container.Attributes["id"].Value, container.Attributes["name"].Value });
-                            //        ExecuteContainer(container);
-                            //        _containerId.Pop();
-                            //    }
-                            //}
-                            //To stop vuser thread
                             _userThread.Abort();
                         }
                         catch (Exception ex)
@@ -248,18 +237,6 @@ namespace AppedoLT.BusinessLogic
                     Result = "";
                     _resposeUrl = string.Empty;
                     _receivedCookies = string.Empty;
-
-                    //To execute end container.
-                    //foreach (XmlNode container in _vuScriptXml.ChildNodes)
-                    //{
-                    //    if (container.Attributes["name"].Value == "End")
-                    //    {
-                    //        Break = false;
-                    //        _containerId.Push(new string[2] { container.Attributes["id"].Value, container.Attributes["name"].Value });
-                    //        ExecuteContainer(container);
-                    //        _containerId.Pop();
-                    //    }
-                    //}
                 }
                 catch (Exception ex)
                 {
@@ -271,7 +248,7 @@ namespace AppedoLT.BusinessLogic
                     lock (Status.LockObjForCompletedUser)
                     {
                         Status.CompletedUser++;
-                        if (OnVUserRunCompleted != null) OnVUserRunCompleted.Invoke(_scriptName,_userid);
+                        if (OnVUserRunCompleted != null) OnVUserRunCompleted.Invoke(_scriptName, _userid);
                         LockUserDetail(2);
                     }
                     WorkCompleted = true;
@@ -279,7 +256,7 @@ namespace AppedoLT.BusinessLogic
                     Break = true;
                     this.Dispose();
                 }
-            }).Start();
+            }
         }
 
         //This is vuser background operation
@@ -384,12 +361,6 @@ namespace AppedoLT.BusinessLogic
                                 ExecuteContainer(container);
                                 _containerId.Pop();
                             }
-                            //else if (container.Attributes["name"].Value == "End" && !scriptRun(startTime))
-                            //{
-                            //    _containerId.Push(new string[2] { container.Attributes["id"].Value, container.Attributes["name"].Value });
-                            //    ExecuteContainer(container);
-                            //    _containerId.Pop();
-                            //}
                         }
                         _transactions.Clear();
                         if (OnIterationStart != null) OnIterationStart.Invoke(_scriptName, _userid, _iterationid);
@@ -2356,8 +2327,8 @@ namespace AppedoLT.BusinessLogic
                 _isSequntialRequestRunning = true;
             }
             Interlocked.Increment(ref _requestProcessingThreadCount);
-
-            new Thread(() =>
+            ThreadPool.QueueUserWorkItem(new WaitCallback(processSequentialReq));
+            void processSequentialReq(object callback)
             {
                 try
                 {
@@ -2391,7 +2362,8 @@ namespace AppedoLT.BusinessLogic
                     }
                     Interlocked.Decrement(ref _requestProcessingThreadCount);
                 }
-            }).Start();
+
+            }
         }
 
         void ProcessParalell(XmlNode request)
@@ -2409,11 +2381,12 @@ namespace AppedoLT.BusinessLogic
                 return;
 
             Interlocked.Increment(ref _requestProcessingThreadCount);
-            new Thread(() =>
+            ThreadPool.QueueUserWorkItem(new WaitCallback(processThreadPool));
+            void processThreadPool(object callback)
             {
                 try
                 {
-                    
+
                     ProcessRequest pr = new ProcessRequest(_maxUser, _reportName, _type, _userid, _iterationid, _vuScriptXml, _browserCache, _IPAddress, _exVariablesValues, receivedCookies, OnLockError, VUserStatus, OnLockReportData, IsValidation, _pageId, _containerId, _bandwidthInKbps);
                     pr.ProcessParallelRequest(request);
                 }
@@ -2425,7 +2398,8 @@ namespace AppedoLT.BusinessLogic
                 {
                     Interlocked.Decrement(ref _requestProcessingThreadCount);
                 }
-            }).Start();
+
+            }
         }
         #endregion
     }

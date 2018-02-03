@@ -1005,91 +1005,116 @@ namespace AppedoLT.Core
                                         update vuserrungraph set vuserrunning = (select sum(vusercnt) from vuserrungraph as t2  where t2.gmt <= vuserrungraph.gmt);", timeinterval);
                 // Changed query to sum for correct vuser running graph - 19Oct2017
                 // update vuserrungraph set vusercnt = (select vusercnt from vusergr where vuserrungraph.gmt = vusergr.gmt);
+                //CREATE VIEW containerresponsetime_{ 0}
+                //AS
+                //                           SELECT scriptid,
+                //                                                                         userid,
+                //                                                                         iterationid,
+                //                                                                         containerid,
+                //                                                                         containername,
+                //                                                                         sum(diff) AS responsetime,
+                //                                                                       min( starttime ) AS createddate
+                //                                                                   FROM reportdata
+                //                                                                   where scriptid = { 0 }
+                //                                                                   GROUP BY scriptid,
+                //                                                                            userid,
+                //                                                                            iterationid,
+                //                                                                           containerid;
+
+                //                insert into containerresponse_{ 0}
+                //                select containerid, containername, Min(diffmin) Min, Max(diffmax) Max, Avg(diffavg) Avg from(
+                //select containerid, containername, userid, iterationid, sum(diffmin) diffmin, sum(diffavg) diffavg, sum(diffmax) diffmax from (
+                //select containerid, containername, userid, iterationid, requestid, Min(starttime) starttime, Min(diff) diffmin, AVG(diff) diffavg, max(diff) diffmax
+
+                //from reportdata where scriptid ={ 0}
+                //                group by containerid, containername, userid, iterationid, requestid, address order by 1) as cont
+                //                                                            group by containerid, containername, userid, iterationid order by 1) as contb
+                //                                                            group by containerid, containername order by 1;
+//                CREATE VIEW containerresponsetime_{ 0}
+//                AS
+//SELECT scriptid,
+//                                                        userid,
+//                                                        iterationid,
+//                                                        containerid,
+//                                                        containername,
+//                                                        Cast((JulianDay(max(endtime)) - JulianDay(min(starttime))) * 24 * 60 * 60 * 1000 As double) AS responsetime,
+//                                                        min( starttime ) AS createddate
+//                                                FROM reportdata
+//                                                where scriptid = { 0 }
+//                                                GROUP BY scriptid,
+//                                                        userid,
+//                                                        iterationid,
+//                                                        containerid;
+
                 foreach (XmlNode script in runNode.SelectSingleNode("scripts").ChildNodes)
                 {
                     #region Script Query
                     string rampuptime = "2013-12-16 20:05:00";
                     result.AppendFormat(@"
-                                                           CREATE VIEW containerresponsetime_{0} AS
-                                                                                  SELECT scriptid,
-                                                                                         userid,
-                                                                                         iterationid,
-                                                                                         containerid,
-                                                                                         containername,
-                                                                                         sum( diff ) AS responsetime,
-                                                                                         min( starttime ) AS createddate
-                                                                                   FROM reportdata
-                                                                                   where scriptid={0}
-                                                                                   GROUP BY scriptid,
-                                                                                            userid,
-                                                                                            iterationid,
-                                                                                           containerid;                                               
-               
-                                                           CREATE TABLE requests_{0} ( 
-                                                                                   containerid   INT,
-                                                                                   containername VARCHAR,
-                                                                                   requestid     INT,
-                                                                                   address       VARCHAR 
-                                                                                  );
-                
-                                                           CREATE TABLE requestresponse_{0} ( 
-                                                                                   containerid   INT,
-                                                                                   containername VARCHAR,
-                                                                                   requestid     INT,
-                                                                                   address       VARCHAR,
-                                                                                   min           DOUBLE,
-                                                                                   max           DOUBLE,
-                                                                                   avg           DOUBLE, 
-                                                                                   throughput    DOUBLE,
-                                                                                   hitcount      INT,
-                                                                                   minttfb       DOUBLE,
-                                                                                   maxttfb       DOUBLE,
-                                                                                   avgttfb       DOUBLE
-                                                                                   );
-                
-                                                          CREATE TABLE transactions_{0} ( 
-                                                                                   transactionname VARCHAR,
-                                                                                   min           DOUBLE,
-                                                                                   max           DOUBLE,
-                                                                                   avg           DOUBLE 
-                                                                                   );
-                
-                                                           CREATE TABLE containerresponse_{0} ( 
-                                                                                   containerid   INT,
-                                                                                   containername VARCHAR,
-                                                                                   min           DOUBLE,
-                                                                                   max           DOUBLE,
-                                                                                   avg           DOUBLE 
+                        CREATE VIEW containerresponsetime_{0} AS 
+                                        Select a.scriptid, a.userid, a.iterationid, a.containerid, a.containername,sum(responsetime) as responsetime,min(createddate) AS createddate from (
+                                            SELECT scriptid, userid, iterationid, containerid, containername, pageid, Cast (( JulianDay(max(endtime)) - JulianDay(min(starttime))) * 24 * 60 * 60*1000 As double) AS responsetime, min( starttime ) AS createddate FROM reportdata where scriptid = {0} GROUP BY scriptid, userid, iterationid, containerid, pageid) 
+                                        as a group by a.scriptid, a.userid, a.iterationid, a.containerid, a.containername;
 
-                                                                                   );
+                        CREATE TABLE requests_{0} ( 
+                                                containerid   INT,
+                                                containername VARCHAR,
+                                                requestid     INT,
+                                                address       VARCHAR 
+                                                );
+                
+                        CREATE TABLE requestresponse_{0} ( 
+                                                containerid   INT,
+                                                containername VARCHAR,
+                                                requestid     INT,
+                                                address       VARCHAR,
+                                                min           DOUBLE,
+                                                max           DOUBLE,
+                                                avg           DOUBLE, 
+                                                throughput    DOUBLE,
+                                                hitcount      INT,
+                                                minttfb       DOUBLE,
+                                                maxttfb       DOUBLE,
+                                                avgttfb       DOUBLE
+                                                );
+                
+                        CREATE TABLE transactions_{0} ( 
+                                                transactionname VARCHAR,
+                                                min           DOUBLE,
+                                                max           DOUBLE,
+                                                avg           DOUBLE 
+                                                );
+                
+                        CREATE TABLE containerresponse_{0} ( 
+                                                containerid   INT,
+                                                containername VARCHAR,
+                                                min           DOUBLE,
+                                                max           DOUBLE,
+                                                avg           DOUBLE 
+
+                                                );
                                                         
-                                                           CREATE TABLE errorcount_{0} ( 
-                                                                                   containerid   INT,
-                                                                                   containername VARCHAR,
-                                                                                   requestid     INT,
-                                                                                   address       VARCHAR,
-                                                                                   count         INT 
-                                                                                   );
+                        CREATE TABLE errorcount_{0} ( 
+                                                containerid   INT,
+                                                containername VARCHAR,
+                                                requestid     INT,
+                                                address       VARCHAR,
+                                                count         INT 
+                                                );
                 
-                                                           CREATE TABLE errorcode_{0} ( 
-                                                                                   errorcode   VARCHAR,
-                                                                                   message     VARCHAR,
-                                                                                   count       INT
-                                                                                   );
+                        CREATE TABLE errorcode_{0} ( 
+                                                errorcode   VARCHAR,
+                                                message     VARCHAR,
+                                                count       INT
+                                                );
                 
-                                                           insert into requests_{0} select containerid,containername, requestid,address from reportdata where scriptid={0} group by containerid,containername, requestid, address order by containerid,requestid;
-                                                           insert into requestresponse_{0} select containerid,containername,requestid,case when instr(address,'?')=0 then address else substr(address,1,instr(address,'?')) end address,min(diff),max(diff),avg(diff),sum(responsesize),count(diff),min(timetofirstbyte),max(timetofirstbyte),avg(timetofirstbyte)  from reportdata where scriptid={0} group by containerid,requestid order by containerid,requestid;
-                                                           insert into containerresponse_{0} select containerid, containername, Min(diffmin) Min, Max(diffmax) Max, Avg(diffavg) Avg from (
-                                                            select containerid, containername, userid, iterationid, sum(diffmin) diffmin, sum(diffavg) diffavg, sum(diffmax) diffmax from (
-                                                            select containerid, containername, userid, iterationid, requestid, Min(starttime) starttime, Min(diff) diffmin, AVG(diff) diffavg, max(diff) diffmax
-                                                            from reportdata where scriptid={0}
-                                                            group by containerid, containername, userid, iterationid, requestid, address order by 1) as cont
-                                                            group by containerid, containername, userid, iterationid order by 1) as contb
-                                                            group by containerid, containername order by 1;
-                                                           insert into transactions_{0} select transactionname,min(difference),max(difference),avg(difference) from transactions where scriptid={0} group by transactionname;
-                                                           insert into errorcount_{0} select containerid,containername, requestid, request,count(*) from error where error.scriptname='{1}' group by error.requestid order by requestid;
-                                                           insert into errorcode_{0} select errorcode,message,count(*) from error where error.scriptname='{1}' group by message;", script.Attributes["id"].Value, script.Attributes["name"].Value, rampuptime, timeinterval).AppendLine();
-                                                           #endregion
+                        insert into requests_{0} select containerid,containername, requestid,address from reportdata where scriptid={0} group by containerid,containername, requestid, address order by containerid,requestid;
+                        insert into requestresponse_{0} select containerid,containername,requestid,case when instr(address,'?')=0 then address else substr(address,1,instr(address,'?')) end address,min(diff),max(diff),avg(diff),sum(responsesize),count(diff),min(timetofirstbyte),max(timetofirstbyte),avg(timetofirstbyte)  from reportdata where scriptid={0} group by containerid,requestid order by containerid,requestid;
+                        insert into containerresponse_{0} select containerid, containername, Min(responsetime) Min, Max(responsetime) Max, Avg(responsetime) Avg from containerresponsetime_{0} group  by containerid, containername;
+                        insert into transactions_{0} select transactionname,min(difference),max(difference),avg(difference) from transactions where scriptid={0} group by transactionname;
+                        insert into errorcount_{0} select containerid,containername, requestid, request,count(*) from error where error.scriptname='{1}' group by error.requestid order by requestid;
+                        insert into errorcode_{0} select errorcode,message,count(*) from error where error.scriptname='{1}' group by message;", script.Attributes["id"].Value, script.Attributes["name"].Value, rampuptime, timeinterval).AppendLine();
+                        #endregion
                 }
                 
 

@@ -394,7 +394,8 @@ namespace AppedoLTLoadGenerator
 
         private void SendData()
         {
-            new Thread(() =>
+            ThreadPool.QueueUserWorkItem(new WaitCallback(sendDataThread));
+            void sendDataThread(object callback)
             {
                 while (true)
                 {
@@ -561,7 +562,11 @@ namespace AppedoLTLoadGenerator
                     finally { Thread.Sleep(5000); }
                 }
 
-            }).Start();
+            }
+            //new Thread(() =>
+            //{
+
+            //}).Start();
         }
 
         private void Send(byte[] dataObj)
@@ -773,7 +778,8 @@ namespace AppedoLTLoadGenerator
         //}
         private static void WriteRequestResponseToFile(Dictionary<int, List<ResponseDetail>> dumpData)
         {
-            new Thread(() =>
+            ThreadPool.QueueUserWorkItem(new WaitCallback(writeRequestResponseToFileThread));
+            void writeRequestResponseToFileThread(object callback)
             {
                 foreach (KeyValuePair<int, List<ResponseDetail>> data in dumpData)
                 {
@@ -801,12 +807,13 @@ namespace AppedoLTLoadGenerator
                         ExceptionHandler.WritetoEventLog("Error while writing the response details to file. " + Environment.NewLine + excp.StackTrace + Environment.NewLine + excp.Message);
                     }
                 }
-            }).Start();
+            }
         }
 
         private static void WriteVariableInfoToFile(Dictionary<string, List<VariableDetail>> variableData)
         {
-            new Thread(() =>
+            ThreadPool.QueueUserWorkItem(new WaitCallback(writeVAriableInfoToFileThread));
+            void writeVAriableInfoToFileThread(object callback)
             {
                 foreach (KeyValuePair<string, List<VariableDetail>> data in variableData)
                 {
@@ -847,8 +854,7 @@ namespace AppedoLTLoadGenerator
                         ExceptionHandler.WritetoEventLog("Error while writing the variable details to file. " + Environment.NewLine + excp.StackTrace + Environment.NewLine + excp.Message);
                     }
                 }
-            }).Start();
-        }
-
+            }
+         }
     }
 }

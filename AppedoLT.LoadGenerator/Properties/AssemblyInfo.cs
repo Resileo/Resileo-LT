@@ -32,8 +32,9 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.2.043.0")]
-[assembly: AssemblyFileVersion("1.2.043.0")]
+[assembly: AssemblyVersion("1.2.044.0")]
+[assembly: AssemblyFileVersion("1.2.044.0")]
+//1.2.044.0 - Constants.cs - Changes done on query to take care of container response time calculation for parallel request. Issue in getting the response stream when content type is chuncked and not gzipped. WriteResponsefile and variable data now uses threadpool instead of plain thread. 
 //1.2.043.0 - Load generator created users/completed users zero after the first successfull run resolved. Changes done in ScriptExecutor.cs. Variable not cleared after the first run was the issue resolved.
 //1.2.042.0 - Queue was piling up due to wrong logic at ResponseMessageWriter Method (_responseDetailQueue.Count == 0 || _variableDetailQueue.Count == 0) used instead of (_responseDetailQueue.Count == 0 && _variableDetailQueue.Count == 0), if we donot use varible, queue was piling up and crashing the system.
 //1.2.041.0 - Response Log will now have requestId, containerName, ScriptName. All load generator will generate log locally, No need to have MSMQ for Log response. Response log default will have only based on the percentage of user configured, in case of Error responses or assertion, default will be logged only those request for all other users. Changes done in RunScenario.cs

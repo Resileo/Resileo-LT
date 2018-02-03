@@ -56,61 +56,116 @@ namespace AppedoLT.Core
 
         private static void StartLogging()
         {
-            new Thread(() =>
-               {
-                   Stopwatch timer = new Stopwatch();
-                   timer.Start();
-                   StringBuilder temp = new StringBuilder();
-
-                   while (true)
-                   {
-                       try
-                       {
-                           if (timer.Elapsed.Seconds >= 10)
-                           {
-                               if (temp.Length > 0)
-                               {
-                                   using (StreamWriter logFile = new StreamWriter(fileName, true))
-                                   {
-                                       logFile.Write(temp.ToString());
-                                       logFile.Flush();
-                                       logFile.Close();
-                                   }
-                                   temp.Remove(0, temp.Length);
-                               }
-                               
-                               timer.Reset();
-                               timer.Start();
-                           }
-
-                           if (logMessages.Count == 0)
-                           {
-                               Thread.Sleep(2000);
-                               continue;
-                           }
-
-                           int logLength = logMessages.Count;
-                           object data;
-                            for (int index = 0; index < logLength; index++)
+            ThreadPool.QueueUserWorkItem(new WaitCallback(startLoggingThread));
+            void startLoggingThread(object callback)
+            {
+                Stopwatch timer = new Stopwatch();
+                timer.Start();
+                StringBuilder temp = new StringBuilder();
+                while (true)
+                {
+                    try
+                    {
+                        if (timer.Elapsed.Seconds >= 10)
+                        {
+                            if (temp.Length > 0)
                             {
-                                lock (synchObject)
+                                using (StreamWriter logFile = new StreamWriter(fileName, true))
                                 {
-                                    data = logMessages.Dequeue();
+                                    logFile.Write(temp.ToString());
+                                    logFile.Flush();
+                                    logFile.Close();
                                 }
-                                if (data != null)
-                                {
-                                    temp.AppendLine(data.ToString());
-                                }
-                                data = null;
+                                temp.Remove(0, temp.Length);
                             }
-                       }
-                       catch (Exception ex)
-                       {
-                           ExceptionHandler.WritetoEventLog(ex.Message);
-                           Thread.Sleep(5000);
-                       }
-                   }
-               }).Start();
+
+                            timer.Reset();
+                            timer.Start();
+                        }
+
+                        if (logMessages.Count == 0)
+                        {
+                            Thread.Sleep(2000);
+                            continue;
+                        }
+
+                        int logLength = logMessages.Count;
+                        object data;
+                        for (int index = 0; index < logLength; index++)
+                        {
+                            lock (synchObject)
+                            {
+                                data = logMessages.Dequeue();
+                            }
+                            if (data != null)
+                            {
+                                temp.AppendLine(data.ToString());
+                            }
+                            data = null;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ExceptionHandler.WritetoEventLog(ex.Message);
+                        Thread.Sleep(5000);
+                    }
+                }
+            }
+            //new Thread(() =>
+            //   {
+            //       Stopwatch timer = new Stopwatch();
+            //       timer.Start();
+            //       StringBuilder temp = new StringBuilder();
+
+            //       while (true)
+            //       {
+            //           try
+            //           {
+            //               if (timer.Elapsed.Seconds >= 10)
+            //               {
+            //                   if (temp.Length > 0)
+            //                   {
+            //                       using (StreamWriter logFile = new StreamWriter(fileName, true))
+            //                       {
+            //                           logFile.Write(temp.ToString());
+            //                           logFile.Flush();
+            //                           logFile.Close();
+            //                       }
+            //                       temp.Remove(0, temp.Length);
+            //                   }
+                               
+            //                   timer.Reset();
+            //                   timer.Start();
+            //               }
+
+            //               if (logMessages.Count == 0)
+            //               {
+            //                   Thread.Sleep(2000);
+            //                   continue;
+            //               }
+
+            //               int logLength = logMessages.Count;
+            //               object data;
+            //                for (int index = 0; index < logLength; index++)
+            //                {
+            //                    lock (synchObject)
+            //                    {
+            //                        data = logMessages.Dequeue();
+            //                    }
+            //                    if (data != null)
+            //                    {
+            //                        temp.AppendLine(data.ToString());
+            //                    }
+            //                    data = null;
+            //                }
+            //           }
+            //           catch (Exception ex)
+            //           {
+            //               ExceptionHandler.WritetoEventLog(ex.Message);
+            //               Thread.Sleep(5000);
+            //           }
+            //       }
+            //   }).Start();
         }
     }
 

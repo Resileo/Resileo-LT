@@ -109,10 +109,6 @@ namespace AppedoLT.BusinessLogic
 
         public override void GetResponse()
         {
-            //responseTime.Start();
-            //firstByteTime.Start();
-            //StartTime = DateTime.Now;
-            
             _request = null;
             try
             {
@@ -147,30 +143,6 @@ namespace AppedoLT.BusinessLogic
                     {
                         return _IPAdress;
                     }
-
-                    //if (Request.IPSpoofingEnabled == true)
-                    //{
-                    //    if (IPAddress.IsLoopback(remoteEndPoint.Address))
-                    //    {
-                    //        if (remoteEndPoint.Address.AddressFamily == AddressFamily.InterNetworkV6)
-                    //        {
-                    //            return new IPEndPoint(IPAddress.Parse("::1"), 0);
-                    //        }
-                    //        else
-                    //        {
-                    //            return new IPEndPoint(IPAddress.Loopback, 0);
-                    //        }
-                    //    }
-                    //    else
-                    //    {
-                    //        return _IPAdress;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    return new IPEndPoint(IPAddress.Any, 0);
-                    //}
-
                 });
 
                 //_request.Proxy = null;
@@ -277,7 +249,7 @@ namespace AppedoLT.BusinessLogic
                             _request.ContentLength += pData.size;
                         }
                     }
-
+                    //_request.GetRequestStream())
                     using (var dataStream = _request.GetRequestStream())
                     {
                         // Use throttledStream for emulating bandwidth even while uploading the data
@@ -310,35 +282,6 @@ namespace AppedoLT.BusinessLogic
                             }
                             else if (pData.type == 2)
                             {
-                                //if (_bandwidthInKbps <= 0)
-                                //    _bufferSize = 8192;
-
-                                //byte[] buff = new byte[_bufferSize];
-                                //using (FileStream stream = new FileStream(pData.value.ToString(), FileMode.Open, FileAccess.Read))
-                                //{
-                                //    int bytesWritten = 0;
-                                //    int bytesToWrite = _bufferSize;
-                                //    while (bytesWritten < stream.Length)
-                                //    {
-                                //        // Write in chunks to ensure the bandwidth allocation
-                                //        bytesToWrite = (int)stream.Length - bytesWritten;
-                                //        if (bytesToWrite > _bufferSize)
-                                //        {
-                                //            bytesToWrite = _bufferSize;
-                                //        }
-
-                                //        int readSize = stream.Read(buff, bytesWritten, bytesToWrite);
-                                //        try
-                                //        {
-                                //            tStream.Write(buff, 0, readSize);
-                                //        }
-                                //        catch { }
-                                //        bytesWritten += readSize;
-                                //    }
-                                //}
-
-                                // Commented bandwidth emulated stream writer and replaced with fixed 8KB buffer - 07Nov2017
-                                // SFL multipart-form upload issue
                                 if (File.Exists(pData.value.ToString()))
                                 {
                                     int bytesRead = 0;
@@ -386,13 +329,14 @@ namespace AppedoLT.BusinessLogic
                             }
                             responseTime.Start();
                             result.Append(Environment.NewLine);
-                            Stream respStream = httpWebResponse.GetResponseStream();
+                            Stream respStreamBody = httpWebResponse.GetResponseStream();
                             ResponseStream.Write(Encoding.ASCII.GetBytes(result.ToString()), 0, result.Length);
-                            Stream respStreamBody = new MemoryStream();
+                           // Stream respStreamBody = new MemoryStream();
                             //Newly added code on 14-Dec-2017 to take care of gzipped response. 
                             if (result.ToString().ToLower().Contains("gzip"))
                             {
-                                byte[] receiveByteArr = StreamToByteArray(respStream);
+//                                byte[] receiveByteArr = StreamToByteArray(respStream);
+                                byte[] receiveByteArr = StreamToByteArray(respStreamBody);
                                 GZipStream zipstream = new GZipStream(new MemoryStream(receiveByteArr), CompressionMode.Decompress);
                                 byte[] unZipStream = gzipStreamToByteArray(zipstream);
                                 respStreamBody = new MemoryStream(unZipStream);
@@ -776,8 +720,6 @@ namespace AppedoLT.BusinessLogic
         private MemoryStream ReadResponseBody(string contentType, long contentLength,Stream responseStream, ref MemoryStream responseBody)
         {
             int _bytesRead = 0;
-            bool StoreResult = false;
-
             if (contentLength > 0)
             {
                 // This is a performance killer, if the contentLength is too big a huge memory is allocated, which is a overhead
@@ -799,28 +741,24 @@ namespace AppedoLT.BusinessLogic
             {
                 ThrottledStream bufferStream = new ThrottledStream(responseStream, (_bandwidthInKbps * 1024 / 8));
 
-                //if (RequestNode.SelectSingleNode("./extractor") != null || StoreRequestBody == true || (respCode>=400 && respCode<=900))
-                //{
-                //    StoreResult = true;
-                //}
                 _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
                 ResponseSize += _bytesRead;
                 //Below code modified to suit under all situation (for chunked data, gzip de compressed data. for gzip contentlength is not resulting in right length
                 //if (StoreResult)
+                responseBody.Write(_buffer, 0, _bytesRead);
+                while (_bytesRead > 0)
+                {
+                    ResponseSize += _bytesRead;
+                    _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
+                    // if (StoreResult) 
                     responseBody.Write(_buffer, 0, _bytesRead);
-                    while (_bytesRead > 0)
-                    {
-                        ResponseSize += _bytesRead;
-                        _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
-                       // if (StoreResult) 
-                            responseBody.Write(_buffer, 0, _bytesRead);
-                    }
-                    bufferStream.Flush();
-                    if (responseBody.Length > 0)
-                    {
-                        responseBody.Seek(0, SeekOrigin.Begin);
-                    }
-                    bufferStream.Close();
+                }
+                bufferStream.Flush();
+                if (responseBody.Length > 0)
+                {
+                    responseBody.Seek(0, SeekOrigin.Begin);
+                }
+                bufferStream.Close();
                 //commented on 01-Feb-2018 as the below logic is slightly complicated
                 //if (contentLength > 0)
                 //{
@@ -840,20 +778,21 @@ namespace AppedoLT.BusinessLogic
                 //    }
                 //    #endregion
                 //}
-                //if (contentType.ToLower().Contains("Transfer-Encoding: chunked".ToLower() ) == true || contentLength > 0)
+                //if (contentType.ToLower().Contains("Transfer-Encoding: chunked".ToLower()) == true || contentLength > 0)
                 //{
                 //    _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
                 //    ResponseSize += _bytesRead;
-                //    // Removed comparison of StoreResult for writing responseBody due to omission of writing large responseBody - 10Nov2017
-                //    // Removed this because assertion was failing as there was no response to compare.
-                //    //if (StoreResult) 
-                //    responseBody.Write(_buffer, 0, _bytesRead);
+                //    Removed comparison of StoreResult for writing responseBody due to omission of writing large responseBody - 10Nov2017
+
+                //    Removed this because assertion was failing as there was no response to compare.
+                //    if (StoreResult)
+                //            responseBody.Write(_buffer, 0, _bytesRead);
                 //    while (_bytesRead > 0)
                 //    {
                 //        ResponseSize += _bytesRead;
                 //        _bytesRead = bufferStream.Read(_buffer, 0, _buffer.Length);
-                //        //if (StoreResult) 
-                //        responseBody.Write(_buffer, 0, _bytesRead);
+                //        if (StoreResult)
+                //            responseBody.Write(_buffer, 0, _bytesRead);
                 //    }
                 //}
                 //else if (contentLength == 0)
@@ -884,8 +823,6 @@ namespace AppedoLT.BusinessLogic
 
         private XmlNode CreateRequestNode(XmlNode parentRequest, string url)
         {
-            
-
             XmlNode request = parentRequest.OwnerDocument.CreateElement("request");
             if (url.StartsWith("/") == true)
             {
