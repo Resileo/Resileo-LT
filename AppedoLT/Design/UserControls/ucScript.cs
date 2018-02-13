@@ -133,6 +133,14 @@ namespace AppedoLT
                     else
                     {
                         XmlNode selectNode = ((XmlNode)this.Tag);
+                        //remove the request that are not enabled for the validation. --Added on 05-Feb-2018 by Sriraman
+                        string xpath = @"//*[@IsEnable='False']";
+                        XmlNodeList xnList = selectNode.SelectNodes(xpath);
+                        foreach (XmlNode xn in xnList)
+                        {
+                            xn.ParentNode.RemoveChild(xn);
+                        }
+
                         frmValidation frm = new frmValidation(selectNode, (RadTreeNode)_treeNode.Clone(), selectNode.SelectNodes("//vuscript[@name='" + selectNode.Attributes["name"].Value + "']//request").Count);
                         try
                         {

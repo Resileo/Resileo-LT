@@ -53,27 +53,33 @@ namespace AppedoLT.Core
         {
             bool firstRow = true;
             DataTable tbl = new DataTable();
-            TextFieldParser parser = new TextFieldParser(FilePath, Encoding.Default);
-            parser.TextFieldType = FieldType.Delimited;
-            parser.TrimWhiteSpace = false;
-
-            parser.SetDelimiters(Delim);
-            while (!parser.EndOfData)
+            try
             {
+                TextFieldParser parser = new TextFieldParser(FilePath, Encoding.Default);
+                parser.TextFieldType = FieldType.Delimited;
+                parser.TrimWhiteSpace = false;
+                parser.SetDelimiters(Delim);
 
-                DataRow dr = tbl.NewRow();
-                string[] fields = parser.ReadFields();
-                for (int i = 0; i < fields.Length; i++)
+                while (!parser.EndOfData)
                 {
-                    if (firstRow)
-                        tbl.Columns.Add(new DataColumn() { ColumnName = fields[i] });
-                    else
-                        dr[i] = fields[i];
+                    DataRow dr = tbl.NewRow();
+                    string[] fields = parser.ReadFields();
+                    for (int i = 0; i < fields.Length; i++)
+                    {
+                        if (firstRow)
+                            tbl.Columns.Add(new DataColumn() { ColumnName = fields[i] });
+                        else
+                            dr[i] = fields[i];
+                    }
+                    if (!firstRow && !dr[0].ToString().Length.Equals(0)) tbl.Rows.Add(dr);
+                    firstRow = false;
                 }
-                if (!firstRow && !dr[0].ToString().Length.Equals(0)) tbl.Rows.Add(dr);
-                firstRow = false;
+                parser.Close();
             }
-            parser.Close();
+            catch(Exception ex)
+            {
+                ExceptionHandler.WritetoEventLog(ex.Message + " " + ex.StackTrace);
+            }
             return tbl;
         }
 

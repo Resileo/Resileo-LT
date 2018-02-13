@@ -67,10 +67,10 @@ namespace AppedoLT
         {
             try
             {
-                if (!(char.IsControl(e.KeyChar) == true || char.IsDigit(e.KeyChar) == true))
-                {
-                    e.Handled = true;
-                }
+                //if (!(char.IsControl(e.KeyChar) == true || char.IsDigit(e.KeyChar) == true))
+                //{
+                //    e.Handled = true;
+                //}
             }
             catch (Exception ex)
             {
@@ -78,12 +78,12 @@ namespace AppedoLT
             }
         }
 
-        private void lblDelay_Click(object sender, EventArgs e)
+        private void ucPage_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void ucPage_Load(object sender, EventArgs e)
+        private void lblPagename_Click(object sender, EventArgs e)
         {
 
         }

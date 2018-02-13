@@ -46,7 +46,7 @@ namespace AppedoLTLoadGenerator
 
         bool _logResponseData;
         bool _logVariableData;
-        bool _stopRunning;
+//        bool _stopRunning;
 
         // Response data queue
         private Queue<ResponseDetail> _responseDetailQueue = new Queue<ResponseDetail>();
@@ -158,9 +158,10 @@ namespace AppedoLTLoadGenerator
         {
             try
             {
-                Thread.Sleep(1000);
+//                Thread.Sleep(1000);
                 _tempCreatedUser = 0;
                 _tempCompletedUser = 0;
+
                 foreach (ScriptExecutor scripts in _scriptExecutorList)
                 {
                     _tempCreatedUser += scripts.StatusSummary.TotalVUserCreated;
@@ -168,7 +169,6 @@ namespace AppedoLTLoadGenerator
                 }
                 _totalCreatedUser = _tempCreatedUser;
                 _totalCompleted = _tempCompletedUser;
-
                 if (_scriptExecutorList.FindAll(f => f.IsRunCompleted).Count == _scriptExecutorList.Count && _tempCreatedUser != 0 && _tempCreatedUser == _tempCompletedUser)
                 {
                     try
@@ -187,7 +187,7 @@ namespace AppedoLTLoadGenerator
                             }
                         }
                         Thread.Sleep(7000);
-                        executionReport.ExecutionStatus = Status.Completed;
+//                        executionReport.ExecutionStatus = Status.Completed;
                     }
                     catch (Exception ex)
                     {
@@ -196,7 +196,6 @@ namespace AppedoLTLoadGenerator
                     finally
                     {
                         executionReport.ExecutionStatus = Status.Completed;
-
                     }
                 }
 
@@ -214,6 +213,7 @@ namespace AppedoLTLoadGenerator
 
         public bool Start()
         {
+            _constants._isStopped = false;
             XmlDocument scenario = new XmlDocument();
             scenario.LoadXml(_scenarioXml);
             Request.IPSpoofingEnabled = Convert.ToBoolean(scenario.SelectSingleNode("//root/scenario").Attributes["enableipspoofing"].Value);
@@ -223,8 +223,33 @@ namespace AppedoLTLoadGenerator
             foreach (XmlNode script in scenario.SelectNodes("//script"))
             {
                 string scriptid = script.Attributes["id"].Value;
-                logger.Debug("scriptid = " + scriptid);
+                if (logger.IsDebugEnabled)
+                    logger.Debug("scriptid = " + scriptid);
                 XmlNode setting = script.SelectNodes("//script[@id='" + scriptid + "']//setting")[0];
+                #region BrowserCache
+                string xpath = string.Empty;
+                XmlNodeList xnList; 
+                if (setting.Attributes["browsercache"].Value.ToString() == "true")
+                {
+                    //removes request that are images or css based on the header type accept.
+                    xpath = @"//*/header[(@name='Accept' or @name='accept') and (contains(@value,'css') or contains(@value, 'image'))]";
+                    xnList = scenario.SelectNodes(xpath);
+                    foreach (XmlNode xn in xnList)
+                    {
+                        XmlNode pn = xn.ParentNode.ParentNode;
+                        pn.ParentNode.RemoveChild(pn);
+                    }
+                    //removes request that contains.js or .woff(font file) when browser cache is true
+                    xpath = @"//*/request[contains(@Path,'.js') or contains(@Path, '.woff') or contains(@Path, '.ico')]";
+                    xnList = scenario.SelectNodes(xpath);
+                    foreach (XmlNode xn in xnList)
+                    {
+                        xn.ParentNode.RemoveChild(xn);
+                    }
+                }
+                xnList = null;
+                xpath = null;
+                #endregion
                 XmlNode vuscript = script.SelectNodes("//script[@id='" + scriptid + "']//vuscript")[0];
                 ScriptExecutor scriptRunnerSce = new ScriptExecutor(setting, vuscript, executionReport.ReportName, _distribution);
                 if (scriptRunnerSce.StartUserId > 0)
@@ -241,7 +266,7 @@ namespace AppedoLTLoadGenerator
                 scr.OnLockError += scr_OnLockError;
                 scr.OnLockLog += scr_OnLockLog;
                 scr.OnLockTransactions += scr_OnLockTransactions;
-                scr.OnLockUserDetail += scr_OnLockUserDetail;
+//                scr.OnLockUserDetail += scr_OnLockUserDetail
                 if (_logVariableData)
                 {
                     scr.OnVariableCreated += scr_OnVariableCreated;
@@ -253,17 +278,22 @@ namespace AppedoLTLoadGenerator
                 }
                 scr.Run();
             }
+            bool retn = false;
             if (_scriptExecutorList.Count > 0)
             {
+                Trasport setRunStatus = new Trasport(_appedoIp, _appedoPort);
+                setRunStatus.Send(new TrasportData("running", string.Empty, null));
                 _statusUpdateTimer.Start();
                 SendData();
-                return true;
+                retn = true;
             }
             else
             {
                 executionReport.ExecutionStatus = Status.Completed;
-                return false;
+                _constants._runStatus = "completed";
+                retn = false;
             }
+            return retn;
         }
 
         void scr_OnResponse(ResponseDetail data)
@@ -291,6 +321,7 @@ namespace AppedoLTLoadGenerator
                 _logBuf.Data.Clear();
                 _errorBuf.Data.Clear();
                 _userDetailBuf.Data.Clear();
+                _isCompleted = 0;
             }
             catch (Exception ex)
             {
@@ -360,19 +391,20 @@ namespace AppedoLTLoadGenerator
 
         public void Stop()
         {
-            try
-            {
-                _stopRunning = true;
-                executionReport.ExecutionStatus = Status.Completed;
-                foreach (ScriptExecutor scr in _scriptExecutorList)
-                {
-                    new Thread(() => { scr.Stop(); }).Start();
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
-            }
+            _constants._isStopped = true;
+            //try
+            //{
+            //    _stopRunning = true;
+            //    executionReport.ExecutionStatus = Status.Completed;
+            //    foreach (ScriptExecutor scr in _scriptExecutorList)
+            //    {
+            //        new Thread(() => { scr.Stop(); }).Start();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
+            //}
         }
 
         public string GetStatus()
@@ -563,10 +595,6 @@ namespace AppedoLTLoadGenerator
                 }
 
             }
-            //new Thread(() =>
-            //{
-
-            //}).Start();
         }
 
         private void Send(byte[] dataObj)
@@ -683,7 +711,7 @@ namespace AppedoLTLoadGenerator
             //    return;
             //}
 
-            while (!_stopRunning)
+            while (_constants._runStatus != "completed") 
             {
                 try
                 {
@@ -748,19 +776,13 @@ namespace AppedoLTLoadGenerator
                         //}
                     }
                     #endregion
-
-                    Thread.Sleep(1);
                 }
                 catch (Exception ex)
                 {
+                    ExceptionHandler.WritetoEventLog(ex.Message + " " + ex.StackTrace);
                     Thread.Sleep(10000);
                 }
             }
-
-            //if (queue != null)
-            //{
-            //    queue.Close();
-            //}
         }
 
         //private MessageQueue GetMSMQ(string queueName)
@@ -786,7 +808,7 @@ namespace AppedoLTLoadGenerator
                     try
                     {
                         // Add to the queue 
-                        string folderName = AppDomain.CurrentDomain.BaseDirectory + "\\Runlog\\" + data.Value[0].ScriptName + "\\" + data.Value[0].ReportName;
+                        string folderName = AppDomain.CurrentDomain.BaseDirectory + "\\Runlog\\" + data.Value[0].ReportName + "\\" + data.Value[0].ScriptName;
                         if (!Directory.Exists(folderName))
                             Directory.CreateDirectory(folderName);
 

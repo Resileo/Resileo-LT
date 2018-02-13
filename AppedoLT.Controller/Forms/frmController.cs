@@ -71,7 +71,8 @@ namespace AppedoLTController
                         Environment.Exit(1);
                     }
                 }
-                logger.Debug("AppedoServer IP is " + AppedoServer);
+                if (logger.IsDebugEnabled)
+                    logger.Debug("AppedoServer IP is " + AppedoServer);
                 serverSocket.Start();
                 DoWorkThread = new Thread(new ThreadStart(DoWork));
                 DoWorkThread.Start();
@@ -260,19 +261,23 @@ namespace AppedoLTController
                                {
                                    TrasportData data = new TrasportData("isqueueavailable", string.Empty, null);
                                    Trasport server = new Trasport(AppedoServer, Constants.GetInstance().AppedoPort);
-                                   logger.Debug("Sending isqueueavailable to appedo server");
+                                   if (logger.IsDebugEnabled)
+                                       logger.Debug("Sending isqueueavailable to appedo server");
                                    server.Send(data);
                                    data = server.Receive();
-                                   logger.Debug("Status received from appedo server - " + data.Header["status"]);
+                                   if (logger.IsDebugEnabled)
+                                       logger.Debug("Status received from appedo server - " + data.Header["status"]);
                                    //If there is item in queue 
                                    if (data.Header["status"] == "1")
                                    {
                                        server = new Trasport(AppedoServer, Constants.GetInstance().AppedoPort);
                                        data = new TrasportData("getrundetail", string.Empty, null);
-                                       logger.Debug("Sending getrundetail to appedo server");
+                                       if (logger.IsDebugEnabled)
+                                           logger.Debug("Sending getrundetail to appedo server");
                                        server.Send(data);
                                        data = server.Receive();
-                                       logger.Debug("Status received from appedo server - Received Rundetail for runid " + data.Header["runid"]);
+                                       if (logger.IsDebugEnabled)
+                                           logger.Debug("Status received from appedo server - Received Rundetail for runid " + data.Header["runid"]);
                                        ExceptionHandler.LogRunDetail(data.Header["runid"], "Received Rundetail for runid " + data.Header["runid"]);
                                        server = new Trasport(AppedoServer, Constants.GetInstance().AppedoPort);
                                        server.Send(new TrasportData("ok", string.Empty, null));
@@ -370,7 +375,8 @@ namespace AppedoLTController
             try
             {
                 string runid = data.Header["runid"];
-                logger.Debug("Starting RunOperation for runid = " + data.Header["runid"] + "; DataString = " + data.DataStr);
+                if (logger.IsDebugEnabled)
+                    logger.Debug("Starting RunOperation for runid = " + data.Header["runid"] + "; DataString = " + data.DataStr);
                 //Negative scenario
                 if (Controllers.ContainsKey(runid) == true)
                 {
@@ -429,8 +435,8 @@ namespace AppedoLTController
                         //Get ip and port to send status data
                         statusIp = data.Header["scriptdataconnection"].Split(',')[0].Trim();
                         statusPort = data.Header["scriptdataconnection"].Split(',')[1].Trim();
-
-                        logger.Debug("scriptwisedataconnection: " + scriptWiseStatusIp + " scriptWiseStatusPort: " + scriptWiseStatusPort + "scriptdataconnection: " + statusIp + "scriptdataconnection: " + statusPort);
+                        if (logger.IsDebugEnabled)
+                            logger.Debug("scriptwisedataconnection: " + scriptWiseStatusIp + " scriptWiseStatusPort: " + scriptWiseStatusPort + "scriptdataconnection: " + statusIp + "scriptdataconnection: " + statusPort);
                         ExceptionHandler.WritetoEventLog("scriptwisedataconnection: " + scriptWiseStatusIp + " scriptWiseStatusPort: " + scriptWiseStatusPort + "scriptdataconnection: " + statusIp + "scriptdataconnection: " + statusPort);
                         data.Operation = "savescenario";
                         GenerateReportFolder(runid);
@@ -442,7 +448,8 @@ namespace AppedoLTController
                         List<TcpClient> loadGens = new List<TcpClient>();
                         string[] loadGenIps = loadGensStr.Split(',');
                         int loadGenId = 1;
-                        logger.Debug("Loadgen IPs : " + loadGensStr);
+                        if (logger.IsDebugEnabled)
+                            logger.Debug("Loadgen IPs : " + loadGensStr);
                         //Get all loadgen one by one to send data
                         foreach (string ip in loadGenIps)
                         {
@@ -475,13 +482,16 @@ namespace AppedoLTController
                                         try
                                         {
                                             Trasport loadGen = new Trasport(ip, "8889");
-                                            logger.Debug("Sending data " + data  + " to loadgen : " + ip + " @ port 8889");
+                                            if (logger.IsDebugEnabled)
+                                                logger.Debug("Sending data " + data  + " to loadgen : " + ip + " @ port 8889");
                                             loadGen.Send(data);
                                             response = loadGen.Receive();
-                                            logger.Debug("Received data from loadgen; Operation " + response.Operation + "; data : " + response.DataStr);
+                                            if (logger.IsDebugEnabled)
+                                                logger.Debug("Received data from loadgen; Operation " + response.Operation + "; data : " + response.DataStr);
                                             if (response.Operation == "ok")
                                             {
-                                                logger.Debug("RunId " + runid  + " saved on " + ip);
+                                                if (logger.IsDebugEnabled)
+                                                    logger.Debug("RunId " + runid  + " saved on " + ip);
                                                 ExceptionHandler.LogRunDetail(runid, "Rundetail saved on " + ip);
                                                 runDetail.AppendChild(_ControllerXml.CreadLoadGen(ip, ip));
                                                 loadGens.Add(loadGen.tcpClient);
@@ -528,7 +538,8 @@ namespace AppedoLTController
                         headerrunid.Add("runid", runid);
                         foreach (string gen in unAvailableLoadGens)
                         {
-                            logger.Debug(gen + " Loadgens not available. Run Failed ");
+                            if (logger.IsDebugEnabled)
+                                logger.Debug(gen + " Loadgens not available. Run Failed ");
                             ExceptionHandler.LogRunDetail(runid, gen + " Loadgens not available. Run Failed ");
                         }
                         for (int index = 0; index < 20; index++)
@@ -574,11 +585,13 @@ namespace AppedoLTController
                                                 Trasport loadGen = new Trasport(loadGenNode.Attributes["ipaddress"].Value, "8889");
                                                 //Send run command to loadgen
                                                 loadGen.Send(data);
-                                                logger.Debug("Sending data to loadgen " + loadGenNode.Attributes["ipaddress"].Value + "; Data =  "+ data.DataStr + "; Operation = "+ data.Operation);
+                                                if (logger.IsDebugEnabled)
+                                                    logger.Debug("Sending data to loadgen " + loadGenNode.Attributes["ipaddress"].Value + "; Data =  "+ data.DataStr + "; Operation = "+ data.Operation);
                                                 loadGen.Receive();
                                                 loadGen.Close();
                                                 loadGenNode.Attributes["runstarted"].Value = true.ToString();
-                                                logger.Debug("Run started on " + loadGenNode.Attributes["ipaddress"].Value);
+                                                if (logger.IsDebugEnabled)
+                                                    logger.Debug("Run started on " + loadGenNode.Attributes["ipaddress"].Value);
                                                 ExceptionHandler.LogRunDetail(runid, "Run started on " + loadGenNode.Attributes["ipaddress"].Value);
                                                 break;
                                             }
@@ -603,7 +616,8 @@ namespace AppedoLTController
                             }
                             if (runDetail != null)
                             {
-                                logger.Debug("Run started");
+                                if (logger.IsDebugEnabled)
+                                    logger.Debug("Run started");
                                 ExceptionHandler.LogRunDetail(runid, "Run started ");
                                 //Create controller object to update status to appedo until run complete
                                 Controller controller = new Controller(scriptWiseStatusIp, scriptWiseStatusPort, runid, runDetail, loadGensStr, AppedoFailedUrl);

@@ -57,6 +57,7 @@ namespace AppedoLT.BusinessLogic
                         dt.Columns.Add("userid");
                         dt.Columns.Add("iterationid");
                         dt.Columns.Add("value");
+                        dt.Columns.Add("type"); //added on 13-Feb-2018
                         dt.Rows.Add("0", "0", GetValue(variable.Attributes["name"].Value, variable.Attributes["type"].Value));
                         datas.Tables.Add(dt);
 

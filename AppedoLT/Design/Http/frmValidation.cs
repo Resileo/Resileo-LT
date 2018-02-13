@@ -164,6 +164,7 @@ namespace AppedoLT
                     //If it is first validation  or no other validation is running.
                     if (firstRun == true || _vUSer.WorkCompleted == true)
                     {
+                        Constants.GetInstance()._isStopped = false;
                         _errorObj.Clear();
                         _logObj.Clear();
                         btnViewError.Text = "&Errors(" + _errorObj.Count.ToString() + ")";
@@ -452,7 +453,8 @@ namespace AppedoLT
                     stopWatch.Stop();
                     lblStatus.Text = "Stopped";
                     lblVResult.Text = "Stopped";
-                    _vUSer.Break = false;
+                    Constants.GetInstance()._isStopped=false;
+//                    _vUSer.Break = false;
                     btnValidate.Enabled = true;
                 }
             }

@@ -92,7 +92,6 @@ namespace AppedoLT.BusinessLogic
         public event VUserCreated OnVUserCreated;
         public event LockVariable OnVariableCreated;
         public event LockResponse OnResponse;
-        public event LockResponse NewResponse;
         private string _reportName = string.Empty;
         private string _scriptName = string.Empty;
         private string _resposeUrl, _receivedCookies;
@@ -214,49 +213,60 @@ namespace AppedoLT.BusinessLogic
         //To stop vuser.
         public void Stop()
         {
-            ThreadPool.QueueUserWorkItem(new WaitCallback(processStopThreadPool));
-            void processStopThreadPool(object callback)
+            //ThreadPool.QueueUserWorkItem(new WaitCallback(processStopThreadPool));
+            //void processStopThreadPool(object callback)
+            //{
+            _constants._isStopped = true;
+//            Break = true;
+            try
             {
-                Break = true;
-                try
+                if (_userThread != null)
                 {
-                    if (_userThread != null)
+                    try
                     {
-                        try
+                        //To abort request
+                        //
+                        Stopwatch maxTimeout = new Stopwatch();
+                        maxTimeout.Start();
+                        while (_userThread.IsAlive)
                         {
-                            //To abort request
-                            if (req != null) req.Abort();
-                            _userThread.Abort();
+                            Thread.Sleep(1000);
+                            if (maxTimeout.ElapsedMilliseconds > 120000)
+                            {
+                                if (req != null) req.Abort();
+                                _userThread.Abort();
+                                break;
+                            }
                         }
-                        catch (Exception ex)
-                        {
-                            ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
-                        }
-                        _userThread = null;
                     }
-                    Result = "";
-                    _resposeUrl = string.Empty;
-                    _receivedCookies = string.Empty;
-                }
-                catch (Exception ex)
-                {
-                    ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
-                }
-                finally
-                {
-                    //To update user completed detail
-                    lock (Status.LockObjForCompletedUser)
+                    catch (Exception ex)
                     {
-                        Status.CompletedUser++;
-                        if (OnVUserRunCompleted != null) OnVUserRunCompleted.Invoke(_scriptName, _userid);
-                        LockUserDetail(2);
+                        ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
                     }
-                    WorkCompleted = true;
-                    conncetionManager.CloseAllConnetions();
-                    Break = true;
-                    this.Dispose();
+                    _userThread = null;
                 }
+                Result = "";
+                _resposeUrl = string.Empty;
+                _receivedCookies = string.Empty;
             }
+            catch (Exception ex)
+            {
+                ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
+            }
+            finally
+            {
+                //To update user completed detail
+                lock (Status.LockObjForCompletedUser)
+                {
+                    Status.CompletedUser++;
+                    //if (OnVUserRunCompleted != null) OnVUserRunCompleted.Invoke(_scriptName, _userid);
+                    LockUserDetail(2);
+                }
+                WorkCompleted = true;
+                conncetionManager.CloseAllConnetions();
+                this.Dispose();
+            }
+            //}
         }
 
         //This is vuser background operation
@@ -273,21 +283,23 @@ namespace AppedoLT.BusinessLogic
                 if (_type == "1")
                 {
                     #region Iterations for IterationType
-
-                    logger.Debug("Iteration type is Iterations, Number Of iterations = " + _iteration.ToString());
+                    if (logger.IsDebugEnabled)
+                        logger.Debug("Iteration type is Iterations, Number Of iterations = " + _iteration.ToString());
                     for (_index = 1; _index <= _iteration; _index++)
                     {
-                        if (Break == true) break;
-                       
+//                        if (Break == true) break;
+                        if (_constants._isStopped)
+                            break;
                         Result = "";
                         _iterationid = _index;
-                        logger.Debug("Iteration type is Iterations, Number Of iterations = " + _iteration.ToString() + "; Iteration Id = "+ _iterationid.ToString());
+                        if (logger.IsDebugEnabled)
+                            logger.Debug("Iteration type is Iterations, Number Of iterations = " + _iteration.ToString() + "; Iteration Id = "+ _iterationid.ToString());
                         _resposeUrl = string.Empty;
                         _receivedCookies = string.Empty;
 
                         foreach (XmlNode container in _vuScriptXml.ChildNodes)
                         {
-                            if (Break == true) break;
+                            //if (Break == true) break;
                             /* 1st iteration Init,Action. last iteration Action, End. Rest of them Acttion*/
                             if (container.Attributes["name"].Value == "Initialize")
                             {
@@ -308,7 +320,7 @@ namespace AppedoLT.BusinessLogic
                             // To execute End container
                             else if (container.Attributes["name"].Value == "End")
                             {
-                                if (_index == _iteration)
+                                if (_index == _iteration || _constants._isStopped)
                                 {
                                     _containerId.Push(new string[2] { container.Attributes["id"].Value, container.Attributes["name"].Value });
                                     ExecuteContainer(container);
@@ -334,10 +346,10 @@ namespace AppedoLT.BusinessLogic
                     _index = 0;
                     _iterationid = 0;
                     while (scriptRun(startTime))
-//                    for (_index = 1; true; _index++)
                     {
                         _index++;
-//                        if (Break == true) break;
+                        if (_constants._isStopped)
+                            break;
                         Result = "";
                         _iterationid = _index;
                         _resposeUrl = string.Empty;
@@ -387,7 +399,8 @@ namespace AppedoLT.BusinessLogic
             {
                 conncetionManager.CloseAllConnetions();
                 WorkCompleted = true;
-                if (OnVUserRunCompleted != null) OnVUserRunCompleted.Invoke(_scriptName, _userid);
+                
+              //  if (OnVUserRunCompleted != null) OnVUserRunCompleted.Invoke(_scriptName, _userid);
             }
 
         }
@@ -404,11 +417,11 @@ namespace AppedoLT.BusinessLogic
         {
             try
             {
-                if (Break == true) return;
+//                if (Break == true) return;
                 foreach (XmlNode child in container.ChildNodes)
                 {
 
-                    if (Break == true) break;
+ //                   if (Break == true) break;
                     switch (child.Name)
                     {
                         #region Operations
@@ -427,23 +440,31 @@ namespace AppedoLT.BusinessLogic
                             _pageId.Push(child.Attributes["id"].Value);
                             try
                             {
-                                if (IsValidation == false)
+                                if (IsValidation == false && _bReplyThinkTime)
                                 {
+                                    int delayTime = 100;
                                     if (child.Attributes["delay"].Value.Contains("$$"))
                                     {
-                                        EvaluteExp(child.Clone());
+                                        List<AppedoLT.Core.Tuple<string, string>> variables = new List<AppedoLT.Core.Tuple<string, string>>();
+                                        variables = EvaluteExp(child.Clone());
+                                        bool isNumeric = int.TryParse(variables[0].Value, out delayTime);
+                                        if (!isNumeric) delayTime = 100;
                                     }
-                                    if (_bReplyThinkTime)
+                                    else
                                     {
-                                        System.Threading.Thread.Sleep(child.Attributes["delay"].Value == "" ? 0 : Convert.ToInt32(child.Attributes["delay"].Value));
+                                        bool isNumeric = int.TryParse(child.Attributes["delay"].Value, out delayTime);
+                                        if (!isNumeric) delayTime = 100;
                                     }
+                                    Debug.WriteLine("delayTime " + delayTime);
+                                    System.Threading.Thread.Sleep(delayTime);
                                 }
                                 _secondaryRequestPlayed = false;
 
                                 // The below code commented to implement parallel connection feature
                                 if (AppedoLT.Core.Constants.GetInstance().btnExecutionType == "Run")
                                 {
-                                    logger.Debug("Inside ExecuteContainer method. Inside RUN scenario");
+                                    if (logger.IsDebugEnabled)
+                                        logger.Debug("Inside ExecuteContainer method. Inside RUN scenario");
                                     Boolean enablePrallel = false;
                                     foreach (XmlNode req in child.ChildNodes)
                                     {
@@ -497,15 +518,17 @@ namespace AppedoLT.BusinessLogic
                                 }
                                 else
                                 {
-                                    logger.Debug("Inside ExecuteContainer method. Inside NOT_RUN scenario");
+                                    if (logger.IsDebugEnabled)
+                                        logger.Debug("Inside ExecuteContainer method. Inside NOT_RUN scenario");
                                     foreach (XmlNode req in child.ChildNodes)
                                     {
-                                        if (Break == true) break;
+//                                        if (Break == true) break;
                                         RequestCountHandler._ReqCount++;
                                         ProcessRequest(req.Clone());
                                         if (_secondaryRequestPlayed == true)
                                         {
-                                            logger.Debug("Secondary requests played. Exiting the loop");
+                                            if (logger.IsDebugEnabled)
+                                                logger.Debug("Secondary requests played. Exiting the loop");
                                             break;
                                         }
                                     }
@@ -526,7 +549,7 @@ namespace AppedoLT.BusinessLogic
                             #region Loop
                             for (int index = 1; index <= Convert.ToInt32(child.Attributes["loopcount"].Value); index++)
                             {
-                                if (Break == true) break;
+                                //if (Break == true) break;
                                 ExecuteContainer(child);
                             }
                             break;
@@ -537,7 +560,7 @@ namespace AppedoLT.BusinessLogic
                             #region WhileLoop
                             while (true)
                             {
-                                if (Break == true) break;
+                                //if (Break == true) break;
                                 string expression1 = child.Attributes["condition"].Value;
 
                                 #region Parm has variable
@@ -708,15 +731,11 @@ namespace AppedoLT.BusinessLogic
         //It will process a single http or tcp request
         private void ProcessRequest(XmlNode request)
         {
-            if (Break == true) { return; }
+//            if (Break == true) { return; }
 
             string url = (request == null || request.Attributes["Address"] == null) ? "" : request.Attributes["Address"].Value;
             string requestId = (request == null || request.Attributes["id"] == null) ? "" : request.Attributes["id"].Value;
-            
-            if (requestId == "550669669" || requestId=="550669665")
-            {
-                string wait = "wait";
-            }
+           
             AppedoLogger.Log(new LogMessage()
             {
                 ThreadID = Thread.CurrentThread.ManagedThreadId,
@@ -770,288 +789,279 @@ namespace AppedoLT.BusinessLogic
                 else if (_vuScriptXml.Attributes["type"].Value == "http" || _vuScriptXml.Attributes["type"].Value == "https")
                 {
                     #region Http
-                    bool cacheEnabled = false;
-                    //If request is enabled
-                    if (request != null && Convert.ToBoolean(request.Attributes["IsEnable"].Value) == true)
+                    try
                     {
-                        try
+                        List<AppedoLT.Core.Tuple<string, string>> variables = new List<AppedoLT.Core.Tuple<string, string>>();
+                        //If request has parameterization. 
+                        if (request.OuterXml.Contains("$$"))
                         {
-                            List<AppedoLT.Core.Tuple<string, string>> variables = new List<AppedoLT.Core.Tuple<string, string>>();
-                            //If request has parameterization. 
-                            if (request.OuterXml.Contains("$$"))
-                            {
-                                //It will replace variable with corresponding value.
-                                variables = EvaluteExp(request);
-                            }
-                            request.Attributes["Address"].Value = new StringBuilder().Append(request.Attributes["Schema"].Value).Append("://").Append(request.Attributes["Host"].Value).Append(":").Append(request.Attributes["Port"].Value).Append(request.Attributes["Path"].Value).ToString();
-                            Uri temp = new Uri(request.Attributes["Address"].Value);
+                            //It will replace variable with corresponding value.
+                            variables = EvaluteExp(request);
+                        }
+                        request.Attributes["Address"].Value = new StringBuilder().Append(request.Attributes["Schema"].Value).Append("://").Append(request.Attributes["Host"].Value).Append(":").Append(request.Attributes["Port"].Value).Append(request.Attributes["Path"].Value).ToString();
+                        Uri temp = new Uri(request.Attributes["Address"].Value);
                             
-                            Match mat = new Regex("Content-Type: (.*?)\r\n", RegexOptions.Singleline | RegexOptions.Multiline).Match(request.Attributes["ResponseHeader"].Value);
-                                                     
-                            //If Browser cache enabled
-                            if (_browserCache == true ) //&& _index > 1
+                        Match mat = new Regex("Content-Type: (.*?)\r\n", RegexOptions.Singleline | RegexOptions.Multiline).Match(request.Attributes["ResponseHeader"].Value);
+                        #region browser cache commented                                                     
+                    //If Browser cache enabled
+                    //if (_browserCache == true ) //&& _index > 1
+                    //{
+                    //    try
+                    //    {
+                    //        XmlNode requestHeadeNode = request.SelectSingleNode("./headers/header[@name='Accept']");
+
+                    //        if (requestHeadeNode != null && requestHeadeNode.Attributes["value"].Value.Contains("/"))
+                    //        {
+                    //            if (requestHeadeNode.Attributes["value"].Value.ToLower().Contains("application") == false)
+                    //            {
+                    //                string acceptType = requestHeadeNode.Attributes["value"].Value.Split('/')[1];
+                    //                acceptType = acceptType.ToLower();
+                    //                //Filter request if Browser cache enabled
+                    //                if ((acceptType.Contains("image")
+                    //                    || acceptType.Contains("css")
+                    //                    || acceptType.Contains("js")
+                    //                    || acceptType.Contains("javascript")
+                    //                    || temp.LocalPath.EndsWith(".js")
+                    //                    || temp.LocalPath.EndsWith(".css")
+                    //                    || temp.LocalPath.EndsWith(".png")
+                    //                    || temp.LocalPath.EndsWith(".jpg")
+                    //                    || temp.LocalPath.EndsWith(".pdf")
+                    //                    || temp.LocalPath.EndsWith(".gif")
+                    //                    || temp.LocalPath.EndsWith(".ico"))
+                    //                    && acceptType.Contains("application") == false
+                    //                   )
+                    //                {
+                    //                    cacheEnabled = true;
+                    //                }
+                    //            }
+                    //        }
+                    //        //Filter request if Browser cache enabled
+                    //        if (mat.Success == true && mat.Groups[1] != null && mat.Groups[1].Value.Contains("/"))
+                    //        {
+                    //            if (mat.Groups[1].Value.ToLower().Contains("application") == false)
+                    //            {
+                    //                string acceptType = mat.Groups[1].Value.Split('/')[1];
+                    //                acceptType = acceptType.ToLower();
+                    //                if (acceptType.Contains("image")
+                    //                    || acceptType.Contains("css")
+                    //                    || acceptType.Contains("js")
+                    //                    || acceptType.Contains("javascript"))
+                    //                {
+                    //                    cacheEnabled = true;
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //        ExceptionHandler.WritetoEventLog(ex.StackTrace + Environment.NewLine + ex.Message);
+                    //    }
+                    //}
+                    #endregion
+                        string fileNameExt = Path.GetExtension(temp.LocalPath);
+                        //Check request is not in exclutionfiletypes
+//                            if (cacheEnabled == false && !(fileNameExt != string.Empty && _vuScriptXml.Attributes["exclutionfiletypes"].Value.Contains(fileNameExt.Replace(".", string.Empty).Trim().ToLower()) == true))
+                        if (!(fileNameExt != string.Empty && _vuScriptXml.Attributes["exclutionfiletypes"].Value.Contains(fileNameExt.Replace(".", string.Empty).Trim().ToLower()) == true))
+                        {
+                            req = new HttpRequest(request, ref receivedCookies, _userid.ToString() + (_createdConnection++ % _maxConnection).ToString(), _IPAddress, IsValidation, _bandwidthInKbps)
                             {
-                                try
-                                {
-                                    XmlNode requestHeadeNode = request.SelectSingleNode("./headers/header[@name='Accept']");
+                                Variables = variables
+                            };
+                            req.GetResponse();
 
-                                    if (requestHeadeNode != null && requestHeadeNode.Attributes["value"].Value.Contains("/"))
-                                    {
-                                        if (requestHeadeNode.Attributes["value"].Value.ToLower().Contains("application") == false)
-                                        {
-                                            string acceptType = requestHeadeNode.Attributes["value"].Value.Split('/')[1];
-                                            acceptType = acceptType.ToLower();
-                                            //Filter request if Browser cache enabled
-                                            if ((acceptType.Contains("image")
-                                                || acceptType.Contains("css")
-                                                || acceptType.Contains("js")
-                                                || acceptType.Contains("javascript")
-                                                || temp.LocalPath.EndsWith(".js")
-                                                || temp.LocalPath.EndsWith(".css")
-                                                || temp.LocalPath.EndsWith(".png")
-                                                || temp.LocalPath.EndsWith(".jpg")
-                                                || temp.LocalPath.EndsWith(".pdf")
-                                                || temp.LocalPath.EndsWith(".gif")
-                                                || temp.LocalPath.EndsWith(".ico"))
-                                                && acceptType.Contains("application") == false
-                                               )
-                                            {
-                                                cacheEnabled = true;
-                                            }
-                                        }
-                                    }
-                                    //Filter request if Browser cache enabled
-                                    if (mat.Success == true && mat.Groups[1] != null && mat.Groups[1].Value.Contains("/"))
-                                    {
-                                        if (mat.Groups[1].Value.ToLower().Contains("application") == false)
-                                        {
-                                            string acceptType = mat.Groups[1].Value.Split('/')[1];
-                                            acceptType = acceptType.ToLower();
-                                            if (acceptType.Contains("image")
-                                                || acceptType.Contains("css")
-                                                || acceptType.Contains("js")
-                                                || acceptType.Contains("javascript"))
-                                            {
-                                                cacheEnabled = true;
-                                            }
-                                        }
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    ExceptionHandler.WritetoEventLog(ex.StackTrace + Environment.NewLine + ex.Message);
-                                }
-                            }
-                            string fileNameExt = Path.GetExtension(temp.LocalPath);
-                            //Check request is not in exclutionfiletypes
-                            if (cacheEnabled == false && !(fileNameExt != string.Empty && _vuScriptXml.Attributes["exclutionfiletypes"].Value.Contains(fileNameExt.Replace(".", string.Empty).Trim().ToLower()) == true))
+                            //For validation
+                            if (OnLockRequestResponse != null)
                             {
-                                req = new HttpRequest(request, ref receivedCookies, _userid.ToString() + (_createdConnection++ % _maxConnection).ToString(), _IPAddress, IsValidation, _bandwidthInKbps);
-                                req.Variables = variables;
-                                req.GetResponse();
-
-                                //For validation
-                                if (OnLockRequestResponse != null)
+                                #region Validation
+                                StringBuilder pDataBuffer = new StringBuilder();
+                                foreach (PostData pData in GetPostData(request.SelectSingleNode("//params")))
                                 {
-                                    #region Validation
-                                    StringBuilder pDataBuffer = new StringBuilder();
-                                    foreach (PostData pData in GetPostData(request.SelectSingleNode("//params")))
-                                    {
-                                        pDataBuffer.Append(pData.value.ToString());
-                                    }
-                                    responseResult.PostData = pDataBuffer.ToString();
-                                    responseResult.RequestResult = req;
-                                    responseResult.WebRequestResponseId = Convert.ToInt32(Constants.GetInstance().UniqueID);
-                                    LockRequestResponse(responseResult);
-
-                                    #endregion
+                                    pDataBuffer.Append(pData.value.ToString());
                                 }
-                                bool logResponse = true;
-                                if (responseResult != null && req.Success && _constants._excludeLogList.Contains(_userid))
-                                {
-                                    logResponse = false;
-                                }
-                                //                                if (OnResponse != null )
-                                // Log the response if someone has subscribed for the event
-                                if (logResponse && OnResponse!=null)
-                                {
-                                    StringBuilder pDataBuffer1 = new StringBuilder();
-                                    foreach (PostData pData in GetPostData(request.SelectSingleNode("//params")))
-                                    {
-                                        pDataBuffer1.Append(pData.value.ToString());
-                                    }
-                                    responseResult.PostData = pDataBuffer1.ToString();
-                                    responseResult.RequestResult = req;
-                                    responseResult.WebRequestResponseId = Convert.ToInt32(Constants.GetInstance().UniqueID);
-
-                                    ResponseDetail details = new ResponseDetail
-                                    {
-                                        ReportName = _reportName,
-                                        UserId = _userid,
-                                        ScriptName = _scriptName,
-                                        IterationId = _iterationid,
-                                        RequestId = requestId
-                                    };
-
-                                    if (responseResult != null && responseResult.RequestResult != null)
-                                    {
-                                        details.ContainerName = this._containerId.ToArray()[0][1].ToString();
-                                        details.ResponseCode = responseResult.RequestResult.ResponseCode;
-                                        bool writeResponseData = false;
-                                        if (mat.Success == true && mat.Groups[1] != null && mat.Groups[1].Value.Contains("/"))
-                                        {
-                                            if (mat.Groups[1].Value.ToLower().Contains("application") || mat.Groups[1].Value.ToLower().Contains("text"))
-                                            {
-                                                details.ErrorMessage = responseResult.RequestResult.ErrorMessage;
-                                                writeResponseData = true;
-                                            }
-                                        }
-
-                                        if (writeResponseData)
-                                        {
-                                            details.ResponseString = responseResult.RequestResult.ResponseStr;
-                                        }
-                                        else
-                                        {
-                                            details.ResponseString = "[[Data writing skipped]]";
-                                        }
-                                        details.RequestName = responseResult.RequestResult.RequestName;
-                                    }
-                                    OnResponse.Invoke(details);
-                                }
-                                LockResponseTime(req.RequestNode.Attributes["id"].Value, req.RequestNode.Attributes["Path"] == null ? req.RequestName : req.RequestNode.Attributes["Path"].Value, req.StartTime, req.FirstByteReceivedTime, req.EndTime, req.TimeForFirstByte, req.ResponseTime, req.ResponseSize, req.ResponseCode.ToString());
-                                //string aa = System.Configuration.ConfigurationSettings.AppSettings.Get("xx");
-                                
-                                #region SecondaryReqEnable
-                                if (Convert.ToBoolean(_vuScriptXml.Attributes["dynamicreqenable"].Value) == true && !(_browserCache == true && _index > 1) && Convert.ToBoolean(req.RequestNode.Attributes["Excludesecondaryreq"].Value) == true)
-                                {
-                                    logger.Debug("Secondary requests is enabled. Processing them now.\r\n"+ req.ResponseStr);
-                                    Queue<String> links = FetchLinksFromSource(req.ResponseStr);
-                                    int created = 0;
-                                    while (links.Count > 0)
-                                    {
-                                        while (created > 0)
-                                        {
-                                            Thread.Sleep(1000);
-                                        }
-                                        try
-                                        {
-                                            Request secReq = new HttpRequest(request, links.Dequeue(), receivedCookies, _userid.ToString() + (_createdConnection++ % _maxConnection).ToString(), _IPAddress, IsValidation, _bandwidthInKbps);
-                                            //  Request secReq = new HttpRequest(request, links.Dequeue(), receivedCookies, _userid.ToString(), _IPAddress, IsValidation);
-
-                                            RequestResponse responseResultSec = new RequestResponse();
-
-                                            if (_browserCache == false || cacheUrl.Exists(t => t.CompareTo(secReq.RequestNode.Attributes["Address"].Value) == 0) == false)
-                                            {
-                                                cacheUrl.Add(secReq.RequestNode.Attributes["Address"].Value);
-                                               if (secReq.RequestNode.Attributes["Path"].Value.StartsWith("//") == true) secReq.RequestNode.Attributes["Path"].Value = secReq.RequestNode.Attributes["Path"].Value.Replace("//", "/");
-                                             
-                                                if (secReq.RequestNode.Attributes["Address"].Value.EndsWith(".jsp") == false)
-                                                {
-                                                    //new Thread(() =>
-                                                    {
-                                                        //  created++;
-                                                        try
-                                                        {
-                                                            secReq.GetResponse();
-                                                            if (OnLockRequestResponse != null)
-                                                            {
-                                                                responseResultSec.RequestResult = secReq;
-                                                                responseResultSec.WebRequestResponseId = Convert.ToInt32(Constants.GetInstance().UniqueID);
-                                                                LockRequestResponse(responseResultSec);
-                                                                if (!secReq.ErrorCode.StartsWith("2") && !secReq.ErrorCode.StartsWith("3"))
-                                                                {
-                                                                    LockException(Convert.ToString(secReq.RequestId), secReq.ErrorMessage, secReq.ErrorCode, secReq.RequestNode.Attributes["Address"].Value);
-                                                                }
-                                                            }
-                                                            bool logResponse1 = true;
-                                                            if (responseResult != null && req.Success && _constants._excludeLogList.Contains(_userid))
-                                                            {
-                                                                logResponse1 = false;
-                                                            }
-                                                            //                                if (OnResponse != null )
-                                                            // Log the response if someone has subscribed for the event
-                                                            if (logResponse1 && OnResponse != null)
-                                                            {
-                                                                mat = new Regex("Content-Type: (.*?)\r\n", RegexOptions.Singleline | RegexOptions.Multiline).Match(req.RequestNode.Attributes["ResponseHeader"].Value);
-                             
-                                                                responseResult.PostData = secReq.ToString();
-                                                                responseResult.RequestResult = secReq;
-                                                                responseResult.WebRequestResponseId = Convert.ToInt32(Constants.GetInstance().UniqueID);
-
-                                                                ResponseDetail details = new ResponseDetail
-                                                                {
-                                                                    ReportName = _reportName,
-                                                                    UserId = _userid,
-                                                                    ScriptName = _scriptName,
-                                                                    IterationId = _iterationid,
-                                                                    RequestId = requestId
-                                                                };
-                                                                if (responseResult != null && responseResult.RequestResult != null)
-                                                                {
-                                                                    details.ContainerName = this._containerId.ToArray()[0][1].ToString();
-                                                                    details.ResponseCode = responseResult.RequestResult.ResponseCode;
-                                                                    bool writeResponseData = false;
-                                                                    if (mat.Success == true && mat.Groups[1] != null && mat.Groups[1].Value.Contains("/"))
-                                                                    {
-                                                                        if (mat.Groups[1].Value.ToLower().Contains("application") || mat.Groups[1].Value.ToLower().Contains("text"))
-                                                                        {
-                                                                            details.ErrorMessage = responseResult.RequestResult.ErrorMessage;
-                                                                            writeResponseData = true;
-                                                                        }
-                                                                    }
-
-                                                                    if (writeResponseData)
-                                                                    {
-                                                                        details.ResponseString = responseResult.RequestResult.ResponseStr;
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        details.ResponseString = "[[Data writing skipped]]";
-                                                                    }
-                                                                    details.RequestName = responseResult.RequestResult.RequestName;
-                                                                }
-
-                                                                OnResponse.Invoke(details);
-                                                            }
-                                                            LockResponseTime(req.RequestNode.Attributes["id"].Value, secReq.RequestNode.Attributes["Path"] == null ? secReq.RequestName : secReq.RequestNode.Attributes["Path"].Value, secReq.StartTime, secReq.FirstByteReceivedTime, secReq.EndTime, secReq.TimeForFirstByte, secReq.ResponseTime, secReq.ResponseSize, secReq.ResponseCode.ToString());
-                                                        }
-                                                        catch (Exception ex)
-                                                        {
-                                                            ExceptionHandler.WritetoEventLog(ex.Message + Environment.NewLine + ex.StackTrace);
-                                                        }
-                                                        finally
-                                                        {
-                                                            //      created--;
-                                                        }
-                                                    }
-                                                    // ).Start();
-                                                }
-                                            }
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            ExceptionHandler.WritetoEventLog(ex.Message + Environment.NewLine + ex.StackTrace);
-                                        }
-                                        finally
-                                        {
-                                            _secondaryRequestPlayed = true;
-                                        }
-                                    }
-                                }
+                                responseResult.PostData = pDataBuffer.ToString();
+                                responseResult.RequestResult = req;
+                                responseResult.WebRequestResponseId = Convert.ToInt32(Constants.GetInstance().UniqueID);
+                                LockRequestResponse(responseResult);
 
                                 #endregion
                             }
-                        }
-                        catch (Exception ex)
-                        {
-                            #region ToolException
-                            if (ex.Message.StartsWith("Thread was being aborted.") == false)
+                            bool logResponse = true;
+                            if (responseResult != null && req.Success && _constants._excludeLogList.Contains(_userid))
                             {
-                                ExceptionHandler.WritetoEventLog(ex.Message + Environment.NewLine + ex.StackTrace);
+                                logResponse = false;
                             }
+                            if (logResponse && OnResponse!=null)
+                            {
+                                StringBuilder pDataBuffer1 = new StringBuilder();
+                                foreach (PostData pData in GetPostData(request.SelectSingleNode("//params")))
+                                {
+                                    pDataBuffer1.Append(pData.value.ToString());
+                                }
+                                responseResult.PostData = pDataBuffer1.ToString();
+                                responseResult.RequestResult = req;
+                                responseResult.WebRequestResponseId = Convert.ToInt32(Constants.GetInstance().UniqueID);
+
+                                ResponseDetail details = new ResponseDetail
+                                {
+                                    ReportName = _reportName,
+                                    UserId = _userid,
+                                    ScriptName = _scriptName,
+                                    IterationId = _iterationid,
+                                    RequestId = requestId,
+                                    ContentType = mat.Groups[1].Value
+                                };
+
+                                if (responseResult != null && responseResult.RequestResult != null)
+                                {
+                                    details.ContainerName = this._containerId.ToArray()[0][1].ToString();
+                                    details.ResponseCode = responseResult.RequestResult.ResponseCode;
+                                    bool writeResponseData = false;
+                                    if (mat.Success == true && mat.Groups[1] != null && mat.Groups[1].Value.Contains("/"))
+                                    {
+                                        if (mat.Groups[1].Value.ToLower().Contains("application") || mat.Groups[1].Value.ToLower().Contains("text"))
+                                        {
+                                            details.ErrorMessage = responseResult.RequestResult.ErrorMessage;
+                                            writeResponseData = true;
+                                        }
+                                    }
+                                    if (writeResponseData)
+                                    {
+                                        details.ResponseString = responseResult.RequestResult.ResponseStr;
+                                    }
+                                    else
+                                    {
+                                        details.ResponseString = "[[Data writing skipped]]";
+                                    }
+                                    details.RequestName = responseResult.RequestResult.RequestName;
+                                }
+                                OnResponse.Invoke(details);
+                            }
+                            LockResponseTime(req.RequestNode.Attributes["id"].Value, req.RequestNode.Attributes["Path"] == null ? req.RequestName : req.RequestNode.Attributes["Path"].Value, req.StartTime, req.FirstByteReceivedTime, req.EndTime, req.TimeForFirstByte, req.ResponseTime, req.ResponseSize, req.ResponseCode.ToString());
+                                
+                            #region SecondaryReqEnable
+                            if (Convert.ToBoolean(_vuScriptXml.Attributes["dynamicreqenable"].Value) == true && !(_browserCache == true && _index > 1) && Convert.ToBoolean(req.RequestNode.Attributes["Excludesecondaryreq"].Value) == true)
+                            {
+                                if (logger.IsDebugEnabled)
+                                    logger.Debug("Secondary requests is enabled. Processing them now.\r\n"+ req.ResponseStr);
+                                Queue<String> links = FetchLinksFromSource(req.ResponseStr);
+                                int created = 0;
+                                while (links.Count > 0)
+                                {
+                                    while (created > 0)
+                                    {
+                                        Thread.Sleep(1000);
+                                    }
+                                    try
+                                    {
+                                        Request secReq = new HttpRequest(request, links.Dequeue(), receivedCookies, _userid.ToString() + (_createdConnection++ % _maxConnection).ToString(), _IPAddress, IsValidation, _bandwidthInKbps);
+                                        //  Request secReq = new HttpRequest(request, links.Dequeue(), receivedCookies, _userid.ToString(), _IPAddress, IsValidation);
+
+                                        RequestResponse responseResultSec = new RequestResponse();
+
+                                        if (_browserCache == false || cacheUrl.Exists(t => t.CompareTo(secReq.RequestNode.Attributes["Address"].Value) == 0) == false)
+                                        {
+                                            cacheUrl.Add(secReq.RequestNode.Attributes["Address"].Value);
+                                            if (secReq.RequestNode.Attributes["Path"].Value.StartsWith("//") == true) secReq.RequestNode.Attributes["Path"].Value = secReq.RequestNode.Attributes["Path"].Value.Replace("//", "/");
+                                             
+                                            if (secReq.RequestNode.Attributes["Address"].Value.EndsWith(".jsp") == false)
+                                            {
+                                                //  created++;
+                                                try
+                                                {
+                                                    secReq.GetResponse();
+                                                    if (OnLockRequestResponse != null)
+                                                    {
+                                                        responseResultSec.RequestResult = secReq;
+                                                        responseResultSec.WebRequestResponseId = Convert.ToInt32(Constants.GetInstance().UniqueID);
+                                                        LockRequestResponse(responseResultSec);
+                                                        if (!secReq.ErrorCode.StartsWith("2") && !secReq.ErrorCode.StartsWith("3"))
+                                                        {
+                                                            LockException(Convert.ToString(secReq.RequestId), secReq.ErrorMessage, secReq.ErrorCode, secReq.RequestNode.Attributes["Address"].Value);
+                                                        }
+                                                    }
+                                                    bool logResponse1 = true;
+                                                    if (responseResult != null && req.Success && _constants._excludeLogList.Contains(_userid))
+                                                    {
+                                                        logResponse1 = false;
+                                                    }
+                                                    if (logResponse1 && OnResponse != null)
+                                                    {
+                                                        mat = new Regex("Content-Type: (.*?)\r\n", RegexOptions.Singleline | RegexOptions.Multiline).Match(req.RequestNode.Attributes["ResponseHeader"].Value);
+                             
+                                                        responseResult.PostData = secReq.ToString();
+                                                        responseResult.RequestResult = secReq;
+                                                        responseResult.WebRequestResponseId = Convert.ToInt32(Constants.GetInstance().UniqueID);
+
+                                                        ResponseDetail details = new ResponseDetail
+                                                        {
+                                                            ReportName = _reportName,
+                                                            UserId = _userid,
+                                                            ScriptName = _scriptName,
+                                                            IterationId = _iterationid,
+                                                            RequestId = requestId
+                                                        };
+                                                        if (responseResult != null && responseResult.RequestResult != null)
+                                                        {
+                                                            details.ContainerName = this._containerId.ToArray()[0][1].ToString();
+                                                            details.ResponseCode = responseResult.RequestResult.ResponseCode;
+                                                            bool writeResponseData = false;
+                                                            if (mat.Success == true && mat.Groups[1] != null && mat.Groups[1].Value.Contains("/"))
+                                                            {
+                                                                if (mat.Groups[1].Value.ToLower().Contains("application") || mat.Groups[1].Value.ToLower().Contains("text"))
+                                                                {
+                                                                    details.ErrorMessage = responseResult.RequestResult.ErrorMessage;
+                                                                    writeResponseData = true;
+                                                                }
+                                                            }
+
+                                                            if (writeResponseData)
+                                                            {
+                                                                details.ResponseString = responseResult.RequestResult.ResponseStr;
+                                                            }
+                                                            else
+                                                            {
+                                                                details.ResponseString = "[[Data writing skipped]]";
+                                                            }
+                                                            details.RequestName = responseResult.RequestResult.RequestName;
+                                                        }
+
+                                                        OnResponse.Invoke(details);
+                                                    }
+                                                    LockResponseTime(req.RequestNode.Attributes["id"].Value, secReq.RequestNode.Attributes["Path"] == null ? secReq.RequestName : secReq.RequestNode.Attributes["Path"].Value, secReq.StartTime, secReq.FirstByteReceivedTime, secReq.EndTime, secReq.TimeForFirstByte, secReq.ResponseTime, secReq.ResponseSize, secReq.ResponseCode.ToString());
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    ExceptionHandler.WritetoEventLog(ex.Message + Environment.NewLine + ex.StackTrace);
+                                                }
+                                                finally
+                                                {
+                                                    //      created--;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        ExceptionHandler.WritetoEventLog(ex.Message + Environment.NewLine + ex.StackTrace);
+                                    }
+                                    finally
+                                    {
+                                        _secondaryRequestPlayed = true;
+                                    }
+                                }
+                            }
+
                             #endregion
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        #region ToolException
+                        if (ex.Message.StartsWith("Thread was being aborted.") == false)
+                        {
+                            ExceptionHandler.WritetoEventLog(ex.Message + Environment.NewLine + ex.StackTrace);
+                        }
+                        #endregion
                     }
                     #endregion
                 }
@@ -1244,6 +1254,7 @@ namespace AppedoLT.BusinessLogic
             }
         }
 
+
         private void VUser_OnResponse(ResponseDetail data)
         {
             throw new NotImplementedException();
@@ -1391,11 +1402,20 @@ namespace AppedoLT.BusinessLogic
             //Else it will search given variable in file. 
             else
             {
-                string type = VariableManager.dataCenter.GetVariableType(variablename.Split('.')[0]);
-                if (type == "file" || type == "string" || type == "number" || type == "randomnumber" || type == "randomstring" || type == "currentdate")
+                try
                 {
-                    result = VariableManager.dataCenter.GetVariableValue(_userid, _iterationid, variablename, _maxUser).ToString();
+                    string type = VariableManager.dataCenter.GetVariableType(variablename.Split('.')[0]);
+                    if (type == "file" || type == "string" || type == "number" || type == "randomnumber" || type == "randomstring" || type == "currentdate")
+                    {
+                        result = VariableManager.dataCenter.GetVariableValue(_userid, _iterationid, variablename, _maxUser).ToString();
+                    }
                 }
+                catch (Exception ex)
+                {
+                    ExceptionHandler.WritetoEventLog("excaption @ line 1400 vuser.cs " + ex.Message + " " + ex.StackTrace);
+                }
+
+
             }
 
             if (OnVariableCreated != null && !isEvaluation)
@@ -1467,8 +1487,9 @@ namespace AppedoLT.BusinessLogic
                         parm.Value = string.Empty;
                         parm.Value = GetVariableValue(parm.Key, isEvaluation);
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        ExceptionHandler.WritetoEventLog("ex@1477 line vuser.cs " + ex.Message + " " + ex.StackTrace);
 //                        parm.Value = string.Empty;
                         LockException("0", "Unable to evaluate " + parm.Key, "700", string.Empty);
                     }
@@ -2202,8 +2223,8 @@ namespace AppedoLT.BusinessLogic
         {
             try
             {
-                if (Break == false)
-                {
+                //if (Break == false)
+                //{
                     Interlocked.Increment(ref RequestCountHandler._ReqCount);
 
                     ReportData rd = new ReportData();
@@ -2251,7 +2272,7 @@ namespace AppedoLT.BusinessLogic
                             VUserStatus.FiveHundredStatusCodeCount++;
                         }
                     }
-                }
+                //}
             }
             catch (Exception ex)
             {
@@ -2316,11 +2337,11 @@ namespace AppedoLT.BusinessLogic
             // Wait if the threads are not available. The current thread will be blocked
             while (_requestProcessingThreadCount >= _maxParallelConnections)
             {
-                if (Break == true) break;
+                //if (Break == true) break;
                 Thread.Sleep(10);
             }
 
-            if (Break == true) return;
+           // if (Break == true) return;
 
             lock (_sequentialSyncObject)
             {
@@ -2344,8 +2365,8 @@ namespace AppedoLT.BusinessLogic
                             request = _sequentialRequestsQueue.Dequeue();
                         }
 
-                        if (Break == true)
-                            break;
+                        //if (Break == true)
+                        //    break;
 
                         ProcessRequest(request);
                     }
@@ -2371,14 +2392,14 @@ namespace AppedoLT.BusinessLogic
             // Wait if the threads are not available.
             while (_requestProcessingThreadCount >= _maxParallelConnections)
             {
-                if (Break == true) 
-                    break;
+                //if (Break == true)
+                //    break;
 
                 Thread.Sleep(10);
             }
 
-            if (Break == true)
-                return;
+            //if (Break == true)
+            //    return;
 
             Interlocked.Increment(ref _requestProcessingThreadCount);
             ThreadPool.QueueUserWorkItem(new WaitCallback(processThreadPool));

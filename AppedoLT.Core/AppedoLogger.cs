@@ -19,13 +19,13 @@ namespace AppedoLT.Core
 
         static AppedoLogger()
         {
-            IsLogEnabled = false;
-            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["EnableLoggin"]))
-            {
-                IsLogEnabled = bool.Parse(ConfigurationManager.AppSettings["EnableLoggin"]);
-            }
             try
             {
+                IsLogEnabled = false;
+                if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["EnableLogging"]))
+                {
+                    IsLogEnabled = bool.Parse(ConfigurationManager.AppSettings["EnableLogging"]);
+                }
                 fileName = Constants.GetInstance().ExecutingAssemblyLocation + "\\log.csv";
                 using (StreamWriter logFile = new StreamWriter(fileName, false))
                 {

@@ -32,8 +32,9 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.3.042.0")]
-[assembly: AssemblyFileVersion("3.3.042.0")]
+[assembly: AssemblyVersion("3.3.043.0")]
+[assembly: AssemblyFileVersion("3.3.043.0")]
+//3.3.043 - Thinktime is parametrizable using variable manager, Validation on delay is removed for allowing parameter. On failure or wrong data, system assumes 100ms delay. Code re-organized for better control over flow change. global variable introduced for stop action & run status. report tree font changed for better clarity. Missing Think time and parallel connection are made available for load generator. This was missing before.MSMQ is fully removed. 
 //3.3.042 - Container Response time is calculated as difference from Max(endtime) - Min(Starttime) to take care parrallel connection effect and it is done at page level then moved to container level to avoid thinktime. Previously it was sum(diff) of all request within container. Changes done at constants.cs in Appedo.Core, hence will have impact in Load generator build, Container response time includes think time excludes think time of first page. When content type chunked and not a gzip, response was not captured. This is resolved.
 //          Container Response time does not include think time. Threadpool concept introduced where ever parallel threads are used to ensure thread overhead is avoided while doing multiple iterations or run in duration. This will considerably reduce the overhead. Usercreation is still with normal thread creation as it is very long thread and user count might vary for each run and it is one time activity for entire run.
 //3.3.041 - Load generator created users/completed users zero after the first successfull run resolved. Changes done in ScriptExecutor.cs. Variable not cleared after the first run was the issue resolved.

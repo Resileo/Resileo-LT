@@ -19,6 +19,7 @@ namespace AppedoLT
             //brwReportView.ContextMenuStrip = cntmSave;
             LoadReportName(string.Empty);
             // this event will fire when user select the report 
+            radGridReport.Select();
             this.radGridReport.SelectionChanged += new System.EventHandler(this.radGridView1_SelectionChanged);
           
         }
@@ -298,10 +299,17 @@ namespace AppedoLT
         /// <param name="e"></param>
         private void radGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if(this.radGridReport.SelectedRows.Count>0)
+            //radGridReport.SelectedRows[0].IsPinned = true;
+            if (this.radGridReport.SelectedRows.Count > 0)
+            {
                 LoadResult((string)this.radGridReport.SelectedRows[0].Cells[0].Value);
+            }
         }
 
-       
+        private void userControlReports_Load(object sender, EventArgs e)
+        {
+//            LoadReportName(string.Empty);
+
+        }
     }
 }

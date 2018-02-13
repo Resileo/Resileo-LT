@@ -65,10 +65,10 @@ namespace AppedoLT.BusinessLogic
         public event LockLog OnLockLog;
         public event LockError OnLockError;
         public event LockTransactions OnLockTransactions;
-        public event LockUserDetail OnLockUserDetail;
-        public event IterationCompleted OnIterationStarted;
-        public event VUserRunCompleted OnVUserRunCompleted;
-        public event VUserCreated OnVUserCreated;
+//        public event LockUserDetail OnLockUserDetail;
+//        public event IterationCompleted OnIterationStarted;
+//        public event VUserRunCompleted OnVUserRunCompleted;
+//        public event VUserCreated OnVUserCreated;
         public event LockVariable OnVariableCreated;
         public event LockResponse OnResponse;
         #endregion
@@ -79,17 +79,20 @@ namespace AppedoLT.BusinessLogic
         {
             try
             {
-                StatusSummary .ScriptId=_scriptid = vuScript.Attributes["id"].Value;
+                StatusSummary.ScriptId=_scriptid = vuScript.Attributes["id"].Value;
                 StatusSummary.ScriptName=_scriptname = vuScript.Attributes["name"].Value;
-                VUScriptSetting setting = new VUScriptSetting();
-                setting.Type = settingNode.Attributes["type"].Value;
-                setting.BrowserCache = Convert.ToBoolean(settingNode.Attributes["browsercache"].Value);
-                setting.DurationTime = settingNode.Attributes["durationtime"].Value;
-                setting.IncrementUser = settingNode.Attributes["incrementuser"].Value;
-                setting.IncrementTime = settingNode.Attributes["incrementtime"].Value;
-                setting.Iterations = settingNode.Attributes["iterations"].Value;
-                setting.MaxUser = settingNode.Attributes["maxuser"].Value;
-                setting.StartUser = settingNode.Attributes["startuser"].Value;
+                VUScriptSetting setting = new VUScriptSetting
+                {
+                    Type = settingNode.Attributes["type"].Value,
+                    BrowserCache = Convert.ToBoolean(settingNode.Attributes["browsercache"].Value),
+                    DurationTime = settingNode.Attributes["durationtime"].Value,
+                    IncrementUser = settingNode.Attributes["incrementuser"].Value,
+                    IncrementTime = settingNode.Attributes["incrementtime"].Value,
+                    Iterations = settingNode.Attributes["iterations"].Value,
+                    MaxUser = settingNode.Attributes["maxuser"].Value,
+                    StartUser = settingNode.Attributes["startuser"].Value
+                };
+                ExceptionHandler.WritetoEventLog("ScriptExecutor StartUser " + setting.StartUser +" userid "+setting.StartUserId + " ThreadID "+Thread.CurrentThread.ManagedThreadId);
                 if (settingNode.Attributes["bandwidth"] != null)
                 {
                     setting.Bandwidth = settingNode.Attributes["bandwidth"].Value;
@@ -142,7 +145,7 @@ namespace AppedoLT.BusinessLogic
 
                 int maxUser = Convert.ToInt16(settingNode.Attributes["maxuser"].Value);
                 Dictionary<int, int> userDistribution = new Dictionary<int, int>();
-                
+                ExceptionHandler.WritetoEventLog("maxUser " + maxUser);
                 int remainigUser = maxUser % Status.TotalLoadGenUsed;
 
                 for (int index = 1; index <= Status.TotalLoadGenUsed; index++)
@@ -198,15 +201,18 @@ namespace AppedoLT.BusinessLogic
             {
                 StatusSummary.ScriptId = _scriptid = vuScript.Attributes["id"].Value;
                 StatusSummary.ScriptName = _scriptname = vuScript.Attributes["name"].Value;
-                VUScriptSetting setting = new VUScriptSetting();
-                setting.Type = settingNode.Attributes["type"].Value;
-                setting.BrowserCache = Convert.ToBoolean(settingNode.Attributes["browsercache"].Value);
-                setting.DurationTime = settingNode.Attributes["durationtime"].Value;
-                setting.IncrementUser = settingNode.Attributes["incrementuser"].Value;
-                setting.IncrementTime = settingNode.Attributes["incrementtime"].Value;
-                setting.Iterations = settingNode.Attributes["iterations"].Value;
-                setting.MaxUser = settingNode.Attributes["maxuser"].Value;
-                setting.StartUser = settingNode.Attributes["startuser"].Value;
+                VUScriptSetting setting = new VUScriptSetting
+                {
+                    Type = settingNode.Attributes["type"].Value,
+                    BrowserCache = Convert.ToBoolean(settingNode.Attributes["browsercache"].Value),
+                    DurationTime = settingNode.Attributes["durationtime"].Value,
+                    IncrementUser = settingNode.Attributes["incrementuser"].Value,
+                    IncrementTime = settingNode.Attributes["incrementtime"].Value,
+                    Iterations = settingNode.Attributes["iterations"].Value,
+                    MaxUser = settingNode.Attributes["maxuser"].Value,
+                    StartUser = settingNode.Attributes["startuser"].Value
+                };
+
                 if (settingNode.Attributes["bandwidth"] != null)
                 {
                     setting.Bandwidth = settingNode.Attributes["bandwidth"].Value;
@@ -215,6 +221,24 @@ namespace AppedoLT.BusinessLogic
                 {
                     setting.Bandwidth = "-1";
                 }
+                if (settingNode.Attributes["replythinktime"] != null)
+                {
+                    setting.ReplyThinkTime = Convert.ToBoolean(settingNode.Attributes["replythinktime"].Value);
+                }
+                else
+                {
+                    setting.ReplyThinkTime = true;
+                }
+
+                if (settingNode.Attributes["parallelconnections"] != null)
+                {
+                    setting.numberOfParallelCon = settingNode.Attributes["parallelconnections"].Value;
+                }
+                else
+                {
+                    setting.numberOfParallelCon = "6";
+                }
+
 
                 _vuScript = vuScript;
                 _setting = setting;
@@ -222,7 +246,7 @@ namespace AppedoLT.BusinessLogic
 
                 _createdUserCount = setting.StartUserId;
 
-                _tmrRun.Interval = 100;
+                _tmrRun.Interval = 1000;
 
                 if (int.Parse(_setting.GetVUCreationIntervel().ToString()) < 1)
                 {
@@ -320,38 +344,40 @@ namespace AppedoLT.BusinessLogic
         {
             _tmrVUCreator.Stop();
             _isStop = true;
-            lock (_userCreationLock)
-            {
-                lock (_userCompletedLock)
-                {
-                    _tmrRun.Stop();
-                    _tmrVUCreator.Stop();
-                    foreach (VUser user in _usersList)
-                    {
-                        user.Break = true;
-                    }
-                    foreach (VUser user in _usersList)
-                    {
-                        try
-                        {
-                            user.Stop();
-                            _completedUserCount++;
+            _threadRun.Reset();
+            //lock (_userCreationLock)
+            //{
+            //    lock (_userCompletedLock)
+            //    {
+            //        //_tmrRun.Stop();
+            //       // _tmrVUCreator.Stop();
+            //        foreach (VUser user in _usersList)
+            //        {
+            //            user.Break = true;
+            //        }
+            //                    foreach (VUser user in _usersList)
+            //System.Threading.Tasks.Parallel.ForEach(_usersList, user =>
+            //{
+            //    try
+            //    {
+            //        user.Stop();
+            //        _completedUserCount++;
 
-                        }
-                        catch (Exception ex)
-                        {
-                            ExceptionHandler.WritetoEventLog(ex.StackTrace + Environment.NewLine + ex.Message);
-                        }
-                        finally
-                        {
-                            StatusSummary.TotalVUserCompleted++;
-                        }
-                    }
-                    _usersList.Clear();
-                    _threadRun.Reset();
-                    IsRunCompleted = true;
-                }
-            }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        ExceptionHandler.WritetoEventLog(ex.StackTrace + Environment.NewLine + ex.Message);
+            //    }
+            //    finally
+            //    {
+            //        StatusSummary.TotalVUserCompleted++;
+            //    }
+            //});
+            //_usersList.Clear();
+
+            //IsRunCompleted = true;
+        //}
+        //    }
         }
 
         #endregion
@@ -363,8 +389,8 @@ namespace AppedoLT.BusinessLogic
             try
             {
                 _durationTimer.Reset();
-                elapsedTime.Reset();
-                elapsedTime.Start();
+//                elapsedTime.Reset();
+//                elapsedTime.Start();
                 DateTime stTime = DateTime.Now;
                 _scriptStartTime = stTime.Ticks / 10000000;
 
@@ -427,21 +453,26 @@ namespace AppedoLT.BusinessLogic
                     }
                 }
 
+
                 foreach (VUser vuser in _usersList)
                 {
-                    logger.Debug("Starting a new virtual user");
+                    if (logger.IsDebugEnabled)
+                        logger.Debug("Starting a new virtual user");
                     vuser.Start(_scriptStartTime);
                     StatusSummary.TotalVUserCreated++;
                 }
+
                 if (int.Parse(_setting.StartUser) < int.Parse(_setting.MaxUser))
                 {
                     _tmrVUCreator.Enabled = true;
                     _tmrVUCreator.Start();
                 }
+
                 _durationTimer.Start();
                 _tmrRun.Start();
                 _threadRun.Set();
                 _threadRun.WaitOne();
+                _constant._runStatus = "running";
             }
             catch (Exception ex)
             {
@@ -457,58 +488,61 @@ namespace AppedoLT.BusinessLogic
                 if (_setting.Type == "1")
                 {
                     _completedUserCount = _usersList.FindAll(f => f.WorkCompleted == true).Count;
-                    StatusSummary.TotalVUserCompleted = _completedUserCount;
-                    if ((_endUserid - (_startUserid - 1)) == _completedUserCount)
+                    if ((_endUserid - (_startUserid - 1)) == _completedUserCount || _constant._isStopped)
                     {
-                        lock (_userCompletedLock)
+                        StatusSummary.TotalVUserCompleted = _completedUserCount;
+                        if (_endUserid == _completedUserCount)
                         {
-                            _tmrRun.Stop();
-                            ClearUsers();
-                            elapsedTime.Stop();
-                            _threadRun.Reset();
                             IsRunCompleted = true;
-                            StatusSummary.TotalVUserCompleted = _completedUserCount;
+                            _threadRun.Reset();
+                            _tmrRun.Stop();
+                            _constant._isStopped = true;
+                            _usersList.Clear();
                         }
                     }
                 }
                 else if (_setting.Type == "2")
                 {
-                    if (_durationTimer.ElapsedMilliseconds >= _setting.GetVUDutaionIntervel())
+                    if (_durationTimer.ElapsedMilliseconds >= _setting.GetVUDutaionIntervel() || _constant._isStopped)
                     {
                         try
                         {
                             _tmrVUCreator.Stop();
-                            lock (_userCompletedLock)
+                            _completedUserCount = _usersList.Select(vuser => vuser.WorkCompleted = true).Count();
+                            StatusSummary.TotalVUserCompleted = _completedUserCount;
+                            if (_endUserid == _completedUserCount)
                             {
-                                //foreach (VUser thread in _usersList)
-                                //{
-                                //    thread.Break = true;
-                                //}
-                                System.Threading.Tasks.Parallel.ForEach(_usersList, thread =>
-                                {
-                                        //                                foreach (VUser thread in _usersList)
-                                    try
-                                    {
-                                        while (!thread.WorkCompleted)
-                                        {
-                                            Thread.Sleep(100);
-                                        }
-                                        thread.Stop();
-                                        
-                                        _completedUserCount++;
-                                        StatusSummary.TotalVUserCompleted++;
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        ExceptionHandler.WritetoEventLog(ex.StackTrace + Environment.NewLine + ex.Message);
-                                    }
-                                });
-                                elapsedTime.Stop();
-                                _tmrRun.Stop();
                                 _durationTimer.Stop();
-                                ClearUsers();
                                 _threadRun.Reset();
+                                _tmrRun.Stop();
+                                _usersList.Clear();
                             }
+                            //lock (_userCompletedLock)
+                            //{
+                            //    System.Threading.Tasks.Parallel.ForEach(_usersList, thread =>
+                            //    {
+                            //        try
+                            //        {
+                            //            while (!thread.WorkCompleted)
+                            //            {
+                            //                Thread.Sleep(1000);
+                            //            }
+                            //            thread.Stop();
+
+                            //            _completedUserCount++;
+                            //            StatusSummary.TotalVUserCompleted++;
+                            //        }
+                            //        catch (Exception ex)
+                            //        {
+                            //            ExceptionHandler.WritetoEventLog(ex.StackTrace + Environment.NewLine + ex.Message);
+                            //        }
+                            //    });
+                            //    elapsedTime.Stop();
+                            //    _tmrRun.Stop();
+                            //    _constant._durationTimer.Stop();
+                            //    ClearUsers();
+                            //    _threadRun.Reset();
+                            //}
                         }
                         catch (Exception ex)
                         {
@@ -520,7 +554,6 @@ namespace AppedoLT.BusinessLogic
                         }
                     }
                 }
-                
             }
             catch (Exception ex)
             {
@@ -535,7 +568,7 @@ namespace AppedoLT.BusinessLogic
             {
                 lock (_userCreationLock)
                 {
-                    if (_isStop == false)
+                    if (_constant._isStopped == false)
                     {
                         if (_setting.Type == "2")
                         {
@@ -547,8 +580,8 @@ namespace AppedoLT.BusinessLogic
 
                         for (int index = 1; index <= int.Parse(_setting.IncrementUser); index++)
                         {
-                            if (_usersList.Count >= int.Parse(_setting.MaxUser) || _isStop == true) break;
-                            _createdUserCount++;
+                            if (_usersList.Count >= int.Parse(_setting.MaxUser) || _constant._isStopped == true) break;
+                                _createdUserCount++;
                             if (_createdUserCount >= _startUserid && _createdUserCount <= _endUserid)
                             {
                                 VUCreatorUsers.Add(GetVUser(_createdUserCount));
@@ -562,12 +595,6 @@ namespace AppedoLT.BusinessLogic
 
                         foreach (VUser user in VUCreatorUsers)
                         {
-                            //validation moved to vsuer.cs to take care of loging response of request that fails assertion or in response -- Sriraman 01-Feb-2018
-                            //if (excludeLogList.Contains(_usersList.Count))
-                            //{
-                            //    user.OnResponse -= OnResponse;
-                            //}
-
                             user.Start(_scriptStartTime);
                             StatusSummary.TotalVUserCreated++;
                             _usersList.Add(user);
@@ -600,10 +627,10 @@ namespace AppedoLT.BusinessLogic
             if(OnLockError != null) user.OnLockError += OnLockError;
             if(OnLockLog != null) user.OnLockLog += OnLockLog;
             if(OnLockTransactions != null) user.OnLockTransactions += OnLockTransactions;
-            if(OnLockUserDetail != null) user.OnLockUserDetail += OnLockUserDetail;
-            if (OnIterationStarted != null) user.OnIterationStart += OnIterationStarted;
-            if (OnVUserRunCompleted != null) user.OnVUserRunCompleted += OnVUserRunCompleted;
-            if (OnVUserCreated != null) user.OnVUserCreated += OnVUserCreated;
+//            if(OnLockUserDetail != null) user.OnLockUserDetail += OnLockUserDetail;
+//            if (OnIterationStarted != null) user.OnIterationStart += OnIterationStarted;
+//           if (OnVUserRunCompleted != null) user.OnVUserRunCompleted += OnVUserRunCompleted;
+//            if (OnVUserCreated != null) user.OnVUserCreated += OnVUserCreated;
             if (OnVariableCreated != null) user.OnVariableCreated += OnVariableCreated;
             if (OnResponse != null) user.OnResponse += OnResponse;
                         

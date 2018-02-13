@@ -20,7 +20,6 @@ using System.Windows.Forms;
 using System.Messaging;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Configuration;
-
 namespace AppedoLT
 {
     public partial class Design : Telerik.WinControls.UI.RadForm
@@ -117,7 +116,7 @@ namespace AppedoLT
                 ListView.CheckForIllegalCrossThreadCalls = false;
                 tabiVUscript.Select();
                 LoadScenarioTree();
-                LoadReportName(string.Empty);
+//                LoadReportName(string.Empty);
                 lblUserCompleted.Text = "0";
                 lblUserCreated.Text = "0";
                 String strHostName = Dns.GetHostName();
@@ -138,7 +137,7 @@ namespace AppedoLT
                 }
 
                 DataRecieve(_localIpAddress);
-                LogDataWatcher();
+//                LogDataWatcher();
             }
             catch (Exception ex)
             {
@@ -254,13 +253,13 @@ namespace AppedoLT
             }
         }
 
-        public void LoadReportName(string repoerName)
+        public void LoadReportName(string reportName)
         {
             try
             {
                 System.Data.DataTable dt = new System.Data.DataTable();
                 Result _resultLog = Result.GetInstance();
-                dt = _resultLog.GetReportNameList(repoerName);
+                dt = _resultLog.GetReportNameList(reportName);
                 ddlReports.DataSource = dt.Copy();
                 ddlReports.DisplayMember = "Report Name";
                 if (dt.Rows.Count > 0) ddlReports.SelectedIndex = 0;
@@ -691,50 +690,50 @@ namespace AppedoLT
             }
         }
 
-        private void UpdateReportStatus()
-        {
-            new Thread(() =>
-            {
-                try
-                {
-                    lblStatus.Text = "Report Generating";
-                    double totalPer = ReportMaster.Status.Count * 100;
-                    double competedPer = 0;
-                    double temp = 0;
-                    while (totalPer > competedPer)
-                    {
-                        competedPer = 0;
-                        foreach (string key in ReportMaster.Status.Keys)
-                        {
-                            competedPer += ReportMaster.Status[key].Percentage;
-                        }
-                        try
-                        {
-                            lblStatus.Text = string.Format("Report Generating. {0}% Completed.", Convert.ToInt32((competedPer / totalPer) * 100));
-                        }
-                        catch (Exception ex)
-                        {
-                            ExceptionHandler.WritetoEventLog(ex.StackTrace + Environment.NewLine + ex.Message);
-                        }
+        //private void UpdateReportStatus()
+        //{
+        //    ThreadPool.QueueUserWorkItem(new WaitCallback(updateReportStatusThread));
+        //    void updateReportStatusThread(object callback)
+        //    {
+        //        try
+        //        {
+        //            lblStatus.Text = "Generating Report ....";
+        //            double totalPer = ReportMaster.Status.Count * 100;
+        //            double competedPer = 0;
+        //            double temp = 0;
+        //            while (totalPer > competedPer)
+        //            {
+        //                competedPer = 0;
+        //                foreach (string key in ReportMaster.Status.Keys)
+        //                {
+        //                    competedPer += ReportMaster.Status[key].Percentage;
+        //                }
+        //                try
+        //                {
+        //                    lblStatus.Text = string.Format("Report Generation Status. {0}% Completed.", Convert.ToInt32((competedPer / totalPer) * 100));
+        //                }
+        //                catch (Exception ex)
+        //                {
+        //                    ExceptionHandler.WritetoEventLog(ex.StackTrace + Environment.NewLine + ex.Message);
+        //                }
 
-                        if (ReportMaster.IsReportGenerationCompleted)
-                        {
-                            break;
-                        }
+        //                if (ReportMaster.IsReportGenerationCompleted)
+        //                {
+        //                    break;
+        //                }
 
-                        Thread.Sleep(100);
-                    }
-                    btnRun.Visible = true;
-                    btnClear.Visible = true;
-                    lblStatus.Text = "Completed";
-                }
-                catch (Exception ex)
-                {
-                    ExceptionHandler.WritetoEventLog(ex.StackTrace + Environment.NewLine + ex.Message);
-                }
-
-            }).Start();
-        }
+        //                Thread.Sleep(100);
+        //            }
+        //            btnRun.Visible = true;
+        //            btnClear.Visible = true;
+        //            lblStatus.Text = "Reporting Completed";
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            ExceptionHandler.WritetoEventLog(ex.StackTrace + Environment.NewLine + ex.Message);
+        //        }
+        //    }
+        //}
 
         #region events
 
@@ -761,7 +760,7 @@ namespace AppedoLT
         }
 
 
-   private static  void DeleteXmlNode(string path, string tagname, string searchconditionAttributename, string searchconditionAttributevalue)
+        private static  void DeleteXmlNode(string path, string tagname, string searchconditionAttributename, string searchconditionAttributevalue)
     {
         XmlDocument doc =  new XmlDocument();
          doc.Load(path); 
@@ -786,11 +785,16 @@ namespace AppedoLT
 
         private void btnRun_Click(object sender, EventArgs e)
         {
+            if (tvScenarios.SelectedNode == null)
+            {
+                MessageBox.Show("Please select a scenario to Run");
+                return;
+            }
+            _constants._isStopped = false;
             // Allan- to clear the report show if it is previously opened for other reports 
             this.radReportData.DataSource = null;
-
+            bool runTimerStarter = false;
             AppedoLT.Core.Constants.GetInstance().btnExecutionType = "Run";
-            
             RequestCountHandler._ReqCount = 0;
             if (tvScenarios.SelectedNode != null && tvScenarios.SelectedNode.Level != 0)
             {
@@ -799,128 +803,163 @@ namespace AppedoLT
                     tvScenarios.SelectedNode.Parent.Selected = true;
                 }
             }
-
             if (tvScenarios.SelectedNode != null && ValidateLicence((XmlNode)tvScenarios.SelectedNode.Tag) == true)
             {
                 try
                 {
                     MessageBox.Show("Please save any changes done, before validating or running scripts.");
                     _scriptExecutorList.Clear();
-                    tmrExecution.Stop();
                     // Formatted date for auto report name - 28Sep2017
                     string reportNme = tvScenarios.SelectedNode.Text + DateTime.Now.ToString("_ddMMyyyy_HHmmss");
                     frmRun objFrmRun = new frmRun(reportNme);
-
+                    //to update the status to form using this _runstatus variable.
                     if (objFrmRun.ShowDialog() == DialogResult.OK)
                     {
+                        _constants._runStatus = "prepare";
                         lsvErrors.Items.Clear();
                         lblErrorCount.Text = "0";
                         lblHitCount.Text = "0";
+                        lblUserCreated.Text = "0";
+                        lblUserCompleted.Text = "0";
+                        lblElapsedTime.Text = "00:00:00";
                         _hitCount = 0;
                         _repositoryXml.Save();
                         executionReport.ReportName = objFrmRun.strReportName;
                         executionReport.ScenarioName = tvScenarios.SelectedNode.Text;
                         executionReport.ExecutionStatus = Status.Running;
-
+                        //tmrExecution is used for showing status in form every one sec, interval is set at 1000 ms. 
+                        tmrExecution.Start();
                         Request.IPSpoofingEnabled = Convert.ToBoolean(((XmlNode)tvScenarios.SelectedNode.Tag).Attributes["enableipspoofing"].Value);
-                        lblStatus.Text = "Running";
                         this.LoadReportName(executionReport.ReportName);
-                        userControlCharts1.LoadReportName(executionReport.ReportName);
+                        //userControlCharts1.LoadReportName(executionReport.ReportName);
 
-                        lblUserCompleted.Text = "0";
                         // listView1.Items.Clear();
                         XmlNode run = _repositoryXml.Doc.CreateElement("run");
                         run.Attributes.Append(_repositoryXml.GetAttribute("reportname", executionReport.ReportName));
 
                         if (objUCLoadGen.IsLoadGeneratorSelected() == false)
                         {
+                            //This will start response and variable data collection as separate thread and continue to be active until reporting completed.
+                            LogDataWatcher();
                             #region Without Loadgen
                             XmlDocument scenario = GetScenarioForRun(((XmlNode)tvScenarios.SelectedNode.Tag).Attributes["id"].Value, executionReport.ReportName, 1, 1, Convert.ToBoolean(((XmlNode)tvScenarios.SelectedNode.Tag).Attributes["enableipspoofing"].Value));
-                            
-                            string strSelectedUserAgent = ((KeyValuePair<string, string>)comboBrowserVersion.SelectedItem).Value.Trim();
-                            
-                            if (strSelectedUserAgent != null && strSelectedUserAgent != "Recorded Agent")
+                            runTimerStarter = scenario.SelectNodes("//script").Count > 0 ? true : false;
+                            if (runTimerStarter)
                             {
-                                string strScenario = scenario.InnerXml.ToString();
-                                string pattern = "<header name=\"User-Agent\" value=\"(.*?)\"";
-
-                                Match m = Regex.Match(strScenario, pattern);
-                                while (m.Success)
+                                //Selecting all nodes that has isEnable false and removing the same from the vuscript. This is to avoid if condition for each request at httprequest.cs
+                                string xpath = @"//*[@IsEnable='False']";
+                                XmlNodeList xnList = scenario.SelectNodes(xpath);
+                                //.SelectNodes("/scenario/script/setting/vuscript/container/container/container/container/page/request[@IsEnable='True']");
+                                foreach (XmlNode xn in xnList)
                                 {
-                                    Console.WriteLine("'{0}' found at position {1}", m.Value, m.Index);
-                                    Group g = m.Groups[1];
-                                    strScenario = strScenario.Replace(g.Value, strSelectedUserAgent);
-                                    m = m.NextMatch();
-                                }
-                                scenario = new XmlDocument();
-                                scenario.LoadXml(strScenario);
-                                //XmlDocument aa = new XmlDocument();
-                                //aa.LoadXml(strScenario);
-                                //scenario = aa;
-                            }
-                            
-                            run.AppendChild(GetRuntimeScriptDetail(scenario));
-                            VariableManager.dataCenter = new VariableManager();
-                            foreach (XmlNode script in scenario.SelectNodes("//script"))
-                            {
-                                string scriptid = script.Attributes["id"].Value;
-                                XmlNode setting = script.SelectNodes("//script[@id='" + scriptid + "']//setting")[0];
-                                // Set global settings - To avoid generation of report when createduser and completeduser count matches in Loadgen Status Check - 25Sep2017
-                                _setting = setting;
-                                XmlNode vuscript = script.SelectNodes("//script[@id='" + scriptid + "']//vuscript")[0];
-                                ScriptExecutor scriptRunnerSce = new ScriptExecutor(setting, vuscript, executionReport.ReportName);
-
-                                // Write Settings
-                                try
-                                {
-                                    ReportMaster mas = new ReportMaster(executionReport.ReportName);
-                                    mas.Executequery(executionReport.ReportName, _constants.GetSettingsQuery(executionReport.ReportName, scriptid, setting));
-                                }
-                                catch (Exception excp)
-                                { }
-
-                                _scriptExecutorList.Add(scriptRunnerSce);
-                            }
-
-                            #region Run detail
-
-                            run.Attributes.Append(_repositoryXml.GetAttribute("starttime", DateTime.Now.ToString()));
-                            run.Attributes.Append(_repositoryXml.GetAttribute("loadgenused", false.ToString()));
-                            XmlNode runs = _repositoryXml.Doc.SelectSingleNode("//runs");
-                            if (runs != null)
-                            {
-                                runs.AppendChild(run);
-                                _repositoryXml.Save();
-                            }
-                            #endregion
-
-                            foreach (ScriptExecutor scr in _scriptExecutorList)
-                            {
-                                scr.OnLockReportData += scr_OnLockReportData;
-                                scr.OnLockError += scr_OnLockError;
-                                scr.OnLockLog += scr_OnLockLog;
-                                scr.OnLockTransactions += scr_OnLockTransactions;
-                                scr.OnLockUserDetail += scr_OnLockUserDetail;
-                                scr.OnIterationStarted += scr_OnIterationCompleted;
-                                scr.OnVUserRunCompleted += scr_OnVUserRunCompleted;
-                                scr.OnVUserCreated += scr_OnVUserCreated;
-                                if (_logVariableData)
-                                {
-                                    scr.OnVariableCreated += scr_OnVariableCreated;
+                                    xn.ParentNode.RemoveChild(xn);
                                 }
 
-                                if (_logResponseData)
+                                string strSelectedUserAgent = ((KeyValuePair<string, string>)comboBrowserVersion.SelectedItem).Value.Trim();
+
+                                if (strSelectedUserAgent != null && strSelectedUserAgent != "Recorded Agent")
                                 {
-                                    // Subscribe only if settings value is set to TRUE
-                                    scr.OnResponse += scr_OnResponse;
+                                    string strScenario = scenario.InnerXml.ToString();
+                                    string pattern = "<header name=\"User-Agent\" value=\"(.*?)\"";
+
+                                    Match m = Regex.Match(strScenario, pattern);
+                                    while (m.Success)
+                                    {
+                                        Group g = m.Groups[1];
+                                        strScenario = strScenario.Replace(g.Value, strSelectedUserAgent);
+                                        m = m.NextMatch();
+                                    }
                                 }
-                                scr.Run();
+
+                                run.AppendChild(GetRuntimeScriptDetail(scenario));
+                                ////loading variable data to the variablemanager.datacenter only if the script's in the scenario has variable defenition under params tag
+                                ////Future need to change to load files that are used in the script, currently loading all the variable and its content. --08-Feb-2018
+                                //xpath = @"//*[contains(@value,'$$') or contains(@delay, '$$')]";
+                                //xnList = scenario.SelectNodes(xpath);
+                                //if (xnList.Count > 0)
+                                VariableManager.dataCenter = new VariableManager();
+                                foreach (XmlNode script in scenario.SelectNodes("//script"))
+                                {
+                                    string scriptid = script.Attributes["id"].Value;
+                                    XmlNode setting = script.SelectNodes("//script[@id='" + scriptid + "']//setting")[0];
+                                    // Set global settings - To avoid generation of report when createduser and completeduser count matches in Loadgen Status Check - 25Sep2017
+                                    _setting = setting;
+                                    //if browser cache is set removing request that are js, css, images, font files
+                                    if (_setting.Attributes["browsercache"].Value.ToString() == "true")
+                                    {
+                                        //removes request that are images or css based on the header type accept.
+                                        xpath = @"//*/header[(@name='Accept' or @name='accept') and (contains(@value,'css') or contains(@value, 'image'))]";
+                                        xnList = scenario.SelectNodes(xpath);
+                                        foreach (XmlNode xn in xnList)
+                                        {
+                                            XmlNode pn = xn.ParentNode.ParentNode;
+                                            pn.ParentNode.RemoveChild(pn);
+                                        }
+                                        //removes request that contains.js or .woff(font file) when browser cache is true
+                                        xpath = @"//*/request[contains(@Path,'.js') or contains(@Path, '.woff') or contains(@Path, '.ico')]";
+                                        xnList = scenario.SelectNodes(xpath);
+                                        foreach (XmlNode xn in xnList)
+                                        {
+                                            xn.ParentNode.RemoveChild(xn);
+                                        }
+                                    }
+                                    xpath = string.Empty;
+                                    xnList = null;
+
+                                    XmlNode vuscript = script.SelectNodes("//script[@id='" + scriptid + "']//vuscript")[0];
+                                    ScriptExecutor scriptRunnerSce = new ScriptExecutor(setting, vuscript, executionReport.ReportName);
+
+                                    // Write Settings
+                                    try
+                                    {
+                                        ReportMaster mas = new ReportMaster(executionReport.ReportName);
+                                        mas.Executequery(executionReport.ReportName, _constants.GetSettingsQuery(executionReport.ReportName, scriptid, setting));
+                                    }
+                                    catch
+                                    { }
+
+                                    _scriptExecutorList.Add(scriptRunnerSce);
+                                }
+
+                                #region Run detail
+
+                                run.Attributes.Append(_repositoryXml.GetAttribute("starttime", DateTime.Now.ToString()));
+                                run.Attributes.Append(_repositoryXml.GetAttribute("loadgenused", false.ToString()));
+                                XmlNode runs = _repositoryXml.Doc.SelectSingleNode("//runs");
+                                if (runs != null)
+                                {
+                                    runs.AppendChild(run);
+                                    _repositoryXml.Save();
+                                }
+                                #endregion
+                                //Assiging related events for each script.
+                                foreach (ScriptExecutor scr in _scriptExecutorList)
+                                {
+                                    scr.OnLockReportData += scr_OnLockReportData; //valid
+                                    scr.OnLockError += scr_OnLockError; //valid
+                                    scr.OnLockLog += scr_OnLockLog; //valid
+                                    scr.OnLockTransactions += scr_OnLockTransactions;                                                                                       // Subscribe only if settings value is set to TRUE
+                                    if (_logVariableData)
+                                    {
+                                        scr.OnVariableCreated += scr_OnVariableCreated;
+                                    }
+
+                                    if (_logResponseData)
+                                    {
+                                        scr.OnResponse += scr_OnResponse;
+                                    }
+
+                                    scr.Run();
+                                    runTime.Reset();
+                                    runTime.Start();
+                                }
                             }
-                            runTime.Reset();
-                            runTime.Start();
-                            tmrExecution.Start();
-                            #endregion
+                            else
+                            {
+                                MessageBox.Show("No script configured to run");
+                            }
                             _isUseLoadGen = false;
+                            #endregion
                         }
                         else
                         {
@@ -934,7 +973,7 @@ namespace AppedoLT
                                 try
                                 {
                                     Trasport controller = new Trasport(loadgen.Attributes["ipaddress"].Value, "8889");
-                                    controller.Send(new TrasportData("TEST", string.Empty, null));
+                                    controller.Send(new TrasportData("test", string.Empty, null));
                                     controller.Receive();
                                     controller.Close();
                                 }
@@ -957,80 +996,94 @@ namespace AppedoLT
                                 {
                                     loadGenId++;
                                     XmlDocument scenario = GetScenarioForRun(((XmlNode)tvScenarios.SelectedNode.Tag).Attributes["id"].Value, executionReport.ReportName, loadGens.Count, loadGenId, Convert.ToBoolean(((XmlNode)tvScenarios.SelectedNode.Tag).Attributes["enableipspoofing"].Value));
-                                    run.AppendChild(GetRuntimeScriptDetail(scenario));
-                                    run.Attributes.Append(_repositoryXml.GetAttribute("reportname", executionReport.ReportName));
-
-                                    //System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
-                                    try
+                                    runTimerStarter = scenario.SelectNodes("//script").Count > 0 ? true : false;
+                                    if (runTimerStarter)
                                     {
-                                        Trasport controller = new Trasport(loadgen.Attributes["ipaddress"].Value, "8889");
-                                        Dictionary<string, string> header = new Dictionary<string, string>();
-                                        header.Add("reportname", executionReport.ReportName);
-                                        header.Add("scenarioname", executionReport.ScenarioName);
-                                        header.Add("runid", executionReport.ReportName);
-                                        header.Add("appedoip", _localIpAddress.ToString());
-                                        header.Add("appedoport", "8886");
-                                        header.Add("appedofailedurl", "");
-                                        header.Add("totalloadgen", loadGens.Count.ToString());
-                                        header.Add("currentloadgenid", loadGenId.ToString());
-                                        header.Add("loadgenname", loadgen.Attributes["ipaddress"].Value);
-                                        header.Add("distribution", GetDistribution(loadGens.Count));
-                                        header.Add("loadgencounters", loadGens.Count.ToString());
-
-                                        controller.Send(new TrasportData("savescenario", scenario.InnerXml, header));
-                                        controller.Receive();
-                                        controller = new Trasport(loadgen.Attributes["ipaddress"].Value, "8889");
-                                        controller.Send(new TrasportData("run", scenario.InnerXml, header));
-                                        controller.Receive();
-                                        // Writing settings data in Database when using LoadGen - 21Sep2017
-                                        foreach (XmlNode script in scenario.SelectNodes("//script"))
+                                        //To remove disabled request from the loaded xml. added on 05-Feb-2018 by Sriraman
+                                        string xpath = @"//*[@IsEnable='False']";
+                                        XmlNodeList xnList = scenario.SelectNodes(xpath);
+                                        foreach (XmlNode xn in xnList)
                                         {
-                                            string scriptid = script.Attributes["id"].Value;
-                                            XmlNode setting = script.SelectNodes("//script[@id='" + scriptid + "']//setting")[0];
-                                            // Set global settings - To avoid generation of report when createduser and completeduser count matches in Loadgen Status Check - 25Sep2017
-                                            _setting = setting;
-                                            // System.Diagnostics.Debug.WriteLine("Setting.maxuser: " + _setting.Attributes["maxuser"].Value);
-                                            XmlNode vuscript = script.SelectNodes("//script[@id='" + scriptid + "']//vuscript")[0];
-                                            
-                                            // Write Settings
-                                            try
+                                            xn.ParentNode.RemoveChild(xn);
+                                        }
+                                        //old code
+                                        run.AppendChild(GetRuntimeScriptDetail(scenario));
+                                        run.Attributes.Append(_repositoryXml.GetAttribute("reportname", executionReport.ReportName));
+
+                                        //System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
+                                        try
+                                        {
+                                            Dictionary<string, string> header = new Dictionary<string, string>();
+                                            header.Add("reportname", executionReport.ReportName);
+                                            header.Add("scenarioname", executionReport.ScenarioName);
+                                            header.Add("runid", executionReport.ReportName);
+                                            header.Add("appedoip", _localIpAddress.ToString());
+                                            header.Add("appedoport", "8886");
+                                            header.Add("appedofailedurl", "");
+                                            header.Add("totalloadgen", loadGens.Count.ToString());
+                                            header.Add("currentloadgenid", loadGenId.ToString());
+                                            header.Add("loadgenname", loadgen.Attributes["ipaddress"].Value);
+                                            header.Add("distribution", GetDistribution(loadGens.Count));
+                                            header.Add("loadgencounters", loadGens.Count.ToString());
+
+                                            Trasport controller = new Trasport(loadgen.Attributes["ipaddress"].Value, "8889");
+                                            controller.Send(new TrasportData("savescenario", scenario.InnerXml, header));
+                                            controller.Receive();
+                                            controller = new Trasport(loadgen.Attributes["ipaddress"].Value, "8889");
+                                            controller.Send(new TrasportData("run", scenario.InnerXml, header));
+                                            controller.Receive();
+                                            // Writing settings data in Database when using LoadGen - 21Sep2017
+                                            foreach (XmlNode script in scenario.SelectNodes("//script"))
                                             {
-                                                ReportMaster mas = new ReportMaster(executionReport.ReportName);
-                                                mas.Executequery(executionReport.ReportName, _constants.GetSettingsQuery(executionReport.ReportName, scriptid, setting));
+                                                string scriptid = script.Attributes["id"].Value;
+                                                XmlNode setting = script.SelectNodes("//script[@id='" + scriptid + "']//setting")[0];
+                                                // Set global settings - To avoid generation of report when createduser and completeduser count matches in Loadgen Status Check - 25Sep2017
+                                                _setting = setting;
+
+                                                // System.Diagnostics.Debug.WriteLine("Setting.maxuser: " + _setting.Attributes["maxuser"].Value);
+                                                XmlNode vuscript = script.SelectNodes("//script[@id='" + scriptid + "']//vuscript")[0];
+
+                                                //Write Settings
+                                                try
+                                                {
+                                                    ReportMaster mas = new ReportMaster(executionReport.ReportName);
+                                                    mas.Executequery(executionReport.ReportName, _constants.GetSettingsQuery(executionReport.ReportName, scriptid, setting));
+                                                }
+                                                catch (Exception excp)
+                                                { }
+
                                             }
-                                            catch (Exception excp)
-                                            { }
+                                            // End 21Sep2017
+                                            _loadGeneratorips.Add(loadgen.Attributes["ipaddress"].Value);
 
+                                            #region Run detail
+                                            XmlNode loadGenDetail = loadgen.Clone();
+                                            loadGenDetail.Attributes.Append(_repositoryXml.GetAttribute("resultfilereceived", false.ToString()));
+                                            run.AppendChild(loadGenDetail);
+                                            run.Attributes.Append(_repositoryXml.GetAttribute("starttime", DateTime.Now.ToString()));
+                                            run.Attributes.Append(_repositoryXml.GetAttribute("loadgenused", true.ToString()));
+                                            XmlNode runs = _repositoryXml.Doc.SelectSingleNode("//runs");
+                                            if (runs != null)
+                                            {
+                                                runs.AppendChild(run);
+                                                _repositoryXml.Save();
+                                            }
+
+                                            #endregion
                                         }
-                                        // End 21Sep2017
-                                        _loadGeneratorips.Add(loadgen.Attributes["ipaddress"].Value);
-
-                                        #region Run detail
-                                        XmlNode loadGenDetail = loadgen.Clone();
-                                        loadGenDetail.Attributes.Append(_repositoryXml.GetAttribute("resultfilereceived", false.ToString()));
-                                        run.AppendChild(loadGenDetail);
-                                        run.Attributes.Append(_repositoryXml.GetAttribute("starttime", DateTime.Now.ToString()));
-                                        run.Attributes.Append(_repositoryXml.GetAttribute("loadgenused", true.ToString()));
-                                        XmlNode runs = _repositoryXml.Doc.SelectSingleNode("//runs");
-                                        if (runs != null)
+                                        catch (Exception ex)
                                         {
-                                            runs.AppendChild(run);
-                                            _repositoryXml.Save();
+                                            ExceptionHandler.WritetoEventLog(ex.Message + " " + ex.StackTrace);
                                         }
-
-                                        #endregion
+                                        runTime.Reset();
+                                        runTime.Start();
+                                        _isUseLoadGen = true;
                                     }
-                                    catch (Exception)
-                                    {
-
-                                    }
-                                    runTime.Reset();
-                                    runTime.Start();
-                                    tmrExecution.Start();
+                                    else
+                                        MessageBox.Show("No script mapped");
                                 }
                             }
                             #endregion
-                            _isUseLoadGen = true;
                         }
                     }
                 }
@@ -1039,7 +1092,6 @@ namespace AppedoLT
                     ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
                 }
             }
-
         }
 
         void scr_OnResponse(ResponseDetail data)
@@ -1058,44 +1110,44 @@ namespace AppedoLT
             }
         }
 
-        void scr_OnVUserCreated(string scriptname, int userid)
-        {
-            //lock (listView1)
-            //{
-            //    ListViewItem newItem = new ListViewItem(scriptname + "_" + userid.ToString());
-            //    newItem.SubItems.AddRange(new string[] { "0".ToString(), "Running" });
-            //    listView1.Items.Add(newItem);
-            //}
-        }
+        //void scr_OnVUserCreated(string scriptname, int userid)
+        //{
+        //    //lock (listView1)
+        //    //{
+        //    //    ListViewItem newItem = new ListViewItem(scriptname + "_" + userid.ToString());
+        //    //    newItem.SubItems.AddRange(new string[] { "0".ToString(), "Running" });
+        //    //    listView1.Items.Add(newItem);
+        //    //}
+        //}
 
-        void scr_OnVUserRunCompleted(string scriptname, int userid)
-        {
-            //lock (listView1)
-            //{
-            //    ListViewItem newItem = listView1.FindItemWithText(scriptname + "_" + userid.ToString());
-            //    if (newItem != null)
-            //    {
-            //        newItem.SubItems[2].Text = "Completed";
-            //    }
-            //}
-        }
+        //void scr_OnVUserRunCompleted(string scriptname, int userid)
+        //{
+        //    //lock (listView1)
+        //    //{
+        //    //    ListViewItem newItem = listView1.FindItemWithText(scriptname + "_" + userid.ToString());
+        //    //    if (newItem != null)
+        //    //    {
+        //    //        newItem.SubItems[2].Text = "Completed";
+        //    //    }
+        //    //}
+        //}
 
-        void scr_OnIterationCompleted(string scriptname, int userid, int iterationid)
-        {
-            //lock (listView1)
-            //{
-            //    ListViewItem newItem = listView1.FindItemWithText(scriptname + "_" + userid.ToString());
-            //    if (newItem != null)
-            //    {
-            //        newItem.SubItems[1].Text = iterationid.ToString();
-            //    }
-            //}
-        }
+        //void scr_OnIterationCompleted(string scriptname, int userid, int iterationid)
+        //{
+        //    //lock (listView1)
+        //    //{
+        //    //    ListViewItem newItem = listView1.FindItemWithText(scriptname + "_" + userid.ToString());
+        //    //    if (newItem != null)
+        //    //    {
+        //    //        newItem.SubItems[1].Text = iterationid.ToString();
+        //    //    }
+        //    //}
+        //}
 
-        void scr_OnLockUserDetail(UserDetail data)
-        {
+        //void scr_OnLockUserDetail(UserDetail data)
+        //{
 
-        }
+        //}
 
         void scr_OnLockTransactions(TransactionRunTimeDetail data)
         {
@@ -1154,31 +1206,22 @@ namespace AppedoLT
         {
             try
             {
-                runTime.Stop();
-                tmrExecution.Stop();
-                if (_isUseLoadGen == false)
+                _constants._isStopped = true;
+                //                if (_isUseLoadGen == false)
+                //                {
+                ////                    foreach (ScriptExecutor thread in _scriptExecutorList)
+                //                    //System.Threading.Tasks.Parallel.ForEach(_scriptExecutorList, thread =>
+                //                    //{
+                //                    //    if (thread != null)
+                //                    //    {
+                //                    //        thread.Stop();
+                //                    //    }
+                //                    //});
+                //                }
+                //                else
+                if (_isUseLoadGen)
                 {
-                    foreach (ScriptExecutor thread in _scriptExecutorList)
-                    {
-                        if (thread != null)
-                        {
-                            thread.Stop();
-                        }
-                    }
-                    executionReport.ExecutionStatus = Status.Completed;
-                    WaitUntillExecutionComplete();
-                    CreateSummaryReport(executionReport.ReportName);
-                    ReportMaster reportMaster = new ReportMaster(executionReport.ReportName);
-                    new Thread(() =>
-                    {
-                        reportMaster.GenerateReports();
-                    }).Start();
-                    UpdateReportStatus();
-                    userControlReports2.LoadReportName(executionReport.ReportName);
-                }
-                else
-                {
-                    foreach (string objClient in _loadGeneratorips)
+                    System.Threading.Tasks.Parallel.ForEach(_loadGeneratorips, objClient =>
                     {
                         try
                         {
@@ -1186,39 +1229,11 @@ namespace AppedoLT
                             controller.Send(new TrasportData("stop", string.Empty, null));
                             controller.Receive();
                         }
-                        catch (Exception ex)
+                        catch
                         {
                         }
 
-                    }
-
-                    //executionReport.ExecutionStatus = Status.Completed;
-                    //runTime.Stop();
-                    //tmrExecution.Stop();
-                    //WaitUntillExecutionComplete();
-                    //if (executionReport.ReportName != null)
-                    //{
-                    //    CreateSummaryReport(executionReport.ReportName);
-                    //    ReportMaster reportMaster = new ReportMaster(executionReport.ReportName);
-                    //    reportMaster.GenerateReports();
-                    //    UpdateReportStatus();
-                    //}
-
-                    executionReport.ExecutionStatus = Status.Completed;
-                    runTime.Stop();
-                    tmrExecution.Stop();
-                    Thread.Sleep(10000);
-                    if (executionReport.ReportName != null)
-                    {
-                        CreateSummaryReport(executionReport.ReportName);
-                        ReportMaster reportMaster = new ReportMaster(executionReport.ReportName);
-                        new Thread(() =>
-                        {
-                            reportMaster.GenerateReports();
-                        }).Start();
-                        UpdateReportStatus();
-                        userControlReports2.LoadReportName(executionReport.ReportName);
-                    }
+                    });
                 }
             }
             catch (Exception ex)
@@ -1297,7 +1312,7 @@ namespace AppedoLT
                 Control temp = pnlScriptSettings.Controls["objUCLoadGen"];
                 pnlScriptSettings.Controls.Clear();
                 pnlScriptSettings.Controls.Add(temp);
-
+                
                 if (tvScenarios.SelectedNode.Level == 0)
                 {
                     objUCLoadGen.Visible = true;
@@ -1352,16 +1367,21 @@ namespace AppedoLT
         {
             try
             {
-                btnRun.Visible = false;
-                btnClear.Visible = false;
+//                Debug.WriteLine("Run status " + _constants._runStatus);
+                if (_constants._runStatus == "running" && btnRun.Visible)
+                {
+                    btnRun.Visible = false;
+                    btnClear.Visible = false;
+                }
                 int isCompleted = 0;
-
+                bool startReport = false;
                 if (_isUseLoadGen == true)
                 {
-                    Regex log = new Regex("createduser: ([0-9]*)\r\ncompleteduser: ([0-9]*)\r\niscompleted: ([0-9]*)");
+                    //                    Regex log = new Regex("createduser: ([0-9]*)\r\ncompleteduser: ([0-9]*)\r\niscompleted: ([0-9]*)");
                     int loadGenCreatedUser = 0;
                     int loadGenCompetedUser = 0;
                     int tempIsCompleted = 0;
+                    loadGenUserDetail.Clear();
                     foreach (string objClient in _loadGeneratorips)
                     {
                         try
@@ -1370,35 +1390,38 @@ namespace AppedoLT
                             Trasport controller = new Trasport(objClient, "8889");
                             controller.Send(new TrasportData("scriptwisestatus", string.Empty, null));
                             TrasportData data = controller.Receive();
-
-                            string dataStr = data.DataStr;
-
-                            loadGenCreatedUser = Convert.ToInt32(data.Header["createduser"]);
-                            loadGenCompetedUser = Convert.ToInt32(data.Header["completeduser"]);
-                            tempIsCompleted = Convert.ToInt32(data.Header["iscompleted"]);
-                            #endregion
-
-                            #region Store info into list
-                            string address = ((System.Net.IPEndPoint)(controller.tcpClient.Client.RemoteEndPoint)).Address.ToString();
-                            if (loadGenUserDetail.ContainsKey(address) == false)
+                            if (data.DataStr != "norun")
                             {
-                                loadGenUserDetail.Add(address, loadGenCreatedUser + "," + loadGenCompetedUser + "," + tempIsCompleted);
+                                string dataStr = data.DataStr;
+
+                                loadGenCreatedUser = Convert.ToInt32(data.Header["createduser"]);
+                                loadGenCompetedUser = Convert.ToInt32(data.Header["completeduser"]);
+                                tempIsCompleted = Convert.ToInt32(data.Header["iscompleted"]);
+//                                Debug.WriteLine("loadGenCreatedUser " + loadGenCreatedUser + " loadGenCompetedUser " + loadGenCompetedUser + " tempIsCompleted " + tempIsCompleted);
+                                string address = ((System.Net.IPEndPoint)(controller.tcpClient.Client.RemoteEndPoint)).Address.ToString();
+                                if (loadGenUserDetail.ContainsKey(address) == false)
+                                {
+                                    loadGenUserDetail.Add(address, loadGenCreatedUser + "," + loadGenCompetedUser + "," + tempIsCompleted);
+                                }
+                                else
+                                {
+                                    loadGenUserDetail[address] = loadGenCreatedUser + "," + loadGenCompetedUser + "," + tempIsCompleted;
+                                }
+                                executionReport.CreatedUser = 0;
+                                executionReport.CompletedUser = 0;
+                                #endregion
+                                controller.Close();
+                                #endregion
                             }
-                            else
-                            {
-                                loadGenUserDetail[address] = loadGenCreatedUser + "," + loadGenCompetedUser + "," + tempIsCompleted;
-                            }
-                            executionReport.CreatedUser = 0;
-                            executionReport.CompletedUser = 0;
-                            #endregion
-                            //foreach (string keys in loadGenUserDetail.Keys)
+                            //else
                             //{
-                            //    executionReport.CreatedUser += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[0]);
-                            //    executionReport.CompletedUser += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[1]);
-                            //    isCompleted += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[2]);
+                            //    loadGenCreatedUser = 0;
+                            //    loadGenCompetedUser = 0;
+                            //    tempIsCompleted = 0;
+                            //    startReport = true;
+                            //    break;
                             //}
-
-                            controller.Close();
+                            #region Store info into list
                         }
                         // Separated convert to int exception from connection failure exception - 29Sep2017
                         catch (FormatException fe)
@@ -1418,164 +1441,143 @@ namespace AppedoLT
                         }
                     }
                     // Compute LoadGen stats from LoadgenDetail Dict - 28Sep2017
-                    try
+                    if (loadGenUserDetail.Count>0)
                     {
-
-                        executionReport.CreatedUser = 0;
-                        executionReport.CompletedUser = 0;
-                        #region Consolidate Createted and completed info
-                        foreach (string keys in loadGenUserDetail.Keys)
+                        try
                         {
-                            executionReport.CreatedUser += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[0]);
-                            executionReport.CompletedUser += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[1]);
-                            isCompleted += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[2]);
+                            executionReport.CreatedUser = 0;
+                            executionReport.CompletedUser = 0;
+                            #region Consolidate Createted and completed info
+                            foreach (string keys in loadGenUserDetail.Keys)
+                            {
+                                executionReport.CreatedUser += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[0]);
+                                executionReport.CompletedUser += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[1]);
+                                isCompleted += Convert.ToInt32(loadGenUserDetail[keys].Split(',')[2]);
+                            }
+                            #endregion
+                        }
+                        catch (FormatException ex)
+                        {
+                            ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
+                        }
+                    }
+                }
+                if (_constants._runStatus != "Report")
+                {
+                    if (_constants._isStopped && !lblStatus.Text.Contains("Report"))
+                        lblStatus.Text = "Stop command Received, stopping the run....";
+                    else if (_constants._runStatus == "prepare")
+                        lblStatus.Text = "Preparing for run, this may take few sec....";
+                    else if (_constants._runStatus == "running")
+                        lblStatus.Text = "Running";
+
+                    if (executionReport.CreatedUser > 0) lblUserCreated.Text = executionReport.CreatedUser.ToString();
+                    lblUserCompleted.Text = executionReport.CreatedUser > 0 ? executionReport.CompletedUser.ToString() : lblUserCompleted.Text;
+                    lblErrorCount.Text = executionReport.CreatedUser > 0 ? lsvErrors.Items.Count.ToString() : lblErrorCount.Text;
+//                    ExceptionHandler.WritetoEventLog("HitCount " + _hitCount);
+                    lblHitCount.Text = executionReport.CreatedUser > 0 ? _hitCount.ToString() : lblHitCount.Text;
+
+                    lblElapsedTime.Text = string.Format("{0}:{1}:{2}", runTime.Elapsed.Hours.ToString("00"), runTime.Elapsed.Minutes.ToString("00"), runTime.Elapsed.Seconds.ToString("00"));
+                    if (_isUseLoadGen)
+                    {
+                        #region loadgen
+                        if ((lblUserCreated.Text != "0" && lblUserCreated.Text == lblUserCompleted.Text && _loadGeneratorips.Count == isCompleted))
+                        {
+                            startReport = true;
                         }
 
                         #endregion
                     }
-                    catch (FormatException ex)
+                    else
                     {
-                        isCompleted += 1;
-                        ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
-                    }
-                }
-
-                if (executionReport.CreatedUser > 0) lblUserCreated.Text = executionReport.CreatedUser.ToString();
-                lblUserCompleted.Text = executionReport.CompletedUser.ToString();
-                lblErrorCount.Text = lsvErrors.Items.Count.ToString();
-                lblHitCount.Text = _hitCount.ToString();
-                if (runTime.IsRunning == true)
-                {
-                    lblElapsedTime.Text = string.Format("{0}:{1}:{2}", runTime.Elapsed.Hours.ToString("00"), runTime.Elapsed.Minutes.ToString("00"), runTime.Elapsed.Seconds.ToString("00"));
-                }
-                else
-                {
-                    lblElapsedTime.Text = "0";
-                }
-
-                // System.Diagnostics.Debug.WriteLine("lblcreated: " + lblUserCreated.Text + " completed: " + lblUserCompleted.Text + " iscomp: " + isCompleted + " loadgenip: " + _loadGeneratorips.Count);
-                if (_isUseLoadGen)
-                {
-                    #region loadgen
-                    // Check for maxuser vs createduser for report generation rather than isCompleted variable - 25Sep2017 - NW
-                    // iscompleted Count fixed - 28Sep2017
-                    if (lblUserCreated.Text != "0" && lblUserCreated.Text == lblUserCompleted.Text /*&&  lblUserCreated.Text == _setting.Attributes["maxuser"].Value */ && _loadGeneratorips.Count == isCompleted )
-                    {
-                        // Give sleep for loadgen count * 5 seconds for data collection - 26sep2017 - NW
-                        // lblStatus.Text = "Report Generation in process. Waiting for data collection to complete (Approx. " + _loadGeneratorips.Count * 5 + "s)";
-                        // Thread.Sleep(_loadGeneratorips.Count * 5000);
-                        lblElapsedTime.Text = string.Format("{0}:{1}:{2}", runTime.Elapsed.Hours.ToString("00"), runTime.Elapsed.Minutes.ToString("00"), runTime.Elapsed.Seconds.ToString("00"));
-                        executionReport.ExecutionStatus = Status.Completed;
-                        runTime.Stop();
-                        tmrExecution.Stop();
-//                        Thread.Sleep(10000);
-                        if (executionReport.ReportName != null)
+                        int tempCreatedUser = 0;
+                        int tempCompletedUser = 0;
+                        foreach (ScriptExecutor scripts in _scriptExecutorList)
                         {
-                            new Thread(() => { UpdateReportStatus(); }).Start();
-                            
-                            //CreateSummaryReport(executionReport.ReportName);
-                            //ReportMaster reportMaster = new ReportMaster(executionReport.ReportName);
-                            // Added Thread for Report Generation to prevent LTFreeze - 28Sep2017
-                            new Thread(() =>
+                            tempCreatedUser += scripts.StatusSummary.TotalVUserCreated;
+                            tempCompletedUser += scripts.StatusSummary.TotalVUserCompleted;
+                        }
+                        lblUserCreated.Text = tempCreatedUser.ToString();
+                        lblUserCompleted.Text = tempCompletedUser.ToString();
+                        lblHitCount.Text = Convert.ToString(RequestCountHandler._ReqCount);
+
+                        if (_scriptExecutorList.FindAll(f => f.IsRunCompleted).Count == _scriptExecutorList.Count && tempCreatedUser != 0 && tempCreatedUser == tempCompletedUser)
+                        {
+                            startReport = true;
+                        }
+                    }
+                    Debug.WriteLine("lblStatus " + lblStatus.Text);
+                    if (!lblStatus.Text.Contains("Report") && startReport)
+                    {
+                        lblStatus.Text = "Generating Report...";
+                        runTime.Stop();
+                        _constants._runStatus = "Report";
+                        new Thread(() =>
+                        {
+                            //tmrExecution.Stop();
+                            executionReport.ExecutionStatus = Status.Completed;
+                            WaitUntillExecutionComplete();
+                            if (executionReport.ReportName != null)
                             {
                                 CreateSummaryReport(executionReport.ReportName);
                                 ReportMaster reportMaster = new ReportMaster(executionReport.ReportName);
                                 reportMaster.GenerateReports();
-
-  
-                            }).Start();
-                           // UpdateReportStatus();
-
-                            while (!ReportMaster.IsReportGenerationCompleted)
-                            {
-                                Thread.Sleep(100);
                             }
-                            userControlReports2.LoadReportName(executionReport.ReportName);
-                           // userControlReports2.LoadReportName(executionReport.ReportName);
-                        }
-                        //ReceiveAllLoadGenDatafiles(executionReport.ReportName);
-                        //WaitUntillExecutionComplete();
-                        //if (executionReport.ReportName != null)
-                        //{
-                        //    CreateSummaryReport(executionReport.ReportName);
-                        //    ReportMaster reportMaster = new ReportMaster(executionReport.ReportName);
-                        //    reportMaster.GenerateReports();
-                        //    UpdateReportStatus();
-                        //}
+                        }).Start();
+                    }
+                }
+                if (lblStatus.Text.Contains("Report") && _constants._runStatus == "Report")
+                {
+                    lblStatus.Font = new System.Drawing.Font(label1.Font.Name, 11F);
+                    int indexof = lblStatus.Text.IndexOf(".");
+                    int statLen = lblStatus.Text.Length;
+                    string strDots = lblStatus.Text.Substring(indexof, statLen - indexof);
+                    Debug.WriteLine("strDots " + strDots + " " + statLen.ToString());
+                    int statCnt = ReportMaster.Status.Count < _scriptExecutorList.Count ? ReportMaster.Status.Count + 1 : _scriptExecutorList.Count;
+                    if (_isUseLoadGen)
+                        lblStatus.Text = string.Format("Report Generation Status: in Progress{2}", statCnt, _scriptExecutorList.Count, "..");
+                    else
+                        lblStatus.Text = string.Format("Report Generation Started: Script {0}/{1} in Progress{2}", statCnt, _scriptExecutorList.Count, "..");
+                    if (statLen >= 60)
+                    {
+                        strDots = "..";
                     }
                     else
                     {
+                        lblStatus.Text = lblStatus.Text + strDots + "...";
                     }
-                    #endregion
-                }
-                else
-                {
-                    // if (_scriptExecutorList.Count > 0 && _scriptExecutorList.FindAll(f => f.IsRunCompleted).Count == _scriptExecutorList.Count && executionReport.CreatedUser != 0 && executionReport.CreatedUser == executionReport.CompletedUser)
-                    int tempCreatedUser = 0;
-                    int tempCompletedUser = 0;
-                    foreach (ScriptExecutor scripts in _scriptExecutorList)
+                    if (lblStatus.ForeColor != System.Drawing.Color.DarkRed)
+                        lblStatus.ForeColor = System.Drawing.Color.DarkRed;
+                    else
+                        lblStatus.ForeColor = System.Drawing.Color.DarkCyan;
+                    if (ReportMaster.IsReportGenerationCompleted)
                     {
-                        tempCreatedUser += scripts.StatusSummary.TotalVUserCreated;
-                        tempCompletedUser += scripts.StatusSummary.TotalVUserCompleted;
-                    }
-
-                    if (_scriptExecutorList.FindAll(f => f.IsRunCompleted).Count == _scriptExecutorList.Count && tempCreatedUser != 0 && tempCreatedUser == tempCompletedUser)
-                    {
-//                        Thread.Sleep(10000);
-                        runTime.Stop();
                         tmrExecution.Stop();
-                        executionReport.ExecutionStatus = Status.Completed;
+                        _constants._runStatus = "reportingcompleted";
+                        _constants._isStopped = false;
+                        lblStatus.ForeColor = System.Drawing.Color.Black;
+                        lblStatus.Text = string.Format("Report Generation Completed.");
                         _scriptExecutorList.Clear();
-                        lblUserCreated.Text = tempCreatedUser.ToString();
-                        lblUserCompleted.Text = tempCompletedUser.ToString();
-                        //lblHitCount.Text = _hitCount.ToString();
-                        lblHitCount.Text = Convert.ToString(RequestCountHandler._ReqCount);
-                        lblStatus.Text = "Waiting for all data to be logged";
-                        WaitUntillExecutionComplete();
-                        lblStatus.Text = "All data to be logged";
-//                        Thread.Sleep(5000);
-                        // reset request count to zero                        
-                        RequestCountHandler._ReqCount = 0;
-                        if (executionReport.ReportName != null)
-                        {
-                            //MessageBox.Show("Report Generation is in progress. Please wait.");
-                            lblStatus.Text = "Report generation started";
-                            new Thread(()=>{UpdateReportStatus();}).Start();
-                            // Added Thread for Report Generation to prevent LTFreeze - 28Sep2017
-                            new Thread(() =>
-                            {
-                                CreateSummaryReport(executionReport.ReportName);
-                                ReportMaster reportMaster = new ReportMaster(executionReport.ReportName);
-                                reportMaster.GenerateReports();
-                            }).Start();
-                            //CreateSummaryReport(executionReport.ReportName);
-                            //ReportMaster reportMaster = new ReportMaster(executionReport.ReportName);
-                            //reportMaster.GenerateReports();
-                            while (!ReportMaster.IsReportGenerationCompleted)
-                            {
-                              Thread.Sleep(100);
-                            }
-                            userControlReports2.LoadReportName(executionReport.ReportName);
-                            // Thread.Sleep(10000);
-                             MessageBox.Show("Report generation completed.");
-                        }
+                        btnRun.Visible = true;
+                        btnClear.Visible = true;
+                        lblStatus.Font = new System.Drawing.Font(label1.Font.Name, 9F);
+                        MessageBox.Show("Report generation completed.");
+                        userControlReports2.LoadReportName(executionReport.ReportName);
                     }
                 }
-
             }
             catch (Exception ex)
             {
                 ExceptionHandler.WritetoEventLog(ex.StackTrace + Environment.NewLine + ex.Message);
-
             }
         }
 
         private void WaitUntillExecutionComplete()
         {
-            lblHitCount.Text = Convert.ToString(RequestCountHandler._ReqCount);
-            ReceiveAllLoadGenDatafiles(executionReport.ReportName);
+            //lblHitCount.Text = Convert.ToString(RequestCountHandler._ReqCount);
+//            ReceiveAllLoadGenDatafiles(executionReport.ReportName);
             DataServer resultLog = DataServer.GetInstance();
-            lblHitCount.Text = Convert.ToString(RequestCountHandler._ReqCount);
+            //lblHitCount.Text = Convert.ToString(RequestCountHandler._ReqCount);
             while (true)
             {
                 if (resultLog.reportDT.Count > 0 || resultLog.transcations.Count > 0 || resultLog.errors.Count > 0 || resultLog.logs.Count > 0)
@@ -1588,7 +1590,7 @@ namespace AppedoLT
                 }
             }
 
-            lblHitCount.Text = Convert.ToString(RequestCountHandler._ReqCount);
+            //lblHitCount.Text = Convert.ToString(RequestCountHandler._ReqCount);
             while (true)
             {
                 if (resultLog.threadCount > 0)
@@ -1601,7 +1603,7 @@ namespace AppedoLT
                 }
             }
 
-            lblHitCount.Text = Convert.ToString(RequestCountHandler._ReqCount);
+//            lblHitCount.Text = Convert.ToString(RequestCountHandler._ReqCount);
         }
 
         private void ReceiveAllLoadGenDatafiles(string reportName)
@@ -1694,7 +1696,6 @@ namespace AppedoLT
         {
             try
             {
-
                 CreateSummaryReport(reportName);
                 ReportMaster reportMaster = new ReportMaster(reportName);
                 reportMaster.GenerateReports();
@@ -1822,8 +1823,10 @@ namespace AppedoLT
         private void DataRecieve(IPAddress localIpAddress)
         {
             new Thread(() =>
+            {
+//                ExceptionHandler.WritetoEventLog("DataReceive Thread Started and Thread Id is " + Thread.CurrentThread.ManagedThreadId);
+                try
                 {
-
                     TcpListener listener = new TcpListener(localIpAddress, 8886);
                     listener.Start();
                     while (true)
@@ -1831,84 +1834,93 @@ namespace AppedoLT
                         try
                         {
                             Trasport trasport = new Trasport(listener.AcceptTcpClient());
-                            new Thread(() =>
-                              {
-                                  try
-                                  {
-                                      TrasportData data = trasport.Receive();
+                            ThreadPool.QueueUserWorkItem(new WaitCallback(listnerThread));
+                            void listnerThread(object callback)
+                            {
+                                try
+                                {
+                                    TrasportData data = trasport.Receive();
+                                    switch (data.Operation)
+                                    {
+                                        case "running":
+                                            _constants._runStatus = "running";
+                                            break;
+                                        
+                                        case "status":
+                                            // Receive Data type then Parse it into Subsequent LoadGenRunningStatusData - 21Sep2017 
+                                            LoadGenRunningStatusData loadGen = new LoadGenRunningStatusData();
+                                            String in_json = new Regex("\"type\":\"(.*)\"").Match(data.DataStr).Groups[1].Value;
+                                            switch (in_json)
+                                            {
+                                                case "reporddata":
+                                                    loadGen.ReportData = _constants.Deserialise<StatusData<ReportData>>(data.DataStr).Data;
+                                                    break;
+                                                case "log":
+                                                    loadGen.Log = _constants.Deserialise<StatusData<Log>>(data.DataStr).Data;
+                                                    break;
+                                                case "error":
+                                                    loadGen.Error = _constants.Deserialise<StatusData<RequestException>>(data.DataStr).Data;
+                                                    break;
+                                                case "transactions":
+                                                    loadGen.Transactions = _constants.Deserialise<StatusData<TransactionRunTimeDetail>>(data.DataStr).Data;
+                                                    break;
+                                                case "userdetail":
+                                                    loadGen.UserDetailData = _constants.Deserialise<StatusData<UserDetail>>(data.DataStr).Data;
+                                                    break;
+                                            }
+                                            // End 21Sep2017
+                                            foreach (ReportData rda in loadGen.ReportData)
+                                            {
+                                                _hitCount++;
+                                                rda.starttime = rda.starttime.ToLocalTime();
+                                                rda.endtime = rda.endtime.ToLocalTime();
+                                                _dataServer.LogResult(rda);
+                                            }
+                                            foreach (Log rda in loadGen.Log) _dataServer.logs.Enqueue(rda);
+                                            foreach (RequestException rda in loadGen.Error)
+                                            {
+                                                _dataServer.errors.Enqueue(rda);
+                                                rda.message = rda.message.Replace("\r\n", " ");
+                                                ListViewItem newItem = new ListViewItem(rda.requestexceptionid.ToString());
+                                                newItem.SubItems.AddRange(new string[] {  rda.loadGen,
+                                                            rda.reportname,
+                                                            rda.scenarioname,
+                                                            rda.scriptname,
+                                                            rda.containerid,
+                                                            rda.containername,
+                                                            rda.requestid,
+                                                            rda.userid,
+                                                            rda.iterationid,
+                                                            rda.time.ToString("yyyy-MM-dd HH:mm:ss"),
+                                                            rda.message.Replace("\"", "\"\""),
+                                                            rda.request.Replace("\"", "\"\""),
+                                                            rda.errorcode });
+                                                lsvErrors.Items.Add(newItem);
 
-                                      switch (data.Operation)
-                                      {
-                                          case "status":
-                                              // Receive Data type then Parse it into Subsequent LoadGenRunningStatusData - 21Sep2017 
-                                              LoadGenRunningStatusData loadGen = new LoadGenRunningStatusData();
-                                              String in_json = new Regex("\"type\":\"(.*)\"").Match(data.DataStr).Groups[1].Value;
-                                              switch (in_json)
-                                              {
-                                                  case "reporddata":
-                                                      loadGen.ReportData = _constants.Deserialise<StatusData<ReportData>>(data.DataStr).Data;
-                                                      break;
-                                                  case "log":
-                                                      loadGen.Log = _constants.Deserialise<StatusData<Log>>(data.DataStr).Data;
-                                                      break;
-                                                  case "error":
-                                                      loadGen.Error = _constants.Deserialise<StatusData<RequestException>>(data.DataStr).Data;
-                                                      break;
-                                                  case "transactions":
-                                                      loadGen.Transactions = _constants.Deserialise<StatusData<TransactionRunTimeDetail>>(data.DataStr).Data;
-                                                      break;
-                                                  case "userdetail":
-                                                      loadGen.UserDetailData = _constants.Deserialise<StatusData<UserDetail>>(data.DataStr).Data;
-                                                      break;
-                                              }
-                                              // End 21Sep2017
-                                              foreach (ReportData rda in loadGen.ReportData)
-                                              {
-                                                  _hitCount++;
-                                                  rda.starttime = rda.starttime.ToLocalTime();
-                                                  rda.endtime = rda.endtime.ToLocalTime();
-                                                  _dataServer.LogResult(rda);
-                                              }
-                                              foreach (Log rda in loadGen.Log) _dataServer.logs.Enqueue(rda);
-                                              foreach (RequestException rda in loadGen.Error)
-                                              {
-                                                  _dataServer.errors.Enqueue(rda);
-                                                  rda.message = rda.message.Replace("\r\n", " ");
-                                                  ListViewItem newItem = new ListViewItem(rda.requestexceptionid.ToString());
-                                                  newItem.SubItems.AddRange(new string[] {  rda.loadGen, 
-                                                              rda.reportname,
-                                                              rda.scenarioname, 
-                                                              rda.scriptname, 
-                                                              rda.containerid,
-                                                              rda.containername,
-                                                              rda.requestid,
-                                                              rda.userid, 
-                                                              rda.iterationid,
-                                                              rda.time.ToString("yyyy-MM-dd HH:mm:ss"), 
-                                                              rda.message.Replace("\"", "\"\""),
-                                                              rda.request.Replace("\"", "\"\""),
-                                                              rda.errorcode });
-                                                  lsvErrors.Items.Add(newItem);
-
-                                              }
-                                              foreach (TransactionRunTimeDetail rda in loadGen.Transactions) _dataServer.transcations.Enqueue(rda);
-                                              break;
-                                      }
-                                      trasport.Send(new TrasportData("ok", string.Empty, null));
-                                  }
-                                  catch (Exception ex)
-                                  {
-
-                                  }
-                              }).Start();
+                                            }
+                                            foreach (TransactionRunTimeDetail rda in loadGen.Transactions) _dataServer.transcations.Enqueue(rda);
+                                            break;
+                                    }
+                                    trasport.Send(new TrasportData("ok", string.Empty, null));
+                                }
+                                catch (Exception ex)
+                                {
+                                    ExceptionHandler.WritetoEventLog(ex.Message + " " + ex.StackTrace);
+                                }
+                            }
                         }
-                        catch (Exception ex1)
+                        catch (Exception ex)
                         {
-
+                            ExceptionHandler.WritetoEventLog(ex.Message + " " + ex.StackTrace);
                         }
                     }
 
-                }).Start();
+                }
+                catch (Exception ex)
+                {
+                    ExceptionHandler.WritetoEventLog(ex.Message + " "+ex.StackTrace);
+                }
+            }).Start();
         }
 
         private void btnShow_Click(object sender, EventArgs e)
@@ -1952,71 +1964,79 @@ namespace AppedoLT
         #region Logging Variables & Responses
         private void LogDataWatcher()
         {
-            if (_logResponseData || _logVariableData)
-            {
-                // Start a thread to watch for the MSMQ data
-                Thread dumpDataMSMQReadThread = new Thread(new ThreadStart(WatchMSMQForLogData));
-                dumpDataMSMQReadThread.Start();
-            }
+            //if (_logResponseData || _logVariableData)
+            //{
+            //    // Start a thread to watch for the MSMQ data
+            //    Thread dumpDataMSMQReadThread = new Thread(new ThreadStart(WatchMSMQForLogData));
+            //    dumpDataMSMQReadThread.Start();
+            //}
 
             // Start a thread to write the logs in to a file
-            Thread logResponseThread = new Thread(new ThreadStart(LogResponses));
-            logResponseThread.Start();
-        }
-
-        private void WatchMSMQForLogData()
-        {
-            string queueName = ".\\private$\\appedo_logs";
-            MessageQueue queue = GetMSMQ(queueName);
-            if (queue == null)
+            if (_logResponseData)
             {
-                return;
+                Thread logResponseThread = new Thread(new ThreadStart(LogResponses));
+                logResponseThread.Start();
             }
-
-            System.Messaging.Message logMessage = null;
-            byte[] data = new byte[256];
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            while (true)
+            if (_logVariableData)
             {
-                try
-                {
-                    while (_responseDetailQueue.Count >= 512)
-                    {
-                        Thread.Sleep(2000);
-                    }
-                    logMessage = queue.Receive();
-
-                    if (logMessage.Label == "ResponseData")
-                    {
-                        logMessage.Formatter = new System.Messaging.XmlMessageFormatter(new Type[1] { typeof(ResponseDetail) });
-                        lock (_responseDetailSyncObj)
-                        {
-                            _responseDetailQueue.Enqueue(logMessage.Body as ResponseDetail);
-                        }
-                    }
-                    else if (logMessage.Label == "VariableData")
-                    {
-                        logMessage.Formatter = new System.Messaging.XmlMessageFormatter(new Type[1] { typeof(VariableDetail) });
-                        lock (_variableDetailSyncObj)
-                        {
-                            _variableDetailQueue.Enqueue(logMessage.Body as VariableDetail);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Thread.Sleep(5000);
-                }
+                Thread logVariableThread = new Thread(new ThreadStart(LogVariable));
+                logVariableThread.Start();
             }
         }
+
+        //private void WatchMSMQForLogData()
+        //{
+        //    string queueName = ".\\private$\\appedo_logs";
+        //    MessageQueue queue = GetMSMQ(queueName);
+        //    if (queue == null)
+        //    {
+        //        return;
+        //    }
+
+        //    System.Messaging.Message logMessage = null;
+        //    byte[] data = new byte[256];
+        //    BinaryFormatter binaryFormatter = new BinaryFormatter();
+        //    while (true)
+        //    {
+        //        try
+        //        {
+        //            while (_responseDetailQueue.Count >= 512)
+        //            {
+        //                Thread.Sleep(2000);
+        //            }
+        //            logMessage = queue.Receive();
+
+        //            if (logMessage.Label == "ResponseData")
+        //            {
+        //                logMessage.Formatter = new System.Messaging.XmlMessageFormatter(new Type[1] { typeof(ResponseDetail) });
+        //                lock (_responseDetailSyncObj)
+        //                {
+        //                    _responseDetailQueue.Enqueue(logMessage.Body as ResponseDetail);
+        //                }
+        //            }
+        //            else if (logMessage.Label == "VariableData")
+        //            {
+        //                logMessage.Formatter = new System.Messaging.XmlMessageFormatter(new Type[1] { typeof(VariableDetail) });
+        //                lock (_variableDetailSyncObj)
+        //                {
+        //                    _variableDetailQueue.Enqueue(logMessage.Body as VariableDetail);
+        //                }
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Thread.Sleep(5000);
+        //        }
+        //    }
+        //}
 
         private void LogResponses()
         {
-            while (true)
+            while (_constants._runStatus != "reportingcompleted")
             {
                 try
                 {
-                    if (_responseDetailQueue.Count == 0 && _variableDetailQueue.Count == 0)
+                    if (_responseDetailQueue.Count == 0 )
                     {
                         Thread.Sleep(5000);
                         continue;
@@ -2044,29 +2064,6 @@ namespace AppedoLT
                     }
                     #endregion
 
-                    #region Write Variable Data
-                    if (_variableDetailQueue.Count > 0)
-                    {
-                        // Drain the messageDetails into a local dictionary, so that all messages pertaining to a single vuser can be writter into a file in a single streach.
-                        // Otherwise the file needs to be opened and closed everytime for every occurence.
-                        Dictionary<string, List<VariableDetail>> variableData = new Dictionary<string, List<VariableDetail>>();
-                        lock (_variableDetailSyncObj)
-                        {
-                            while (_variableDetailQueue.Count > 0)
-                            {
-                                VariableDetail detail = _variableDetailQueue.Dequeue();
-                                if (!variableData.ContainsKey(detail.ScriptName))
-                                {
-                                    variableData.Add(detail.ScriptName, new List<VariableDetail>());
-                                }
-                                variableData[detail.ScriptName].Add(detail);
-                            }
-                        }
-
-                        WriteVariableInfoToFile(variableData);
-                    }
-                    #endregion
-
                     Thread.Sleep(1);
                 }
                 catch (Exception ex)
@@ -2076,83 +2073,121 @@ namespace AppedoLT
             }
         }
 
+        private void LogVariable()
+        {
+            #region Write Variable Data
+            while (_constants._runStatus != "reportingcompleted")
+            {
+                if (_variableDetailQueue.Count == 0)
+                {
+                    Thread.Sleep(5000);
+                    continue;
+                }
+
+                if (_variableDetailQueue.Count > 0)
+                {
+                    // Drain the messageDetails into a local dictionary, so that all messages pertaining to a single vuser can be writter into a file in a single streach.
+                    // Otherwise the file needs to be opened and closed everytime for every occurence.
+                    Dictionary<string, List<VariableDetail>> variableData = new Dictionary<string, List<VariableDetail>>();
+                    lock (_variableDetailSyncObj)
+                    {
+                        while (_variableDetailQueue.Count > 0)
+                        {
+                            VariableDetail detail = _variableDetailQueue.Dequeue();
+                            if (!variableData.ContainsKey(detail.ScriptName))
+                            {
+                                variableData.Add(detail.ScriptName, new List<VariableDetail>());
+                            }
+                            variableData[detail.ScriptName].Add(detail);
+                        }
+                    }
+
+                    WriteVariableInfoToFile(variableData);
+                }
+                Thread.Sleep(1);
+            }
+            #endregion
+
+        }
         private static void WriteRequestResponseToFile(Dictionary<int, List<ResponseDetail>> dumpData)
         {
-           new Thread(() =>
-           {
-               foreach (KeyValuePair<int, List<ResponseDetail>> data in dumpData)
-               {
-                   try
-                   {
-                       // Add to the queue 
-                       string folderName = AppDomain.CurrentDomain.BaseDirectory + "\\Runlog\\" + data.Value[0].ScriptName + "\\" + data.Value[0].ReportName;
-                       if (!Directory.Exists(folderName))
-                           Directory.CreateDirectory(folderName);
-                       
-                       foreach (ResponseDetail detail in data.Value)
-                       {
-                           if (detail == null)
-                               continue;
+            ThreadPool.QueueUserWorkItem(new WaitCallback(writeRequestResponseToFileThread));
+            void writeRequestResponseToFileThread(object callback)
+            {
+                foreach (KeyValuePair<int, List<ResponseDetail>> data in dumpData)
+                {
+                    try
+                    {
+                        // Add to the queue 
+                        string folderName = AppDomain.CurrentDomain.BaseDirectory + "\\Runlog\\" + data.Value[0].ScriptName + "\\" + data.Value[0].ReportName;
+                        if (!Directory.Exists(folderName))
+                            Directory.CreateDirectory(folderName);
 
-                           using (StreamWriter writer = new StreamWriter(folderName + "\\ResponseLog_" + data.Key.ToString() + ".log", true))
-                           {
-                               writer.WriteLine(detail.ToString());
-                               writer.Close();
-                           }
-                       }
-                   }
-                   catch (Exception excp)
-                   {
-                       ExceptionHandler.WritetoEventLog("Error while writing the response details to file. " + Environment.NewLine + excp.StackTrace + Environment.NewLine + excp.Message);
-                   }
-               }
-           }).Start();
+                        foreach (ResponseDetail detail in data.Value)
+                        {
+                            if (detail == null)
+                                continue;
+
+                            using (StreamWriter writer = new StreamWriter(folderName + "\\ResponseLog_" + data.Key.ToString() + ".log", true))
+                            {
+                                writer.WriteLine(detail.ToString());
+                                writer.Close();
+                            }
+                        }
+                    }
+                    catch (Exception excp)
+                    {
+                        ExceptionHandler.WritetoEventLog("Error while writing the response details to file. " + Environment.NewLine + excp.StackTrace + Environment.NewLine + excp.Message);
+                    }
+                }
+            }
         }
 
         private static void WriteVariableInfoToFile(Dictionary<string, List<VariableDetail>> variableData)
         {
-           new Thread(() =>
-           {
-               foreach (KeyValuePair<string, List<VariableDetail>> data in variableData)
-               {
-                   try
-                   {
-                       bool newFileCreated = false;
-                       // Add to the queue 
-                       string folderName = AppDomain.CurrentDomain.BaseDirectory + "\\Runlog\\" + data.Value[0].ScriptName + "\\" + data.Value[0].ReportName;
-                       if (!Directory.Exists(folderName))
-                           Directory.CreateDirectory(folderName);
-                       
-                       foreach (VariableDetail detail in data.Value)
-                       {
-                           if (string.IsNullOrEmpty(detail.Value))
-                               continue;
+            ThreadPool.QueueUserWorkItem(new WaitCallback(writeVariableInfoToFileThread));
+            void writeVariableInfoToFileThread(object callback)
+            {
+                foreach (KeyValuePair<string, List<VariableDetail>> data in variableData)
+                {
+                    try
+                    {
+                        bool newFileCreated = false;
+                        // Add to the queue 
+                        string folderName = AppDomain.CurrentDomain.BaseDirectory + "\\Runlog\\" + data.Value[0].ReportName + "\\" + data.Value[0].ScriptName;
+                        if (!Directory.Exists(folderName))
+                            Directory.CreateDirectory(folderName);
 
-                           newFileCreated = false;
-                           string fileName = folderName + "\\variables.csv";
-                           if (!File.Exists(fileName))
-                           {
-                               newFileCreated = true;
-                           }
+                        foreach (VariableDetail detail in data.Value)
+                        {
+                            if (string.IsNullOrEmpty(detail.Value))
+                                continue;
 
-                           using (StreamWriter writer = new StreamWriter(fileName, true))
-                           {
-                               if (newFileCreated)
-                               {
-                                   writer.WriteLine("RequestedAt, User, Iteration, Parameter, Value");
-                               }
+                            newFileCreated = false;
+                            string fileName = folderName + "\\variables.csv";
+                            if (!File.Exists(fileName))
+                            {
+                                newFileCreated = true;
+                            }
 
-                               writer.WriteLine(detail.ToString());
-                               writer.Close();
-                           }
-                       }
-                   }
-                   catch (Exception excp)
-                   {
-                       ExceptionHandler.WritetoEventLog("Error while writing the variable details to file. " + Environment.NewLine + excp.StackTrace + Environment.NewLine + excp.Message);
-                   }
-               }
-           }).Start();
+                            using (StreamWriter writer = new StreamWriter(fileName, true))
+                            {
+                                if (newFileCreated)
+                                {
+                                    writer.WriteLine("RequestedAt, User, Iteration, Parameter, Value");
+                                }
+
+                                writer.WriteLine(detail.ToString());
+                                writer.Close();
+                            }
+                        }
+                    }
+                    catch (Exception excp)
+                    {
+                        ExceptionHandler.WritetoEventLog("Error while writing the variable details to file. " + Environment.NewLine + excp.StackTrace + Environment.NewLine + excp.Message);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -2208,7 +2243,6 @@ namespace AppedoLT
             lblUserCreated.Text = "0";
             lblStatus.ResetText();
             lsvErrors.Items.Clear();
-            
         }
 
         // Menu item for getting report name for manual report generation - 28Nov2017

@@ -35,7 +35,7 @@ namespace AppedoLTLoadGenerator
         public LoadGenerator()
         {
             InitializeComponent();
-            worker.DoWork += new DoWorkEventHandler(worker_DoWork);
+            worker.DoWork += new DoWorkEventHandler(DataReceive);
             try
             {
                 Directory.SetCurrentDirectory(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
@@ -46,12 +46,12 @@ namespace AppedoLTLoadGenerator
 
                 ni.Icon = new Form().Icon;
                 DataService();
-                // Display IP on hover also - 29Sep2017
-                ni.Text = "AppedoLT Loadgenerator IP: " + Dns.GetHostByName(Dns.GetHostName()).AddressList[0];
+                // Display IP on hover also - 29Sep2017  Dns.GetHostByName(Dns.GetHostName())
+                ni.Text = "AppedoLT Loadgenerator IP: " +Dns.GetHostEntry(Dns.GetHostName()).AddressList[0];
                 ni.Visible = true;
                 ni.ContextMenuStrip = new AppedoLTLoadGenerator.ContextMenus().Create();
                 // Display IP for ease of use - 28Sep2017
-                ni.BalloonTipText = "AppedoLT Loadgenerator started at "+ Dns.GetHostByName(Dns.GetHostName()).AddressList[0];
+                ni.BalloonTipText = "AppedoLT Loadgenerator started at "+ Dns.GetHostEntry(Dns.GetHostName()).AddressList[0];
                 ni.ShowBalloonTip(1000);
                 ni.ContextMenuStrip = contextMenuStrip1;
                 worker.RunWorkerAsync();
@@ -62,194 +62,218 @@ namespace AppedoLTLoadGenerator
             }
         }
 
-        void worker_DoWork(object sender, DoWorkEventArgs e)
+        void DataReceive(object sender, DoWorkEventArgs e)
         {
             try
             {
                 while ((true))
                 {
                     Trasport controller = new Trasport(serverSocket.AcceptTcpClient());
-                    new Thread(() =>
+                    ThreadPool.QueueUserWorkItem(new WaitCallback(dataReceiveThread));
+                    void dataReceiveThread(object callback)
+                    {
+                        try
                         {
-                            try
+                            TrasportData data = controller.Receive();
+                            switch (data.Operation.ToLower())
                             {
-                                TrasportData data = controller.Receive();
-                                switch (data.Operation.ToLower())
-                                {
-                                    case "savescenario":
+                                case "savescenario":
+                                    {
+                                        try
                                         {
-                                            try
+                                            string reportFolder = data.Header["runid"] + "_" + (data.Header["loadgenname"] ?? string.Empty).Replace('.', '_');
+                                            Dictionary<string, string> runDetail = new Dictionary<string, string>();
+                                            runDetail.Add("data", data.DataStr);
+                                            runDetail.Add("reportfoldername", reportFolder);
+                                            runDetail.Add("reportname", data.Header["runid"]);
+                                            runDetail.Add("scenarioname", data.Header["scenarioname"]);
+                                            runDetail.Add("runid", data.Header["runid"]);
+                                            runDetail.Add("appedoip", data.Header["appedoip"]);
+                                            runDetail.Add("appedoport", data.Header["appedoport"]);
+                                            runDetail.Add("appedofailedurl", data.Header["appedofailedurl"]);
+                                            runDetail.Add("totalloadgenused", data.Header["totalloadgen"] == null ? "1" : data.Header["totalloadgen"]);
+                                            runDetail.Add("currentloadgenid", data.Header["currentloadgenid"] == null ? "1" : data.Header["currentloadgenid"]);
+                                            runDetail.Add("souceip", ((IPEndPoint)controller.tcpClient.Client.RemoteEndPoint).Address.ToString());
+                                            runDetail.Add("loadgenname", data.Header["loadgenname"] == null ? string.Empty : data.Header["loadgenname"]);
+                                            runDetail.Add("distribution", data.Header["distribution"] == null ? string.Empty : data.Header["distribution"]);
+                                            //runDetail.Add("loadgencounters", data.Header["loadgencounters"]);
+
+                                            if (logger.IsDebugEnabled)
                                             {
-                                                string reportFolder = data.Header["runid"] + "_" + (data.Header["loadgenname"] ?? string.Empty).Replace('.', '_');
-                                                Dictionary<string, string> runDetail = new Dictionary<string, string>();
-                                                runDetail.Add("data", data.DataStr);
-                                                runDetail.Add("reportfoldername", reportFolder);
-                                                runDetail.Add("reportname", data.Header["runid"]);
-                                                runDetail.Add("scenarioname", data.Header["scenarioname"]);
-                                                runDetail.Add("runid", data.Header["runid"]);
-                                                runDetail.Add("appedoip", data.Header["appedoip"]);
-                                                runDetail.Add("appedoport", data.Header["appedoport"]);
-                                                runDetail.Add("appedofailedurl", data.Header["appedofailedurl"]);
-                                                runDetail.Add("totalloadgenused", data.Header["totalloadgen"] == null ? "1" : data.Header["totalloadgen"]);
-                                                runDetail.Add("currentloadgenid", data.Header["currentloadgenid"] == null ? "1" : data.Header["currentloadgenid"]);
-                                                runDetail.Add("souceip", ((IPEndPoint)controller.tcpClient.Client.RemoteEndPoint).Address.ToString());
-                                                runDetail.Add("loadgenname", data.Header["loadgenname"] == null ? string.Empty : data.Header["loadgenname"]);
-                                                runDetail.Add("distribution", data.Header["distribution"] == null ? string.Empty : data.Header["distribution"]);
-                                                //runDetail.Add("loadgencounters", data.Header["loadgencounters"]);
+                                                logger.Debug("Received Scenario: DataString = " + data.DataStr);
+                                            }
 
-                                                if (logger.IsDebugEnabled)
-                                                {
-                                                    logger.Debug("savescenario received: DataString = "+ data.DataStr);
-                                                }
+                                            if (runScripts.ContainsKey(data.Header["runid"]) == true)
+                                            {
+                                                runScripts[data.Header["runid"]] = runDetail;
+                                            }
+                                            else
+                                            {
+                                                runScripts.Add(data.Header["runid"], runDetail);
+                                            }
+                                            ni.BalloonTipText = "Received Scenario to Run " + data.Header["runid"];
+                                            ni.ShowBalloonTip(1000);
+                                            controller.Send(new TrasportData("ok", string.Empty, null));
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            logger.Error("Error while saving", ex);
+                                            controller.Send(GetErrorData("401", "Unable to Save.\r\n" + ex.Message));
+                                        }
+                                    }
+                                    break;
 
-                                                if (runScripts.ContainsKey(data.Header["runid"]) == true)
+                                case "run":
+                                    {
+                                        controller.Send(new TrasportData("ok", string.Empty, null));
+//                                        ExceptionHandler.WritetoEventLog("Before run starts, executionReport.ExecutionStatus " + executionReport.ExecutionStatus);
+                                        if (executionReport.ExecutionStatus == Status.Completed)
+                                        {
+                                            if (logger.IsDebugEnabled)
+                                            {
+                                                logger.Debug("run received: Starting the execution");
+                                            }
+                                            executionReport.ExecutionStatus = Status.Running;
+                                            logMsg = new StringBuilder();
+                                            if (runScripts.ContainsKey(data.Header["runid"]) == true)
+                                            {
+                                                Dictionary<string, string> runDetail = runScripts[data.Header["runid"]];
+                                                executionReport.ReportName = runDetail["reportname"];
+                                                executionReport.ScenarioName = runDetail["scenarioname"];
+                                                executionReport.TotalLoadGenUsed = Convert.ToInt16(runDetail["totalloadgenused"]);
+                                                executionReport.CurrentLoadGenid = Convert.ToInt16(runDetail["currentloadgenid"]);
+                                                executionReport.LoadGenName = runDetail["loadgenname"];
+
+                                                //run = new AppedoLTLoadGenerator.RunScenario(data.Header["runid"], runDetail["appedoip"], runDetail["appedoport"], runDetail["data"], runDetail["distribution"], runDetail["appedofailedurl"], runDetail["loadgencounters"]);
+                                                run = new AppedoLTLoadGenerator.RunScenario(data.Header["runid"], runDetail["appedoip"], runDetail["appedoport"], runDetail["data"], runDetail["distribution"], runDetail["appedofailedurl"]);
+
+                                                if (run.Start() == true)
                                                 {
-                                                    runScripts[data.Header["runid"]] = runDetail;
+                                                    _lastRunAppedoIP = runDetail["appedoip"];
+                                                    _lastRunAppedoPort = runDetail["appedoport"];
+                                                    ni.Text = "Running...";
+                                                    ni.BalloonTipText = "Running...";
+                                                    ni.ShowBalloonTip(1000);
+                                                    if (runScripts.ContainsKey(data.Header["runid"]) == true) runScripts.Remove(data.Header["runid"]);
+                                                    UpdateStatus();
                                                 }
                                                 else
                                                 {
-                                                    runScripts.Add(data.Header["runid"], runDetail);
-                                                }
-                                                ni.BalloonTipText = "Saved " + data.Header["runid"];
-                                                ni.ShowBalloonTip(2000);
-                                                controller.Send(new TrasportData("ok", string.Empty, null));
-                                            }
-                                            catch (Exception ex)
-                                            {
-                                                logger.Error("Error while saving", ex);
-                                                controller.Send(GetErrorData("401", "Unable to Save.\r\n" + ex.Message));
-                                            }
-                                        }
-                                        break;
-
-                                    case "run":
-                                        {
-                                            controller.Send(new TrasportData("ok", string.Empty, null));
-                                            if (executionReport.ExecutionStatus == Status.Completed)
-                                            {
-                                                if (logger.IsDebugEnabled)
-                                                {
-                                                    logger.Debug("run received: Starting the execution");
-                                                }
-                                                executionReport.ExecutionStatus = Status.Running;
-                                                logMsg = new StringBuilder();
-                                                if (runScripts.ContainsKey(data.Header["runid"]) == true)
-                                                {
-                                                    Dictionary<string, string> runDetail = runScripts[data.Header["runid"]];
-                                                    executionReport.ReportName = runDetail["reportname"];
-                                                    executionReport.ScenarioName = runDetail["scenarioname"];
-                                                    executionReport.TotalLoadGenUsed = Convert.ToInt16(runDetail["totalloadgenused"]);
-                                                    executionReport.CurrentLoadGenid = Convert.ToInt16(runDetail["currentloadgenid"]);
-                                                    executionReport.LoadGenName = runDetail["loadgenname"];
-
-                                                    //run = new AppedoLTLoadGenerator.RunScenario(data.Header["runid"], runDetail["appedoip"], runDetail["appedoport"], runDetail["data"], runDetail["distribution"], runDetail["appedofailedurl"], runDetail["loadgencounters"]);
-                                                    run = new AppedoLTLoadGenerator.RunScenario(data.Header["runid"], runDetail["appedoip"], runDetail["appedoport"], runDetail["data"], runDetail["distribution"], runDetail["appedofailedurl"]);
-
-                                                    if (run.Start() == true)
-                                                    {
-                                                        _lastRunAppedoIP = runDetail["appedoip"];
-                                                        _lastRunAppedoPort = runDetail["appedoport"];
-                                                        ni.Text = "Running...";
-                                                        ni.BalloonTipText = "Running...";
-                                                        ni.ShowBalloonTip(2000);
-                                                        if (runScripts.ContainsKey(data.Header["runid"]) == true) runScripts.Remove(data.Header["runid"]);
-                                                        UpdateStatus();
-                                                    }
+                                                    ni.Text = "No Script to run";
+                                                    ni.BalloonTipText = "No Script to run";
+                                                    ni.ShowBalloonTip(1000);
                                                 }
                                             }
                                         }
-                                        break;
-
-
-                                    case "scriptwisestatus":
+                                        else
                                         {
+                                            ni.Text = "Another Script Running";
+                                            ni.BalloonTipText = "Another Script Running";
+                                            ni.ShowBalloonTip(1000);
+                                        }
+                                    }
+                                    break;
 
+
+                                case "scriptwisestatus":
+                                    {
+                                        if (run != null)
+                                        {
                                             Dictionary<string, string> headers = new Dictionary<string, string>();
                                             headers.Add("createduser", run.TotalCreatedUser.ToString());
                                             headers.Add("completeduser", run.TotalCompletedUser.ToString());
                                             headers.Add("iscompleted", run.IsCompleted.ToString());
-
                                             controller.Send(new TrasportData("scriptwisestatus", run.GetStatus(), headers));
+                                            if (constants._runStatus == "completed")
+                                                run = null;
                                         }
-                                        break;
+                                        else
+                                            controller.Send(new TrasportData("scriptwisestatus", "norun", null));
+                                    }
+                                    break;
 
-                                    case "resultfile":
+                                case "resultfile":
+                                    {
+                                        while (executionReport.ExecutionStatus == Status.Running)
                                         {
-                                            while (executionReport.ExecutionStatus == Status.Running)
+                                            Thread.Sleep(5000);
+                                        }
+                                        string reportName = data.Header["reportname"];
+                                        string directoryPath = string.Empty;
+                                        DirectoryInfo dicinfo = new DirectoryInfo(Constants.GetInstance().ExecutingAssemblyLocation + "\\Data");
+                                        string filePath = string.Empty;
+                                        foreach (DirectoryInfo info in dicinfo.GetDirectories())
+                                        {
+                                            if (new Regex(reportName + "_[0-9]*_[0-9]*_[0-9]*_[0-9]*").Match(info.Name).Success)
                                             {
-                                                Thread.Sleep(5000);
-                                            }
-                                            string reportName = data.Header["reportname"];
-                                            string directoryPath = string.Empty;
-                                            DirectoryInfo dicinfo = new DirectoryInfo(Constants.GetInstance().ExecutingAssemblyLocation + "\\Data");
-                                            string filePath = string.Empty;
-                                            foreach (DirectoryInfo info in dicinfo.GetDirectories())
-                                            {
-                                                if (new Regex(reportName + "_[0-9]*_[0-9]*_[0-9]*_[0-9]*").Match(info.Name).Success)
+                                                directoryPath = info.Name;
+                                                foreach (FileInfo fileInfo in info.GetFiles("database.db"))
                                                 {
-                                                    directoryPath = info.Name;
-                                                    foreach (FileInfo fileInfo in info.GetFiles("database.db"))
-                                                    {
-                                                        filePath = fileInfo.FullName;
-                                                    }
-                                                    break;
+                                                    filePath = fileInfo.FullName;
                                                 }
+                                                break;
                                             }
+                                        }
+                                        controller.Send(new TrasportData("file", null, filePath));
+                                        TrasportData agn = controller.Receive();
+                                    }
+                                    break;
+
+                                case "chartsummary":
+                                    {
+                                        string reportName = data.Header["reportname"];
+                                        DirectoryInfo dicinfo = new DirectoryInfo(Constants.GetInstance().ExecutingAssemblyLocation + "\\Data");
+                                        string filePath = string.Empty;
+                                        foreach (DirectoryInfo info in dicinfo.GetDirectories())
+                                        {
+                                            if (new Regex(reportName + "_[0-9]*_[0-9]*_[0-9]*_[0-9]*").Match(info.Name).Success)
+                                            {
+                                                filePath = info.FullName + "\\Report\\chart_ summary.csv";
+                                                break;
+                                            }
+                                        }
+                                        if (File.Exists(filePath) == true)
                                             controller.Send(new TrasportData("file", null, filePath));
-                                            TrasportData agn = controller.Receive();
-                                        }
-                                        break;
+                                    }
+                                    break;
 
-                                    case "chartsummary":
+                                case "stop":
+                                    {
+                                        if (logger.IsDebugEnabled)
                                         {
-                                            string reportName = data.Header["reportname"];
-                                            DirectoryInfo dicinfo = new DirectoryInfo(Constants.GetInstance().ExecutingAssemblyLocation + "\\Data");
-                                            string filePath = string.Empty;
-                                            foreach (DirectoryInfo info in dicinfo.GetDirectories())
-                                            {
-                                                if (new Regex(reportName + "_[0-9]*_[0-9]*_[0-9]*_[0-9]*").Match(info.Name).Success)
-                                                {
-                                                    filePath = info.FullName + "\\Report\\chart_ summary.csv";
-                                                    break;
-                                                }
-                                            }
-                                            if (File.Exists(filePath) == true)
-                                                controller.Send(new TrasportData("file", null, filePath));
+                                            logger.Debug("stop received");
                                         }
-                                        break;
+                                        controller.Send(new TrasportData("ok", string.Empty, null));
+                                        if (run != null) run.Stop();
+                                        // Added stop confirmation from host - 28Sep2017
+                                        ni.BalloonTipText = "Run has been stopped";
+                                        ni.ShowBalloonTip(1000);
+                                    }
+                                    break;
 
-                                    case "stop":
+                                case "test":
+                                    {
+                                        // Added message for connection confirmation - 28Sep2017
+                                        ni.BalloonTipText = ("Connected to " + ((IPEndPoint)controller.tcpClient.Client.RemoteEndPoint).Address.ToString());
+                                        ni.ShowBalloonTip(1000);
+                                        try
                                         {
-                                            if (logger.IsDebugEnabled)
-                                            {
-                                                logger.Debug("stop received");
-                                            }
-                                            controller.Send(new TrasportData("ok", string.Empty, null));
-                                            if (run != null) run.Stop();
-                                            // Added stop confirmation from host - 28Sep2017
-                                            ni.BalloonTipText = "Run has been stopped";
-                                            ni.ShowBalloonTip(1000);
-                                        }
-                                        break;
-
-                                    case "test":
-                                        {
-                                            // Added message for connection confirmation - 28Sep2017
-                                            ni.BalloonTipText = ( "Connected to " + ((IPEndPoint)controller.tcpClient.Client.RemoteEndPoint).Address.ToString());
-                                            ni.ShowBalloonTip(1000);
                                             controller.Send(new TrasportData("ok", string.Empty, null));
                                         }
-                                        break;
+                                        catch { }
+                                    }
+                                    break;
 
-                                }
-                                if (controller.Connected)
-                                    controller.Close();
                             }
-                            catch (Exception ex)
-                            {
-                                ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
-                            }
-                        }).Start();
+                            if (controller.Connected)
+                                controller.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
+                        }
+
+                    }
                 }
             }
             catch (Exception ex)
@@ -287,118 +311,127 @@ namespace AppedoLTLoadGenerator
             }
         }
 
-        private string GenerateReportFolder(string reportname)
-        {
-            try
-            {
-                string folderPath = Constants.GetInstance().ExecutingAssemblyLocation + "\\Data\\" + reportname;
-                if (Directory.Exists(folderPath))
-                {
-                    Directory.Delete(folderPath, true);
-                }
-                Directory.CreateDirectory(folderPath);
-                Directory.CreateDirectory(folderPath + "\\Report");
+        //private string GenerateReportFolder(string reportname)
+        //{
+        //    try
+        //    {
+        //        string folderPath = Constants.GetInstance().ExecutingAssemblyLocation + "\\Data\\" + reportname;
+        //        if (Directory.Exists(folderPath))
+        //        {
+        //            Directory.Delete(folderPath, true);
+        //        }
+        //        Directory.CreateDirectory(folderPath);
+        //        Directory.CreateDirectory(folderPath + "\\Report");
 
-                File.Copy(Constants.GetInstance().ExecutingAssemblyLocation + "\\database.db", folderPath + "\\database.db");
-                File.Delete(Constants.GetInstance().ExecutingAssemblyLocation + "\\execute.bat");
-                File.WriteAllText(Constants.GetInstance().ExecutingAssemblyLocation + "\\execute.bat", @"sqlite3 " + "\"" + Constants.GetInstance().ExecutingAssemblyLocation + @"\Data\" + reportname + "\\database.db\"" + " < \"" + Constants.GetInstance().ExecutingAssemblyLocation + "\\commands.txt\"");
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
-            }
-            return reportname;
-        }
+        //        File.Copy(Constants.GetInstance().ExecutingAssemblyLocation + "\\database.db", folderPath + "\\database.db");
+        //        File.Delete(Constants.GetInstance().ExecutingAssemblyLocation + "\\execute.bat");
+        //        File.WriteAllText(Constants.GetInstance().ExecutingAssemblyLocation + "\\execute.bat", @"sqlite3 " + "\"" + Constants.GetInstance().ExecutingAssemblyLocation + @"\Data\" + reportname + "\\database.db\"" + " < \"" + Constants.GetInstance().ExecutingAssemblyLocation + "\\commands.txt\"");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
+        //    }
+        //    return reportname;
+        //}
 
         private void UpdateStatus()
         {
-            new Thread(() =>
+            ThreadPool.QueueUserWorkItem(new WaitCallback(updateStatusThread));
+            void updateStatusThread(object callback)
+            {
+                System.Diagnostics.Stopwatch timer = new System.Diagnostics.Stopwatch();
+                timer.Start();
+                while (true)
                 {
-                    System.Diagnostics.Stopwatch timer = new System.Diagnostics.Stopwatch();
-                    timer.Start();
-                    while (true)
+                    Thread.Sleep(1000);
+                    if (run != null)
                     {
-                        Thread.Sleep(1000);
-                        if (run != null)
+                        if (run.TotalCreatedUser != 0 && run.TotalCreatedUser == run.TotalCompletedUser && run.IsCompleted == 1)
                         {
-                            if (run.TotalCreatedUser != 0 && run.TotalCreatedUser == run.TotalCompletedUser && run.IsCompleted == 1)
+                            if (constants._runStatus != "completed")
                             {
-
+                                timer.Stop();
                                 ni.Text = "Run completed" + System.Environment.NewLine + "Created: " + run.TotalCreatedUser.ToString() + Environment.NewLine + "Completed: " + run.TotalCompletedUser.ToString() + Environment.NewLine + timer.Elapsed.ToString(@"dd\.hh\:mm\:ss") + Environment.NewLine;
                                 // Added Run completed message- 28Sep2017
                                 ni.BalloonTipText = "Run completed";
                                 ni.ShowBalloonTip(1000);
-                                break;
+                                Constants.GetInstance()._runStatus = "completed";
                             }
-                            else
-                            {
-                                ni.Text = "Running.." + System.Environment.NewLine + "Created: " + run.TotalCreatedUser.ToString() + Environment.NewLine + "Completed: " + run.TotalCompletedUser.ToString() + Environment.NewLine + timer.Elapsed.ToString(@"dd\.hh\:mm\:ss");
-                            }
+//                            break;
                         }
                         else
                         {
-                            // Added Idle Text - 28Sep2017
-                            ni.Text = "LoadGen is Idle";
-                            break;
+                            ni.Text = "Running.." + System.Environment.NewLine + "Created: " + run.TotalCreatedUser.ToString() + Environment.NewLine + "Completed: " + run.TotalCompletedUser.ToString() + Environment.NewLine + timer.Elapsed.ToString(@"dd\.hh\:mm\:ss");
                         }
                     }
-                }).Start();
+                    else
+                    {
+                        // Added Idle Text - 28Sep2017
+                        ni.Text = "LoadGen is Idle";
+                        break;
+                    }
+                }
+            }
         }
 
         private void DataService()
         {
-            new Thread(() =>
+            ThreadPool.QueueUserWorkItem(new WaitCallback(dataServiceThread));
+            void dataServiceThread(object callback)
+            {
+                while (true)
                 {
-                    while (true)
+                    try
                     {
-                        try
+                        foreach (XmlNode data in _dataXml.doc.SelectNodes("/root/data"))
                         {
-                            foreach (XmlNode data in _dataXml.doc.SelectNodes("/root/data"))
+                            try
                             {
-                                try
                                 {
+                                    if (File.Exists(data.Attributes["filePath"].Value) == true)
                                     {
-                                        if (File.Exists(data.Attributes["filePath"].Value) == true)
+                                        Trasport trasport = new Trasport(data.Attributes["ipadddress"].Value, data.Attributes["port"].Value, 30000);
+                                        Dictionary<string, string> header = new Dictionary<string, string>
                                         {
-                                            Trasport trasport = new Trasport(data.Attributes["ipadddress"].Value, data.Attributes["port"].Value, 30000);
-                                            Dictionary<string, string> header = new Dictionary<string, string>();
-                                            header.Add("runid", data.Attributes["runid"].Value);
-                                            header.Add("queuename", "ltreport");
-                                            trasport.Send(new TrasportData("status", header, data.Attributes["filePath"].Value));
-                                            TrasportData ack = trasport.Receive();
-                                            if (ack.Operation == "ok")
-                                            {
-                                                _dataXml.doc.SelectSingleNode("/root").RemoveChild(data);
-                                                _dataXml.Save();
-                                                File.Delete(data.Attributes["filePath"].Value);
-                                            }
-                                            trasport.Close();
-                                            trasport = null;
-                                        }
-                                        else
+                                            { "runid", data.Attributes["runid"].Value },
+                                            { "queuename", "ltreport" }
+                                        };
+                                        trasport.Send(new TrasportData("status", header, data.Attributes["filePath"].Value));
+                                        TrasportData ack = trasport.Receive();
+                                        if (ack.Operation == "ok")
                                         {
                                             _dataXml.doc.SelectSingleNode("/root").RemoveChild(data);
                                             _dataXml.Save();
+                                            File.Delete(data.Attributes["filePath"].Value);
                                         }
+                                        trasport.Close();
+                                        trasport = null;
+                                    }
+                                    else
+                                    {
+                                        _dataXml.doc.SelectSingleNode("/root").RemoveChild(data);
+                                        _dataXml.Save();
                                     }
                                 }
-                                catch(Exception ex)
-                                {
-                                    ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
-                                }
                             }
+                            catch (Exception ex)
+                            {
+                                ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
+                            }
+                        }
 
-                        }
-                        catch (Exception ex)
-                        {
-                            Thread.Sleep(5000);
-                        }
-                        finally
-                        {
-                            Thread.Sleep(5000);
-                        }
                     }
-                }).Start();
+                    catch 
+                    {
+                        Thread.Sleep(5000);
+                    }
+                    finally
+                    {
+                        Thread.Sleep(5000);
+                    }
+                }
+
+            }
         }
     }
 }

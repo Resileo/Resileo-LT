@@ -57,6 +57,8 @@ namespace AppedoLT.Core
         private DateTime _dateTime = new DateTime(2000, 1, 1);
         public string btnExecutionType = "Run";
         public List<int> _excludeLogList = new List<int>();
+        public bool _isStopped = false;
+        public string _runStatus = string.Empty;
 
         public string ChartsSummaryFileName = "chart_summary.csv";
         public string ChartsAvgResponse = "chart_useravgresponse.csv";

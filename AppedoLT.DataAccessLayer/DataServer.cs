@@ -33,9 +33,9 @@ namespace AppedoLT.DataAccessLayer
         private DataServer()
         {
             isLogEnabled = false;
-            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["EnableLoggin"]))
+            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["EnableLogging"]))
             {
-                isLogEnabled = bool.Parse(ConfigurationManager.AppSettings["EnableLoggin"]);
+                isLogEnabled = bool.Parse(ConfigurationManager.AppSettings["EnableLogging"]);
             }
         }
         public static DataServer GetInstance()

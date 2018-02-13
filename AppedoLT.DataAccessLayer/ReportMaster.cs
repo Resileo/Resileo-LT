@@ -35,15 +35,15 @@ namespace AppedoLT.DataAccessLayer
 
                 #region database Lock problem
 
-                try
-                {
-//                    GetRunEndTime();
-                }
-                catch (Exception ex)
-                {
-                 //   ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
-                    Thread.Sleep(5000);
-                }
+//                try
+//                {
+////                    GetRunEndTime();
+//                }
+//                catch (Exception ex)
+//                {
+//                 //   ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
+//                    Thread.Sleep(5000);
+//                }
 
                 #endregion
 
@@ -150,17 +150,7 @@ namespace AppedoLT.DataAccessLayer
         }
         public void GenerateReports()
         {
-            //Status = new Dictionary<string, ReportRuningStatus>();
-           // new Thread(() =>
-         //   {
                 SetChartSummary();
-           // }).Start();
-            //new Thread(() => { SetReportSummary(); }).Start();
-            //new Thread(() => { SetUserAvgResponse(); }).Start();
-            //new Thread(() => { SetRequestSummaryReport(); }).Start();
-            //new Thread(() => { SetPageSummaryReport(); }).Start();
-            //new Thread(() => { SetContainerSummaryReport(); }).Start();
-            //new Thread(() => { SetTransactionSummaryReport(); }).Start();
         }
 
         public TimeSpan GetTotalRunDuration()

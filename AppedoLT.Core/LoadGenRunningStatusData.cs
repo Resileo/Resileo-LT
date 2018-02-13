@@ -51,9 +51,7 @@ namespace AppedoLT.Core
     [DataContract]
     public class StatusData<T>
     {
-
         private List<T> _data = new List<T>();
-
         [DataMember(Name = "runid")]
         public string Runid { get; set; }
         [DataMember(Name = "type")]
@@ -755,6 +753,9 @@ namespace AppedoLT.Core
         [DataMember(Name = "errormessage")]
         public string ErrorMessage = string.Empty;
 
+        [DataMember(Name = "contenttype")]
+        public string ContentType = string.Empty;
+
         public override string ToString()
         {
             StringBuilder query = new StringBuilder();
@@ -765,6 +766,7 @@ namespace AppedoLT.Core
             query.Append("Request URL : "+ this.RequestName + Environment.NewLine);
             query.Append("Result Code : " + this.ResponseCode.ToString() + Environment.NewLine);
             query.Append("Error Message : " + this.ErrorMessage + Environment.NewLine);
+            query.Append("Content Type : " + this.ContentType + Environment.NewLine);
             query.Append("Response " + Environment.NewLine);
             query.Append(this.ResponseString+Environment.NewLine);
             query.Append("-----------------------------------------------------------------------------------------" + Environment.NewLine);

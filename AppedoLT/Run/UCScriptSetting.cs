@@ -9,7 +9,6 @@ namespace AppedoLT
     public partial class UCScriptSetting : UserControl
     {
         private string _VUScriptid = string.Empty;
-
         private string scenarioID = string.Empty;
         public string strScriptName = "Script Name : ";
         RepositoryXml repositoryXml = RepositoryXml.GetInstance();
@@ -335,6 +334,8 @@ namespace AppedoLT
             {
                 XmlNode node = vUScriptSetting;
                 repositoryXml.Save();
+                //ni.BalloonTipText = "Scenario is saved successfully.";
+                //ni.ShowBalloonTip(1000);
                 MessageBox.Show("Scenario is saved successfully.");
             }
         }
