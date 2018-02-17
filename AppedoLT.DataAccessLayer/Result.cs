@@ -1034,8 +1034,10 @@ namespace AppedoLT.DataAccessLayer
         public static void TransformXMLJmeter(string reportFolderPath)
         {
             // Create a resolver with default credentials.
-            XmlUrlResolver resolver = new XmlUrlResolver();
-            resolver.Credentials = System.Net.CredentialCache.DefaultCredentials;
+            XmlUrlResolver resolver = new XmlUrlResolver
+            {
+                Credentials = System.Net.CredentialCache.DefaultCredentials
+            };
             // transform the personnel.xml file to HTML
             XslTransform transform = new XslTransform();
             // load up the stylesheet
@@ -1049,8 +1051,10 @@ namespace AppedoLT.DataAccessLayer
         public static void TransformXML(string reportFolderPath)
         {
             // Create a resolver with default credentials.
-            XmlUrlResolver resolver = new XmlUrlResolver();
-            resolver.Credentials = System.Net.CredentialCache.DefaultCredentials;
+            XmlUrlResolver resolver = new XmlUrlResolver
+            {
+                Credentials = System.Net.CredentialCache.DefaultCredentials
+            };
             // transform the personnel.xml file to HTML
             XslTransform transform = new XslTransform();
             // load up the stylesheet
@@ -1069,8 +1073,10 @@ namespace AppedoLT.DataAccessLayer
         public static void TransformCompareXML(string reportFolderPath)
         {
             // Create a resolver with default credentials.
-            XmlUrlResolver resolver = new XmlUrlResolver();
-            resolver.Credentials = System.Net.CredentialCache.DefaultCredentials;
+            XmlUrlResolver resolver = new XmlUrlResolver
+            {
+                Credentials = System.Net.CredentialCache.DefaultCredentials
+            };
             // transform the personnel.xml file to HTML
             XslTransform transform = new XslTransform();
             // load up the stylesheet

@@ -337,8 +337,10 @@ namespace AppedoLTController
                                             ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
                                         }
                                     }
-                                    Dictionary<string, string> runid = new Dictionary<string, string>();
-                                    runid.Add("runid", runnode.Attributes["reportname"].Value);
+                                    Dictionary<string, string> runid = new Dictionary<string, string>
+                                    {
+                                        { "runid", runnode.Attributes["reportname"].Value }
+                                    };
                                     server = new Trasport(runnode.Attributes["sourceip"].Value, Constants.GetInstance().AppedoPort);
                                     server.Send(new TrasportData("updaterunidstatus", string.Empty, runid));
                                     if (ControllerXml.GetInstance().doc.SelectSingleNode("//runs/run[@reportname='" + runnode.Attributes["reportname"].Value + "']") != null)
@@ -394,8 +396,10 @@ namespace AppedoLTController
                 if (data.DataStr.EndsWith("?><root/>") == true)
                 {
                     ExceptionHandler.LogRunDetail(runid, "Empty scenario received");
-                    Dictionary<string, string> headerrunid = new Dictionary<string, string>();
-                    headerrunid.Add("runid", runid);
+                    Dictionary<string, string> headerrunid = new Dictionary<string, string>
+                    {
+                        { "runid", runid }
+                    };
                     ExceptionHandler.LogRunDetail(runid, "Empty scenario received for run id " + runid);
                     for (int index = 0; index < 20; index++)
                     {
@@ -534,8 +538,10 @@ namespace AppedoLTController
                     //If any load gen is unavailable
                     if (unAvailableLoadGens.Count > 0)
                     {
-                        Dictionary<string, string> headerrunid = new Dictionary<string, string>();
-                        headerrunid.Add("runid", runid);
+                        Dictionary<string, string> headerrunid = new Dictionary<string, string>
+                        {
+                            { "runid", runid }
+                        };
                         foreach (string gen in unAvailableLoadGens)
                         {
                             if (logger.IsDebugEnabled)
@@ -948,15 +954,19 @@ namespace AppedoLTController
             ToolStripSeparator sep;
 
             // Windows Explorer.
-            item = new ToolStripMenuItem();
-            item.Text = "Explorer";
+            item = new ToolStripMenuItem
+            {
+                Text = "Explorer"
+            };
             item.Click += new EventHandler(Explorer_Click);
 
             menu.Items.Add(item);
 
             // About.
-            item = new ToolStripMenuItem();
-            item.Text = "About";
+            item = new ToolStripMenuItem
+            {
+                Text = "About"
+            };
             item.Click += new EventHandler(About_Click);
 
             menu.Items.Add(item);
@@ -966,8 +976,10 @@ namespace AppedoLTController
             menu.Items.Add(sep);
 
             // Exit.
-            item = new ToolStripMenuItem();
-            item.Text = "Exit";
+            item = new ToolStripMenuItem
+            {
+                Text = "Exit"
+            };
             item.Click += new System.EventHandler(Exit_Click);
 
             menu.Items.Add(item);

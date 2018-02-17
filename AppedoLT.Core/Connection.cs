@@ -124,8 +124,10 @@ namespace AppedoLT.Core
             if (_port == Constants.GetInstance().RecodingHttpsPort)
             {
                 X509Certificate2 _certificate = new X509Certificate2(Constants.GetInstance().CertificatePath, "pass@12345");
-                X509CertificateCollection cCollection = new X509CertificateCollection();
-                cCollection.Add(_certificate);
+                X509CertificateCollection cCollection = new X509CertificateCollection
+                {
+                    _certificate
+                };
                 _networkStream = new SslStream(_client.GetStream(), false, new RemoteCertificateValidationCallback(ValidateServerCertificate), null);
                 //Send authentication to given host(server)
                 ((SslStream)_networkStream).AuthenticateAsClient(_host);
@@ -147,8 +149,10 @@ namespace AppedoLT.Core
             if (_port == Constants.GetInstance().RecodingHttpsPort)
             {
                 X509Certificate2 _certificate = new X509Certificate2(ConfigurationManager.AppSettings["CertificateFile"], "pass@12345");
-                X509CertificateCollection cCollection = new X509CertificateCollection();
-                cCollection.Add(_certificate);
+                X509CertificateCollection cCollection = new X509CertificateCollection
+                {
+                    _certificate
+                };
                 _networkStream = new SslStream(_client.GetStream(), false, new RemoteCertificateValidationCallback(ValidateServerCertificate), null);
                 //Send authentication to given host(server)
                 ((SslStream)_networkStream).AuthenticateAsClient(_host);

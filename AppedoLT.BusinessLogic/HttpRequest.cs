@@ -632,8 +632,10 @@ namespace AppedoLT.BusinessLogic
             if (postData != null && postData.HasChildNodes && (postData.Attributes["type"].Value == "form" || postData.Attributes["type"].Value == "text"))
             {
                 #region PostData
-                PostData pData = new PostData();
-                pData.type = 1;
+                PostData pData = new PostData
+                {
+                    type = 1
+                };
                 foreach (XmlNode parm in postData.ChildNodes)
                 {
                     Parameters.Add(new AppedoLT.Core.Tuple<string, string>(parm.Attributes["name"].Value, parm.Attributes["value"].Value));
@@ -661,9 +663,11 @@ namespace AppedoLT.BusinessLogic
             else if (postData != null && postData.HasChildNodes && postData.Attributes["type"].Value == "multipart/form-data")
             {
                 #region Multipart/Form-Data
-                PostData pData = new PostData();
-                //pData.type = 1 for string, 2 for file
-                pData.type = 1;
+                PostData pData = new PostData
+                {
+                    //pData.type = 1 for string, 2 for file
+                    type = 1
+                };
                 foreach (XmlNode parm in postData.ChildNodes)
                 {
                     Parameters.Add(new AppedoLT.Core.Tuple<string, string>(parm.Attributes["name"].Value, parm.Attributes["value"].Value));
@@ -690,13 +694,17 @@ namespace AppedoLT.BusinessLogic
                         {
                             if (File.Exists(Constants.GetInstance().ExecutingAssemblyLocation + parm.Attributes["value"].Value))
                             {
-                                pData = new PostData();
-                                pData.type = 2;
+                                pData = new PostData
+                                {
+                                    type = 2
+                                };
                                 pData.value.Append(Constants.GetInstance().ExecutingAssemblyLocation + parm.Attributes["value"].Value);
                                 pData.size = new FileInfo(Constants.GetInstance().ExecutingAssemblyLocation + parm.Attributes["value"].Value).Length;
                                 postDataBuffer.Add(pData);
-                                pData = new PostData();
-                                pData.type = 1;
+                                pData = new PostData
+                                {
+                                    type = 1
+                                };
                             }
 
                         }

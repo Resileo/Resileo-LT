@@ -124,7 +124,7 @@ namespace AppedoLT
                 _label.Text = url.ToString();
                 if (url != null)
                 {
-                    Debug.WriteLine("Normal connection");
+//                    Debug.WriteLine("Normal connection");
                     Connection connection = null;
                     try
                     {

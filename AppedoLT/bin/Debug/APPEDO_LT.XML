@@ -704,7 +704,7 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="M:AppedoLT.Design.GetMSMQ(System.String)">
+        <member name="M:AppedoLT.Design.tabsDesign_TabSelected(System.Object,Telerik.WinControls.UI.TabEventArgs)">
             <summary>
             Create MSMQ for profiler. It could take 30sec. It will only once when profiler start.
             </summary>

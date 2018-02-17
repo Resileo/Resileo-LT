@@ -26,17 +26,21 @@ namespace AppedoLTLoadGenerator
 			ToolStripMenuItem item;
 			ToolStripSeparator sep;
 
-			// Windows Explorer.
-			item = new ToolStripMenuItem();
-			item.Text = "Explorer";
-			item.Click += new EventHandler(Explorer_Click);
+            // Windows Explorer.
+            item = new ToolStripMenuItem
+            {
+                Text = "Explorer"
+            };
+            item.Click += new EventHandler(Explorer_Click);
 			
 			menu.Items.Add(item);
 
-			// About.
-			item = new ToolStripMenuItem();
-			item.Text = "About";
-			item.Click += new EventHandler(About_Click);
+            // About.
+            item = new ToolStripMenuItem
+            {
+                Text = "About"
+            };
+            item.Click += new EventHandler(About_Click);
 			
 			menu.Items.Add(item);
 
@@ -44,10 +48,12 @@ namespace AppedoLTLoadGenerator
 			sep = new ToolStripSeparator();
 			menu.Items.Add(sep);
 
-			// Exit.
-			item = new ToolStripMenuItem();
-			item.Text = "Exit";
-			item.Click += new System.EventHandler(Exit_Click);
+            // Exit.
+            item = new ToolStripMenuItem
+            {
+                Text = "Exit"
+            };
+            item.Click += new System.EventHandler(Exit_Click);
 			
 			menu.Items.Add(item);
 

@@ -330,8 +330,10 @@ namespace AppedoLT.Core
             var haveUserPass = !String.IsNullOrEmpty(_proxyUserName) &&
                                !String.IsNullOrEmpty(_proxyPassword);
 
-            var authRequest = new List<byte>();
-            authRequest.Add(SOCKS5_VERSION_NUMBER);
+            var authRequest = new List<byte>
+            {
+                SOCKS5_VERSION_NUMBER
+            };
             if (haveUserPass) {
                 authRequest.Add(2);
                 authRequest.Add(SOCKS5_AUTH_METHOD_NO_AUTHENTICATION_REQUIRED);

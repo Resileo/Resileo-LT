@@ -287,7 +287,6 @@ namespace AppedoLT.BusinessLogic
                         logger.Debug("Iteration type is Iterations, Number Of iterations = " + _iteration.ToString());
                     for (_index = 1; _index <= _iteration; _index++)
                     {
-//                        if (Break == true) break;
                         if (_constants._isStopped)
                             break;
                         Result = "";
@@ -299,7 +298,6 @@ namespace AppedoLT.BusinessLogic
 
                         foreach (XmlNode container in _vuScriptXml.ChildNodes)
                         {
-                            //if (Break == true) break;
                             /* 1st iteration Init,Action. last iteration Action, End. Rest of them Acttion*/
                             if (container.Attributes["name"].Value == "Initialize")
                             {
@@ -342,7 +340,6 @@ namespace AppedoLT.BusinessLogic
                 else
                 {
                     #region Iterations for durationtype
-//                    bool scriptRun = true;
                     _index = 0;
                     _iterationid = 0;
                     while (scriptRun(startTime))
@@ -354,10 +351,8 @@ namespace AppedoLT.BusinessLogic
                         _iterationid = _index;
                         _resposeUrl = string.Empty;
                         _receivedCookies = string.Empty;
-//                        if ((DateTime.Now.Ticks / 10000000 - startTime) >= _iteration) scriptRun = false;
                         foreach (XmlNode container in _vuScriptXml.ChildNodes)
                         {
-//                            if (Break == true) break;
                             if (container.Attributes["name"].Value == "Initialize")
                             {
                                 if (_index == 1)
@@ -399,8 +394,7 @@ namespace AppedoLT.BusinessLogic
             {
                 conncetionManager.CloseAllConnetions();
                 WorkCompleted = true;
-                
-              //  if (OnVUserRunCompleted != null) OnVUserRunCompleted.Invoke(_scriptName, _userid);
+//                Debug.WriteLine("userId " + _userid + " WorkCompleted " + WorkCompleted);
             }
 
         }
@@ -455,7 +449,7 @@ namespace AppedoLT.BusinessLogic
                                         bool isNumeric = int.TryParse(child.Attributes["delay"].Value, out delayTime);
                                         if (!isNumeric) delayTime = 100;
                                     }
-                                    Debug.WriteLine("delayTime " + delayTime);
+//                                    Debug.WriteLine("delayTime " + delayTime);
                                     System.Threading.Thread.Sleep(delayTime);
                                 }
                                 _secondaryRequestPlayed = false;

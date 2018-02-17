@@ -427,10 +427,10 @@ namespace AppedoLT.BusinessLogic
                         for (int i = 0; i < numberOfUsersToExclude; i++)
                         {
                             // Generate random numbers for which the data need not to be logged
-                            int randomNumber = rand.Next(0, totalUsers);
+                            int randomNumber = rand.Next(1, totalUsers);
                             while (_constant._excludeLogList.Contains(randomNumber))
                             {
-                                randomNumber = rand.Next(0, totalUsers);
+                                randomNumber = rand.Next(1, totalUsers);
                             }
 //                            excludeLogList.Add(randomNumber);
                             _constant._excludeLogList.Add(randomNumber);
@@ -485,13 +485,15 @@ namespace AppedoLT.BusinessLogic
             try
             {
                 UpdateStatus();
+                _completedUserCount = _usersList.FindAll(f => f.WorkCompleted == true).Count;
+                StatusSummary.TotalVUserCompleted = _completedUserCount;
+                //                Debug.WriteLine("tmrRun_Tick _completedUserCount " + _completedUserCount);
+                _endUserid = _constant._isStopped ? StatusSummary.TotalVUserCreated : _endUserid;
                 if (_setting.Type == "1")
                 {
-                    _completedUserCount = _usersList.FindAll(f => f.WorkCompleted == true).Count;
-                    if ((_endUserid - (_startUserid - 1)) == _completedUserCount || _constant._isStopped)
+                    if ((_endUserid - (_startUserid - 1)) == _completedUserCount)
                     {
-                        StatusSummary.TotalVUserCompleted = _completedUserCount;
-                        if (_endUserid == _completedUserCount)
+                        if (_endUserid == _completedUserCount )
                         {
                             IsRunCompleted = true;
                             _threadRun.Reset();
@@ -508,41 +510,14 @@ namespace AppedoLT.BusinessLogic
                         try
                         {
                             _tmrVUCreator.Stop();
-                            _completedUserCount = _usersList.Select(vuser => vuser.WorkCompleted = true).Count();
-                            StatusSummary.TotalVUserCompleted = _completedUserCount;
-                            if (_endUserid == _completedUserCount)
+                            // when script run is stopped, end user id is changed to total vuser completed
+                            if (_endUserid == _completedUserCount )
                             {
                                 _durationTimer.Stop();
                                 _threadRun.Reset();
                                 _tmrRun.Stop();
                                 _usersList.Clear();
                             }
-                            //lock (_userCompletedLock)
-                            //{
-                            //    System.Threading.Tasks.Parallel.ForEach(_usersList, thread =>
-                            //    {
-                            //        try
-                            //        {
-                            //            while (!thread.WorkCompleted)
-                            //            {
-                            //                Thread.Sleep(1000);
-                            //            }
-                            //            thread.Stop();
-
-                            //            _completedUserCount++;
-                            //            StatusSummary.TotalVUserCompleted++;
-                            //        }
-                            //        catch (Exception ex)
-                            //        {
-                            //            ExceptionHandler.WritetoEventLog(ex.StackTrace + Environment.NewLine + ex.Message);
-                            //        }
-                            //    });
-                            //    elapsedTime.Stop();
-                            //    _tmrRun.Stop();
-                            //    _constant._durationTimer.Stop();
-                            //    ClearUsers();
-                            //    _threadRun.Reset();
-                            //}
                         }
                         catch (Exception ex)
                         {

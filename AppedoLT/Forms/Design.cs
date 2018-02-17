@@ -760,28 +760,28 @@ namespace AppedoLT
         }
 
 
-        private static  void DeleteXmlNode(string path, string tagname, string searchconditionAttributename, string searchconditionAttributevalue)
-    {
-        XmlDocument doc =  new XmlDocument();
-         doc.Load(path); 
-        XmlNodeList nodes = doc.GetElementsByTagName(tagname);
-         //XmlNodeList nodes = doc.GetElementsByTagName("user");
-        foreach (XmlNode node in nodes)
+        private static void DeleteXmlNode(string path, string tagname, string searchconditionAttributename, string searchconditionAttributevalue)
         {
-            foreach (XmlAttribute attribute in node.Attributes)
+            XmlDocument doc = new XmlDocument();
+            doc.Load(path);
+            XmlNodeList nodes = doc.GetElementsByTagName(tagname);
+            //XmlNodeList nodes = doc.GetElementsByTagName("user");
+            foreach (XmlNode node in nodes)
             {
-                if ((attribute.Name == searchconditionAttributename) && (attribute.Value == searchconditionAttributevalue))
-                 //if ((attribute.Name == "name") && (attribute.Value == "aaa"))
+                foreach (XmlAttribute attribute in node.Attributes)
                 {
-                     //delete.
-                    node.RemoveAll();
-                    break;
+                    if ((attribute.Name == searchconditionAttributename) && (attribute.Value == searchconditionAttributevalue))
+                    //if ((attribute.Name == "name") && (attribute.Value == "aaa"))
+                    {
+                        //delete.
+                        node.RemoveAll();
+                        break;
+                    }
                 }
             }
-        }
-         //save xml file.
-        doc.Save(path);
-    }  
+            //save xml file.
+            doc.Save(path);
+        }  
 
         private void btnRun_Click(object sender, EventArgs e)
         {
@@ -828,7 +828,6 @@ namespace AppedoLT
                         executionReport.ScenarioName = tvScenarios.SelectedNode.Text;
                         executionReport.ExecutionStatus = Status.Running;
                         //tmrExecution is used for showing status in form every one sec, interval is set at 1000 ms. 
-                        tmrExecution.Start();
                         Request.IPSpoofingEnabled = Convert.ToBoolean(((XmlNode)tvScenarios.SelectedNode.Tag).Attributes["enableipspoofing"].Value);
                         this.LoadReportName(executionReport.ReportName);
                         //userControlCharts1.LoadReportName(executionReport.ReportName);
@@ -839,6 +838,7 @@ namespace AppedoLT
 
                         if (objUCLoadGen.IsLoadGeneratorSelected() == false)
                         {
+                            tmrExecution.Start();
                             //This will start response and variable data collection as separate thread and continue to be active until reporting completed.
                             LogDataWatcher();
                             #region Without Loadgen
@@ -989,6 +989,7 @@ namespace AppedoLT
                             }
                             else
                             {
+                                tmrExecution.Start();
                                 int loadGenId = 0;
                                 List<XmlNode> loadGens = objUCLoadGen.GetLoadGenerators();
 
@@ -1500,13 +1501,13 @@ namespace AppedoLT
                         lblUserCreated.Text = tempCreatedUser.ToString();
                         lblUserCompleted.Text = tempCompletedUser.ToString();
                         lblHitCount.Text = Convert.ToString(RequestCountHandler._ReqCount);
-
+                        Debug.WriteLine("tempCreatedUser " + tempCreatedUser + " tempCompletedUser " + tempCompletedUser);
                         if (_scriptExecutorList.FindAll(f => f.IsRunCompleted).Count == _scriptExecutorList.Count && tempCreatedUser != 0 && tempCreatedUser == tempCompletedUser)
                         {
                             startReport = true;
                         }
                     }
-                    Debug.WriteLine("lblStatus " + lblStatus.Text);
+                    //Debug.WriteLine("lblStatus " + lblStatus.Text);
                     if (!lblStatus.Text.Contains("Report") && startReport)
                     {
                         lblStatus.Text = "Generating Report...";
@@ -1532,7 +1533,7 @@ namespace AppedoLT
                     int indexof = lblStatus.Text.IndexOf(".");
                     int statLen = lblStatus.Text.Length;
                     string strDots = lblStatus.Text.Substring(indexof, statLen - indexof);
-                    Debug.WriteLine("strDots " + strDots + " " + statLen.ToString());
+//                    Debug.WriteLine("strDots " + strDots + " " + statLen.ToString());
                     int statCnt = ReportMaster.Status.Count < _scriptExecutorList.Count ? ReportMaster.Status.Count + 1 : _scriptExecutorList.Count;
                     if (_isUseLoadGen)
                         lblStatus.Text = string.Format("Report Generation Status: in Progress{2}", statCnt, _scriptExecutorList.Count, "..");
@@ -1964,24 +1965,11 @@ namespace AppedoLT
         #region Logging Variables & Responses
         private void LogDataWatcher()
         {
-            //if (_logResponseData || _logVariableData)
-            //{
-            //    // Start a thread to watch for the MSMQ data
-            //    Thread dumpDataMSMQReadThread = new Thread(new ThreadStart(WatchMSMQForLogData));
-            //    dumpDataMSMQReadThread.Start();
-            //}
-
             // Start a thread to write the logs in to a file
             if (_logResponseData)
-            {
-                Thread logResponseThread = new Thread(new ThreadStart(LogResponses));
-                logResponseThread.Start();
-            }
+                ThreadPool.QueueUserWorkItem(new WaitCallback(LogResponses));
             if (_logVariableData)
-            {
-                Thread logVariableThread = new Thread(new ThreadStart(LogVariable));
-                logVariableThread.Start();
-            }
+                ThreadPool.QueueUserWorkItem(new WaitCallback(LogVariable));
         }
 
         //private void WatchMSMQForLogData()
@@ -2030,18 +2018,12 @@ namespace AppedoLT
         //    }
         //}
 
-        private void LogResponses()
+        private void LogResponses(object callback)
         {
             while (_constants._runStatus != "reportingcompleted")
             {
                 try
                 {
-                    if (_responseDetailQueue.Count == 0 )
-                    {
-                        Thread.Sleep(5000);
-                        continue;
-                    }
-
                     #region Write Response Data
                     if (_responseDetailQueue.Count > 0)
                     {
@@ -2061,52 +2043,59 @@ namespace AppedoLT
                             }
                         }
                         WriteRequestResponseToFile(dumpData);
+                        Thread.Sleep(1);
+                    }
+                    else
+                    {
+                        Thread.Sleep(5000);
                     }
                     #endregion
-
-                    Thread.Sleep(1);
                 }
                 catch (Exception ex)
                 {
-                    Thread.Sleep(10000);
+                    ExceptionHandler.WritetoEventLog("LogResponses Exception " + ex.Message + " " + ex.StackTrace);
                 }
             }
         }
 
-        private void LogVariable()
+        private void LogVariable(object callback)
         {
-            #region Write Variable Data
-            while (_constants._runStatus != "reportingcompleted")
+            try
             {
-                if (_variableDetailQueue.Count == 0)
+                #region Write Variable Data
+                while (_constants._runStatus != "reportingcompleted")
                 {
-                    Thread.Sleep(5000);
-                    continue;
-                }
-
-                if (_variableDetailQueue.Count > 0)
-                {
-                    // Drain the messageDetails into a local dictionary, so that all messages pertaining to a single vuser can be writter into a file in a single streach.
-                    // Otherwise the file needs to be opened and closed everytime for every occurence.
-                    Dictionary<string, List<VariableDetail>> variableData = new Dictionary<string, List<VariableDetail>>();
-                    lock (_variableDetailSyncObj)
+                    if (_variableDetailQueue.Count > 0)
                     {
-                        while (_variableDetailQueue.Count > 0)
+                        // Drain the messageDetails into a local dictionary, so that all messages pertaining to a single vuser can be writter into a file in a single streach.
+                        // Otherwise the file needs to be opened and closed everytime for every occurence.
+                        Dictionary<string, List<VariableDetail>> variableData = new Dictionary<string, List<VariableDetail>>();
+                        lock (_variableDetailSyncObj)
                         {
-                            VariableDetail detail = _variableDetailQueue.Dequeue();
-                            if (!variableData.ContainsKey(detail.ScriptName))
+                            while (_variableDetailQueue.Count > 0)
                             {
-                                variableData.Add(detail.ScriptName, new List<VariableDetail>());
+                                VariableDetail detail = _variableDetailQueue.Dequeue();
+                                if (!variableData.ContainsKey(detail.ScriptName))
+                                {
+                                    variableData.Add(detail.ScriptName, new List<VariableDetail>());
+                                }
+                                variableData[detail.ScriptName].Add(detail);
                             }
-                            variableData[detail.ScriptName].Add(detail);
                         }
+                        WriteVariableInfoToFile(variableData);
+                        Thread.Sleep(1);
                     }
-
-                    WriteVariableInfoToFile(variableData);
+                    else
+                    {
+                        Thread.Sleep(5000);
+                    }
                 }
-                Thread.Sleep(1);
+                #endregion
             }
-            #endregion
+            catch(Exception ex)
+            {
+                ExceptionHandler.WritetoEventLog("LogVariable Exception " + ex.Message + " " + ex.StackTrace);
+            }
 
         }
         private static void WriteRequestResponseToFile(Dictionary<int, List<ResponseDetail>> dumpData)
@@ -2119,7 +2108,7 @@ namespace AppedoLT
                     try
                     {
                         // Add to the queue 
-                        string folderName = AppDomain.CurrentDomain.BaseDirectory + "\\Runlog\\" + data.Value[0].ScriptName + "\\" + data.Value[0].ReportName;
+                        string folderName = AppDomain.CurrentDomain.BaseDirectory + "\\Runlog\\" + data.Value[0].ReportName+ "\\" + data.Value[0].ScriptName;
                         if (!Directory.Exists(folderName))
                             Directory.CreateDirectory(folderName);
 
@@ -2154,7 +2143,7 @@ namespace AppedoLT
                     {
                         bool newFileCreated = false;
                         // Add to the queue 
-                        string folderName = AppDomain.CurrentDomain.BaseDirectory + "\\Runlog\\" + data.Value[0].ReportName + "\\" + data.Value[0].ScriptName;
+                        string folderName = AppDomain.CurrentDomain.BaseDirectory + "\\Runlog\\" + data.Value[0].ReportName+ "\\" + data.Value[0].ScriptName;
                         if (!Directory.Exists(folderName))
                             Directory.CreateDirectory(folderName);
 
@@ -2194,34 +2183,30 @@ namespace AppedoLT
         /// Create MSMQ for profiler. It could take 30sec. It will only once when profiler start.
         /// </summary>
         /// <returns></returns>
-        private MessageQueue GetMSMQ(string queueName)
-        {
-            MessageQueue msmq = null;
-            try
-            {
-                if (!MessageQueue.Exists(queueName))
-                {
-                    msmq = MessageQueue.Create(queueName, false);
-                    msmq.SetPermissions(
-                              "Everyone",
-                              MessageQueueAccessRights.FullControl,
-                              AccessControlEntryType.Allow);
-                }
-                else
-                {
-                    msmq = new MessageQueue(queueName, false);
-                }
-            }
-            catch (Exception excp)
-            {
-                ExceptionHandler.WritetoEventLog("Error while opening the MSMQ for log response messages. "+ Environment.NewLine +  excp.StackTrace + Environment.NewLine + excp.Message);
-            }
-            return msmq;
-        }
-
-        private void FileWriter()
-        {
-        }
+        //private MessageQueue GetMSMQ(string queueName)
+        //{
+        //    MessageQueue msmq = null;
+        //    try
+        //    {
+        //        if (!MessageQueue.Exists(queueName))
+        //        {
+        //            msmq = MessageQueue.Create(queueName, false);
+        //            msmq.SetPermissions(
+        //                      "Everyone",
+        //                      MessageQueueAccessRights.FullControl,
+        //                      AccessControlEntryType.Allow);
+        //        }
+        //        else
+        //        {
+        //            msmq = new MessageQueue(queueName, false);
+        //        }
+        //    }
+        //    catch (Exception excp)
+        //    {
+        //        ExceptionHandler.WritetoEventLog("Error while opening the MSMQ for log response messages. "+ Environment.NewLine +  excp.StackTrace + Environment.NewLine + excp.Message);
+        //    }
+        //    return msmq;
+        //}
         #endregion
         
         private void tabsDesign_TabSelected(object sender, TabEventArgs args)

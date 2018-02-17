@@ -136,8 +136,10 @@ namespace AppedoLTController
             string chartSummaryFile = _constants.ExecutingAssemblyLocation + "\\Data\\" + runid + "\\Report\\chart_ summary.csv";
             string reportSummaryFile = _constants.ExecutingAssemblyLocation + "\\Data\\" + runid + "\\Report\\summary.xml";
             TrasportData response = null;
-            Dictionary<string, string> header = new Dictionary<string, string>();
-            header.Add("runid", runid);
+            Dictionary<string, string> header = new Dictionary<string, string>
+            {
+                { "runid", runid }
+            };
 
             if (File.Exists(reportSummaryFile) == true )
             {
@@ -276,8 +278,10 @@ namespace AppedoLTController
             try
             {
                 string filePath;
-                Dictionary<string, string> header = new Dictionary<string, string>();
-                header.Add("reportname", reportName);
+                Dictionary<string, string> header = new Dictionary<string, string>
+                {
+                    { "reportname", reportName }
+                };
                 filePath = _constants.ExecutingAssemblyLocation + "\\Data\\" + reportName + "\\Report\\chart_ summary.csv";
                 if (File.Exists(filePath) == false) File.Create(filePath);
                 using (FileStream stream = new FileStream(filePath, FileMode.Append, FileAccess.Write, FileShare.Write))

@@ -656,9 +656,11 @@ namespace AppedoLT.Core
             int ExitCode;
             ProcessStartInfo ProcessInfo;
             Process Process;
-            ProcessInfo = new ProcessStartInfo(batchFile);
-            ProcessInfo.CreateNoWindow = true;
-            ProcessInfo.UseShellExecute = false;
+            ProcessInfo = new ProcessStartInfo(batchFile)
+            {
+                CreateNoWindow = true,
+                UseShellExecute = false
+            };
 
             Process = Process.Start(ProcessInfo);
             Process.WaitForExit();
@@ -1299,17 +1301,19 @@ namespace AppedoLT.Core
 
         public Parameter Copy()
         {
-            Parameter parm = new Parameter();
-            parm.parameterid = this.parameterid;
-            parm.RawParameterName = this.RawParameterName;
-            parm.RawParameterValue = this.RawParameterValue;
-            parm.Name = this.Name;
-            parm.Value = this.Value;
-            parm.Type = this.Type;
-            parm.Boundary = this.Boundary;
-            parm.ContentDisposition = this.ContentDisposition;
-            parm.FileName = this.FileName;
-            parm.ContentType = this.ContentType;
+            Parameter parm = new Parameter
+            {
+                parameterid = this.parameterid,
+                RawParameterName = this.RawParameterName,
+                RawParameterValue = this.RawParameterValue,
+                Name = this.Name,
+                Value = this.Value,
+                Type = this.Type,
+                Boundary = this.Boundary,
+                ContentDisposition = this.ContentDisposition,
+                FileName = this.FileName,
+                ContentType = this.ContentType
+            };
 
             return parm;
         }
@@ -1336,43 +1340,47 @@ namespace AppedoLT.Core
 
         public static VUScriptSetting GetDefault(string scriptId)
         {
-            VUScriptSetting vUScriptSetting = new VUScriptSetting();
-            vUScriptSetting.VUScriptid = scriptId;
-            vUScriptSetting.Type = "1";
-            vUScriptSetting.DurationTime = "0;0;0";
-            vUScriptSetting.IncrementTime = "0;0;0";
-            vUScriptSetting.Iterations = "1";
-            vUScriptSetting.MaxUser = "1";
-            vUScriptSetting.StartUser = "1";
-            vUScriptSetting.IncrementUser = "1";
-            vUScriptSetting.Bandwidth = "-1";
+            VUScriptSetting vUScriptSetting = new VUScriptSetting
+            {
+                VUScriptid = scriptId,
+                Type = "1",
+                DurationTime = "0;0;0",
+                IncrementTime = "0;0;0",
+                Iterations = "1",
+                MaxUser = "1",
+                StartUser = "1",
+                IncrementUser = "1",
+                Bandwidth = "-1",
 
-            vUScriptSetting.ScenarioId = string.Empty;
-            vUScriptSetting.BrowserCache = false;
-            vUScriptSetting.StartUserId = 0;
-            vUScriptSetting.ReplyThinkTime = true;            
-            vUScriptSetting.numberOfParallelCon = "6";
+                ScenarioId = string.Empty,
+                BrowserCache = false,
+                StartUserId = 0,
+                ReplyThinkTime = true,
+                numberOfParallelCon = "6"
+            };
             return vUScriptSetting;
 
         }
 
         public static VUScriptSetting GetDefault(string scriptId, string scenarioId)
         {
-            VUScriptSetting vUScriptSetting = new VUScriptSetting();
-            vUScriptSetting.VUScriptid = scriptId;
-            vUScriptSetting.Type = "1";
-            vUScriptSetting.DurationTime = "0;0;0";
-            vUScriptSetting.IncrementTime = "0;0;0";
-            vUScriptSetting.Iterations = "1";
-            vUScriptSetting.MaxUser = "1";
-            vUScriptSetting.StartUser = "1";
-            vUScriptSetting.IncrementUser = "1";
-            vUScriptSetting.ScenarioId = scenarioId;
-            vUScriptSetting.BrowserCache = false;
-            vUScriptSetting.StartUserId = 0;
-            vUScriptSetting.ReplyThinkTime = true;            
-            vUScriptSetting.numberOfParallelCon = "6";
-            vUScriptSetting.Bandwidth = "-1";
+            VUScriptSetting vUScriptSetting = new VUScriptSetting
+            {
+                VUScriptid = scriptId,
+                Type = "1",
+                DurationTime = "0;0;0",
+                IncrementTime = "0;0;0",
+                Iterations = "1",
+                MaxUser = "1",
+                StartUser = "1",
+                IncrementUser = "1",
+                ScenarioId = scenarioId,
+                BrowserCache = false,
+                StartUserId = 0,
+                ReplyThinkTime = true,
+                numberOfParallelCon = "6",
+                Bandwidth = "-1"
+            };
             return vUScriptSetting;
 
         }

@@ -111,8 +111,10 @@ namespace AppedoLT.BusinessLogic
                         }
                         Connection con = new Connection(request.Attributes["serverip"].Value, int.Parse(request.Attributes["port"].Value));
 
-                        req = new TcpRequest(request, con, false, _bandwidth);
-                        req.Variables = variables;
+                        req = new TcpRequest(request, con, false, _bandwidth)
+                        {
+                            Variables = variables
+                        };
                         req.GetResponse();
 
                         if (OnLockRequestResponse != null)
@@ -200,8 +202,10 @@ namespace AppedoLT.BusinessLogic
                             string fileNameExt = Path.GetExtension(temp.LocalPath);
                             if (cacheEnabled == false && !(fileNameExt != string.Empty && _vuScriptXml.Attributes["exclutionfiletypes"].Value.Contains(fileNameExt.Replace(".", string.Empty).Trim().ToLower()) == true))
                             {
-                                req = new HttpRequest(request, ref receivedCookies, _userid.ToString() + (_createdConnection++ % _maxConnection).ToString(), _IPAddress, IsValidation, _bandwidth);
-                                req.Variables = variables;
+                                req = new HttpRequest(request, ref receivedCookies, _userid.ToString() + (_createdConnection++ % _maxConnection).ToString(), _IPAddress, IsValidation, _bandwidth)
+                                {
+                                    Variables = variables
+                                };
                                 req.GetResponse();
 
                                 if (OnLockRequestResponse != null)
@@ -420,8 +424,10 @@ namespace AppedoLT.BusinessLogic
 
                 while (match.Success == true)
                 {
-                    AppedoLT.Core.Tuple<string, string> parm = new AppedoLT.Core.Tuple<string, string>();
-                    parm.Key = match.Groups[1].Value;
+                    AppedoLT.Core.Tuple<string, string> parm = new AppedoLT.Core.Tuple<string, string>
+                    {
+                        Key = match.Groups[1].Value
+                    };
                     try
                     {
                         parm.Value = GetVariableValue(parm.Key);
@@ -446,8 +452,10 @@ namespace AppedoLT.BusinessLogic
             match = Regex.Match(exp.ToString(), @"\$\$([a-zA-Z_][a-zA-Z0-9_.]*)\$\$");
             while (match.Success == true)
             {
-                AppedoLT.Core.Tuple<string, string> parm = new AppedoLT.Core.Tuple<string, string>();
-                parm.Key = match.Groups[1].Value;
+                AppedoLT.Core.Tuple<string, string> parm = new AppedoLT.Core.Tuple<string, string>
+                {
+                    Key = match.Groups[1].Value
+                };
                 try
                 {
                     parm.Value = GetVariableValue(parm.Key);
@@ -528,8 +536,10 @@ namespace AppedoLT.BusinessLogic
             if (postData != null && postData.HasChildNodes && postData.Attributes["type"].Value == "postdata")
             {
                 #region PostData
-                PostData pData = new PostData();
-                pData.type = 1;
+                PostData pData = new PostData
+                {
+                    type = 1
+                };
                 foreach (XmlNode parm in postData.ChildNodes)
                 {
                     count++;
@@ -549,9 +559,11 @@ namespace AppedoLT.BusinessLogic
             else if (postData != null && postData.HasChildNodes && postData.Attributes["type"].Value == "multipart/form-data")
             {
                 #region Multipart/Form-Data
-                PostData pData = new PostData();
-                //pData.type = 1 for string, 2 for file
-                pData.type = 1;
+                PostData pData = new PostData
+                {
+                    //pData.type = 1 for string, 2 for file
+                    type = 1
+                };
                 foreach (XmlNode parm in postData.ChildNodes)
                 {
                     count++;
@@ -577,13 +589,17 @@ namespace AppedoLT.BusinessLogic
                         {
                             if (File.Exists(Constants.GetInstance().ExecutingAssemblyLocation + parm.Attributes["value"].Value))
                             {
-                                pData = new PostData();
-                                pData.type = 2;
+                                pData = new PostData
+                                {
+                                    type = 2
+                                };
                                 pData.value.Append(Constants.GetInstance().ExecutingAssemblyLocation + parm.Attributes["value"].Value);
                                 pData.size = new FileInfo(Constants.GetInstance().ExecutingAssemblyLocation + parm.Attributes["value"].Value).Length;
                                 postDataBuffer.Add(pData);
-                                pData = new PostData();
-                                pData.type = 1;
+                                pData = new PostData
+                                {
+                                    type = 1
+                                };
                             }
 
                         }
@@ -618,27 +634,29 @@ namespace AppedoLT.BusinessLogic
                 {
                     Interlocked.Increment(ref RequestCountHandler._ReqCount);
 
-                    ReportData rd = new ReportData();
-                    rd.loadgen = Constants.GetInstance().LoadGen;
-                    rd.sourceip = _IPAddress.Address.ToString();
-                    rd.loadgenanme = ExecutionReport.GetInstance().LoadGenName;
-                    rd.scenarioname = Status.ScenarioName;
-                    rd.scriptid = _vuScriptXml.Attributes["id"].Value;
-                    rd.containerid = _containerId.Peek()[0];
-                    rd.containername = _containerId.Peek()[1];
-                    rd.pageid = _pageId.Count < 1 ? "1" : _pageId.Peek();
-                    rd.userid = _userid;
-                    rd.iterationid = _iterationid;
-                    rd.requestid = requestid;
-                    rd.address = address;
-                    rd.starttime = starttime;
-                    rd.firstbytereceivedtime = firstbytereceivedtime;
-                    rd.timeforfirstbyte = firstbytetime;
-                    rd.endtime = endtime;
-                    rd.diff = diff;
-                    rd.responsesize = responsesize;
-                    rd.reponseCode = reponseCode;
-                    
+                    ReportData rd = new ReportData
+                    {
+                        loadgen = Constants.GetInstance().LoadGen,
+                        sourceip = _IPAddress.Address.ToString(),
+                        loadgenanme = ExecutionReport.GetInstance().LoadGenName,
+                        scenarioname = Status.ScenarioName,
+                        scriptid = _vuScriptXml.Attributes["id"].Value,
+                        containerid = _containerId.Peek()[0],
+                        containername = _containerId.Peek()[1],
+                        pageid = _pageId.Count < 1 ? "1" : _pageId.Peek(),
+                        userid = _userid,
+                        iterationid = _iterationid,
+                        requestid = requestid,
+                        address = address,
+                        starttime = starttime,
+                        firstbytereceivedtime = firstbytereceivedtime,
+                        timeforfirstbyte = firstbytetime,
+                        endtime = endtime,
+                        diff = diff,
+                        responsesize = responsesize,
+                        reponseCode = reponseCode
+                    };
+
                     if (OnLockReportData != null && rd != null)
                     {
                         OnLockReportData.Invoke(rd);
@@ -684,8 +702,10 @@ namespace AppedoLT.BusinessLogic
                 match = regex.Match(attribute.Value);
                 while (match.Success == true)
                 {
-                    AppedoLT.Core.Tuple<string, string> parm = new AppedoLT.Core.Tuple<string, string>();
-                    parm.Key = match.Groups[1].Value;
+                    AppedoLT.Core.Tuple<string, string> parm = new AppedoLT.Core.Tuple<string, string>
+                    {
+                        Key = match.Groups[1].Value
+                    };
                     try
                     {
                         parm.Value = GetVariableValue(parm.Key);
@@ -709,8 +729,10 @@ namespace AppedoLT.BusinessLogic
             match = Regex.Match(exp.ToString(), @"\$\$([a-zA-Z_][a-zA-Z0-9_.]*)\$\$");
             while (match.Success == true)
             {
-                AppedoLT.Core.Tuple<string, string> parm = new AppedoLT.Core.Tuple<string, string>();
-                parm.Key = match.Groups[1].Value;
+                AppedoLT.Core.Tuple<string, string> parm = new AppedoLT.Core.Tuple<string, string>
+                {
+                    Key = match.Groups[1].Value
+                };
                 try
                 {
                     parm.Value = GetVariableValue(parm.Key);
@@ -743,9 +765,10 @@ namespace AppedoLT.BusinessLogic
                 MatchCollection match = Regex.Matches(expression, @"\$\$([a-zA-Z_][a-zA-Z0-9_.]*)\$\$");
                 for (int ind = 0; ind < match.Count; ind++)
                 {
-                    Parameter parm = new Parameter();
-
-                    parm.Name = match[ind].Groups[1].Value;
+                    Parameter parm = new Parameter
+                    {
+                        Name = match[ind].Groups[1].Value
+                    };
                     if (_exVariablesValues.ContainsKey(parm.Name) == true)
                     {
                         if (parm.Name.EndsWith("_rand"))
@@ -823,22 +846,24 @@ namespace AppedoLT.BusinessLogic
         /// </param>
         private void LockException(string requestid, string message, string errorCode, string url)
         {
-            RequestException exception = new RequestException();
-            exception.reportname = _reportName;
-            exception.scenarioname = Status.ScenarioName;
-            exception.scriptid = _vuScriptXml.Attributes["id"].Value;
-            exception.scriptname = _vuScriptXml.Attributes["name"].Value;
-            exception.requestid = requestid;
-            exception.iterationid = this._iterationid.ToString();
-            exception.userid = this._userid.ToString();
-            exception.requestexceptionid = Constants.GetInstance().UniqueID;
-            exception.time = DateTime.Now;
-            exception.from = "web";
-            exception.message = message;
-            exception.errorcode = errorCode;
-            exception.request = url;
-            exception.containerid = _containerId.Peek()[0];
-            exception.containername = _containerId.Peek()[1];
+            RequestException exception = new RequestException
+            {
+                reportname = _reportName,
+                scenarioname = Status.ScenarioName,
+                scriptid = _vuScriptXml.Attributes["id"].Value,
+                scriptname = _vuScriptXml.Attributes["name"].Value,
+                requestid = requestid,
+                iterationid = this._iterationid.ToString(),
+                userid = this._userid.ToString(),
+                requestexceptionid = Constants.GetInstance().UniqueID,
+                time = DateTime.Now,
+                from = "web",
+                message = message,
+                errorcode = errorCode,
+                request = url,
+                containerid = _containerId.Peek()[0],
+                containername = _containerId.Peek()[1]
+            };
             if (OnLockError != null && exception != null)
             {
                 OnLockError.Invoke(exception);

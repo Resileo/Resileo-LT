@@ -194,8 +194,10 @@ namespace AppedoLT.DataAccessLayer
             try
             {
                 com = this.GetCommand(query, this.GetConnection(this.ConnectionString));
-                adp = new SQLiteDataAdapter();
-                adp.SelectCommand = com;
+                adp = new SQLiteDataAdapter
+                {
+                    SelectCommand = com
+                };
                 adp.Fill(ds);
                 return ds;
             }
@@ -310,8 +312,10 @@ namespace AppedoLT.DataAccessLayer
                 {
                     com.Parameters.AddWithValue(cmdParam.Key.ToString(), cmdParam.Value);
                 }
-                adp = new SQLiteDataAdapter();
-                adp.SelectCommand = com;
+                adp = new SQLiteDataAdapter
+                {
+                    SelectCommand = com
+                };
                 adp.Fill(ds);
                 return ds;
             }

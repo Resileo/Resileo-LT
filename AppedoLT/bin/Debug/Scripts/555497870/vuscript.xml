@@ -86,7 +86,6 @@
           <assertions>
             <assertion name="Select Location" condition="Response contain" type="text" text="Select Location" />
             <assertion name="Appedo" condition="Response not contain" type="text" text="Appedo" />
-            <assertion name="Resileo" condition="Response contain" type="text" text="Resileo" />
           </assertions>
           <extractor name="ext_resp" start="&lt;td valign=&quot;top&quot; class=&quot;welcome_menu&quot;&gt;" end="&lt;/td&gt;" mode="1" selctiontype="single" regex="&lt;td\ valign=&quot;top&quot;\ class=&quot;welcome_menu&quot;&gt;(.*?)&lt;/td&gt;" groupindex="1" ordinal="1" />
           <extractor name="ex_notfound" start=" border=&quot;" end="&quot; cellpadding" mode="1" selctiontype="single" regex="\ border=&quot;(.*?)&quot;\ cellpadding" groupindex="1" ordinal="1" />

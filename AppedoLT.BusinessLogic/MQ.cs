@@ -74,9 +74,11 @@ namespace AppedoLT.BusinessLogic
             {
                 MQQueueManager queueManager = new MQQueueManager();
                 MQQueue queue = queueManager.AccessQueue(strQueueName, MQC.MQOO_OUTPUT + MQC.MQOO_FAIL_IF_QUIESCING, "", "", "");
-                MQMessage queueMessage = new MQMessage();
-                queueMessage.Format = MQC.MQFMT_STRING;
-                queueMessage.CharacterSet = 437;
+                MQMessage queueMessage = new MQMessage
+                {
+                    Format = MQC.MQFMT_STRING,
+                    CharacterSet = 437
+                };
                 queueMessage.WriteString(strInputMsg);
                 queueMessage.Persistence = intPersistence;
 

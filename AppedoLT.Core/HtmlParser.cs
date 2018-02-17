@@ -145,9 +145,11 @@ namespace AppedoLT.Core
             if (name == "*" || String.Compare(s, name, true) == 0)
             {
                 // Yes, create new tag object
-                tag = new HtmlTag();
-                tag.Name = s;
-                tag.Attributes = new Dictionary<string, string>();
+                tag = new HtmlTag
+                {
+                    Name = s,
+                    Attributes = new Dictionary<string, string>()
+                };
                 requested = true;
             }
 

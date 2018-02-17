@@ -82,20 +82,22 @@ namespace AppedoLTLoadGenerator
                                         try
                                         {
                                             string reportFolder = data.Header["runid"] + "_" + (data.Header["loadgenname"] ?? string.Empty).Replace('.', '_');
-                                            Dictionary<string, string> runDetail = new Dictionary<string, string>();
-                                            runDetail.Add("data", data.DataStr);
-                                            runDetail.Add("reportfoldername", reportFolder);
-                                            runDetail.Add("reportname", data.Header["runid"]);
-                                            runDetail.Add("scenarioname", data.Header["scenarioname"]);
-                                            runDetail.Add("runid", data.Header["runid"]);
-                                            runDetail.Add("appedoip", data.Header["appedoip"]);
-                                            runDetail.Add("appedoport", data.Header["appedoport"]);
-                                            runDetail.Add("appedofailedurl", data.Header["appedofailedurl"]);
-                                            runDetail.Add("totalloadgenused", data.Header["totalloadgen"] == null ? "1" : data.Header["totalloadgen"]);
-                                            runDetail.Add("currentloadgenid", data.Header["currentloadgenid"] == null ? "1" : data.Header["currentloadgenid"]);
-                                            runDetail.Add("souceip", ((IPEndPoint)controller.tcpClient.Client.RemoteEndPoint).Address.ToString());
-                                            runDetail.Add("loadgenname", data.Header["loadgenname"] == null ? string.Empty : data.Header["loadgenname"]);
-                                            runDetail.Add("distribution", data.Header["distribution"] == null ? string.Empty : data.Header["distribution"]);
+                                            Dictionary<string, string> runDetail = new Dictionary<string, string>
+                                            {
+                                                { "data", data.DataStr },
+                                                { "reportfoldername", reportFolder },
+                                                { "reportname", data.Header["runid"] },
+                                                { "scenarioname", data.Header["scenarioname"] },
+                                                { "runid", data.Header["runid"] },
+                                                { "appedoip", data.Header["appedoip"] },
+                                                { "appedoport", data.Header["appedoport"] },
+                                                { "appedofailedurl", data.Header["appedofailedurl"] },
+                                                { "totalloadgenused", data.Header["totalloadgen"] == null ? "1" : data.Header["totalloadgen"] },
+                                                { "currentloadgenid", data.Header["currentloadgenid"] == null ? "1" : data.Header["currentloadgenid"] },
+                                                { "souceip", ((IPEndPoint)controller.tcpClient.Client.RemoteEndPoint).Address.ToString() },
+                                                { "loadgenname", data.Header["loadgenname"] == null ? string.Empty : data.Header["loadgenname"] },
+                                                { "distribution", data.Header["distribution"] == null ? string.Empty : data.Header["distribution"] }
+                                            };
                                             //runDetail.Add("loadgencounters", data.Header["loadgencounters"]);
 
                                             if (logger.IsDebugEnabled)
@@ -125,6 +127,8 @@ namespace AppedoLTLoadGenerator
 
                                 case "run":
                                     {
+                                        run = null;
+                                        constants._runStatus = "running";
                                         controller.Send(new TrasportData("ok", string.Empty, null));
 //                                        ExceptionHandler.WritetoEventLog("Before run starts, executionReport.ExecutionStatus " + executionReport.ExecutionStatus);
                                         if (executionReport.ExecutionStatus == Status.Completed)
@@ -174,15 +178,16 @@ namespace AppedoLTLoadGenerator
                                     }
                                     break;
 
-
                                 case "scriptwisestatus":
                                     {
                                         if (run != null)
                                         {
-                                            Dictionary<string, string> headers = new Dictionary<string, string>();
-                                            headers.Add("createduser", run.TotalCreatedUser.ToString());
-                                            headers.Add("completeduser", run.TotalCompletedUser.ToString());
-                                            headers.Add("iscompleted", run.IsCompleted.ToString());
+                                            Dictionary<string, string> headers = new Dictionary<string, string>
+                                            {
+                                                { "createduser", run.TotalCreatedUser.ToString() },
+                                                { "completeduser", run.TotalCompletedUser.ToString() },
+                                                { "iscompleted", run.IsCompleted.ToString() }
+                                            };
                                             controller.Send(new TrasportData("scriptwisestatus", run.GetStatus(), headers));
                                             if (constants._runStatus == "completed")
                                                 run = null;
@@ -244,7 +249,11 @@ namespace AppedoLTLoadGenerator
                                             logger.Debug("stop received");
                                         }
                                         controller.Send(new TrasportData("ok", string.Empty, null));
-                                        if (run != null) run.Stop();
+                                        if (run != null)
+                                        {
+                                            constants._isStopped = true;
+                                            constants._runStatus = "stopped";
+                                        }
                                         // Added stop confirmation from host - 28Sep2017
                                         ni.BalloonTipText = "Run has been stopped";
                                         ni.ShowBalloonTip(1000);
@@ -288,8 +297,10 @@ namespace AppedoLTLoadGenerator
          */
         private TrasportData GetErrorData(string code, string message)
         {
-            System.Collections.Generic.Dictionary<string, string> header = new System.Collections.Generic.Dictionary<string, string>();
-            header.Add("errorcode", code);
+            System.Collections.Generic.Dictionary<string, string> header = new System.Collections.Generic.Dictionary<string, string>
+            {
+                { "errorcode", code }
+            };
             return new TrasportData("error", message, header);
         }
 

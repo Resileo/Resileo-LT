@@ -236,10 +236,12 @@ namespace AppedoLT.DataAccessLayer
                         writer.WriteLine(string.Format("sqlite3 \"{0}\\Data\\{1}\\database.db\" < \"{2}\"", Constants.GetInstance().ExecutingAssemblyLocation, ReportName, commandFile));
                     }
 
-                    ProcessStartInfo startInfo = new ProcessStartInfo(fileName);
-                    startInfo.WorkingDirectory = Constants.GetInstance().ExecutingAssemblyLocation;
-                    startInfo.CreateNoWindow = true;
-                    startInfo.UseShellExecute = false;
+                    ProcessStartInfo startInfo = new ProcessStartInfo(fileName)
+                    {
+                        WorkingDirectory = Constants.GetInstance().ExecutingAssemblyLocation,
+                        CreateNoWindow = true,
+                        UseShellExecute = false
+                    };
 
                     Process process = Process.Start(startInfo);
 

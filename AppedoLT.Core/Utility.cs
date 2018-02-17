@@ -55,9 +55,11 @@ namespace AppedoLT.Core
             DataTable tbl = new DataTable();
             try
             {
-                TextFieldParser parser = new TextFieldParser(FilePath, Encoding.Default);
-                parser.TextFieldType = FieldType.Delimited;
-                parser.TrimWhiteSpace = false;
+                TextFieldParser parser = new TextFieldParser(FilePath, Encoding.Default)
+                {
+                    TextFieldType = FieldType.Delimited,
+                    TrimWhiteSpace = false
+                };
                 parser.SetDelimiters(Delim);
 
                 while (!parser.EndOfData)
@@ -87,9 +89,11 @@ namespace AppedoLT.Core
         {
             bool firstRow = true;
             DataTable tbl = new DataTable();
-            TextFieldParser parser = new TextFieldParser(new MemoryStream(Encoding.Default.GetBytes(content)));
-            parser.TextFieldType = FieldType.Delimited;
-            parser.TrimWhiteSpace = false;
+            TextFieldParser parser = new TextFieldParser(new MemoryStream(Encoding.Default.GetBytes(content)))
+            {
+                TextFieldType = FieldType.Delimited,
+                TrimWhiteSpace = false
+            };
 
             parser.SetDelimiters(Delim);
             while (!parser.EndOfData)

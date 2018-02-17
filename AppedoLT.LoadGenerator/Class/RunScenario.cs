@@ -36,7 +36,7 @@ namespace AppedoLTLoadGenerator
         private string _appedoIp = string.Empty;
         private string _appedoPort = string.Empty;
         private string _appedoFailedUrl = string.Empty;
-        private int _dataSendFailedCount = 0;
+//        private int _dataSendFailedCount = 0;
         public int TotalCreatedUser { get { return _totalCreatedUser; } private set { } }
         public int TotalCompletedUser { get { return _totalCompleted; } private set { } }
         public int IsCompleted { get { return _isCompleted; } private set { } }
@@ -89,22 +89,28 @@ namespace AppedoLTLoadGenerator
 
             if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["LogResponseData"]))
             {
-                bool.TryParse(ConfigurationManager.AppSettings["LogResponseData"].ToString(), out _logResponseData);
+                bool res = bool.TryParse(ConfigurationManager.AppSettings["LogResponseData"].ToString(), out _logResponseData);
+                if (!res)
+                    _logResponseData = false;
             }
 
             if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["LogVariableData"]))
             {
-                bool.TryParse(ConfigurationManager.AppSettings["LogVariableData"].ToString(), out _logVariableData);
+                bool res = bool.TryParse(ConfigurationManager.AppSettings["LogVariableData"].ToString(), out _logVariableData);
+                if (!res)
+                    _logVariableData = false;
             }
 
-            if (_logResponseData || _logVariableData)
+            if (_logResponseData)
+                ThreadPool.QueueUserWorkItem(new WaitCallback(ResponseMessageWriter));
+
+            if (_logVariableData)
+                ThreadPool.QueueUserWorkItem(new WaitCallback(VariableMessageWriter));
+
+            _statusUpdateTimer = new System.Timers.Timer(1000)
             {
-                Thread logResponseThread = new Thread(new ThreadStart(ResponseMessageWriter));
-                logResponseThread.Start();
-            }
-
-            _statusUpdateTimer = new System.Timers.Timer(1000);
-            _statusUpdateTimer.Enabled = true;
+                Enabled = true
+            };
             _statusUpdateTimer.Elapsed += new ElapsedEventHandler(StatusUpdateTimer_Tick);
             if (monitorCounter != null)
             {
@@ -389,23 +395,24 @@ namespace AppedoLTLoadGenerator
             }
         }
 
-        public void Stop()
-        {
-            _constants._isStopped = true;
-            //try
-            //{
-            //    _stopRunning = true;
-            //    executionReport.ExecutionStatus = Status.Completed;
-            //    foreach (ScriptExecutor scr in _scriptExecutorList)
-            //    {
-            //        new Thread(() => { scr.Stop(); }).Start();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
-            //}
-        }
+        //public void Stop()
+        //{
+        //    _constants._isStopped = true;
+        //    _constants._runStatus = "stopped";
+        //    //try
+        //    //{
+        //    //    _stopRunning = true;
+        //    //    executionReport.ExecutionStatus = Status.Completed;
+        //    //    foreach (ScriptExecutor scr in _scriptExecutorList)
+        //    //    {
+        //    //        new Thread(() => { scr.Stop(); }).Start();
+        //    //    }
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+        //    //    ExceptionHandler.WritetoEventLog(ex.StackTrace + ex.Message);
+        //    //}
+        //}
 
         public string GetStatus()
         {
@@ -701,7 +708,7 @@ namespace AppedoLTLoadGenerator
             }
         }
 
-        private void ResponseMessageWriter()
+        private void ResponseMessageWriter(object callback)
         {
             //All log is written locally to avoid data transfer from load gen to controller and also to avoid installation of MSMQ in client place in AppedoLT server. -- Sriraman 01-Feb-2018
             //MessageQueue queue = GetMSMQ(string.Format("FormatName:Direct=TCP:{0}\\private$\\appedo_logs", _appedoIp));
@@ -715,20 +722,13 @@ namespace AppedoLTLoadGenerator
             {
                 try
                 {
-                    if (_responseDetailQueue.Count == 0 && _variableDetailQueue.Count == 0)
-                    {
-                        Thread.Sleep(5000);
-                        continue;
-                    }
-
                     #region Write Response Data
-                    while (_responseDetailQueue.Count > 0)
+                    if (_responseDetailQueue.Count > 0)
                     {
                         //ResponseDetail detail = null;
                         Dictionary<int, List<ResponseDetail>> dumpData = new Dictionary<int, List<ResponseDetail>>();
                         lock (_responseDetailSyncObj)
                         {
-                            //                            detail = _responseDetailQueue.Dequeue();
                             while (_responseDetailQueue.Count > 0)
                             {
                                 ResponseDetail detail = _responseDetailQueue.Dequeue();
@@ -740,23 +740,39 @@ namespace AppedoLTLoadGenerator
                             }
                         }
                         WriteRequestResponseToFile(dumpData);
-                        // Commented to have the log response in local rather than in appedo LT to avoid Data transfer -- Sriraman 01-Feb-2018
-                        //if (detail != null)
-                        //{
-                        //    queue.Send(detail, "ResponseData");
-                        //}
                     }
+                    else
+                        Thread.Sleep(5000);
                     #endregion
+                }
+                catch (Exception ex)
+                {
+                    ExceptionHandler.WritetoEventLog("ResponseMessageWriter "+ ex.Message + " " + ex.StackTrace);
+                }
+            }
+        }
 
+        private void VariableMessageWriter(object callback)
+        {
+            //All log is written locally to avoid data transfer from load gen to controller and also to avoid installation of MSMQ in client place in AppedoLT server. -- Sriraman 01-Feb-2018
+            //MessageQueue queue = GetMSMQ(string.Format("FormatName:Direct=TCP:{0}\\private$\\appedo_logs", _appedoIp));
+            //if (queue == null)
+            //{
+            //    // Don't run the thread when there is no MSMQ active service
+            //    return;
+            //}
+
+            while (_constants._runStatus != "completed")
+            {
+                try
+                {
                     #region Write Variable Data
-                    while (_variableDetailQueue.Count > 0)
+                    if (_variableDetailQueue.Count > 0)
                     {
                         //VariableDetail detail = null;
                         Dictionary<string, List<VariableDetail>> variableData = new Dictionary<string, List<VariableDetail>>();
-
                         lock (_variableDetailSyncObj)
                         {
-                            //                            detail = _variableDetailQueue.Dequeue();
                             while (_variableDetailQueue.Count > 0)
                             {
                                 VariableDetail detail = _variableDetailQueue.Dequeue();
@@ -766,21 +782,16 @@ namespace AppedoLTLoadGenerator
                                 }
                                 variableData[detail.ScriptName].Add(detail);
                             }
-
                         }
                         WriteVariableInfoToFile(variableData);
-
-                        //if (detail != null)
-                        //{
-                        //    queue.Send(detail, "VariableData");
-                        //}
                     }
+                    else
+                        Thread.Sleep(5000);
                     #endregion
                 }
                 catch (Exception ex)
                 {
-                    ExceptionHandler.WritetoEventLog(ex.Message + " " + ex.StackTrace);
-                    Thread.Sleep(10000);
+                    ExceptionHandler.WritetoEventLog("VariableMessageWriter "+ex.Message + " " + ex.StackTrace);
                 }
             }
         }
@@ -843,7 +854,7 @@ namespace AppedoLTLoadGenerator
                     {
                         bool newFileCreated = false;
                         // Add to the queue 
-                        string folderName = AppDomain.CurrentDomain.BaseDirectory + "\\Runlog\\" + data.Value[0].ScriptName + "\\" + data.Value[0].ReportName;
+                        string folderName = AppDomain.CurrentDomain.BaseDirectory + "\\Runlog\\" + data.Value[0].ReportName + "\\" + data.Value[0].ScriptName;
                         if (!Directory.Exists(folderName))
                             Directory.CreateDirectory(folderName);
 

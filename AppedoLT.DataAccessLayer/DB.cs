@@ -29,8 +29,10 @@ namespace AppedoLT.DataAccessLayer
                         if (_instance == null)
                         {
 
-                            _instance = new DB();
-                            _instance.ConnectionString = System.Configuration.ConfigurationManager.AppSettings["databasesetting"];
+                            _instance = new DB
+                            {
+                                ConnectionString = System.Configuration.ConfigurationManager.AppSettings["databasesetting"]
+                            };
 
                         }
                     }
