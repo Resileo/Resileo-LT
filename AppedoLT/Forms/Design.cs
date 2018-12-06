@@ -20,10 +20,14 @@ using System.Windows.Forms;
 using System.Messaging;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Configuration;
+using log4net;
+
 namespace AppedoLT
 {
     public partial class Design : Telerik.WinControls.UI.RadForm
     {
+        private static readonly ILog logger = LogManager.GetLogger("Design.cs");
+
         public static Telerik.WinControls.UI.RadMenuItem mnuiLogin;
         private List<string> _loadGeneratorips = new List<string>();
         private Dictionary<string, string> loadGenUserDetail = new Dictionary<string, string>();
@@ -890,17 +894,25 @@ namespace AppedoLT
                                         //removes request that are images or css based on the header type accept.
                                         xpath = @"//*/header[(@name='Accept' or @name='accept') and (contains(@value,'css') or contains(@value, 'image'))]";
                                         xnList = scenario.SelectNodes(xpath);
+                                        if (logger.IsDebugEnabled)
+                                            logger.Debug("btnRun_Click()->Browser cache Enabled - Cached URLs based on header matching ");
                                         foreach (XmlNode xn in xnList)
                                         {
                                             XmlNode pn = xn.ParentNode.ParentNode;
                                             pn.ParentNode.RemoveChild(pn);
+                                            if (logger.IsDebugEnabled)
+                                                logger.Debug(pn.Attributes["Path"].Value);
                                         }
                                         //removes request that contains.js or .woff(font file) when browser cache is true
-                                        xpath = @"//*/request[contains(@Path,'.js') or contains(@Path, '.woff') or contains(@Path, '.ico')]";
+                                        xpath = @"//*/request[ends-with(@Path,'.js') or ends-with(@Path, '.woff') or ends-with(@Path, '.ico')]";
                                         xnList = scenario.SelectNodes(xpath);
+                                        if (logger.IsDebugEnabled)
+                                            logger.Debug("btnRun_Click()->Browser cache Enabled - Cached URLs based on request matching ");
                                         foreach (XmlNode xn in xnList)
                                         {
                                             xn.ParentNode.RemoveChild(xn);
+                                            if (logger.IsDebugEnabled)
+                                                logger.Debug(xn.Attributes["Path"].Value);
                                         }
                                     }
                                     xpath = string.Empty;
@@ -1398,8 +1410,8 @@ namespace AppedoLT
                                 loadGenCreatedUser = Convert.ToInt32(data.Header["createduser"]);
                                 loadGenCompetedUser = Convert.ToInt32(data.Header["completeduser"]);
                                 tempIsCompleted = Convert.ToInt32(data.Header["iscompleted"]);
-//                                Debug.WriteLine("loadGenCreatedUser " + loadGenCreatedUser + " loadGenCompetedUser " + loadGenCompetedUser + " tempIsCompleted " + tempIsCompleted);
                                 string address = ((System.Net.IPEndPoint)(controller.tcpClient.Client.RemoteEndPoint)).Address.ToString();
+                                Debug.WriteLine("dataStr "+ dataStr+ " address " +address+" loadGenCreatedUser " + loadGenCreatedUser + " loadGenCompetedUser " + loadGenCompetedUser + " tempIsCompleted " + tempIsCompleted);
                                 if (loadGenUserDetail.ContainsKey(address) == false)
                                 {
                                     loadGenUserDetail.Add(address, loadGenCreatedUser + "," + loadGenCompetedUser + "," + tempIsCompleted);

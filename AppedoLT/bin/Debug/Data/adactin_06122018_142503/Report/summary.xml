@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<report reportname="adactin_06122018_142503">
+  <summaryreport>
+    <val starttime="06-12-2018 14:25:11" endtime="06-12-2018 14:25:52" durationsec="41" usercount="3" totalhits="30" avgresponse="0.31121586" avghits="0.731707317073171" totalthroughput="0.274" avgthroughput="0.0534424200290587" totalerrors="0" totalpage="30" avgpageresponse="0.31121586" reponse200="21" reponse300="9" reponse400="0" reponse500="0" />
+  </summaryreport>
+  <log>
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="563351174" logname="initiate" userid="2" iterationid="1" message="init" time="06-12-2018 14:25:17" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="563351174" logname="initiate" userid="1" iterationid="1" message="init" time="06-12-2018 14:25:18" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="563351174" logname="initiate" userid="3" iterationid="1" message="init" time="06-12-2018 14:25:19" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="571199191" logname="IfThen" userid="1" iterationid="1" message="Inside Then statement" time="06-12-2018 14:25:26" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="563351173" logname="res" userid="1" iterationid="1" message="Welcome to AdactIn Group of Hotels" time="06-12-2018 14:25:26" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="571199191" logname="IfThen" userid="2" iterationid="1" message="Inside Then statement" time="06-12-2018 14:25:26" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="563351173" logname="res" userid="2" iterationid="1" message="Welcome to AdactIn Group of Hotels" time="06-12-2018 14:25:26" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="571199191" logname="IfThen" userid="3" iterationid="1" message="Inside Then statement" time="06-12-2018 14:25:27" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="563351173" logname="res" userid="3" iterationid="1" message="Welcome to AdactIn Group of Hotels" time="06-12-2018 14:25:27" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="571199191" logname="IfThen" userid="2" iterationid="2" message="Inside Then statement" time="06-12-2018 14:25:34" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="563351173" logname="res" userid="2" iterationid="2" message="Welcome to AdactIn Group of Hotels" time="06-12-2018 14:25:34" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="571199191" logname="IfThen" userid="1" iterationid="2" message="Inside Then statement" time="06-12-2018 14:25:34" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="563351173" logname="res" userid="1" iterationid="2" message="Welcome to AdactIn Group of Hotels" time="06-12-2018 14:25:34" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="571199191" logname="IfThen" userid="3" iterationid="2" message="Inside Then statement" time="06-12-2018 14:25:34" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="563351173" logname="res" userid="3" iterationid="2" message="Welcome to AdactIn Group of Hotels" time="06-12-2018 14:25:34" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="571199191" logname="IfThen" userid="2" iterationid="3" message="Inside Then statement" time="06-12-2018 14:25:41" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="563351173" logname="res" userid="2" iterationid="3" message="Welcome to AdactIn Group of Hotels" time="06-12-2018 14:25:41" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="571199191" logname="IfThen" userid="1" iterationid="3" message="Inside Then statement" time="06-12-2018 14:25:41" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="563351173" logname="res" userid="1" iterationid="3" message="Welcome to AdactIn Group of Hotels" time="06-12-2018 14:25:41" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="571199191" logname="IfThen" userid="3" iterationid="3" message="Inside Then statement" time="06-12-2018 14:25:42" />
+    <val loadgen="192.168.43.243" reportname="adactin_06122018_142503" scenarioname="adactin" scriptid="555497870" scriptname="adactin" logid="563351173" logname="res" userid="3" iterationid="3" message="Welcome to AdactIn Group of Hotels" time="06-12-2018 14:25:42" />
+  </log>
+  <error />
+  <graphs>
+    <val gmttime="1544086513" localtime="2018-12-06 14:25:13" gmt="2018-12-06 08:55:13" hitpersec="0.6" totalkb="23.52" kbps="4.7" avgresponsetime="458.33" />
+    <val gmttime="1544086519" localtime="2018-12-06 14:25:19" gmt="2018-12-06 08:55:19" hitpersec="0.6" totalkb="24.4" kbps="4.88" avgresponsetime="391.51" />
+    <val gmttime="1544086522" localtime="2018-12-06 14:25:22" gmt="2018-12-06 08:55:22" hitpersec="0.6" totalkb="47.34" kbps="9.47" avgresponsetime="280.89" />
+    <val gmttime="1544086529" localtime="2018-12-06 14:25:29" gmt="2018-12-06 08:55:29" hitpersec="1.2" totalkb="62.99" kbps="12.6" avgresponsetime="447" />
+    <val gmttime="1544086534" localtime="2018-12-06 14:25:34" gmt="2018-12-06 08:55:34" hitpersec="0.6" totalkb="18.93" kbps="3.79" avgresponsetime="224.62" />
+    <val gmttime="1544086537" localtime="2018-12-06 14:25:37" gmt="2018-12-06 08:55:37" hitpersec="0.6" totalkb="47.87" kbps="9.57" avgresponsetime="244.85" />
+    <val gmttime="1544086542" localtime="2018-12-06 14:25:42" gmt="2018-12-06 08:55:42" hitpersec="0.6" totalkb="18.93" kbps="3.79" avgresponsetime="205.26" />
+    <val gmttime="1544086552" localtime="2018-12-06 14:25:52" gmt="2018-12-06 08:55:52" hitpersec="1.2" totalkb="36.48" kbps="7.3" avgresponsetime="206.34" />
+  </graphs>
+  <errorgraph />
+  <pageresponsegraph>
+    <val endtime="1544086513" localtime="2018-12-06 14:25:13" resptime="0.33" />
+    <val endtime="1544086519" localtime="2018-12-06 14:25:19" resptime="0.33" />
+    <val endtime="1544086522" localtime="2018-12-06 14:25:22" resptime="0.67" />
+    <val endtime="1544086527" localtime="2018-12-06 14:25:27" resptime="0.17" />
+    <val endtime="1544086534" localtime="2018-12-06 14:25:34" resptime="0.67" />
+    <val endtime="1544086537" localtime="2018-12-06 14:25:37" resptime="0.33" />
+    <val endtime="1544086542" localtime="2018-12-06 14:25:42" resptime="0" />
+    <val endtime="1544086552" localtime="2018-12-06 14:25:52" resptime="0.17" />
+  </pageresponsegraph>
+  <vuserrungraph>
+    <val gmt="1544086511" localtime="2018-12-06 14:25:11" vusercnt="1" vuserrunning="1" />
+    <val gmt="1544086512" localtime="2018-12-06 14:25:12" vusercnt="1" vuserrunning="2" />
+    <val gmt="1544086513" localtime="2018-12-06 14:25:13" vusercnt="1" vuserrunning="3" />
+    <val gmt="1544086514" localtime="2018-12-06 14:25:14" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086515" localtime="2018-12-06 14:25:15" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086516" localtime="2018-12-06 14:25:16" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086517" localtime="2018-12-06 14:25:17" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086518" localtime="2018-12-06 14:25:18" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086519" localtime="2018-12-06 14:25:19" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086520" localtime="2018-12-06 14:25:20" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086521" localtime="2018-12-06 14:25:21" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086522" localtime="2018-12-06 14:25:22" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086523" localtime="2018-12-06 14:25:23" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086524" localtime="2018-12-06 14:25:24" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086525" localtime="2018-12-06 14:25:25" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086526" localtime="2018-12-06 14:25:26" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086527" localtime="2018-12-06 14:25:27" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086528" localtime="2018-12-06 14:25:28" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086529" localtime="2018-12-06 14:25:29" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086530" localtime="2018-12-06 14:25:30" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086531" localtime="2018-12-06 14:25:31" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086532" localtime="2018-12-06 14:25:32" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086533" localtime="2018-12-06 14:25:33" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086534" localtime="2018-12-06 14:25:34" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086535" localtime="2018-12-06 14:25:35" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086536" localtime="2018-12-06 14:25:36" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086537" localtime="2018-12-06 14:25:37" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086538" localtime="2018-12-06 14:25:38" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086539" localtime="2018-12-06 14:25:39" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086540" localtime="2018-12-06 14:25:40" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086541" localtime="2018-12-06 14:25:41" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086542" localtime="2018-12-06 14:25:42" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086543" localtime="2018-12-06 14:25:43" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086544" localtime="2018-12-06 14:25:44" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086545" localtime="2018-12-06 14:25:45" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086546" localtime="2018-12-06 14:25:46" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086547" localtime="2018-12-06 14:25:47" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086548" localtime="2018-12-06 14:25:48" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086549" localtime="2018-12-06 14:25:49" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086550" localtime="2018-12-06 14:25:50" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086551" localtime="2018-12-06 14:25:51" vusercnt="" vuserrunning="3" />
+    <val gmt="1544086552" localtime="2018-12-06 14:25:52" vusercnt="-3" vuserrunning="0" />
+    <val gmt="1544086553" localtime="2018-12-06 14:25:53" vusercnt="" vuserrunning="0" />
+    <val gmt="1544086554" localtime="2018-12-06 14:25:54" vusercnt="" vuserrunning="0" />
+    <val gmt="1544086555" localtime="2018-12-06 14:25:55" vusercnt="" vuserrunning="0" />
+    <val gmt="1544086556" localtime="2018-12-06 14:25:56" vusercnt="" vuserrunning="0" />
+    <val gmt="1544086557" localtime="2018-12-06 14:25:57" vusercnt="" vuserrunning="0" />
+    <val gmt="1544086558" localtime="2018-12-06 14:25:58" vusercnt="" vuserrunning="0" />
+    <val gmt="1544086559" localtime="2018-12-06 14:25:59" vusercnt="" vuserrunning="0" />
+    <val gmt="1544086560" localtime="2018-12-06 14:26:00" vusercnt="" vuserrunning="0" />
+    <val gmt="1544086561" localtime="2018-12-06 14:26:01" vusercnt="" vuserrunning="0" />
+    <val gmt="1544086562" localtime="2018-12-06 14:26:02" vusercnt="" vuserrunning="0" />
+    <val gmt="1544086563" localtime="2018-12-06 14:26:03" vusercnt="" vuserrunning="0" />
+    <val gmt="1544086564" localtime="2018-12-06 14:26:04" vusercnt="" vuserrunning="0" />
+    <val gmt="1544086565" localtime="2018-12-06 14:26:05" vusercnt="" vuserrunning="0" />
+    <val gmt="1544086566" localtime="2018-12-06 14:26:06" vusercnt="" vuserrunning="0" />
+  </vuserrungraph>
+  <script name="adactin" id="555497870">
+    <settings>
+      <val type="Iteration" durationTime="0:1:0" iterations="3" incrementUser="1" incrementTime="0:0:1" maxUser="3" browserCache="true" startUserId="1" replayThinkTime="true" bandwidth="Full Speed" enableparallelcon="false" parallelconnections="6" />
+    </settings>
+    <requests>
+      <val containerid="555497872" containername="home" requestid="555497877" address="/HotelApp/" />
+      <val containerid="555497873" containername="Login" requestid="555497883" address="/HotelApp/" />
+      <val containerid="555497884" containername="landing page" requestid="555497886" address="/HotelApp/SearchHotel.php" />
+      <val containerid="555497884" containername="landing page" requestid="555497888" address="/HotelApp/jQuery-scroll-books/index.html" />
+      <val containerid="559803913" containername="Logout" requestid="555497896" address="/HotelApp/Logout.php" />
+      <val containerid="559803913" containername="Logout" requestid="555497899" address="/HotelApp/jQuery-scroll-books/index.html" />
+    </requests>
+    <requestresponse>
+      <val containerid="555497872" containername="home" requestid="555497877" address="/HotelApp/" min="217.624" max="897.9545" avg="458.3327" throughput="24087" hitcount="3" minttfb="217.304" maxttfb="873.8993" avgttfb="442.199533333333" />
+      <val containerid="555497873" containername="Login" requestid="555497883" address="/HotelApp/" min="334.6177" max="461.7821" avg="391.512266666667" throughput="24987" hitcount="3" minttfb="334.1914" maxttfb="458.8249" avgttfb="390.1981" />
+      <val containerid="555497884" containername="landing page" requestid="555497886" address="/HotelApp/SearchHotel.php" min="180.8539" max="401.391" avg="258.053677777778" throughput="142615" hitcount="9" minttfb="176.8498" maxttfb="401.2551" avgttfb="255.1978" />
+      <val containerid="555497884" containername="landing page" requestid="555497888" address="/HotelApp/jQuery-scroll-books/index.html" min="192.5533" max="1257.9217" avg="358.489044444444" throughput="58149" hitcount="9" minttfb="192.2394" maxttfb="1257.6953" avgttfb="357.983577777778" />
+      <val containerid="559803913" containername="Logout" requestid="555497896" address="/HotelApp/Logout.php" min="209.5893" max="242.3408" avg="224.3634" throughput="17976" hitcount="3" minttfb="209.3339" maxttfb="241.8874" avgttfb="224.013633333333" />
+      <val containerid="559803913" containername="Logout" requestid="555497899" address="/HotelApp/jQuery-scroll-books/index.html" min="178.3206" max="198.4302" avg="188.322066666667" throughput="19383" hitcount="3" minttfb="177.9837" maxttfb="198.2032" avgttfb="187.99" />
+    </requestresponse>
+    <containerresponse>
+      <val containerid="555497872" containername="home" min="217.017531394959" max="898.003578186035" avg="458.014011383057" />
+      <val containerid="555497873" containername="Login" min="333.975255489349" max="461.997091770172" avg="391.320884227753" />
+      <val containerid="555497884" containername="landing page" min="422.045588493347" max="1518.03642511368" avg="616.778433322906" />
+      <val containerid="559803913" containername="Logout" min="388.00835609436" max="430.011749267578" avg="412.671267986298" />
+    </containerresponse>
+    <errorcount />
+    <errorcode />
+    <transactions />
+  </script>
+</report>

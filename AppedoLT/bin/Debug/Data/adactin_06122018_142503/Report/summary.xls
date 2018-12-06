@@ -1,0 +1,736 @@
+﻿<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Appedo</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/appedo-16.ico">
+    <link rel="stylesheet" href="css/morris.css">
+    <script src="js/raphael-min.js">
+    </script>
+    <script src="js/jquery-1.8.2.min.js">
+    </script>
+    <script src="js/morris-0.4.1.min.js">
+    </script>
+    <script>
+          function drawCharts()
+          {
+            drawSummaryGraph();
+            drawErrorGraph();
+            drawPageResponseGraph();
+            drawVUserGraph();
+            
+              drawTransactionGraph_555497870();
+            
+          }        
+        </script>
+    <style>
+          body {
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          font-size: 14px;
+          line-height: 1.42857143;
+          color: #333;
+          background-color: #fff;
+          }
+
+          .graphheadingrow
+          {
+          text-align: center;
+          border-bottom: 1px solid #1b639e;
+          }
+
+          .graph
+          {
+          width: 400px; 
+          height: 250px;
+          padding: 25px;
+          }
+        </style>
+  </head>
+  <body onload="drawCharts();">
+    <h1 style="width:600px; padding-bottom: 6px; background-color:#31c0be; color:#FFFFFF; text-align: center;">Appedo</h1>
+    <span>
+      <b>Report Name:  </b>adactin_06122018_142503</span>
+    <h4> Summary Report</h4>
+    <table border="1" cellspacing="0">
+      <tr>
+        <td style="bgcolor=#9acd32">
+          <b>Start Time</b>
+        </td>
+        <td style="text-align:right">06-12-2018 14:25:11</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>End Time</b>
+        </td>
+        <td style="text-align:right">06-12-2018 14:25:52</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Duration(sec)</b>
+        </td>
+        <td style="text-align:right">41</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>User Count</b>
+        </td>
+        <td style="text-align:right">3</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Total Hits</b>
+        </td>
+        <td style="text-align:right">30</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Request Response(sec)</b>
+        </td>
+        <td style="text-align:right">.311</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Page Response(sec)</b>
+        </td>
+        <td style="text-align:right">.311</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Hits/Sec</b>
+        </td>
+        <td style="text-align:right">.732</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b> Total Throughput(MB)</b>
+        </td>
+        <td style="text-align:right">.274</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Average Throughput(Mbps)</b>
+        </td>
+        <td style="text-align:right">.053</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Total Errors</b>
+        </td>
+        <td style="text-align:right">0</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Total pages</b>
+        </td>
+        <td style="text-align:right">30</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 200 Count</b>
+        </td>
+        <td style="text-align:right">21</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 300 Count</b>
+        </td>
+        <td style="text-align:right">9</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 400 Count</b>
+        </td>
+        <td style="text-align:right">0</td>
+      </tr>
+      <tr>
+        <td style="text-align:left; bgcolor=#9acd32">
+          <b>Response Code 500 Count</b>
+        </td>
+        <td style="text-align:right">0</td>
+      </tr>
+    </table>
+    <h4> Graphs </h4>
+    <table style="width: 875px;" cellpadding="10" cellspacing="0">
+      <tr>
+        <td class="graphheadingrow">
+          <b>Virtual User Running Graph</b>
+        </td>
+        <td>
+        </td>
+        <td class="graphheadingrow">
+          <b>Hits per Sec Graph</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="vuser_" class="graph">
+          </div>
+        </td>
+        <td style="width: 15px;">
+        </td>
+        <td>
+          <div id="hps_" class="graph">
+          </div>
+        </td>
+      </tr>
+      <br>
+      <br>
+      <tr>
+        <td class="graphheadingrow">
+          <b>Throughput per Sec Graph (KBps)</b>
+        </td>
+        <td>
+        </td>
+        <td class="graphheadingrow">
+          <b>Page Response Time Graph (secs)</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="kbps_" style="width: 400px; height: 250px;">
+          </div>
+        </td>
+        <td>
+        </td>
+        <td>
+          <div id="pageres_" style="width: 400px; height: 250px;">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <script>
+      function drawSummaryGraph() {      
+      new Morris.Line({
+      element: 'hps_',
+      data: [
+      
+            { time: '2018-12-06 14:25:13', hitspersec: 0.6 },
+          
+            { time: '2018-12-06 14:25:19', hitspersec: 0.6 },
+          
+            { time: '2018-12-06 14:25:22', hitspersec: 0.6 },
+          
+            { time: '2018-12-06 14:25:29', hitspersec: 1.2 },
+          
+            { time: '2018-12-06 14:25:34', hitspersec: 0.6 },
+          
+            { time: '2018-12-06 14:25:37', hitspersec: 0.6 },
+          
+            { time: '2018-12-06 14:25:42', hitspersec: 0.6 },
+          
+            { time: '2018-12-06 14:25:52', hitspersec: 1.2 }
+          
+      ],
+      xkey: 'time',
+      ykeys: ['hitspersec'],
+      labels: ['Hits per Sec'],
+      lineColors: ['#D26B16'],
+      lineWidth: 1,
+      pointSize: 2,
+      hideHover: 'auto'
+      });
+
+      new Morris.Line({
+      element: 'kbps_',
+      data: [
+      
+            { time: '2018-12-06 14:25:13', kbps: 4.7 },
+          
+            { time: '2018-12-06 14:25:19', kbps: 4.88 },
+          
+            { time: '2018-12-06 14:25:22', kbps: 9.47 },
+          
+            { time: '2018-12-06 14:25:29', kbps: 12.6 },
+          
+            { time: '2018-12-06 14:25:34', kbps: 3.79 },
+          
+            { time: '2018-12-06 14:25:37', kbps: 9.57 },
+          
+            { time: '2018-12-06 14:25:42', kbps: 3.79 },
+          
+            { time: '2018-12-06 14:25:52', kbps: 7.3 }
+          
+      ],
+      xkey: 'time',
+      ykeys: ['kbps'],
+      labels: ['KBps'],
+      lineColors: ['#800000'],
+      lineWidth: 1,
+      pointSize: 2,
+      hideHover: 'auto'
+      });
+
+      new Morris.Line({
+      element: 'art_',
+      data: [
+      
+            { time: '2018-12-06 14:25:13', avgresponsetime: 458.33 },
+          
+            { time: '2018-12-06 14:25:19', avgresponsetime: 391.51 },
+          
+            { time: '2018-12-06 14:25:22', avgresponsetime: 280.89 },
+          
+            { time: '2018-12-06 14:25:29', avgresponsetime: 447 },
+          
+            { time: '2018-12-06 14:25:34', avgresponsetime: 224.62 },
+          
+            { time: '2018-12-06 14:25:37', avgresponsetime: 244.85 },
+          
+            { time: '2018-12-06 14:25:42', avgresponsetime: 205.26 },
+          
+            { time: '2018-12-06 14:25:52', avgresponsetime: 206.34 }
+          
+      ],
+      xkey: 'time',
+      ykeys: ['avgresponsetime'],
+      labels: ['Avg. Response Time'],
+      lineColors: ['#800000'],
+      lineWidth: 1,
+      pointSize: 2,
+      hideHover: 'auto'
+      });
+      }
+    </script>
+    <script>
+      function drawPageResponseGraph() {
+        new Morris.Line({
+        element: 'pageres_',
+        data: [
+        
+              { time: '2018-12-06 14:25:13', resptime: 0.33 },
+            
+              { time: '2018-12-06 14:25:19', resptime: 0.33 },
+            
+              { time: '2018-12-06 14:25:22', resptime: 0.67 },
+            
+              { time: '2018-12-06 14:25:27', resptime: 0.17 },
+            
+              { time: '2018-12-06 14:25:34', resptime: 0.67 },
+            
+              { time: '2018-12-06 14:25:37', resptime: 0.33 },
+            
+              { time: '2018-12-06 14:25:42', resptime: 0 },
+            
+              { time: '2018-12-06 14:25:52', resptime: 0.17 }
+            
+        ],
+        xkey: 'time',
+        ykeys: ['resptime'],
+        labels: ['Avg. Response Time'],
+        lineColors: ['#2616D2'],
+        lineWidth: 1,
+        pointSize: 2,
+        hideHover: 'auto'
+        });
+      }
+    </script>
+    <br>
+    <br>
+    <table style="width: 875px;" cellpadding="10" cellspacing="0">
+      <tr>
+        <td class="graphheadingrow">
+          <b>Request Response Graph (ms)</b>
+        </td>
+        <td>
+        </td>
+        <td class="graphheadingrow">
+          <b>Error Graph</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="art_" class="graph">
+          </div>
+        </td>
+        <td style="width: 15px;">
+        </td>
+        <td>
+          <div id="error_" class="graph">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <script>
+      
+      
+      function drawErrorGraph() {
+        new Morris.Line({
+            element: 'error_',
+            data: [
+            
+            ],
+            xkey: 'time',
+            ykeys: ['errorcount'],
+            labels: ['Error Count'],
+            lineColors: ['#D21629'],
+            lineWidth: 1,
+            pointSize: 2,
+            hideHover: 'auto'
+        });
+      }
+    </script>
+    <script>
+      function drawVUserGraph() {
+        new Morris.Line({
+        element: 'vuser_',
+        data: [
+        
+              { time: '2018-12-06 14:25:11', vuserrunning: 1 },
+            
+              { time: '2018-12-06 14:25:12', vuserrunning: 2 },
+            
+              { time: '2018-12-06 14:25:13', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:14', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:15', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:16', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:17', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:18', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:19', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:20', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:21', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:22', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:23', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:24', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:25', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:26', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:27', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:28', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:29', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:30', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:31', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:32', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:33', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:34', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:35', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:36', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:37', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:38', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:39', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:40', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:41', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:42', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:43', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:44', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:45', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:46', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:47', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:48', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:49', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:50', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:51', vuserrunning: 3 },
+            
+              { time: '2018-12-06 14:25:52', vuserrunning: 0 },
+            
+              { time: '2018-12-06 14:25:53', vuserrunning: 0 },
+            
+              { time: '2018-12-06 14:25:54', vuserrunning: 0 },
+            
+              { time: '2018-12-06 14:25:55', vuserrunning: 0 },
+            
+              { time: '2018-12-06 14:25:56', vuserrunning: 0 },
+            
+              { time: '2018-12-06 14:25:57', vuserrunning: 0 },
+            
+              { time: '2018-12-06 14:25:58', vuserrunning: 0 },
+            
+              { time: '2018-12-06 14:25:59', vuserrunning: 0 },
+            
+              { time: '2018-12-06 14:26:00', vuserrunning: 0 },
+            
+              { time: '2018-12-06 14:26:01', vuserrunning: 0 },
+            
+              { time: '2018-12-06 14:26:02', vuserrunning: 0 },
+            
+              { time: '2018-12-06 14:26:03', vuserrunning: 0 },
+            
+              { time: '2018-12-06 14:26:04', vuserrunning: 0 },
+            
+              { time: '2018-12-06 14:26:05', vuserrunning: 0 },
+            
+              { time: '2018-12-06 14:26:06', vuserrunning: 0 }
+            
+        ],
+        xkey: 'time',
+        ykeys: ['vuserrunning'],
+        labels: ['VUsers Running'],
+        lineColors: ['#B22222'],
+        lineWidth: 1,
+        pointSize: 2,
+        hideHover: 'auto'
+        });
+      }
+    </script>
+    <br>
+    <span>
+            Script Name: <b>adactin</b></span>
+    <br>
+    <h4> Settings</h4>
+    <table border="1" cellspacing="0" cellpadding="3">
+      <tr>
+        <td style="width: 160px;">
+          <b>Browser Cache</b>
+        </td>
+        <td style="width: 100px;">true</td>
+        <td style="width: 160px;">
+          <b>Replay Think Time</b>
+        </td>
+        <td style="width: 100px;">true</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Bandwidth</b>
+        </td>
+        <td>Full Speed</td>
+        <td>
+          <b>Parallel Connections</b>
+        </td>
+        <td style="text-align:right">6</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Start User Count</b>
+        </td>
+        <td style="text-align:right">1</td>
+        <td>
+          <b>Max Users</b>
+        </td>
+        <td style="text-align:right">3</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Mode</b>
+        </td>
+        <td>Iteration</td>
+        <td>
+          <b>Iterations</b>
+        </td>
+        <td style="text-align:right">3</td>
+      </tr>
+      <tr>
+        <td>
+          <b>Increment User</b>
+        </td>
+        <td style="text-align:right">1</td>
+        <td>
+          <b>Increment Time</b>
+        </td>
+        <td style="text-align:right">0:0:1</td>
+      </tr>
+    </table>
+    <h4> Request response</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Containername</th>
+        <th>Address</th>
+        <th>Hit Count</th>
+        <th>Throughput(Byte)</th>
+        <th>Min(ms)</th>
+        <th>Max(ms)</th>
+        <th>Avg(ms)</th>
+        <th>Min TTFB(ms)</th>
+        <th>Max TTFB(ms)</th>
+        <th>Avg TTFB(ms)</th>
+      </tr>
+      <tr>
+        <td>home</td>
+        <td>/HotelApp/</td>
+        <td style="text-align:right">3</td>
+        <td style="text-align:right">24087</td>
+        <td style="text-align:right">217.624</td>
+        <td style="text-align:right">897.955</td>
+        <td style="text-align:right">458.333</td>
+        <td style="text-align:right">217.304</td>
+        <td style="text-align:right">873.899</td>
+        <td style="text-align:right">442.200</td>
+      </tr>
+      <tr>
+        <td>Login</td>
+        <td>/HotelApp/</td>
+        <td style="text-align:right">3</td>
+        <td style="text-align:right">24987</td>
+        <td style="text-align:right">334.618</td>
+        <td style="text-align:right">461.782</td>
+        <td style="text-align:right">391.512</td>
+        <td style="text-align:right">334.191</td>
+        <td style="text-align:right">458.825</td>
+        <td style="text-align:right">390.198</td>
+      </tr>
+      <tr>
+        <td>landing page</td>
+        <td>/HotelApp/SearchHotel.php</td>
+        <td style="text-align:right">9</td>
+        <td style="text-align:right">142615</td>
+        <td style="text-align:right">180.854</td>
+        <td style="text-align:right">401.391</td>
+        <td style="text-align:right">258.054</td>
+        <td style="text-align:right">176.850</td>
+        <td style="text-align:right">401.255</td>
+        <td style="text-align:right">255.198</td>
+      </tr>
+      <tr>
+        <td>landing page</td>
+        <td>/HotelApp/jQuery-scroll-books/index.html</td>
+        <td style="text-align:right">9</td>
+        <td style="text-align:right">58149</td>
+        <td style="text-align:right">192.553</td>
+        <td style="text-align:right">1257.922</td>
+        <td style="text-align:right">358.489</td>
+        <td style="text-align:right">192.239</td>
+        <td style="text-align:right">1257.695</td>
+        <td style="text-align:right">357.984</td>
+      </tr>
+      <tr>
+        <td>Logout</td>
+        <td>/HotelApp/Logout.php</td>
+        <td style="text-align:right">3</td>
+        <td style="text-align:right">17976</td>
+        <td style="text-align:right">209.589</td>
+        <td style="text-align:right">242.341</td>
+        <td style="text-align:right">224.363</td>
+        <td style="text-align:right">209.334</td>
+        <td style="text-align:right">241.887</td>
+        <td style="text-align:right">224.014</td>
+      </tr>
+      <tr>
+        <td>Logout</td>
+        <td>/HotelApp/jQuery-scroll-books/index.html</td>
+        <td style="text-align:right">3</td>
+        <td style="text-align:right">19383</td>
+        <td style="text-align:right">178.321</td>
+        <td style="text-align:right">198.430</td>
+        <td style="text-align:right">188.322</td>
+        <td style="text-align:right">177.984</td>
+        <td style="text-align:right">198.203</td>
+        <td style="text-align:right">187.990</td>
+      </tr>
+    </table>
+    <h4> Container response</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Containername</th>
+        <th>Min(ms)</th>
+        <th>Max(ms)</th>
+        <th>Avg(ms)</th>
+      </tr>
+      <tr>
+        <td>home</td>
+        <td style="text-align:right">217.018</td>
+        <td style="text-align:right">898.004</td>
+        <td style="text-align:right">458.014</td>
+      </tr>
+      <tr>
+        <td>Login</td>
+        <td style="text-align:right">333.975</td>
+        <td style="text-align:right">461.997</td>
+        <td style="text-align:right">391.321</td>
+      </tr>
+      <tr>
+        <td>landing page</td>
+        <td style="text-align:right">422.046</td>
+        <td style="text-align:right">1518.036</td>
+        <td style="text-align:right">616.778</td>
+      </tr>
+      <tr>
+        <td>Logout</td>
+        <td style="text-align:right">388.008</td>
+        <td style="text-align:right">430.012</td>
+        <td style="text-align:right">412.671</td>
+      </tr>
+    </table>
+    <h4> Transactions response</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Transaction Name</th>
+        <th>Min(ms)</th>
+        <th>Max(ms)</th>
+        <th>Avg(ms)</th>
+      </tr>
+    </table>
+    <br>
+    <table style="width: 475px;" cellpadding="10" cellspacing="0">
+      <tr>
+        <td class="graphheadingrow">
+          <b>Transaction Graph</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="transactions_555497870" class="graph">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <script>
+      function drawTransactionGraph_555497870() {
+        new Morris.Bar({
+		    barSizeRatio:0.40,
+        element: 'transactions_555497870',
+        data: [
+        
+        ],
+        xkey: 'transaction',
+        ykeys: ['min', 'max', 'avg'],
+        labels: ['Min', 'Max', 'Avg.'],
+        barColors: ['#373BF0', '#68D216', '#D26B16'],
+        hideHover: 'auto'
+        });
+      }
+    </script>
+    <h4>Error count</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Containername</th>
+        <th>Address</th>
+        <th>Count</th>
+      </tr>
+    </table>
+    <h4>Error Description</h4>
+    <table border="1" cellspacing="0">
+      <tr bgcolor="#9acd32">
+        <th>Errorcode</th>
+        <th>Message</th>
+        <th>Count</th>
+      </tr>
+    </table>
+    <br>
+  </body>
+</html>

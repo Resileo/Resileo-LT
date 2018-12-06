@@ -107,7 +107,6 @@ G:\workspace\Resileo-LT\AppedoLT.Controller\bin\Debug\Ionic.Zip.dll
 G:\workspace\Resileo-LT\AppedoLT.Controller\bin\Debug\System.Data.SQLite.dll
 G:\workspace\Resileo-LT\AppedoLT.Controller\bin\Debug\Npgsql.dll
 G:\workspace\Resileo-LT\AppedoLT.Controller\bin\Debug\Mono.Security.dll
-G:\workspace\Resileo-LT\AppedoLT.Controller\bin\Debug\AppedoLT.Core.pdb
 G:\workspace\Resileo-LT\AppedoLT.Controller\bin\Debug\AppedoLT.DataAccessLayer.pdb
 G:\workspace\Resileo-LT\AppedoLT.Controller\bin\Debug\log4net.xml
 G:\workspace\Resileo-LT\AppedoLT.Controller\obj\Debug\AppedoLT.Controller.csprojResolveAssemblyReference.cache
@@ -120,3 +119,5 @@ G:\workspace\Resileo-LT\AppedoLT.Controller\obj\Debug\AppedoLT.Controller.csproj
 G:\workspace\Resileo-LT\AppedoLT.Controller\obj\Debug\APPEDO_LT_CONTROLLER.exe
 G:\workspace\Resileo-LT\AppedoLT.Controller\obj\Debug\APPEDO_LT_CONTROLLER.pdb
 D:\workspace\Resileo-LT\AppedoLT.Controller\obj\Debug\AppedoLT.Controller.csproj.CoreCompileInputs.cache
+G:\workspace\Resileo-LT\AppedoLT.Controller\obj\Debug\AppedoLT.Controller.csproj.CopyComplete
+G:\workspace\Resileo-LT\AppedoLT.Controller\bin\Debug\AppedoLT.Core.pdb

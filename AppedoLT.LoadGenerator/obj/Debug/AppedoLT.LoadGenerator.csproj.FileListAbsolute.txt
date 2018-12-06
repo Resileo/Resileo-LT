@@ -52,9 +52,7 @@ G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\bin\Debug\AppedoLT.BusinessLogic.
 G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\bin\Debug\AppedoLT.Core.dll
 G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\bin\Debug\log4net.dll
 G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\bin\Debug\Ionic.Zip.dll
-G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\bin\Debug\AppedoLT.BusinessLogic.pdb
 G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\bin\Debug\AppedoLT.BusinessLogic.dll.config
-G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\bin\Debug\AppedoLT.Core.pdb
 G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\bin\Debug\log4net.xml
 G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\obj\Debug\AppedoLT.LoadGenerator.csprojResolveAssemblyReference.cache
 G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\obj\Debug\AppedoLTLoadGenerator.LoadGenerator.resources
@@ -68,3 +66,6 @@ D:\workspace\Resileo-LT\AppedoLT.LoadGenerator\bin\Debug\amqmdxcs.dll
 D:\workspace\Resileo-LT\AppedoLT.LoadGenerator\bin\Debug\AppedoLT.BusinessLogic.dll.config
 D:\workspace\Resileo-LT\AppedoLT.LoadGenerator\obj\Debug\AppedoLT.LoadGenerator.csprojResolveAssemblyReference.cache
 D:\workspace\Resileo-LT\AppedoLT.LoadGenerator\obj\Debug\AppedoLT.LoadGenerator.csproj.CoreCompileInputs.cache
+G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\obj\Debug\AppedoLT.LoadGenerator.csproj.CopyComplete
+G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\bin\Debug\AppedoLT.BusinessLogic.pdb
+G:\workspace\Resileo-LT\AppedoLT.LoadGenerator\bin\Debug\AppedoLT.Core.pdb

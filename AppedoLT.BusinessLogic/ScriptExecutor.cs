@@ -92,7 +92,10 @@ namespace AppedoLT.BusinessLogic
                     MaxUser = settingNode.Attributes["maxuser"].Value,
                     StartUser = settingNode.Attributes["startuser"].Value
                 };
-                ExceptionHandler.WritetoEventLog("ScriptExecutor StartUser " + setting.StartUser +" userid "+setting.StartUserId + " ThreadID "+Thread.CurrentThread.ManagedThreadId);
+
+                if (logger.IsDebugEnabled)
+                    logger.Debug("ScriptExecutor() StartUser " + setting.StartUser + " userid " + setting.StartUserId + " ThreadID " + Thread.CurrentThread.ManagedThreadId);
+
                 if (settingNode.Attributes["bandwidth"] != null)
                 {
                     setting.Bandwidth = settingNode.Attributes["bandwidth"].Value;
@@ -145,7 +148,6 @@ namespace AppedoLT.BusinessLogic
 
                 int maxUser = Convert.ToInt16(settingNode.Attributes["maxuser"].Value);
                 Dictionary<int, int> userDistribution = new Dictionary<int, int>();
-                ExceptionHandler.WritetoEventLog("maxUser " + maxUser);
                 int remainigUser = maxUser % Status.TotalLoadGenUsed;
 
                 for (int index = 1; index <= Status.TotalLoadGenUsed; index++)

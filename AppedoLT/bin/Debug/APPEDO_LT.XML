@@ -1222,7 +1222,7 @@
         <member name="M:AppedoLT.frmValidation.btnValidate_Click(System.Object,System.EventArgs)">
             <summary>
             If user click validation button.
-            </summary>
+            </summary>btn
             <param name="sender"></param>
             <param name="e"></param>
         </member>

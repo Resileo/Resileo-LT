@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppedoLT.Core", "AppedoLT.Core\AppedoLT.Core.csproj", "{0FD4A43E-E7BC-45BD-8897-537A46A0D54D}"
 EndProject
@@ -16,9 +16,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppedoLT.Controller", "AppedoLT.Controller\AppedoLT.Controller.csproj", "{FD491976-C9CA-4A1B-ACF5-9C6420B00EF7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{39A051FE-ED4B-4445-A35B-3B330A294C4E}"
-	ProjectSection(SolutionItems) = preProject
-		Performance1.psess = Performance1.psess
-	EndProjectSection
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Build AppedoLT", "Build AppedoLT\Build AppedoLT.vdproj", "{33AF4EC4-D754-48B0-87EE-C6207EFD7797}"
 EndProject
@@ -360,5 +357,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3B4EB93-A436-4251-A902-CFCF4FBECE4B}
 	EndGlobalSection
 EndGlobal

@@ -15,37 +15,25 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_2C2EB2BF893EE07A83CC3E26C61431E4"
-        "OwnerKey" = "8:_F31E9AE9260287E4E81F39B530207B8F"
+        "MsmKey" = "8:_37EB3DABA27387339E46C1460364AAAC"
+        "OwnerKey" = "8:_9382E6356377FD88B488C7262A69DE04"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_2C2EB2BF893EE07A83CC3E26C61431E4"
+        "MsmKey" = "8:_37EB3DABA27387339E46C1460364AAAC"
         "OwnerKey" = "8:_75CA0F3DAC374998BB5F833832106E21"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3C292DA856C69380AFD1293C23FCF7A4"
-        "OwnerKey" = "8:_75CA0F3DAC374998BB5F833832106E21"
+        "MsmKey" = "8:_5410697FF8D6C65A927C2CDD47539034"
+        "OwnerKey" = "8:_9382E6356377FD88B488C7262A69DE04"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3C292DA856C69380AFD1293C23FCF7A4"
-        "OwnerKey" = "8:_F31E9AE9260287E4E81F39B530207B8F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_472161F726673D680D5FD573CBABD75E"
-        "OwnerKey" = "8:_3C292DA856C69380AFD1293C23FCF7A4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_472161F726673D680D5FD573CBABD75E"
+        "MsmKey" = "8:_5410697FF8D6C65A927C2CDD47539034"
         "OwnerKey" = "8:_75CA0F3DAC374998BB5F833832106E21"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -57,44 +45,26 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9382E6356377FD88B488C7262A69DE04"
+        "OwnerKey" = "8:_75CA0F3DAC374998BB5F833832106E21"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9A513AA656C547B29833DF05DAE770A9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E39A91A07CED474F67F441822300FFC3"
-        "OwnerKey" = "8:_2C2EB2BF893EE07A83CC3E26C61431E4"
+        "MsmKey" = "8:_9BA60CFD94F57233BC960BC0616470F3"
+        "OwnerKey" = "8:_37EB3DABA27387339E46C1460364AAAC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E39A91A07CED474F67F441822300FFC3"
+        "MsmKey" = "8:_9BA60CFD94F57233BC960BC0616470F3"
         "OwnerKey" = "8:_75CA0F3DAC374998BB5F833832106E21"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E6BCBC74271D59EB96E79E1B988B8197"
-        "OwnerKey" = "8:_F31E9AE9260287E4E81F39B530207B8F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E6BCBC74271D59EB96E79E1B988B8197"
-        "OwnerKey" = "8:_75CA0F3DAC374998BB5F833832106E21"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F31E9AE9260287E4E81F39B530207B8F"
-        "OwnerKey" = "8:_75CA0F3DAC374998BB5F833832106E21"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_472161F726673D680D5FD573CBABD75E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -106,31 +76,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F31E9AE9260287E4E81F39B530207B8F"
+        "OwnerKey" = "8:_9382E6356377FD88B488C7262A69DE04"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E6BCBC74271D59EB96E79E1B988B8197"
+        "OwnerKey" = "8:_5410697FF8D6C65A927C2CDD47539034"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2C2EB2BF893EE07A83CC3E26C61431E4"
+        "OwnerKey" = "8:_37EB3DABA27387339E46C1460364AAAC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E39A91A07CED474F67F441822300FFC3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3C292DA856C69380AFD1293C23FCF7A4"
+        "OwnerKey" = "8:_9BA60CFD94F57233BC960BC0616470F3"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -284,14 +248,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2C2EB2BF893EE07A83CC3E26C61431E4"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_37EB3DABA27387339E46C1460364AAAC"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:AppedoLT.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_2C2EB2BF893EE07A83CC3E26C61431E4"
+                    "_37EB3DABA27387339E46C1460364AAAC"
                     {
                     "Name" = "8:AppedoLT.Core.dll"
                     "Attributes" = "3:512"
@@ -315,20 +279,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3C292DA856C69380AFD1293C23FCF7A4"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5410697FF8D6C65A927C2CDD47539034"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:amqmdnet, Version=7.5.0.8, Culture=neutral, PublicKeyToken=dd3cb1c9aae9ec97, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_3C292DA856C69380AFD1293C23FCF7A4"
+                    "_5410697FF8D6C65A927C2CDD47539034"
                     {
-                    "Name" = "8:amqmdnet.dll"
+                    "Name" = "8:log4net.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:amqmdnet.dll"
+            "SourcePath" = "8:log4net.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_DD960546DE5D4C51B33A55EC3C31EE14"
@@ -346,20 +310,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_472161F726673D680D5FD573CBABD75E"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9382E6356377FD88B488C7262A69DE04"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:amqmdxcs, Version=7.5.0.8, Culture=neutral, PublicKeyToken=7a58d55a51981a15, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:AppedoLT.BusinessLogic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_472161F726673D680D5FD573CBABD75E"
+                    "_9382E6356377FD88B488C7262A69DE04"
                     {
-                    "Name" = "8:amqmdxcs.dll"
+                    "Name" = "8:AppedoLT.BusinessLogic.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:amqmdxcs.dll"
+            "SourcePath" = "8:AppedoLT.BusinessLogic.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_DD960546DE5D4C51B33A55EC3C31EE14"
@@ -397,82 +361,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E39A91A07CED474F67F441822300FFC3"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9BA60CFD94F57233BC960BC0616470F3"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_E39A91A07CED474F67F441822300FFC3"
+                    "_9BA60CFD94F57233BC960BC0616470F3"
                     {
                     "Name" = "8:Ionic.Zip.dll"
                     "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Ionic.Zip.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_DD960546DE5D4C51B33A55EC3C31EE14"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E6BCBC74271D59EB96E79E1B988B8197"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_E6BCBC74271D59EB96E79E1B988B8197"
-                    {
-                    "Name" = "8:log4net.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:log4net.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_DD960546DE5D4C51B33A55EC3C31EE14"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F31E9AE9260287E4E81F39B530207B8F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AppedoLT.BusinessLogic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_F31E9AE9260287E4E81F39B530207B8F"
-                    {
-                    "Name" = "8:AppedoLT.BusinessLogic.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:AppedoLT.BusinessLogic.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_DD960546DE5D4C51B33A55EC3C31EE14"
@@ -576,7 +478,7 @@
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.2.046"
+        "ProductVersion" = "8:1.2.047"
         "Manufacturer" = "8:Appedo"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

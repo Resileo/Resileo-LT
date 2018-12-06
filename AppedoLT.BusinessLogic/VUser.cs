@@ -127,7 +127,7 @@ namespace AppedoLT.BusinessLogic
 
         private Constants _constants = Constants.GetInstance();
         Request req;
-        MQ mqReq;
+        //MQ mqReq;
 
         public bool IsValidation = false;
         public static int rowref(int rownumber)
@@ -298,7 +298,7 @@ namespace AppedoLT.BusinessLogic
 
                         foreach (XmlNode container in _vuScriptXml.ChildNodes)
                         {
-                            /* 1st iteration Init,Action. last iteration Action, End. Rest of them Acttion*/
+                            /* 1st iteration Init,Action. last iteration Action, End. Rest of them Action*/
                             if (container.Attributes["name"].Value == "Initialize")
                             {
                                 if (_index == 1)
@@ -457,8 +457,6 @@ namespace AppedoLT.BusinessLogic
                                 // The below code commented to implement parallel connection feature
                                 if (AppedoLT.Core.Constants.GetInstance().btnExecutionType == "Run")
                                 {
-                                    if (logger.IsDebugEnabled)
-                                        logger.Debug("Inside ExecuteContainer method. Inside RUN scenario");
                                     Boolean enablePrallel = false;
                                     foreach (XmlNode req in child.ChildNodes)
                                     {
@@ -512,8 +510,6 @@ namespace AppedoLT.BusinessLogic
                                 }
                                 else
                                 {
-                                    if (logger.IsDebugEnabled)
-                                        logger.Debug("Inside ExecuteContainer method. Inside NOT_RUN scenario");
                                     foreach (XmlNode req in child.ChildNodes)
                                     {
 //                                        if (Break == true) break;
@@ -1059,88 +1055,88 @@ namespace AppedoLT.BusinessLogic
                     }
                     #endregion
                 }
-                else if (_vuScriptXml.Attributes["type"].Value == "MQ" && Convert.ToBoolean(request.Attributes["IsEnable"].Value) == true)
-                {
-                    #region MQ
-                    //Schema Attribute is QueueManagerName, Path Attribute - QueueName, URL Attribute - ChannelInfo
-                    String queueManagerName = request.Attributes["Schema"].Value;
-                    String queueName = request.Attributes["Path"].Value;
-                    String channelInfo = request.Attributes["Url"].Value;
-                    String method = request.Attributes["Method"].Value;
-                    String msgID = string.Empty;
-                    String corrId = string.Empty;
-                    String strRetMsg = string.Empty;
-                    String replyQName = string.Empty;
-                    int persistence = 0;
-                    int waitInterval = 0;
-                    mqReq = new MQ(request, ref receivedCookies, _userid.ToString() + (_createdConnection++ % _maxConnection).ToString(), _IPAddress, IsValidation, _bandwidthInKbps);
-                    //If request has parameterization. 
-                    List<AppedoLT.Core.Tuple<string, string>> variables = new List<AppedoLT.Core.Tuple<string, string>>();
-                    if (request.OuterXml.Contains("$$"))
-                    {
-                        //It will replace variable with corresponding value.
-                        variables = EvaluteExp(request);
-                        mqReq.Variables = variables;
-                    }
+                //else if (_vuScriptXml.Attributes["type"].Value == "MQ" && Convert.ToBoolean(request.Attributes["IsEnable"].Value) == true)
+                //{
+                //    #region MQ
+                //    //Schema Attribute is QueueManagerName, Path Attribute - QueueName, URL Attribute - ChannelInfo
+                //    String queueManagerName = request.Attributes["Schema"].Value;
+                //    String queueName = request.Attributes["Path"].Value;
+                //    String channelInfo = request.Attributes["Url"].Value;
+                //    String method = request.Attributes["Method"].Value;
+                //    String msgID = string.Empty;
+                //    String corrId = string.Empty;
+                //    String strRetMsg = string.Empty;
+                //    String replyQName = string.Empty;
+                //    int persistence = 0;
+                //    int waitInterval = 0;
+                //    mqReq = new MQ(request, ref receivedCookies, _userid.ToString() + (_createdConnection++ % _maxConnection).ToString(), _IPAddress, IsValidation, _bandwidthInKbps);
+                //    //If request has parameterization. 
+                //    List<AppedoLT.Core.Tuple<string, string>> variables = new List<AppedoLT.Core.Tuple<string, string>>();
+                //    if (request.OuterXml.Contains("$$"))
+                //    {
+                //        //It will replace variable with corresponding value.
+                //        variables = EvaluteExp(request);
+                //        mqReq.Variables = variables;
+                //    }
 
-                    if (request.SelectSingleNode("querystringparams") != null && request.SelectSingleNode("querystringparams").HasChildNodes)
-                    {
-                        XmlNode queryStrParams = request.SelectSingleNode("querystringparams");
-                        foreach (XmlNode qsp in queryStrParams.ChildNodes)
-                        {
-                            if (qsp.Attributes["name"].Value == "MessageId") msgID = qsp.Attributes["value"].Value;
-                            if (qsp.Attributes["name"].Value == "CorrelationId") corrId = qsp.Attributes["value"].Value;
-                            if (qsp.Attributes["name"].Value == "ReplyToQueueName") replyQName = qsp.Attributes["value"].Value;
-                            if (qsp.Attributes["name"].Value == "Persistence") persistence = qsp.Attributes["value"].Value != string.Empty ? Convert.ToInt32(qsp.Attributes["value"].Value) : persistence;
-                            if (qsp.Attributes["name"].Value == "WaitInterval") waitInterval = qsp.Attributes["value"].Value != string.Empty ? Convert.ToInt32(qsp.Attributes["value"].Value) : waitInterval;
-                        }
-                    }
+                //    if (request.SelectSingleNode("querystringparams") != null && request.SelectSingleNode("querystringparams").HasChildNodes)
+                //    {
+                //        XmlNode queryStrParams = request.SelectSingleNode("querystringparams");
+                //        foreach (XmlNode qsp in queryStrParams.ChildNodes)
+                //        {
+                //            if (qsp.Attributes["name"].Value == "MessageId") msgID = qsp.Attributes["value"].Value;
+                //            if (qsp.Attributes["name"].Value == "CorrelationId") corrId = qsp.Attributes["value"].Value;
+                //            if (qsp.Attributes["name"].Value == "ReplyToQueueName") replyQName = qsp.Attributes["value"].Value;
+                //            if (qsp.Attributes["name"].Value == "Persistence") persistence = qsp.Attributes["value"].Value != string.Empty ? Convert.ToInt32(qsp.Attributes["value"].Value) : persistence;
+                //            if (qsp.Attributes["name"].Value == "WaitInterval") waitInterval = qsp.Attributes["value"].Value != string.Empty ? Convert.ToInt32(qsp.Attributes["value"].Value) : waitInterval;
+                //        }
+                //    }
 
-                    if (mqReq.ConnectMQ(queueManagerName, channelInfo))
-                    {
-                        if (method == "POST")
-                        {
-                            StringBuilder pDataBuffer = new StringBuilder();
-                            XmlNode queueData = request.SelectSingleNode("//params");
-                            foreach (XmlNode queueText in queueData)
-                            {
-                                pDataBuffer.Append(queueText.Attributes["value"].Value);
-                            }
+                //    if (mqReq.ConnectMQ(queueManagerName, channelInfo))
+                //    {
+                //        if (method == "POST")
+                //        {
+                //            StringBuilder pDataBuffer = new StringBuilder();
+                //            XmlNode queueData = request.SelectSingleNode("//params");
+                //            foreach (XmlNode queueText in queueData)
+                //            {
+                //                pDataBuffer.Append(queueText.Attributes["value"].Value);
+                //            }
 
-                            strRetMsg = mqReq.WriteMsg(pDataBuffer.ToString(), msgID, corrId, replyQName, persistence, queueName);
-                            ExceptionHandler.WritetoEventLog(strRetMsg);
-                        }
-                        else
-                        {
-                            strRetMsg = mqReq.ReadMsg(msgID, corrId, waitInterval, queueName);
-                            //String StrReadMsg = mqueue.ReadMsg(strRetMsg);
-                        }
-                    }
-                    //For validation
-                    if (OnLockRequestResponse != null)
-                    {
-                        responseResult.PostData = strRetMsg==string.Empty? mqReq.ErrorMessage:strRetMsg;
-                        responseResult.RequestResult = mqReq;
-                        responseResult.Response = mqReq.ResponseStr;
-                        responseResult.ResponseCode = mqReq.ResponseCode.ToString();
-                        responseResult.WebRequestResponseId = Convert.ToInt32(Constants.GetInstance().UniqueID);
-                        LockRequestResponse(responseResult);
-                    }
-                    if (OnResponse != null)
-                    {
-                        ResponseDetail details = new ResponseDetail();
-                        details.ReportName = _reportName;
-                        details.UserId = _userid;
-                        details.ScriptName = _scriptName;
-                        details.IterationId = _iterationid;
-                        details.ResponseString = strRetMsg;
-                        details.ResponseCode = mqReq.ResponseCode;
-                        details.RequestName = queueManagerName + " " + queueName + " " + channelInfo + " " + method;
-                        OnResponse.Invoke(details);
-                    }
-                    LockResponseTime(request.Attributes["id"].Value, request.Attributes["Path"].Value, mqReq.StartTime, mqReq.FirstByteReceivedTime, mqReq.EndTime, mqReq.TimeForFirstByte, mqReq.ResponseTime, mqReq.ResponseSize, mqReq.ResponseCode.ToString());
-                    #endregion 
-                }
+                //            strRetMsg = mqReq.WriteMsg(pDataBuffer.ToString(), msgID, corrId, replyQName, persistence, queueName);
+                //            ExceptionHandler.WritetoEventLog(strRetMsg);
+                //        }
+                //        else
+                //        {
+                //            strRetMsg = mqReq.ReadMsg(msgID, corrId, waitInterval, queueName);
+                //            //String StrReadMsg = mqueue.ReadMsg(strRetMsg);
+                //        }
+                //    }
+                //    //For validation
+                //    if (OnLockRequestResponse != null)
+                //    {
+                //        responseResult.PostData = strRetMsg==string.Empty? mqReq.ErrorMessage:strRetMsg;
+                //        responseResult.RequestResult = mqReq;
+                //        responseResult.Response = mqReq.ResponseStr;
+                //        responseResult.ResponseCode = mqReq.ResponseCode.ToString();
+                //        responseResult.WebRequestResponseId = Convert.ToInt32(Constants.GetInstance().UniqueID);
+                //        LockRequestResponse(responseResult);
+                //    }
+                //    if (OnResponse != null)
+                //    {
+                //        ResponseDetail details = new ResponseDetail();
+                //        details.ReportName = _reportName;
+                //        details.UserId = _userid;
+                //        details.ScriptName = _scriptName;
+                //        details.IterationId = _iterationid;
+                //        details.ResponseString = strRetMsg;
+                //        details.ResponseCode = mqReq.ResponseCode;
+                //        details.RequestName = queueManagerName + " " + queueName + " " + channelInfo + " " + method;
+                //        OnResponse.Invoke(details);
+                //    }
+                //    LockResponseTime(request.Attributes["id"].Value, request.Attributes["Path"].Value, mqReq.StartTime, mqReq.FirstByteReceivedTime, mqReq.EndTime, mqReq.TimeForFirstByte, mqReq.ResponseTime, mqReq.ResponseSize, mqReq.ResponseCode.ToString());
+                //    #endregion 
+                //}
                 #endregion
 
                 #region correlation
@@ -1151,7 +1147,7 @@ namespace AppedoLT.BusinessLogic
                     string selectionType = exVar.Attributes["selctiontype"].Value;
                     int groupindex = Convert.ToInt32(exVar.Attributes["groupindex"].Value);
                     string respStr = string.Empty;
-                    if (req == null) req = mqReq;
+                    //if (req == null) req = mqReq;
                     MatchCollection match = Regex.Matches(req.ResponseStr, exVar.Attributes["regex"].Value, RegexOptions.Singleline | RegexOptions.Multiline);
                     string[] strs = new string[_exVariablesValues.Keys.Count];
                     _exVariablesValues.Keys.CopyTo(strs, 0);
@@ -1242,7 +1238,7 @@ namespace AppedoLT.BusinessLogic
                 });
 
                 req = null;
-                mqReq = null;
+                //mqReq = null;
                 responseResult = null;
                 request = null;
             }

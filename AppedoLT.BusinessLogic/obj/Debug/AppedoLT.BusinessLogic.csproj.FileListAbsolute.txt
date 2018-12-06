@@ -39,3 +39,12 @@ G:\workspace\Resileo-LT\AppedoLT.BusinessLogic\obj\Debug\AppedoLT.BusinessLogic.
 D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\amqmdnet.dll
 D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\amqmdxcs.dll
 D:\workspace\Resileo-LT\AppedoLT.BusinessLogic\obj\Debug\AppedoLT.BusinessLogic.csproj.CoreCompileInputs.cache
+G:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\AppedoLT.BusinessLogic.dll.config
+G:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\AppedoLT.BusinessLogic.dll
+G:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\AppedoLT.BusinessLogic.pdb
+G:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\AppedoLT.Core.dll
+G:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\log4net.dll
+G:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\Ionic.Zip.dll
+G:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\log4net.xml
+G:\workspace\Resileo-LT\AppedoLT.BusinessLogic\obj\Debug\AppedoLT.BusinessLogic.csproj.CopyComplete
+G:\workspace\Resileo-LT\AppedoLT.BusinessLogic\bin\Debug\AppedoLT.Core.pdb

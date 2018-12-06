@@ -29,3 +29,4 @@ G:\workspace\Resileo-LT\AppedoLT.Core\obj\Debug\AppedoLT.Core.csproj.CoreCompile
 G:\workspace\Resileo-LT\AppedoLT.Core\obj\Debug\AppedoLT.Core.dll
 G:\workspace\Resileo-LT\AppedoLT.Core\obj\Debug\AppedoLT.Core.pdb
 D:\workspace\Resileo-LT\AppedoLT.Core\obj\Debug\AppedoLT.Core.csproj.CoreCompileInputs.cache
+G:\workspace\Resileo-LT\AppedoLT.Core\obj\Debug\AppedoLT.Core.csproj.CopyComplete

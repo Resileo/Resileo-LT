@@ -144,7 +144,7 @@ namespace AppedoLT
 
         /// <summary>
         /// If user click validation button.
-        /// </summary>
+        /// </summary>btn
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnValidate_Click(object sender, EventArgs e)

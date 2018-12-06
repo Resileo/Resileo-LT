@@ -1,8 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <variables>
-  <variable from="variablemanager" modified="636484028943904035" policy="eachiteration" name="vr_displayName" type="randomstring" start="5" end="10" />
-  <variable from="variablemanager" modified="636490223880887699" policy="eachiteration" name="ds_loginusers" type="file" location="D:\workspace\Resileo-LT\AppedoLT\bin\Debug\Variables\docsyncUsers.txt" vituallocation="\Variables\636490223880887699_docsyncUsers.txt" start="2" delimiter="," columns="lastName;dob" />
-  <variable from="variablemanager" modified="636489746152647202" policy="eachiteration" name="val" type="string" value="True" />
-  <variable from="variablemanager" modified="636536848503394506" policy="eachiteration" name="adactin_user" type="file" location="D:\customerData\AppedoDummyDataFile\New Text Document.txt" vituallocation="\Variables\636536848503394506_New Text Document.txt" start="1" delimiter="," columns="username;Password" />
-  <variable from="variablemanager" modified="636541263295343658" policy="eachiteration" name="abcd" type="randomnumber" start="1000" end="3000" />
+  <variable from="variablemanager" modified="636796987814574780" policy="eachiteration" name="adactin_user" type="file" location="G:\workspace\Resileo-LT\AppedoLT\bin\Debug\Variables\tripmads_credentials.csv" vituallocation="\Variables\636796987814574780_tripmads_credentials.csv" start="1" delimiter="," columns="username;password" />
 </variables>
