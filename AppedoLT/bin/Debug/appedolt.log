@@ -1,0 +1,24 @@
+2018-12-06 14:50:06,870 [1] DEBUG Design.cs - btnRun_Click()->Browser cache Enabled - Cached URLs based on header matching 
+2018-12-06 14:50:06,940 [1] DEBUG Design.cs - /HotelApp/css/main.css
+2018-12-06 14:50:06,941 [1] DEBUG Design.cs - /HotelApp/jQuery-scroll-books/css/site.css
+2018-12-06 14:50:06,941 [1] DEBUG Design.cs - /HotelApp/jQuery-scroll-books/css/bootstrap-theme.min.css
+2018-12-06 14:50:06,941 [1] DEBUG Design.cs - /HotelApp/jQuery-scroll-books/css/bootstrap.min.css
+2018-12-06 14:50:06,941 [1] DEBUG Design.cs - btnRun_Click()->Browser cache Enabled - Cached URLs based on request matching 
+2018-12-06 14:50:06,942 [1] DEBUG Design.cs - /favicon.ico
+2018-12-06 14:50:06,962 [1] DEBUG ScriptExecutor - ScriptExecutor() StartUser 1 userid 0 ThreadID 1
+2018-12-06 14:50:07,718 [8] DEBUG VUser - maxUser = 3, reportName = adactin_06122018_145005, type = 1, userid = 1, iteration = 3, browserCache = True, ipaddress = 192.168.43.243, bReplyThinkTime = True, numOfParallelCon = 6, bandwidth = -1
+2018-12-06 14:50:07,735 [8] DEBUG ScriptExecutor - Starting a new virtual user
+2018-12-06 14:50:07,777 [10] DEBUG VUser - Iteration type is Iterations, Number Of iterations = 3
+2018-12-06 14:50:07,778 [10] DEBUG VUser - Iteration type is Iterations, Number Of iterations = 3; Iteration Id = 1
+2018-12-06 14:50:08,770 [8] DEBUG VUser - maxUser = 3, reportName = adactin_06122018_145005, type = 1, userid = 2, iteration = 3, browserCache = True, ipaddress = 192.168.43.243, bReplyThinkTime = True, numOfParallelCon = 6, bandwidth = -1
+2018-12-06 14:50:08,775 [12] DEBUG VUser - Iteration type is Iterations, Number Of iterations = 3
+2018-12-06 14:50:08,776 [12] DEBUG VUser - Iteration type is Iterations, Number Of iterations = 3; Iteration Id = 1
+2018-12-06 14:50:09,768 [8] DEBUG VUser - maxUser = 3, reportName = adactin_06122018_145005, type = 1, userid = 3, iteration = 3, browserCache = True, ipaddress = 192.168.43.243, bReplyThinkTime = True, numOfParallelCon = 6, bandwidth = -1
+2018-12-06 14:50:09,779 [14] DEBUG VUser - Iteration type is Iterations, Number Of iterations = 3
+2018-12-06 14:50:09,780 [14] DEBUG VUser - Iteration type is Iterations, Number Of iterations = 3; Iteration Id = 1
+2018-12-06 14:50:27,730 [10] DEBUG VUser - Iteration type is Iterations, Number Of iterations = 3; Iteration Id = 2
+2018-12-06 14:50:27,952 [12] DEBUG VUser - Iteration type is Iterations, Number Of iterations = 3; Iteration Id = 2
+2018-12-06 14:50:28,765 [14] DEBUG VUser - Iteration type is Iterations, Number Of iterations = 3; Iteration Id = 2
+2018-12-06 14:50:35,147 [10] DEBUG VUser - Iteration type is Iterations, Number Of iterations = 3; Iteration Id = 3
+2018-12-06 14:50:35,376 [12] DEBUG VUser - Iteration type is Iterations, Number Of iterations = 3; Iteration Id = 3
+2018-12-06 14:50:36,190 [14] DEBUG VUser - Iteration type is Iterations, Number Of iterations = 3; Iteration Id = 3

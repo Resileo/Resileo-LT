@@ -1,0 +1,6 @@
+14:50:06 06 December 2018 
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at AppedoLT.BusinessLogic.VariableManager.ValidateVariableVersion() in G:\workspace\Resileo-LT\AppedoLT.BusinessLogic\VariableManager.cs:line 322
+The process cannot access the file 'G:\workspace\Resileo-LT\AppedoLT\bin\Debug\\Variables\636796987814574780_tripmads_credentials.csv' because it is being used by another process.
+---------------------------------------
