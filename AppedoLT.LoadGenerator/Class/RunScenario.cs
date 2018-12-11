@@ -250,7 +250,7 @@ namespace AppedoLTLoadGenerator
                             logger.Debug(pn.Attributes["Path"].Value);
                     }
                     //removes request that contains.js or .woff(font file) when browser cache is true
-                    xpath = @"//*/request[ends-with(@Path,'.js') or ends-with(@Path, '.woff') or ends-with(@Path, '.ico')]";
+                    xpath = @"//*/request[(substring(@Path, string-length(@Path)-2) = '.js') or (substring(@Path, string-length(@Path)-4) = '.woff') or (substring(@Path, string-length(@Path)-3) = '.ico') ]";
                     xnList = scenario.SelectNodes(xpath);
                     if (logger.IsDebugEnabled)
                         logger.Debug("btnRun_Click()->Browser cache Enabled - Cached URLs based on request matching ");

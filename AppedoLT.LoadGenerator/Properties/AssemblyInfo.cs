@@ -32,8 +32,9 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.2.047.0")]
-[assembly: AssemblyFileVersion("1.2.047.0")]
+[assembly: AssemblyVersion("1.2.048.0")]
+[assembly: AssemblyFileVersion("1.2.048.0")]
+//1.2.048.0 - In the below fix, ends-width works only with xPath 2.0 and since we are using xpath 1.0, it has been replaced with substring command
 //1.2.047.0 - Browser cache fixed for jspx, jsp files getting cached and log introduced on request that are cached. this is part of appedolt.log file.
 //1.2.046.0 - response data are now inside reportname/script/response_<userid>.log same way variable data. Fixes done on Percentage users of response log. Consistency of Execution of End container execution on Stopping the scenario. In LT gen, log responses was coming only for the first run fixed. 
 //1.2.045.0 - Introduced Thinktime and parallel connection. code optimization done and removed lot of unwanted codes. 

@@ -878,10 +878,7 @@ namespace AppedoLT
                                 run.AppendChild(GetRuntimeScriptDetail(scenario));
                                 ////loading variable data to the variablemanager.datacenter only if the script's in the scenario has variable defenition under params tag
                                 ////Future need to change to load files that are used in the script, currently loading all the variable and its content. --08-Feb-2018
-                                //xpath = @"//*[contains(@value,'$$') or contains(@delay, '$$')]";
-                                //xnList = scenario.SelectNodes(xpath);
                                 //if (xnList.Count > 0)
-                                VariableManager.dataCenter = new VariableManager();
                                 foreach (XmlNode script in scenario.SelectNodes("//script"))
                                 {
                                     string scriptid = script.Attributes["id"].Value;
@@ -903,8 +900,8 @@ namespace AppedoLT
                                             if (logger.IsDebugEnabled)
                                                 logger.Debug(pn.Attributes["Path"].Value);
                                         }
-                                        //removes request that contains.js or .woff(font file) when browser cache is true
-                                        xpath = @"//*/request[ends-with(@Path,'.js') or ends-with(@Path, '.woff') or ends-with(@Path, '.ico')]";
+                                        //using of contains replaced by substring to get the end of the file extension name. -- 06-Dec-2018 SK
+                                        xpath = @"//*/request[(substring(@Path, string-length(@Path)-2) = '.js') or (substring(@Path, string-length(@Path)-4) = '.woff') or (substring(@Path, string-length(@Path)-3) = '.ico') ]";
                                         xnList = scenario.SelectNodes(xpath);
                                         if (logger.IsDebugEnabled)
                                             logger.Debug("btnRun_Click()->Browser cache Enabled - Cached URLs based on request matching ");

@@ -32,8 +32,9 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.3.045.0")]
-[assembly: AssemblyFileVersion("3.3.045.0")]
+[assembly: AssemblyVersion("3.3.046.0")]
+[assembly: AssemblyFileVersion("3.3.046.0")]
+//3.3.046 - In the below fix, ends-width works only with xPath 2.0 and since we are using xpath 1.0, it has been replaced with substring command
 //3.3.045 - Browser cache fixed for jspx, jsp files getting cached and log introduced on request that are cached. this is part of appedolt.log file.
 //3.3.044 - response data are now inside reportname/script/response_<userid>.log same way variable data. Fixes done on Percentage users of response log. Consistency of Execution of End container execution on Stopping the scenario. 
 //3.3.043 - Thinktime is parametrizable using variable manager, Validation on delay is removed for allowing parameter. On failure or wrong data, system assumes 100ms delay. Code re-organized for better control over flow change. global variable introduced for stop action & run status. report tree font changed for better clarity. Missing Think time and parallel connection are made available for load generator. This was missing before.MSMQ is fully removed. 

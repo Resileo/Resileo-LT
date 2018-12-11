@@ -6,4 +6,6 @@ AppedoLT/bin/Debug/DebugAppedoLT.log*
 AppedoLT/bin/Release/*
 AppedoLT/bin/x64/*
 AppedoLT/bin/x86/*
+*.lock
+*.log
 
