@@ -1400,10 +1400,10 @@ namespace AppedoLT
                             Trasport controller = new Trasport(objClient, "8889");
                             controller.Send(new TrasportData("scriptwisestatus", string.Empty, null));
                             TrasportData data = controller.Receive();
-                            if (data.DataStr != "norun")
+                            if (data.DataStr != "norun" && data != null)
                             {
                                 string dataStr = data.DataStr;
-
+                                ExceptionHandler.WritetoEventLog("dataStr " + dataStr);
                                 loadGenCreatedUser = Convert.ToInt32(data.Header["createduser"]);
                                 loadGenCompetedUser = Convert.ToInt32(data.Header["completeduser"]);
                                 tempIsCompleted = Convert.ToInt32(data.Header["iscompleted"]);
@@ -1423,14 +1423,6 @@ namespace AppedoLT
                                 controller.Close();
                                 #endregion
                             }
-                            //else
-                            //{
-                            //    loadGenCreatedUser = 0;
-                            //    loadGenCompetedUser = 0;
-                            //    tempIsCompleted = 0;
-                            //    startReport = true;
-                            //    break;
-                            //}
                             #region Store info into list
                         }
                         // Separated convert to int exception from connection failure exception - 29Sep2017
