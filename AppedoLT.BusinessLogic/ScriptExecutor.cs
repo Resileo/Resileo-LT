@@ -507,7 +507,7 @@ namespace AppedoLT.BusinessLogic
                             IsRunCompleted = true;
                             _threadRun.Reset();
                             _tmrRun.Stop();
-                            _constant._isStopped = true;
+                            //_constant._isStopped = true;
                             _usersList.Clear();
                         }
                     }

@@ -32,8 +32,9 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.3.048.0")]
-[assembly: AssemblyFileVersion("3.3.048.0")]
+[assembly: AssemblyVersion("3.3.049.0")]
+[assembly: AssemblyFileVersion("3.3.049.0")]
+//3.3.048 - Bug Fix - When multiple scripts were running in iteration, on completion of iteration of the first scripts, all the scripts are getting stopped
 //3.3.048 - When multiple generators are loaded, after the completion of run report not getting generated automatically. Last generator data was not validated due to closure of the connection.
 //3.3.047 - When multiple generators are loaded, after the completion of run report not getting generated automatically. Last generator data was not validated due to closure of the connection.
 //3.3.046 - In the below fix, ends-width works only with xPath 2.0 and since we are using xpath 1.0, it has been replaced with substring command

@@ -189,8 +189,8 @@ namespace AppedoLTLoadGenerator
                                                 { "iscompleted", run.IsCompleted.ToString() }
                                             };
                                             controller.Send(new TrasportData("scriptwisestatus", run.GetStatus(), headers));
-                                            if (constants._runStatus == "completed")
-                                                run = null;
+                                            //if (constants._runStatus == "completed")
+                                            //    run = null;
                                         }
                                         else
                                             controller.Send(new TrasportData("scriptwisestatus", "norun", null));

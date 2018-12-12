@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <scenarios>
-    <scenario id="597914352" name="combinedrun" enableipspoofing="False">
+    <scenario id="597934473" name="combinedScenarioRun" enableipspoofing="False">
       <script id="596180047" name="MegaCRM">
-        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="1" maxuser="5" startuser="1" incrementuser="1" browsercache="true" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
+        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="5" maxuser="2" startuser="1" incrementuser="1" browsercache="true" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
       </script>
-      <script id="597822531" name="QAMDemo">
-        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="1" maxuser="5" startuser="1" incrementuser="1" browsercache="true" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
+      <script id="588836813" name="megacrm_addoppurtunities">
+        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="1" maxuser="5" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
       </script>
     </scenario>
   </scenarios>
@@ -14,8 +14,6 @@
     <flagrequest type="responsebody" condition="contain" text="169356" hasvariablename="" scriptid="566666793" />
   </flag>
   <loadgens>
-    <loadgen ipaddress="192.168.0.5" hostname="192.168.0.5" isdefaultzone="True" ischecked="True" />
-    <loadgen ipaddress="192.168.0.9" hostname="192.168.0.9" isdefaultzone="True" ischecked="True" />
   </loadgens>
   <runs>
     <run reportname="google23-05-2017110554" starttime="23-05-2017 11:06:17" loadgenused="False">
@@ -3642,6 +3640,44 @@
         <script id="597822531" name="QAMDemo" />
       </scripts>
       <loadgen ipaddress="192.168.0.9" hostname="192.168.0.9" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+    </run>
+    <run reportname="combinedrun_12122018_182355" starttime="12-12-2018 18:23:58" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+      </scripts>
+    </run>
+    <run reportname="combinedrun_12122018_182531" starttime="12-12-2018 18:25:33" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+      </scripts>
+    </run>
+    <run reportname="combinedrun_12122018_182637" starttime="12-12-2018 18:26:39" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+      </scripts>
+    </run>
+    <run reportname="combinedrun_12122018_182959" starttime="12-12-2018 18:30:11" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+      </scripts>
+    </run>
+    <run reportname="combinedScenarioRun_12122018_183405" starttime="12-12-2018 18:34:06" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="588836813" name="megacrm_addoppurtunities" />
+      </scripts>
+    </run>
+    <run reportname="combinedScenarioRun_12122018_183618" starttime="12-12-2018 18:36:22" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="588836813" name="megacrm_addoppurtunities" />
+      </scripts>
+    </run>
+    <run reportname="combinedScenarioRun_12122018_183739" starttime="12-12-2018 18:37:41" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="588836813" name="megacrm_addoppurtunities" />
+      </scripts>
     </run>
   </runs>
 </root>
