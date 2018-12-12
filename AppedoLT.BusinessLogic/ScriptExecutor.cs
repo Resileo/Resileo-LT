@@ -489,20 +489,21 @@ namespace AppedoLT.BusinessLogic
                 UpdateStatus();
                 _completedUserCount = _usersList.FindAll(f => f.WorkCompleted == true).Count;
                 StatusSummary.TotalVUserCompleted = _completedUserCount;
-                Debug.WriteLine("tmrRun_Tick _completedUserCount " + _completedUserCount);
-                //Modified the below if then else to ensure when multiple scripts are running, when first script iteration gets completed, it stops the run for all scripts
-                //11-Dec-2018 SK
-                if (_constant._isStopped)
-                {
-                    _endUserid = StatusSummary.TotalVUserCreated;
-                }
-                //_endUserid = _constant._isStopped ? StatusSummary.TotalVUserCreated : _endUserid;
+                if (logger.IsDebugEnabled)
+                    logger.Debug("tmrRun_Tick _completedUserCount " + _completedUserCount + " _endUserid "+ _endUserid+ " _startUserid "+ _startUserid+ " IsRunCompleted "+ IsRunCompleted + " _isStopped "+ _constant._isStopped);
+                _endUserid = _constant._isStopped ? StatusSummary.TotalVUserCreated : _endUserid;
                 if (_setting.Type == "1")
                 {
                     if ((_endUserid - (_startUserid - 1)) == _completedUserCount)
                     {
+                        if (logger.IsDebugEnabled)
+                            logger.Debug("Inside Iteration Mode Matching mode _completedUserCount " + _completedUserCount + "_endUserid - (_startUserid - 1) " + (_endUserid - (_startUserid - 1)));
+
                         if (_endUserid == _completedUserCount )
                         {
+                            if (logger.IsDebugEnabled)
+                                logger.Debug("Inside Iteration Mode _endUserid mode is matching _completedUserCount " + _completedUserCount + "_endUserid - (_startUserid - 1) " + (_endUserid - (_startUserid - 1)));
+
                             IsRunCompleted = true;
                             _threadRun.Reset();
                             _tmrRun.Stop();

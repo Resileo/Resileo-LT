@@ -901,7 +901,11 @@ namespace AppedoLT
                                                 logger.Debug(pn.Attributes["Path"].Value);
                                         }
                                         //using of contains replaced by substring to get the end of the file extension name. -- 06-Dec-2018 SK
-                                        xpath = @"//*/request[(substring(@Path, string-length(@Path)-2) = '.js') or (substring(@Path, string-length(@Path)-4) = '.woff') or (substring(@Path, string-length(@Path)-3) = '.ico') ]";
+                                        xpath = @"//*/request[(substring(@Path, string-length(@Path)-2) = '.js') or (substring(@Path, string-length(@Path)-4) = '.woff') 
+                                                or (substring(@Path, string-length(@Path)-3) = '.ico') or (substring(@Path, string-length(@Path)-3) = '.jpg') 
+                                                or (substring(@Path, string-length(@Path)-3) = '.png') or (substring(@Path, string-length(@Path)-4) = '.jpeg') 
+                                                or (substring(@Path, string-length(@Path)-3) = '.gif') or (substring(@Path, string-length(@Path)-2) = '.js') 
+                                                or (substring(@Path, string-length(@Path)-3) = '.pdf') ]";
                                         xnList = scenario.SelectNodes(xpath);
                                         if (logger.IsDebugEnabled)
                                             logger.Debug("btnRun_Click()->Browser cache Enabled - Cached URLs based on request matching ");
@@ -1400,7 +1404,7 @@ namespace AppedoLT
                             Trasport controller = new Trasport(objClient, "8889");
                             controller.Send(new TrasportData("scriptwisestatus", string.Empty, null));
                             TrasportData data = controller.Receive();
-                            if (data.DataStr != "norun" && data != null)
+                            if (data.DataStr != "norun")
                             {
                                 string dataStr = data.DataStr;
                                 ExceptionHandler.WritetoEventLog("dataStr " + dataStr);
@@ -1408,7 +1412,8 @@ namespace AppedoLT
                                 loadGenCompetedUser = Convert.ToInt32(data.Header["completeduser"]);
                                 tempIsCompleted = Convert.ToInt32(data.Header["iscompleted"]);
                                 string address = ((System.Net.IPEndPoint)(controller.tcpClient.Client.RemoteEndPoint)).Address.ToString();
-                                Debug.WriteLine("dataStr "+ dataStr+ " address " +address+" loadGenCreatedUser " + loadGenCreatedUser + " loadGenCompetedUser " + loadGenCompetedUser + " tempIsCompleted " + tempIsCompleted);
+
+                                ExceptionHandler.WritetoEventLog("dataStr "+ dataStr+ " address " +address+" loadGenCreatedUser " + loadGenCreatedUser + " loadGenCompetedUser " + loadGenCompetedUser + " tempIsCompleted " + tempIsCompleted);
                                 if (loadGenUserDetail.ContainsKey(address) == false)
                                 {
                                     loadGenUserDetail.Add(address, loadGenCreatedUser + "," + loadGenCompetedUser + "," + tempIsCompleted);
@@ -1483,7 +1488,7 @@ namespace AppedoLT
                     if (_isUseLoadGen)
                     {
                         #region loadgen
-                        if ((lblUserCreated.Text != "0" && lblUserCreated.Text == lblUserCompleted.Text && _loadGeneratorips.Count == isCompleted))
+                        if ((lblUserCreated.Text != "0" && lblUserCreated.Text == lblUserCompleted.Text && loadGenUserDetail.Count == isCompleted))
                         {
                             startReport = true;
                         }
@@ -1502,7 +1507,7 @@ namespace AppedoLT
                         lblUserCreated.Text = tempCreatedUser.ToString();
                         lblUserCompleted.Text = tempCompletedUser.ToString();
                         lblHitCount.Text = Convert.ToString(RequestCountHandler._ReqCount);
-                        Debug.WriteLine("tempCreatedUser " + tempCreatedUser + " tempCompletedUser " + tempCompletedUser);
+                        ExceptionHandler.WritetoEventLog("tempCreatedUser " + tempCreatedUser + " tempCompletedUser " + tempCompletedUser);
                         if (_scriptExecutorList.FindAll(f => f.IsRunCompleted).Count == _scriptExecutorList.Count && tempCreatedUser != 0 && tempCreatedUser == tempCompletedUser)
                         {
                             startReport = true;

@@ -32,8 +32,9 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.3.047.0")]
-[assembly: AssemblyFileVersion("3.3.047.0")]
+[assembly: AssemblyVersion("3.3.048.0")]
+[assembly: AssemblyFileVersion("3.3.048.0")]
+//3.3.048 - When multiple generators are loaded, after the completion of run report not getting generated automatically. Last generator data was not validated due to closure of the connection.
 //3.3.047 - When multiple generators are loaded, after the completion of run report not getting generated automatically. Last generator data was not validated due to closure of the connection.
 //3.3.046 - In the below fix, ends-width works only with xPath 2.0 and since we are using xpath 1.0, it has been replaced with substring command
 //3.3.045 - Browser cache fixed for jspx, jsp files getting cached and log introduced on request that are cached. this is part of appedolt.log file.

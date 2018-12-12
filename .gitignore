@@ -2,7 +2,7 @@ AppedoLT/bin/Debug/Data/*
 AppedoLT/bin/Debug/Runlog/*
 AppedoLT/bin/Debug/Scripts/*
 AppedoLT/bin/Debug/Variables/*
-AppedoLT/bin/Debug/DebugAppedoLT.log*
+AppedoLT/bin/Debug/*.log*
 AppedoLT/bin/Release/*
 AppedoLT/bin/x64/*
 AppedoLT/bin/x86/*

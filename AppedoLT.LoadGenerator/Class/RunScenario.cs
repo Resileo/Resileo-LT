@@ -175,7 +175,8 @@ namespace AppedoLTLoadGenerator
                 }
                 _totalCreatedUser = _tempCreatedUser;
                 _totalCompleted = _tempCompletedUser;
-                if (_scriptExecutorList.FindAll(f => f.IsRunCompleted).Count == _scriptExecutorList.Count && _tempCreatedUser != 0 && _tempCreatedUser == _tempCompletedUser)
+                //_scriptExecutorList.FindAll(f => f.IsRunCompleted).Count == _scriptExecutorList.Count && 
+                if (_tempCreatedUser != 0 && _tempCreatedUser == _tempCompletedUser)
                 {
                     try
                     {
@@ -193,7 +194,7 @@ namespace AppedoLTLoadGenerator
                             }
                         }
                         Thread.Sleep(7000);
-//                        executionReport.ExecutionStatus = Status.Completed;
+                        executionReport.ExecutionStatus = Status.Completed;
                     }
                     catch (Exception ex)
                     {
@@ -250,7 +251,11 @@ namespace AppedoLTLoadGenerator
                             logger.Debug(pn.Attributes["Path"].Value);
                     }
                     //removes request that contains.js or .woff(font file) when browser cache is true
-                    xpath = @"//*/request[(substring(@Path, string-length(@Path)-2) = '.js') or (substring(@Path, string-length(@Path)-4) = '.woff') or (substring(@Path, string-length(@Path)-3) = '.ico') ]";
+                    xpath = @"//*/request[(substring(@Path, string-length(@Path)-2) = '.js') or (substring(@Path, string-length(@Path)-4) = '.woff') 
+                            or (substring(@Path, string-length(@Path)-3) = '.ico') or (substring(@Path, string-length(@Path)-3) = '.jpg') 
+                            or (substring(@Path, string-length(@Path)-3) = '.png') or (substring(@Path, string-length(@Path)-4) = '.jpeg') 
+                            or (substring(@Path, string-length(@Path)-3) = '.gif') or (substring(@Path, string-length(@Path)-2) = '.js') 
+                            or (substring(@Path, string-length(@Path)-3) = '.pdf') ]";
                     xnList = scenario.SelectNodes(xpath);
                     if (logger.IsDebugEnabled)
                         logger.Debug("btnRun_Click()->Browser cache Enabled - Cached URLs based on request matching ");
@@ -450,9 +455,7 @@ namespace AppedoLTLoadGenerator
                     {
                         byte[] dataBuf;
                         bool hasData = false;
-                        // Set iscompleted to 0 for completed count reset - 26Sep2017
-                        // _isCompleted = 0;
-
+                        ExceptionHandler.WritetoEventLog("Inside SendData, hasData " + hasData + " scriptExecutorList.Count " + _scriptExecutorList.Count + " executionReport.ExecutionStatus " + executionReport.ExecutionStatus + " Status.Completed " + Status.Completed);
                         #region Report data
                         try
                         {
@@ -577,11 +580,12 @@ namespace AppedoLTLoadGenerator
                         }
                         #endregion
 
-                        #region After completed
-                        if (hasData == false
-                            && (_scriptExecutorList.Count == 0
-                                || _scriptExecutorList.FindAll(f => f.IsRunCompleted).Count == _scriptExecutorList.Count)
-                            && executionReport.ExecutionStatus == Status.Completed)
+                        #region After completion
+                        //if (hasData == false
+                        //        && (_scriptExecutorList.Count == 0
+                        //            || _scriptExecutorList.FindAll(f => f.IsRunCompleted).Count == _scriptExecutorList.Count)
+                        //        && executionReport.ExecutionStatus == Status.Completed) 
+                        if (hasData == false && executionReport.ExecutionStatus == Status.Completed)
                         {
                             int count = 0;
                             while (true)

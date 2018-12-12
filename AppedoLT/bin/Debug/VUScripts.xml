@@ -1,9 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <scenarios>
-    <scenario id="559635954" name="adactin" enableipspoofing="False">
-      <script id="555497870" name="adactin">
-        <setting type="1" durationtime="0;1;0" incrementtime="0;0;1" iterations="3" maxuser="3" startuser="1" incrementuser="1" browsercache="true" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
+    <scenario id="597914352" name="combinedrun" enableipspoofing="False">
+      <script id="596180047" name="MegaCRM">
+        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="1" maxuser="5" startuser="1" incrementuser="1" browsercache="true" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
+      </script>
+      <script id="597822531" name="QAMDemo">
+        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="1" maxuser="5" startuser="1" incrementuser="1" browsercache="true" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
       </script>
     </scenario>
   </scenarios>
@@ -11,6 +14,8 @@
     <flagrequest type="responsebody" condition="contain" text="169356" hasvariablename="" scriptid="566666793" />
   </flag>
   <loadgens>
+    <loadgen ipaddress="192.168.0.5" hostname="192.168.0.5" isdefaultzone="True" ischecked="True" />
+    <loadgen ipaddress="192.168.0.9" hostname="192.168.0.9" isdefaultzone="True" ischecked="True" />
   </loadgens>
   <runs>
     <run reportname="google23-05-2017110554" starttime="23-05-2017 11:06:17" loadgenused="False">
@@ -3558,6 +3563,85 @@
       <scripts>
         <script id="555497870" name="adactin" />
       </scripts>
+    </run>
+    <run reportname="combinedrun_12122018_125333" starttime="12-12-2018 12:53:39" loadgenused="True">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="597822531" name="QAMDemo" />
+      </scripts>
+      <loadgen ipaddress="192.168.1.125" hostname="192.168.1.125" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="597822531" name="QAMDemo" />
+      </scripts>
+      <loadgen ipaddress="192.168.1.155" hostname="192.168.1.155" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+    </run>
+    <run reportname="combinedrun_12122018_125510" starttime="12-12-2018 12:55:13" loadgenused="True">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="597822531" name="QAMDemo" />
+      </scripts>
+      <loadgen ipaddress="192.168.1.125" hostname="192.168.1.125" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="597822531" name="QAMDemo" />
+      </scripts>
+      <loadgen ipaddress="192.168.1.155" hostname="192.168.1.155" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+    </run>
+    <run reportname="combinedrun_12122018_130327" starttime="12-12-2018 13:03:32" loadgenused="True">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="597822531" name="QAMDemo" />
+      </scripts>
+      <loadgen ipaddress="192.168.1.125" hostname="192.168.1.125" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="597822531" name="QAMDemo" />
+      </scripts>
+      <loadgen ipaddress="192.168.1.155" hostname="192.168.1.155" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+    </run>
+    <run reportname="combinedrun_12122018_160840" starttime="12-12-2018 16:08:46" loadgenused="True">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="597822531" name="QAMDemo" />
+      </scripts>
+      <loadgen ipaddress="192.168.1.125" hostname="192.168.1.125" isdefaultzone="True" ischecked="False" resultfilereceived="False" />
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="597822531" name="QAMDemo" />
+      </scripts>
+      <loadgen ipaddress="192.168.1.155" hostname="192.168.1.155" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+    </run>
+    <run reportname="combinedrun_12122018_162352" starttime="12-12-2018 16:23:56" loadgenused="True">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="597822531" name="QAMDemo" />
+      </scripts>
+      <loadgen ipaddress="192.168.1.163" hostname="192.168.1.163" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+    </run>
+    <run reportname="combinedrun_12122018_174040" starttime="12-12-2018 17:40:44" loadgenused="True">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="597822531" name="QAMDemo" />
+      </scripts>
+      <loadgen ipaddress="192.168.0.5" hostname="192.168.0.5" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="597822531" name="QAMDemo" />
+      </scripts>
+      <loadgen ipaddress="192.168.0.9" hostname="192.168.0.9" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+    </run>
+    <run reportname="combinedrun_12122018_174516" starttime="12-12-2018 17:45:21" loadgenused="True">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="597822531" name="QAMDemo" />
+      </scripts>
+      <loadgen ipaddress="192.168.0.5" hostname="192.168.0.5" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="597822531" name="QAMDemo" />
+      </scripts>
+      <loadgen ipaddress="192.168.0.9" hostname="192.168.0.9" isdefaultzone="True" ischecked="True" resultfilereceived="False" />
     </run>
   </runs>
 </root>
