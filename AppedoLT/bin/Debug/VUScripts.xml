@@ -3,10 +3,10 @@
   <scenarios>
     <scenario id="597934473" name="combinedScenarioRun" enableipspoofing="False">
       <script id="596180047" name="MegaCRM">
-        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="5" maxuser="2" startuser="1" incrementuser="1" browsercache="true" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
+        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="1" maxuser="1" startuser="1" incrementuser="1" browsercache="true" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
       </script>
       <script id="588836813" name="megacrm_addoppurtunities">
-        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="1" maxuser="5" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
+        <setting type="1" durationtime="0;0;0" incrementtime="0;0;0" iterations="1" maxuser="1" startuser="1" incrementuser="1" browsercache="false" startuserid="0" replythinktime="true" enableparallelcon="false" parallelconnections="6" bandwidth="-1" />
       </script>
     </scenario>
   </scenarios>
@@ -3674,6 +3674,78 @@
       </scripts>
     </run>
     <run reportname="combinedScenarioRun_12122018_183739" starttime="12-12-2018 18:37:41" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="588836813" name="megacrm_addoppurtunities" />
+      </scripts>
+    </run>
+    <run reportname="combinedScenarioRun_14122018_104948" starttime="14-12-2018 10:51:36" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="588836813" name="megacrm_addoppurtunities" />
+      </scripts>
+    </run>
+    <run reportname="combinedScenarioRun_14122018_110144" starttime="14-12-2018 11:01:54" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="588836813" name="megacrm_addoppurtunities" />
+      </scripts>
+    </run>
+    <run reportname="combinedScenarioRun_14122018_110652" starttime="14-12-2018 11:07:00" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="588836813" name="megacrm_addoppurtunities" />
+      </scripts>
+    </run>
+    <run reportname="combinedScenarioRun_14122018_110904" starttime="14-12-2018 11:09:11" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="588836813" name="megacrm_addoppurtunities" />
+      </scripts>
+    </run>
+    <run reportname="combinedScenarioRun_14122018_111725" starttime="14-12-2018 11:17:34" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="588836813" name="megacrm_addoppurtunities" />
+      </scripts>
+    </run>
+    <run reportname="combinedScenarioRun_14122018_112411" starttime="14-12-2018 11:24:19" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="588836813" name="megacrm_addoppurtunities" />
+      </scripts>
+    </run>
+    <run reportname="combinedScenarioRun_14122018_113834" starttime="14-12-2018 11:38:45" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="588836813" name="megacrm_addoppurtunities" />
+      </scripts>
+    </run>
+    <run reportname="combinedScenarioRun_14122018_114142" starttime="14-12-2018 11:41:51" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="588836813" name="megacrm_addoppurtunities" />
+      </scripts>
+    </run>
+    <run reportname="combinedScenarioRun_14122018_114627" starttime="14-12-2018 11:46:35" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="588836813" name="megacrm_addoppurtunities" />
+      </scripts>
+    </run>
+    <run reportname="combinedScenarioRun_14122018_115247" starttime="14-12-2018 11:55:51" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="588836813" name="megacrm_addoppurtunities" />
+      </scripts>
+    </run>
+    <run reportname="combinedScenarioRun_14122018_120427" starttime="14-12-2018 12:06:37" loadgenused="False">
+      <scripts>
+        <script id="596180047" name="MegaCRM" />
+        <script id="588836813" name="megacrm_addoppurtunities" />
+      </scripts>
+    </run>
+    <run reportname="combinedScenarioRun_14122018_121754" starttime="14-12-2018 12:19:07" loadgenused="False">
       <scripts>
         <script id="596180047" name="MegaCRM" />
         <script id="588836813" name="megacrm_addoppurtunities" />

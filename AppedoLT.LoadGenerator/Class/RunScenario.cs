@@ -239,7 +239,7 @@ namespace AppedoLTLoadGenerator
                 if (setting.Attributes["browsercache"].Value.ToString() == "true")
                 {
                     //removes request that are images or css based on the header type accept.
-                    xpath = @"//*/header[(@name='Accept' or @name='accept') and (contains(@value,'css') or contains(@value, 'image'))]";
+                    xpath = @"//script[@id='" + scriptid + "']//*/header[(@name='Accept' or @name='accept') and (contains(@value,'css') or contains(@value, 'image'))]";
                     xnList = scenario.SelectNodes(xpath);
                     if (logger.IsDebugEnabled)
                         logger.Debug("btnRun_Click()->Browser cache Enabled - Cached URLs based on header matching ");
@@ -251,11 +251,7 @@ namespace AppedoLTLoadGenerator
                             logger.Debug(pn.Attributes["Path"].Value);
                     }
                     //removes request that contains.js or .woff(font file) when browser cache is true
-                    xpath = @"//*/request[(substring(@Path, string-length(@Path)-2) = '.js') or (substring(@Path, string-length(@Path)-4) = '.woff') 
-                            or (substring(@Path, string-length(@Path)-3) = '.ico') or (substring(@Path, string-length(@Path)-3) = '.jpg') 
-                            or (substring(@Path, string-length(@Path)-3) = '.png') or (substring(@Path, string-length(@Path)-4) = '.jpeg') 
-                            or (substring(@Path, string-length(@Path)-3) = '.gif') or (substring(@Path, string-length(@Path)-2) = '.js') 
-                            or (substring(@Path, string-length(@Path)-3) = '.pdf') ]";
+                    xpath = @"//script[@id='" + scriptid + "']//*/request[(substring(@Path, string-length(@Path)-2) = '.js') or (substring(@Path, string-length(@Path)-4) = '.woff') or (substring(@Path, string-length(@Path)-3) = '.ico') or (substring(@Path, string-length(@Path)-3) = '.jpg') or (substring(@Path, string-length(@Path)-3) = '.gif')  or (substring(@Path, string-length(@Path)-3) = '.pdf') or (substring(@Path, string-length(@Path)-3) = '.png')]";
                     xnList = scenario.SelectNodes(xpath);
                     if (logger.IsDebugEnabled)
                         logger.Debug("btnRun_Click()->Browser cache Enabled - Cached URLs based on request matching ");

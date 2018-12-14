@@ -1,0 +1,2 @@
+.separator "\t"
+.import f6002b75-22ec-4166-8a49-41c08dde14c9.tsv reportdata

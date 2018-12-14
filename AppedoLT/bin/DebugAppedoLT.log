@@ -5714,3 +5714,1687 @@ tempCreatedUser 7 tempCompletedUser 5
 18:40:32 12 December 2018 
 tempCreatedUser 7 tempCompletedUser 7
 ---------------------------------------
+10:49:00 14 December 2018 
+There is an unclosed literal string. Line 189, position 117.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseAttributeValueSlow(Int32 curPos, Char quoteChar, NodeData attr)
+   at System.Xml.XmlTextReaderImpl.ParseAttributes()
+   at System.Xml.XmlTextReaderImpl.ParseElement()
+   at System.Xml.XmlTextReaderImpl.ParseElementContent()
+   at System.Xml.XmlLoader.LoadNode(Boolean skipOverWhitespace)
+   at System.Xml.XmlLoader.LoadDocSequence(XmlDocument parentDoc)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(String filename)
+   at AppedoLT.VuscriptXml..ctor(String id) in G:\workspace\Resileo-LT\AppedoLT\Class\VuscriptXml.cs:line 72
+---------------------------------------
+10:49:00 14 December 2018 
+   at AppedoLT.ucDesign.LoadTreeItem() in G:\workspace\Resileo-LT\AppedoLT\Design\UserControls\ucDesign.cs:line 72
+Object reference not set to an instance of an object.
+---------------------------------------
+10:51:41 14 December 2018 
+tempCreatedUser 5 tempCompletedUser 0
+---------------------------------------
+10:51:41 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:41 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:41 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:41 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:46 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:46 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:46 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:46 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:46 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:51 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:51 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:51 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:51 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:51 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:56 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:56 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:56 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:56 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:51:56 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:52:01 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:52:01 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:52:01 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:52:01 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:52:01 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:52:06 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+10:52:06 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 1
+---------------------------------------
+10:52:06 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 1
+---------------------------------------
+10:52:06 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 1
+---------------------------------------
+10:52:06 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 1
+---------------------------------------
+10:52:11 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 1
+---------------------------------------
+10:52:11 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 1
+---------------------------------------
+10:52:11 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 1
+---------------------------------------
+10:52:11 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 2
+---------------------------------------
+10:52:11 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 2
+---------------------------------------
+10:52:16 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 2
+---------------------------------------
+10:52:16 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 2
+---------------------------------------
+10:52:16 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 2
+---------------------------------------
+10:52:16 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 4
+---------------------------------------
+10:52:16 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 4
+---------------------------------------
+10:52:21 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:21 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:21 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:21 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:21 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:26 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:26 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:26 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:26 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:26 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:31 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:31 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:31 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:31 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:31 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:36 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:36 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:36 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:36 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:36 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:41 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:41 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:41 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:41 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:41 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:46 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:46 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:46 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:46 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:46 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:51 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:51 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:51 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:51 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:51 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:51 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:56 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:56 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:56 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:56 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:52:56 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:01 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:01 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:01 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:01 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:01 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:06 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:06 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:06 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:06 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:06 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:11 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:11 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:11 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:11 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:11 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:16 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:16 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:16 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:16 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:16 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:21 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:21 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:21 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:21 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:21 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:26 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:26 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:26 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:26 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:26 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:31 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:31 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:31 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:31 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:31 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:36 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:36 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:36 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:36 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:36 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:41 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:41 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:41 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:41 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:41 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:46 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:46 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:46 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:46 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:46 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:51 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:51 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:51 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:51 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:51 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:56 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:56 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:56 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:56 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:53:56 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:01 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:01 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:01 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:01 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:01 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:06 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:06 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:06 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:06 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:06 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:11 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:11 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:11 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:11 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:11 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:16 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:16 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:16 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:16 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:16 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:21 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:21 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:21 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:21 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:21 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:26 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:26 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:26 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+10:54:26 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 7
+---------------------------------------
+11:01:58 14 December 2018 
+tempCreatedUser 3 tempCompletedUser 0
+---------------------------------------
+11:01:58 14 December 2018 
+tempCreatedUser 5 tempCompletedUser 0
+---------------------------------------
+11:01:58 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:01:58 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:03 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:03 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:03 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:03 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:03 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:08 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:08 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:08 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:08 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:08 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:13 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:13 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:13 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:13 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:13 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:18 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:18 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:18 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:18 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:18 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:02:23 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 1
+---------------------------------------
+11:02:23 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 1
+---------------------------------------
+11:02:23 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 1
+---------------------------------------
+11:02:23 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 4
+---------------------------------------
+11:02:23 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 4
+---------------------------------------
+11:02:28 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 4
+---------------------------------------
+11:02:28 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:02:28 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:02:28 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:02:28 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:02:33 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:02:33 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 7
+---------------------------------------
+11:06:40 14 December 2018 
+There is an unclosed literal string. Line 189, position 117.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseAttributeValueSlow(Int32 curPos, Char quoteChar, NodeData attr)
+   at System.Xml.XmlTextReaderImpl.ParseAttributes()
+   at System.Xml.XmlTextReaderImpl.ParseElement()
+   at System.Xml.XmlTextReaderImpl.ParseElementContent()
+   at System.Xml.XmlLoader.LoadNode(Boolean skipOverWhitespace)
+   at System.Xml.XmlLoader.LoadDocSequence(XmlDocument parentDoc)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(String filename)
+   at AppedoLT.VuscriptXml..ctor(String id) in G:\workspace\Resileo-LT\AppedoLT\Class\VuscriptXml.cs:line 72
+---------------------------------------
+11:06:40 14 December 2018 
+   at AppedoLT.ucDesign.LoadTreeItem() in G:\workspace\Resileo-LT\AppedoLT\Design\UserControls\ucDesign.cs:line 72
+Object reference not set to an instance of an object.
+---------------------------------------
+11:07:04 14 December 2018 
+tempCreatedUser 6 tempCompletedUser 0
+---------------------------------------
+11:07:04 14 December 2018 
+tempCreatedUser 6 tempCompletedUser 0
+---------------------------------------
+11:07:04 14 December 2018 
+tempCreatedUser 6 tempCompletedUser 0
+---------------------------------------
+11:07:04 14 December 2018 
+tempCreatedUser 6 tempCompletedUser 0
+---------------------------------------
+11:07:09 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:09 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:09 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:09 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:09 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:14 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:14 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:14 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:14 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:14 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:19 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:19 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:19 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:19 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:19 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:24 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:24 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:24 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:24 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:24 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:29 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:07:29 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 1
+---------------------------------------
+11:07:29 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 1
+---------------------------------------
+11:07:29 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 3
+---------------------------------------
+11:07:29 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 4
+---------------------------------------
+11:07:34 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:07:34 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:07:34 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:07:34 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:07:34 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:07:39 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:07:39 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 7
+---------------------------------------
+11:09:14 14 December 2018 
+tempCreatedUser 0 tempCompletedUser 0
+---------------------------------------
+11:09:14 14 December 2018 
+tempCreatedUser 4 tempCompletedUser 0
+---------------------------------------
+11:09:14 14 December 2018 
+tempCreatedUser 6 tempCompletedUser 0
+---------------------------------------
+11:09:14 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:20 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:20 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:20 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:20 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:20 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:25 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:25 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:25 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:25 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:25 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:30 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:30 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:30 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:30 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:30 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:35 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:35 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:35 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:35 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:35 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:40 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:40 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:40 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:40 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:40 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:45 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:09:45 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 1
+---------------------------------------
+11:09:45 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 3
+---------------------------------------
+11:09:45 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 4
+---------------------------------------
+11:09:45 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:09:50 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:09:50 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:09:50 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:09:50 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:09:50 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:09:55 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:09:55 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:09:55 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:09:55 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:09:55 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 7
+---------------------------------------
+11:16:39 14 December 2018 
+There is an unclosed literal string. Line 189, position 117.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseAttributeValueSlow(Int32 curPos, Char quoteChar, NodeData attr)
+   at System.Xml.XmlTextReaderImpl.ParseAttributes()
+   at System.Xml.XmlTextReaderImpl.ParseElement()
+   at System.Xml.XmlTextReaderImpl.ParseElementContent()
+   at System.Xml.XmlLoader.LoadNode(Boolean skipOverWhitespace)
+   at System.Xml.XmlLoader.LoadDocSequence(XmlDocument parentDoc)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(String filename)
+   at AppedoLT.VuscriptXml..ctor(String id) in G:\workspace\Resileo-LT\AppedoLT\Class\VuscriptXml.cs:line 72
+---------------------------------------
+11:16:39 14 December 2018 
+   at AppedoLT.ucDesign.LoadTreeItem() in G:\workspace\Resileo-LT\AppedoLT\Design\UserControls\ucDesign.cs:line 72
+Object reference not set to an instance of an object.
+---------------------------------------
+11:17:38 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:17:38 14 December 2018 
+tempCreatedUser 5 tempCompletedUser 0
+---------------------------------------
+11:17:38 14 December 2018 
+tempCreatedUser 5 tempCompletedUser 0
+---------------------------------------
+11:17:38 14 December 2018 
+tempCreatedUser 5 tempCompletedUser 0
+---------------------------------------
+11:17:43 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:43 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:43 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:43 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:43 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:48 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:48 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:48 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:48 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:48 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:48 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:53 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:53 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:53 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:53 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:53 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:58 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:58 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:17:58 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 1
+---------------------------------------
+11:17:58 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 4
+---------------------------------------
+11:18:03 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:18:03 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:18:03 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:18:03 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:18:03 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:18:03 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:18:08 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:18:08 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:18:08 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:18:08 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:18:08 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:18:13 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 6
+---------------------------------------
+11:18:13 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 7
+---------------------------------------
+11:23:53 14 December 2018 
+There is an unclosed literal string. Line 189, position 117.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseAttributeValueSlow(Int32 curPos, Char quoteChar, NodeData attr)
+   at System.Xml.XmlTextReaderImpl.ParseAttributes()
+   at System.Xml.XmlTextReaderImpl.ParseElement()
+   at System.Xml.XmlTextReaderImpl.ParseElementContent()
+   at System.Xml.XmlLoader.LoadNode(Boolean skipOverWhitespace)
+   at System.Xml.XmlLoader.LoadDocSequence(XmlDocument parentDoc)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(String filename)
+   at AppedoLT.VuscriptXml..ctor(String id) in G:\workspace\Resileo-LT\AppedoLT\Class\VuscriptXml.cs:line 72
+---------------------------------------
+11:23:53 14 December 2018 
+   at AppedoLT.ucDesign.LoadTreeItem() in G:\workspace\Resileo-LT\AppedoLT\Design\UserControls\ucDesign.cs:line 72
+Object reference not set to an instance of an object.
+---------------------------------------
+11:24:23 14 December 2018 
+tempCreatedUser 3 tempCompletedUser 0
+---------------------------------------
+11:24:23 14 December 2018 
+tempCreatedUser 6 tempCompletedUser 0
+---------------------------------------
+11:24:23 14 December 2018 
+tempCreatedUser 6 tempCompletedUser 0
+---------------------------------------
+11:24:23 14 December 2018 
+tempCreatedUser 6 tempCompletedUser 0
+---------------------------------------
+11:24:28 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:28 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:28 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:28 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:28 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:33 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:33 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:33 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:33 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:33 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:38 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:38 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:38 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:38 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:38 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:43 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:43 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:43 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:43 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:43 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 0
+---------------------------------------
+11:24:48 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 1
+---------------------------------------
+11:24:48 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 2
+---------------------------------------
+11:24:48 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 3
+---------------------------------------
+11:24:48 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 4
+---------------------------------------
+11:24:48 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:24:53 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:24:53 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:24:53 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:24:53 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:24:53 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:24:58 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 5
+---------------------------------------
+11:24:58 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 6
+---------------------------------------
+11:24:58 14 December 2018 
+tempCreatedUser 7 tempCompletedUser 7
+---------------------------------------
+11:38:22 14 December 2018 
+There is an unclosed literal string. Line 189, position 117.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseAttributeValueSlow(Int32 curPos, Char quoteChar, NodeData attr)
+   at System.Xml.XmlTextReaderImpl.ParseAttributes()
+   at System.Xml.XmlTextReaderImpl.ParseElement()
+   at System.Xml.XmlTextReaderImpl.ParseElementContent()
+   at System.Xml.XmlLoader.LoadNode(Boolean skipOverWhitespace)
+   at System.Xml.XmlLoader.LoadDocSequence(XmlDocument parentDoc)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(String filename)
+   at AppedoLT.VuscriptXml..ctor(String id) in G:\workspace\Resileo-LT\AppedoLT\Class\VuscriptXml.cs:line 72
+---------------------------------------
+11:38:22 14 December 2018 
+   at AppedoLT.ucDesign.LoadTreeItem() in G:\workspace\Resileo-LT\AppedoLT\Design\UserControls\ucDesign.cs:line 72
+Object reference not set to an instance of an object.
+---------------------------------------
+11:39:49 14 December 2018 
+tempCreatedUser 4 tempCompletedUser 0
+---------------------------------------
+11:39:49 14 December 2018 
+tempCreatedUser 4 tempCompletedUser 0
+---------------------------------------
+11:39:49 14 December 2018 
+tempCreatedUser 4 tempCompletedUser 0
+---------------------------------------
+11:39:55 14 December 2018 
+tempCreatedUser 4 tempCompletedUser 0
+---------------------------------------
+11:39:55 14 December 2018 
+tempCreatedUser 4 tempCompletedUser 0
+---------------------------------------
+11:39:55 14 December 2018 
+tempCreatedUser 5 tempCompletedUser 0
+---------------------------------------
+11:39:56 14 December 2018 
+tempCreatedUser 6 tempCompletedUser 0
+---------------------------------------
+11:39:57 14 December 2018 
+tempCreatedUser 6 tempCompletedUser 0
+---------------------------------------
+11:40:05 14 December 2018 
+tempCreatedUser 6 tempCompletedUser 0
+---------------------------------------
+11:40:05 14 December 2018 
+tempCreatedUser 6 tempCompletedUser 0
+---------------------------------------
+11:40:05 14 December 2018 
+tempCreatedUser 6 tempCompletedUser 0
+---------------------------------------
+11:40:05 14 December 2018 
+tempCreatedUser 6 tempCompletedUser 0
+---------------------------------------
+11:40:31 14 December 2018 
+There is an unclosed literal string. Line 189, position 117.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseAttributeValueSlow(Int32 curPos, Char quoteChar, NodeData attr)
+   at System.Xml.XmlTextReaderImpl.ParseAttributes()
+   at System.Xml.XmlTextReaderImpl.ParseElement()
+   at System.Xml.XmlTextReaderImpl.ParseElementContent()
+   at System.Xml.XmlLoader.LoadNode(Boolean skipOverWhitespace)
+   at System.Xml.XmlLoader.LoadDocSequence(XmlDocument parentDoc)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(String filename)
+   at AppedoLT.VuscriptXml..ctor(String id) in G:\workspace\Resileo-LT\AppedoLT\Class\VuscriptXml.cs:line 72
+---------------------------------------
+11:40:31 14 December 2018 
+   at AppedoLT.ucDesign.LoadTreeItem() in G:\workspace\Resileo-LT\AppedoLT\Design\UserControls\ucDesign.cs:line 72
+Object reference not set to an instance of an object.
+---------------------------------------
+11:42:10 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:42:10 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:42:10 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:42:10 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:42:10 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:42:10 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:42:22 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:42:22 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:42:22 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:42:22 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:42:22 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:42:56 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:42:56 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:42:56 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:42:56 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:42:56 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:42:56 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:43:02 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:43:10 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:43:10 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:43:10 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:46:16 14 December 2018 
+There is an unclosed literal string. Line 189, position 117.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseAttributeValueSlow(Int32 curPos, Char quoteChar, NodeData attr)
+   at System.Xml.XmlTextReaderImpl.ParseAttributes()
+   at System.Xml.XmlTextReaderImpl.ParseElement()
+   at System.Xml.XmlTextReaderImpl.ParseElementContent()
+   at System.Xml.XmlLoader.LoadNode(Boolean skipOverWhitespace)
+   at System.Xml.XmlLoader.LoadDocSequence(XmlDocument parentDoc)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(String filename)
+   at AppedoLT.VuscriptXml..ctor(String id) in G:\workspace\Resileo-LT\AppedoLT\Class\VuscriptXml.cs:line 72
+---------------------------------------
+11:46:16 14 December 2018 
+   at AppedoLT.ucDesign.LoadTreeItem() in G:\workspace\Resileo-LT\AppedoLT\Design\UserControls\ucDesign.cs:line 72
+Object reference not set to an instance of an object.
+---------------------------------------
+11:46:45 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:46:45 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:46:45 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:46:51 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:46:56 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:46:56 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:46:56 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:46:56 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:46:56 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:46:56 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:47:01 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:47:01 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:47:01 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:47:01 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:47:01 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:47:06 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:47:06 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:47:06 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:47:06 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:47:06 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:47:11 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:47:11 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:47:11 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:47:11 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:47:11 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+11:47:16 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+11:47:16 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+11:47:16 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+11:47:16 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+11:47:16 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+11:47:21 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+11:47:21 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+11:47:21 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+11:47:21 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+11:47:21 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 2
+---------------------------------------
+11:52:30 14 December 2018 
+There is an unclosed literal string. Line 189, position 117.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseAttributeValueSlow(Int32 curPos, Char quoteChar, NodeData attr)
+   at System.Xml.XmlTextReaderImpl.ParseAttributes()
+   at System.Xml.XmlTextReaderImpl.ParseElement()
+   at System.Xml.XmlTextReaderImpl.ParseElementContent()
+   at System.Xml.XmlLoader.LoadNode(Boolean skipOverWhitespace)
+   at System.Xml.XmlLoader.LoadDocSequence(XmlDocument parentDoc)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(String filename)
+   at AppedoLT.VuscriptXml..ctor(String id) in G:\workspace\Resileo-LT\AppedoLT\Class\VuscriptXml.cs:line 72
+---------------------------------------
+11:52:30 14 December 2018 
+   at AppedoLT.ucDesign.LoadTreeItem() in G:\workspace\Resileo-LT\AppedoLT\Design\UserControls\ucDesign.cs:line 72
+Object reference not set to an instance of an object.
+---------------------------------------
+11:56:09 14 December 2018 
+There is an unclosed literal string. Line 189, position 117.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseAttributeValueSlow(Int32 curPos, Char quoteChar, NodeData attr)
+   at System.Xml.XmlTextReaderImpl.ParseAttributes()
+   at System.Xml.XmlTextReaderImpl.ParseElement()
+   at System.Xml.XmlTextReaderImpl.ParseElementContent()
+   at System.Xml.XmlLoader.LoadNode(Boolean skipOverWhitespace)
+   at System.Xml.XmlLoader.LoadDocSequence(XmlDocument parentDoc)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(String filename)
+   at AppedoLT.VuscriptXml..ctor(String id) in G:\workspace\Resileo-LT\AppedoLT\Class\VuscriptXml.cs:line 72
+---------------------------------------
+11:56:09 14 December 2018 
+   at AppedoLT.ucDesign.LoadTreeItem() in G:\workspace\Resileo-LT\AppedoLT\Design\UserControls\ucDesign.cs:line 72
+Object reference not set to an instance of an object.
+---------------------------------------
+12:03:54 14 December 2018 
+There is an unclosed literal string. Line 189, position 117.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseAttributeValueSlow(Int32 curPos, Char quoteChar, NodeData attr)
+   at System.Xml.XmlTextReaderImpl.ParseAttributes()
+   at System.Xml.XmlTextReaderImpl.ParseElement()
+   at System.Xml.XmlTextReaderImpl.ParseElementContent()
+   at System.Xml.XmlLoader.LoadNode(Boolean skipOverWhitespace)
+   at System.Xml.XmlLoader.LoadDocSequence(XmlDocument parentDoc)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(String filename)
+   at AppedoLT.VuscriptXml..ctor(String id) in G:\workspace\Resileo-LT\AppedoLT\Class\VuscriptXml.cs:line 72
+---------------------------------------
+12:03:54 14 December 2018 
+   at AppedoLT.ucDesign.LoadTreeItem() in G:\workspace\Resileo-LT\AppedoLT\Design\UserControls\ucDesign.cs:line 72
+Object reference not set to an instance of an object.
+---------------------------------------
+12:06:42 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:42 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:42 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:42 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:42 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:42 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:47 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:47 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:47 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:47 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:47 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:52 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:52 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:52 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:52 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:52 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:57 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:57 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:57 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:57 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:06:57 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:07:02 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:07:02 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:07:02 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:07:02 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:07:02 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:07:07 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:07:07 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:07:07 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:07:07 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:07:07 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:07:12 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:07:12 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:07:12 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:07:12 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:07:12 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 2
+---------------------------------------
+12:17:45 14 December 2018 
+There is an unclosed literal string. Line 189, position 117.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseAttributeValueSlow(Int32 curPos, Char quoteChar, NodeData attr)
+   at System.Xml.XmlTextReaderImpl.ParseAttributes()
+   at System.Xml.XmlTextReaderImpl.ParseElement()
+   at System.Xml.XmlTextReaderImpl.ParseElementContent()
+   at System.Xml.XmlLoader.LoadNode(Boolean skipOverWhitespace)
+   at System.Xml.XmlLoader.LoadDocSequence(XmlDocument parentDoc)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(String filename)
+   at AppedoLT.VuscriptXml..ctor(String id) in G:\workspace\Resileo-LT\AppedoLT\Class\VuscriptXml.cs:line 72
+---------------------------------------
+12:17:45 14 December 2018 
+   at AppedoLT.ucDesign.LoadTreeItem() in G:\workspace\Resileo-LT\AppedoLT\Design\UserControls\ucDesign.cs:line 72
+Object reference not set to an instance of an object.
+---------------------------------------
+12:19:12 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:12 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:12 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:12 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:12 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:12 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:17 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:17 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:17 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:17 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:17 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:22 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:22 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:22 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:22 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:22 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:27 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:27 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:27 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:27 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:27 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:32 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:32 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 0
+---------------------------------------
+12:19:32 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:19:32 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:19:32 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:19:37 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:19:37 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:19:37 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:19:37 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:19:37 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:19:42 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:19:42 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:19:42 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 1
+---------------------------------------
+12:19:42 14 December 2018 
+tempCreatedUser 2 tempCompletedUser 2
+---------------------------------------

@@ -32,8 +32,9 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.2.050.0")]
-[assembly: AssemblyFileVersion("1.2.050.0")]
+[assembly: AssemblyVersion("1.2.051.0")]
+[assembly: AssemblyFileVersion("1.2.051.0")]
+//1.2.051.0 - Bug Fix - When browser cache enabled, caching happens for all the script that does not have the cache enabled.
 //1.2.050.0 - Bug Fix - When multiple scripts were running in iteration, on completion of iteration of the first scripts, all the scripts are getting stopped
 //1.2.049.0 - Corrected the status that is not getting updated due to completed user and created user mismatch. This has been corrected
 //1.2.048.0 - In the below fix, ends-width works only with xPath 2.0 and since we are using xpath 1.0, it has been replaced with substring command

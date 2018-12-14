@@ -1,11 +1,13 @@
-AppedoLT/bin/Debug/Data/*
-AppedoLT/bin/Debug/Runlog/*
-AppedoLT/bin/Debug/Scripts/*
-AppedoLT/bin/Debug/Variables/*
-AppedoLT/bin/Debug/*.log*
-AppedoLT/bin/Release/*
-AppedoLT/bin/x64/*
-AppedoLT/bin/x86/*
-*.lock
-*.log
+/AppedoLT/bin/Debug/Data/*
+/AppedoLT/bin/Debug/Runlog/*
+/AppedoLT/bin/Debug/Scripts/*
+/AppedoLT/bin/Debug/Variables/*
+/AppedoLT/bin/**/*.log
+/AppedoLT/bin/Debug/*.csv
+/AppedoLT/bin/Release/*
+/AppedoLT/bin/x64/*
+/AppedoLT/bin/x86/*
+**/*.zip
+**/*.lock
+**/logs
 

@@ -850,8 +850,8 @@ namespace AppedoLT.BusinessLogic
                     #endregion
                         string fileNameExt = Path.GetExtension(temp.LocalPath);
                         //Check request is not in exclutionfiletypes
-//                            if (cacheEnabled == false && !(fileNameExt != string.Empty && _vuScriptXml.Attributes["exclutionfiletypes"].Value.Contains(fileNameExt.Replace(".", string.Empty).Trim().ToLower()) == true))
                         if (!(fileNameExt != string.Empty && _vuScriptXml.Attributes["exclutionfiletypes"].Value.Contains(fileNameExt.Replace(".", string.Empty).Trim().ToLower()) == true))
+//                        if (!(fileNameExt != string.Empty ))
                         {
                             req = new HttpRequest(request, ref receivedCookies, _userid.ToString() + (_createdConnection++ % _maxConnection).ToString(), _IPAddress, IsValidation, _bandwidthInKbps)
                             {
